@@ -1,20 +1,19 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
-import { debounce } from 'lodash'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import { debounce } from 'lodash';
 
 import { CALL_API } from '../middleware/api';
 import Schemas from '../schemas';
 import * as socket from '../middleware/socket';
 
-import { toggleMenu, hideMenu, resetMessage, resetErrorMessage, showModal, hideModal } from '../actions/app'
-import { layoutResize } from '../actions/layout'
-import { loadSessionUser } from '../actions/session'
-
+import { toggleMenu, hideMenu, resetMessage, resetErrorMessage, showModal, hideModal } from '../actions/app';
+import { layoutResize } from '../actions/layout';
+import { loadSessionUser } from '../actions/session';
 import { selectSessionUser } from '../selectors/session';
 
-import Navbar from '../components/Navbar'
-import MainMenu from '../components/MainMenu'
+import Navbar from '../components/Navbar';
+import MainMenu from '../components/MainMenu';
 
 const BETA_SIGNUP_MODAL = 'BETA_SIGNUP_MODAL';
 
@@ -39,16 +38,7 @@ class App extends Component {
 
     // attempt to connect websocket, passing in the dispatcher
     socket.connect(this.props.dispatch, 6500).then(() => {
-      this.props.dispatch({
-        [CALL_API] : {
-          types : ["MESSAGE_REQUEST", "SET_MESSAGE", "MESSAGE_FAILURE"],
-          data : {
-            message : "stuff",
-          },
-          endpoint: "/api/messages",
-          schema : Schemas.MESSAGE,
-        }
-      })
+      // socket connected.
     })
 
     this._oldResize = window.onresize;

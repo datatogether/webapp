@@ -3,9 +3,6 @@ import React, { PropTypes } from 'react';
 import List from '../components/List';
 import UserItem from '../components/item/UserItem';
 
-import ValidInput from '../components/ValidInput';
-import FieldsList from '../components/FieldsList';
-
 
 export default class Stylesheet extends React.Component {
 	render() {
@@ -32,8 +29,6 @@ export default class Stylesheet extends React.Component {
 							Phasellus cursus, felis eu aliquet maximus, neque lorem egestas est, eu varius nulla sapien vitae tellus.</p>
 						</div>
 						<div className="col-md-6">
-							<ValidInput type="text" name="input" label="valid input" value="input" showValidation={false} validation="blah" />
-							<ValidInput type="text" name="input" label="invalid input" value="input" showValidation={true} error="blah" />
 							<button className="btn btn-primary">Primary Button</button>
 						</div>
 					</div>
@@ -81,19 +76,6 @@ export default class Stylesheet extends React.Component {
 						<List data={this.props.users} component={UserItem} />
 					</div>
 				</div>
-				<div className="container">
-					<div className="row">
-						<header className="blue col-md-12">
-							<hr className="blue" />
-							<h2>Fields</h2>
-						</header>
-					</div>
-					<div className="row">
-						<div className="col-md-12">
-							<FieldsList fields={this.props.fields} />
-						</div>
-					</div>
-				</div>
 			</div>
 		);
 	}
@@ -104,14 +86,6 @@ Stylesheet.propTypes = {
 }
 
 Stylesheet.defaultProps = {
-	fields: [
-		{ name : "field_one", type : "string" },
-		{ name : "field_two", type : "integer" },
-		{ name : "field_three", type : "float" },
-		{ name : "field_four", type : "object" },
-		{ name : "field_five", type : "array" },
-		{ name : "field_six", type : "date" },
-	],
 	users : [
 		{"id":"4254923e-a3a3-4d6f-ae1d-f6af177215db","created":1484086940,"updated":1484086940,"username":"steve","type":"none","email":"steve@qri.io","name":"Steven","description":"","home_url":""},
 		{"id":"9080d2c6-4e2a-4f5c-a49f-97dc1c6e1ecb","created":1484080475,"updated":1484080475,"username":"test_one","type":"none","email":"brendanobrienesq@gmail.com","name":"brendan","description":"","home_url":""},
