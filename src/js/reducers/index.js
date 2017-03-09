@@ -12,12 +12,21 @@ import locals from './locals';
 
 const initialEntitiesState = {
   session: {},
-  ssh_keys: {},
   users: {},
+  sshKeys: {},
+
+  groups: {},
   messages: {},
-  searchResults: {},
+  
   urls: {},
-  links : {},
+  links: {},
+  
+  content : {},
+  metadata: {},
+  consensus: {},
+  collections: {},
+
+  searchResults: {},
 
   pagination: {},
 };

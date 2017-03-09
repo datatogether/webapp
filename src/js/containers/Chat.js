@@ -13,24 +13,28 @@ import validateInvite from '../validators/invite'
 class Chat extends React.Component {
   constructor(props) {
     super(props);
-    [ 'handleChange', 'handleChatSubmit'].forEach(m => this[m] = this[m].bind(this));
+    
+    [ 
+      'handleChange', 
+      'handleChatSubmit',
+    ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
   componentWillMount() {
     if (this.props.user != null ) {
-      browserHistory.push('/browse')
+      browserHistory.push('/browse');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.user != null ) {
-      browserHistory.push('/browse')
+      browserHistory.push('/browse');
     }
   }
 
   handleChatSubmit(e) {
-    e.preventDefault()
-    this.props.loginUser(this.state.username, this.state.password)
+    e.preventDefault();
+    this.props.loginUser(this.state.username, this.state.password);
   }
 
   handleChange(name, value, e) {
@@ -64,21 +68,21 @@ class Chat extends React.Component {
 
 Chat.propTypes = {
 
-}
+};
 
 Chat.defaultProps = {
 
-}
+};
 
 function mapStateToProps(state, ownProps) {
 
   return {
-    inviteId : ownProps.params.id,
-    messages : selectMessagesByRoom(state),
-    user : selectSessionUser(state),
-  }
+    inviteId: ownProps.params.id,
+    messages: selectMessagesByRoom(state),
+    user: selectSessionUser(state),
+  };
 }
 
 export default connect(mapStateToProps, {
   loginUser
-})(Chat)
+})(Chat);

@@ -1,57 +1,58 @@
-import { normalize } from 'normalizr'
+import { normalize } from 'normalizr';
 
-export const NEW_MODEL = 'NEW_MODEL'
-export const UPDATE_MODEL = 'UPDATE_MODEL'
-export const EDIT_MODEL = 'EDIT_MODEL'
-export const CLEAR_MODEL = 'CLEAR_MODEL'
+export const NEW_MODEL = 'NEW_MODEL';
+export const UPDATE_MODEL = 'UPDATE_MODEL';
+export const EDIT_MODEL = 'EDIT_MODEL';
+export const CLEAR_MODEL = 'CLEAR_MODEL';
 
+export const LOCAL_ACTION = Symbol('LOCAL MODEL ACTION');
 
-export const LOCAL_ACTION = Symbol('LOCAL MODEL ACTION')
-
-export default store => next => action => {
-	const modelAction = action[LOCAL_ACTION];
-	if (typeof modelAction === 'undefined') {
-    return next(action)
+// middleware in the form store => next => action => {}
+export default () => next => (action) => {
+  const modelAction = action[LOCAL_ACTION];
+  if (typeof modelAction === 'undefined') {
+    return next(action);
   }
 
-  const { method, type, schema, attributes } = modelAction
+  const { method, type, schema, attributes } = modelAction;
 
   if (!method) {
-  	console.warn("model action is missing method. type: %s. schema: %s, attributes:", type, schema.getKey(), attributes);
-  }  
+    console.warn("model action is missing method. type: %s. schema: %s, attributes:", type, schema.getKey(), attributes);
+  }
   if (!type) {
-  	// TODO - warnings
-  	console.warn("model action is missing method. type: %s. schema: %s, attributes:", type, schema.getKey(), attributes);
+    // TODO - warnings
+    console.warn("model action is type. type: %s. schema: %s, attributes:", type, schema.getKey(), attributes);
   }
   if (!schema) {
-  	// TODO - warnings
+    // TODO - warnings
   }
   if (!attributes) {
-  	// TODO - warnings
-
+    // TODO - warnings
   }
 
   function actionWith(data) {
-  	const finalAction = Object.assign({}, action, { type }, data)
-    delete finalAction[LOCAL_ACTION]
-    return finalAction
+    const finalAction = Object.assign({}, action, { type }, data);
+    delete finalAction[LOCAL_ACTION];
+    return finalAction;
   }
 
-	switch (method) {
-		case NEW_MODEL:
-			const model = schema.new(attributes)
-			return next(actionWith({ locals: normalize(model, schema) }))
-		case UPDATE_MODEL:
-			return next(actionWith({ locals: normalize(attributes, schema) }))
-    case EDIT_MODEL:
-      return next(actionWith({ locals : normalize(attributes, schema) }))
-		case CLEAR_MODEL:
-			// TODO
-			// return next(actionWith({ locals: { schema.getKey() : { schema.getId(attributes) : undefined }}}))
-			break;
-		default:
-			console.warn("unknown model action method: %s", method);
-	}
+  if (method == NEW_MODEL) {
+    const model = schema.new(attributes);
+    return next(actionWith({ locals: normalize(model, schema) }));
+  }
 
-  return 
-}
+  switch (method) {
+    case UPDATE_MODEL:
+      return next(actionWith({ locals: normalize(attributes, schema) }));
+    case EDIT_MODEL:
+      return next(actionWith({ locals: normalize(attributes, schema) }));
+    case CLEAR_MODEL:
+      // TODO
+      // return next(actionWith({ locals: { schema.getKey() : { schema.getId(attributes) : undefined }}}))
+      break;
+    default:
+      console.warn("unknown model action method: %s", method);
+  }
+
+  return undefined;
+};

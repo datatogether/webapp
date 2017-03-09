@@ -47,16 +47,6 @@ export function connect(dispatch, reconnectTimeout = 6500) {
   });
 }
 
-// attempt to reconnect
-function reconnect(dispatch, timeout = 0) {
-  console.log('attempting reconnnect');
-  if (!timeout) {
-    return connect(dispatch);
-  }
-
-  return 
-}
-
 // check weather the websocket is connected or not
 // @return {boolean}
 export function connected() {

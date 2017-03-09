@@ -1,18 +1,13 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import { Link } from 'react-router';
-// import { debounce } from 'lodash';
 
 import { search } from '../actions/search';
 import { loadUserByUsername } from '../actions/user';
 import { selectSessionUser } from '../selectors/session';
 // import { selectUserByUsername } from '../selectors/user';
-import { selectSearchQuery, selectSearchResults } from '../selectors/search';
 
-import List from '../components/List';
-import SearchResultItem from '../components/item/SearchResultItem';
-
-class Home extends React.Component {
+class Content extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,6 +18,7 @@ class Home extends React.Component {
 
   componentWillMount() {
     // this.props.loadUserByUsername(this.props.username);
+
     // Debounce search to avoid hammering the server with relentless queries
     // 250ms delay should be enough
     // this.props.search = debounce(this.props.search, 250);
@@ -34,35 +30,28 @@ class Home extends React.Component {
     // }
   }
 
-  handleSearchChange(e) {
-    this.props.search(e.target.value);
-  }
-
   render() {
     const { query, results } = this.props;
 
     return (
-      <div id="home" className="user container">
+      <div id="content" className="container">
         <div className="row">
           <header className="yellow col-md-12">
             <hr className="yellow" />
-            <input value={query} onChange={this.handleSearchChange} />
           </header>
         </div>
         <div className="row">
-          <List component={SearchResultItem} data={results} />
         </div>
       </div>
     );
   }
 }
 
-Home.propTypes = {
+Content.propTypes = {
   // pages: PropTypes.object.isRequired,
-  search: PropTypes.func.isRequired,
 };
 
-Home.defaultProps = {
+Content.defaultProps = {
 };
 
 function mapStateToProps(state, ownProps) {
@@ -76,5 +65,4 @@ function mapStateToProps(state, ownProps) {
 
 export default connect(mapStateToProps, {
   loadUserByUsername,
-  search,
-})(Home);
+})(Content);

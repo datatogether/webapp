@@ -8,34 +8,65 @@ import { Schema, arrayOf } from 'normalizr';
 
 // Read more about Normalizr: https://github.com/paularmstrong/normalizr
 const sessionUserSchema = new Schema('session');
-const sshKeySchema = new Schema('ssh_keys', { idAttribute: 'sha256' });
+const sshKeySchema = new Schema('sshKeys', { idAttribute: 'sha256' });
 const userSchema = new Schema('users');
 const groupsSchema = new Schema('groups');
-const contextSchema = new Schema('context');
+const metadataSchema = new Schema('metadata');
 const messageSchema = new Schema('messages');
-const searchResultSchema = new Schema('searchResults', { idAttribute : 'url' });
-const urlSchema = new Schema('urls', { idAttribute : 'url' });
-const linkSchema = new Schema('links', { idAttribute : link => `${link.src.url}.${link.dst.url}` });
+const searchResultSchema = new Schema('searchResults', { idAttribute: 'url' });
+const urlSchema = new Schema('urls', { idAttribute: 'url' });
+const linkSchema = new Schema('links', { idAttribute: link => `${link.src.url}.${link.dst.url}` });
+const consensusSchema = new Schema('consensus', { idAttribute: 'subject' });
+const contentSchema = new Schema('content', { idAttribute: 'subject' });
+const collectionSchema = new Schema('colletions');
+
+metadataSchema.new = function(attrs) {
+  return Object.assign({}, attrs);
+}
 
 // Schemas for Github API responses.
 const Schemas = {
+  // currently-logged-in user
   SESSION_USER: sessionUserSchema,
-  SSH_KEY: sshKeySchema,
-  SSH_KEY_ARRAY: arrayOf(sshKeySchema),
+  // users. many users. much parcipation.
   USER: userSchema,
   USER_ARRAY: arrayOf(userSchema),
+  // user ssh key management. currently unimplemented, but planned
+  SSH_KEY: sshKeySchema,
+  SSH_KEY_ARRAY: arrayOf(sshKeySchema),
+
+  // groups of users, currently unimplemeneted
   GROUP: groupsSchema,
   GROUP_ARRAY: arrayOf(groupsSchema),
-  CONTEXT: contextSchema,
-  CONTEXT_ARRAY: arrayOf(contextSchema),
+  // user messaging
   MESSAGE: messageSchema,
   MESSAGE_ARRAY: arrayOf(messageSchema),
-  SEARCH_RESULT: searchResultSchema,
-  SEARCH_RESULT_ARRAY: arrayOf(searchResultSchema),
+
+  // an external url for archiving
   URL: urlSchema,
   URL_ARRAY: arrayOf(urlSchema),
-  LINK : linkSchema,
-  LINK_ARRAY : arrayOf(linkSchema),
+  // link from a src to a dst url
+  LINK: linkSchema,
+  LINK_ARRAY: arrayOf(linkSchema),
+
+  // structured content, the basis of archiving. content has a shasum
+  CONTENT: contentSchema,
+  CONTENT_ARRAY: arrayOf(contentSchema),
+  // metadata is a user-contributed object that describes content
+  METADATA: metadataSchema,
+  METADATA_ARRAY: arrayOf(metadataSchema),
+  // consensus is the sum of all metadata for a given piece of content
+  CONSENSUS: consensusSchema,
+  CONSENSUS_ARRAY: arrayOf(consensusSchema),
+  // collections are lists of content. they are also content themselves, and can have metadata
+  // collections are "special content" on this webapp b/c users can edit them
+  COLLECTION: collectionSchema,
+  COLLECTION_ARRAY: arrayOf(collectionSchema),
+
+  // search results can be a number of different models
+  // searchResult wraps those discrete types
+  SEARCH_RESULT: searchResultSchema,
+  SEARCH_RESULT_ARRAY: arrayOf(searchResultSchema),
 };
 
 export default Schemas;

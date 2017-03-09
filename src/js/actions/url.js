@@ -9,13 +9,13 @@ export function archiveUrl(url = "") {
   return {
     [CALL_API]: {
       types: [URL_ARCHIVE_REQUEST, URL_ARCHIVE_SUCCESS, URL_ARCHIVE_FAILURE],
-      schema:  Schemas.URL,
+      schema: Schemas.URL,
       endpoint: '/archive',
       data: {
         url,
       },
-    }
-  }
+    },
+  };
 }
 
 export const URL_FETCH_REQUEST = "URL_FETCH_REQUEST";
@@ -31,15 +31,15 @@ export function fetchUrl(url = "") {
       data: {
         url,
       },
-    }
-  }
+    },
+  };
 }
 
 export function loadUrl(url = "") {
-  return (dispatch, getState) => {
-    // TODO - check for local url copy
+  return (dispatch) => {
+    // TODO - check for local url copy via getState
     return dispatch(fetchUrl(url));
-  }
+  };
 }
 
 export const URL_FETCH_OUTBOUND_LINKS_REQUEST = "URL_FETCH_OUTBOUND_LINKS_REQUEST";
@@ -53,13 +53,13 @@ export function fetchOutboundLinks(url = "") {
       schema: Schemas.LINK_ARRAY,
       endpoint: '/url/links/outbound',
       data: { url },
-    }
-  }
+    },
+  };
 }
 
 export function loadOutboundLinks(url = "") {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     // TODO - check for local url copy
     return dispatch(fetchOutboundLinks(url));
-  }
+  };
 }
