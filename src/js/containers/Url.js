@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { selectUrl } from '../selectors/url';
-import { loadUrl, archiveUrl } from '../actions/url';
+import { selectUrl, selectOutboundLinks } from '../selectors/url';
+import { loadUrl, loadOutboundLinks, archiveUrl } from '../actions/url';
 
 // import ValidInput from '../components/ValidInput';
 // import ValidTextarea from '../components/ValidTextarea';
@@ -29,11 +29,13 @@ class Url extends React.Component {
 
   componentWillMount() {
     this.props.loadUrl(this.props.urlParam);
+    this.props.loadOutboundLinks(this.props.urlParam);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.urlParam != this.props.urlParam) {
       this.props.loadUrl(nextProps.urlParam);
+      this.props.loadOutboundLinks(this.props.urlParam);
       this.setState({ loading: true });
     } if (nextProps.url && this.state.loading) {
       this.setState({ loading: false });
@@ -68,7 +70,7 @@ class Url extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { user, url } = this.props;
+    const { user, url, outboundLinks } = this.props;
     
     if (loading) {
       return <Spinner />
@@ -84,6 +86,10 @@ class Url extends React.Component {
         <p>{url.hash}</p>
         <div className="clear"></div>
         {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
+        <h3>Outbound Links</h3>
+        {outboundLinks.map((url, i) => {
+          return <p key={i}>{url.url}</p>
+        })}
       </div>
     );
   }
@@ -102,10 +108,12 @@ function mapStateToProps(state, ownProps) {
     // user : selectLocalSessionUser(state),
     urlParam,
     url: selectUrl(state, urlParam),
+    outboundLinks : selectOutboundLinks(state, urlParam),
   }, ownProps);
 }
 
 export default connect(mapStateToProps, {
   loadUrl,
+  loadOutboundLinks,
   archiveUrl,
 })(Url);

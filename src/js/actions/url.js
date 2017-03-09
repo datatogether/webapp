@@ -41,3 +41,25 @@ export function loadUrl(url = "") {
     return dispatch(fetchUrl(url));
   }
 }
+
+export const URL_FETCH_OUTBOUND_LINKS_REQUEST = "URL_FETCH_OUTBOUND_LINKS_REQUEST";
+export const URL_FETCH_OUTBOUND_LINKS_SUCCESS = "URL_FETCH_OUTBOUND_LINKS_SUCCESS";
+export const URL_FETCH_OUTBOUND_LINKS_FAILURE = "URL_FETCH_OUTBOUND_LINKS_FAILURE";
+
+export function fetchOutboundLinks(url = "") {
+  return {
+    [CALL_API]: {
+      types: [URL_FETCH_OUTBOUND_LINKS_REQUEST, URL_FETCH_OUTBOUND_LINKS_SUCCESS, URL_FETCH_OUTBOUND_LINKS_FAILURE],
+      schema: Schemas.LINK_ARRAY,
+      endpoint: '/url/links/outbound',
+      data: { url },
+    }
+  }
+}
+
+export function loadOutboundLinks(url = "") {
+  return (dispatch, getState) => {
+    // TODO - check for local url copy
+    return dispatch(fetchOutboundLinks(url));
+  }
+}

@@ -17,6 +17,7 @@ const initialEntitiesState = {
   messages: {},
   searchResults: {},
   urls: {},
+  links : {},
 
   pagination: {},
 };

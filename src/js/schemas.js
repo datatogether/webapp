@@ -15,6 +15,7 @@ const contextSchema = new Schema('context');
 const messageSchema = new Schema('messages');
 const searchResultSchema = new Schema('searchResults', { idAttribute : 'url' });
 const urlSchema = new Schema('urls', { idAttribute : 'url' });
+const linkSchema = new Schema('links', { idAttribute : link => `${link.src.url}.${link.dst.url}` });
 
 // Schemas for Github API responses.
 const Schemas = {
@@ -33,6 +34,8 @@ const Schemas = {
   SEARCH_RESULT_ARRAY: arrayOf(searchResultSchema),
   URL: urlSchema,
   URL_ARRAY: arrayOf(urlSchema),
+  LINK : linkSchema,
+  LINK_ARRAY : arrayOf(linkSchema),
 };
 
 export default Schemas;
