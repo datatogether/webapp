@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { selectUrl } from '../selectors/url';
-import { loadUrl } from '../actions/url';
+import { loadUrl, archiveUrl } from '../actions/url';
 
 // import ValidInput from '../components/ValidInput';
 // import ValidTextarea from '../components/ValidTextarea';
@@ -63,7 +63,7 @@ class Url extends React.Component {
   // }
 
   handleArchive(e) {
-
+    this.props.archiveUrl(this.props.url.url);
   }
 
   render() {
@@ -81,7 +81,9 @@ class Url extends React.Component {
     return (
       <div className="container">
         <h3>{url.url}</h3>
+        <p>{url.hash}</p>
         <div className="clear"></div>
+        {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
       </div>
     );
   }
@@ -105,4 +107,5 @@ function mapStateToProps(state, ownProps) {
 
 export default connect(mapStateToProps, {
   loadUrl,
+  archiveUrl,
 })(Url);
