@@ -1,12 +1,17 @@
 import { CALL_API } from '../middleware/api';
-import { Schemas } from '../schemas';
+import Schemas from '../schemas';
 
 import { selectMetadata } from '../selectors/metadata';
 import { newLocalModel, updateLocalModel, editLocalModel, removeLocalModel } from './locals';
 
 const METADATA_NEW = "METADATA_NEW";
-export function newMetadata(userId, subjectId) {
-  return newLocalModel(Schemas.METADATA, METADATA_NEW, { userId, subjectId });
+export function newMetadata(userId, subjectHash) {
+  const model = {
+    userId,
+    subjectHash,
+    title: "",
+  };
+  return newLocalModel(Schemas.METADATA, METADATA_NEW, model);
 }
 
 const METADATA_EDIT = "METADATA_EDIT";
@@ -28,13 +33,13 @@ export const METADATA_REQUEST = 'METADATA_REQUEST';
 export const METADATA_SUCCESS = 'METADATA_SUCCESS';
 export const METADATA_FAILURE = 'METADATA_FAILURE';
 
-export function fetchMetadata(userId, hash) {
+export function fetchMetadata(userId, subjectHash) {
   return {
     [CALL_API]: {
       types: [METADATA_REQUEST, METADATA_SUCCESS, METADATA_FAILURE],
-      endpoint: `/metadata/${userId}/${hash}`,
+      endpoint: `/metadata/${userId}/${subjectHash}`,
       schema: Schemas.METADATA,
-      data: { userId, hash },
+      data: { userId, subjectHash },
     },
   };
 }

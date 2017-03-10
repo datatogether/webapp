@@ -12,10 +12,15 @@ export default class Metadata extends Component {
 	render() {
 		const { metadata } = this.props;
 		return (
-			<div id="metadata" style={style}>
-				<div className="container">
-					
-				</div>
+			<div className="metadata">
+				{Object.keys(metadata).map((key) => {
+					return (
+						<div key={key}>
+							<label>{key}</label>
+							<p>{metadata[key]}</p>
+						</div>
+					);
+				})}
 			</div>
 		)
 	}

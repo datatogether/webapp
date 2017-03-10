@@ -8,6 +8,8 @@ import Metadata from '../components/Metadata';
 import TabBar from '../components/TabBar';
 import UrlItem from '../components/item/UrlItem';
 
+import MetadataEditor from './MetadataEditor';
+
 import { loadContentConsensus, loadContentMetadata, loadContentUrls } from '../actions/content';
 import { selectContentUrls, selectContentConsensus, selectContentMetadata } from '../selectors/content';
 
@@ -64,7 +66,7 @@ class Content extends React.Component {
       case "consensus":
         return <Consensus data={this.props.consensus} />;
       case "metadata":
-        return <List data={this.props.metadata} component={Metadata} />;
+        return <MetadataEditor subjectHash={this.props.hash} />;
       case "urls":
         return <List data={this.props.urls} component={UrlItem} />;
       case "history":
@@ -98,7 +100,7 @@ Content.propTypes = {
   hash: PropTypes.string.isRequired,
 
   consensus: PropTypes.object.isRequired,
-  metadata: PropTypes.array,
+  // metadata: PropTypes.array,
   urls: PropTypes.array,
   history: PropTypes.array,
 

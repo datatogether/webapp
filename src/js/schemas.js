@@ -11,7 +11,7 @@ const sessionUserSchema = new Schema('session');
 const sshKeySchema = new Schema('sshKeys', { idAttribute: 'sha256' });
 const userSchema = new Schema('users');
 const groupsSchema = new Schema('groups');
-const metadataSchema = new Schema('metadata');
+const metadataSchema = new Schema('metadata', { idAttribute: metadata => `${metadata.userId}.${metadata.subjectHash}`});
 const messageSchema = new Schema('messages');
 const searchResultSchema = new Schema('searchResults', { idAttribute: 'url' });
 const urlSchema = new Schema('urls', { idAttribute: 'url' });

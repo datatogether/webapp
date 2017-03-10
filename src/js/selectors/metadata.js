@@ -1,10 +1,13 @@
 
 
-export function metadataId(userId, subjectId) {
-  return `${userId}.${subjectId}`;
+export function metadataId(userId, subjectHash) {
+  return `${userId}.${subjectHash}`;
 }
 
-export function selectMetadata(state, userId, subjectId) {
-  const { metadata } = state.entities;
-  return metadata[metadataId(userId, subjectId)];
+export function selectLocalMetadata(state, userId, subjectHash) {
+  return state.locals.metadata[metadataId(userId, subjectHash)];
+}
+
+export function selectMetadata(state, userId, subjectHash) {
+  return state.entities.metadata[metadataId(userId, subjectHash)];
 }

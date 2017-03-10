@@ -1,12 +1,11 @@
 import * as ActionTypes from '../actions/app'
 
 const initialState = {
-  invites : {},
-  queries : {},
-  datasets : {},
-  migrations : {},
-  changes : {},
-  roles: {},
+  sshKeys: {},
+  groups: {},
+  messages: {},
+  metadata: {},
+  collections: {},
 }
 
 // updates an entity cache in response to any actuion with response.local.
