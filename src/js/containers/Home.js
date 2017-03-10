@@ -27,11 +27,9 @@ class Home extends React.Component {
   }
 
   handleArchiveUrl(url) {
-    this.props.archiveUrl(url);
-    // TODO - horrible hack
-    setTimeout(() => {
-      browserHistory.push(`/urls?url=${url}`)
-    },800);
+    this.props.archiveUrl(url).then(() => {
+      browserHistory.push(`/url?url=${url}`);
+    })
   }
 
   renderArchiveUrl() {

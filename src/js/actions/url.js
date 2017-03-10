@@ -6,14 +6,49 @@ export const URL_ARCHIVE_SUCCESS = "URL_ARCHIVE_SUCCESS";
 export const URL_ARCHIVE_FAILURE = "URL_ARCHIVE_FAILURE";
 
 export function archiveUrl(url = "") {
-  return {
-    [CALL_API]: {
-      types: [URL_ARCHIVE_REQUEST, URL_ARCHIVE_SUCCESS, URL_ARCHIVE_FAILURE],
-      schema: Schemas.URL,
-      endpoint: '/archive',
-      data: {
-        url,
+  return (dispatch, getState) => {
+    return dispatch({
+      [CALL_API]: {
+        types: [URL_ARCHIVE_REQUEST, URL_ARCHIVE_SUCCESS, URL_ARCHIVE_FAILURE],
+        schema: Schemas.URL,
+        endpoint: '/archive',
+        data: {
+          url,
+        },
       },
+    });
+  }
+}
+
+export const URL_SET_LOADING = "URL_SET_LOADING";
+export function setUrlLoading(urlString = "", loading = false) {
+  return {
+    type: URL_SET_LOADING,
+    data : {
+      url: urlString,
+      loading,
+    },
+  };
+}
+
+export const URL_SET_SUCCESS = "URL_SET_SUCCESS";
+export function setUrlSuccess(urlString = "", success = false) {
+  return {
+    type: URL_SET_SUCCESS,
+    data: {
+      url: urlString,
+      success,
+    },
+  };
+}
+
+export const URL_SET_ERROR = "URL_SET_ERROR";
+export function setUrlError(urlString = "", error = "") {
+  return {
+    type: URL_SET_ERROR,
+    data: {
+      url: urlString,
+      error,
     },
   };
 }

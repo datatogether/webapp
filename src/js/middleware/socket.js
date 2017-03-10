@@ -82,7 +82,14 @@ export function connect(dispatch, reconnectTimeout = 6500) {
       };
 
       conn.onmessage = (evt) => {
-        let res = JSON.parse(evt.data);
+        let res;
+        try {
+          res = JSON.parse(evt.data);
+        } catch (e) {
+          console.log(evt.data);
+          console.log(e);
+          return;
+        }
         if (res.schema) {
           res.response = normalize(res.data, Schemas[res.schema]);
         }
@@ -95,7 +102,9 @@ export function connect(dispatch, reconnectTimeout = 6500) {
       };
 
       conn.onerror = (evt) => {
-        reject(evt);
+        if (reject) {
+          reject(evt);
+        }
       };
 
       return;
@@ -168,10 +177,15 @@ export function callApiAction(store, next, action) {
   // return a promise with it's resolve/reject wired
   // to an expectation
   return new Promise((resolve, reject) => {
+    // TODO - should we create a reject func if one isn't defined?
+    // this would necessitate the need for a "silentError" flag.
+
     addExpectation(requestId, {
       [successType]: resolve,
       [failureType]: (act) => {
-        reject(act.error);
+        if (reject) {
+          reject(act.error);
+        }
       },
     });
 

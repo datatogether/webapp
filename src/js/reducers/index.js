@@ -9,6 +9,7 @@ import * as ActionTypes from '../actions/app';
 // import layoutReducer from './layout';
 import appReducer from './app';
 import locals from './locals';
+import urlStates from './urlStates';
 
 const initialEntitiesState = {
   session: {},
@@ -37,6 +38,7 @@ function entities(state = initialEntitiesState, action) {
   if (action.response && action.response.entities) {
     return merge({}, state, action.response.entities);
   }
+
 
   if (action.type === ActionTypes.REMOVE_MODEL) {
     const newState = merge({}, state);
@@ -77,6 +79,7 @@ const rootReducer = combineReducers({
   entities,
   locals,
   app: appReducer,
+  urlStates,
   routing,
   errorMessage,
   statusMessage,

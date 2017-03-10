@@ -82,12 +82,12 @@ class Url extends React.Component {
     const { url } = this.props;
     const { tab } = this.state;
 
-    if (url.contentSniff != "text/html; charset=utf-8") {
+    if (url.contentSniff && url.contentSniff != "text/html; charset=utf-8") {
       return (
         <div className="row">
           <div className="col-md-12">
             <hr className="green" />
-            <label>Content</label>
+            <label>Content</label><br />
             <Link to={`/content/${url.hash}`}>{url.hash}</Link>
           </div>
         </div>

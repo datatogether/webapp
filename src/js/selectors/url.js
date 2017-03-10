@@ -1,36 +1,44 @@
 
 
-export function selectUrl(state, url = "") {
+export function selectUrl(state, urlString = "") {
   const { urls } = state.entities;
-  const id = Object.keys(urls).find(u => (u == url));
-  return id ? urls[id] : undefined;
+  const id = Object.keys(urls).find(u => (u == urlString));
+  if (!id) { return undefined; }
+
+  let url = urls[id];
+  url.state = state.urlStates[urlString] || {};
+  return url;
 }
 
 export function urlStats(url) {
-  return { 
-    "last get": new Date(url.lastGet).toString(),
-    "status": url.status,
-    "size": url.contentLength,
-    "content type" : url.contentSniff,
+  return {
+    "last get": url.lastGet ? new Date(url.lastGet).toString() : "never",
+    status: url.status,
+    size: url.contentLength,
+    "content type": url.contentSniff,
   };
 }
 
-export function selectOutboundLinks(state, url = "") {
+export function selectOutboundLinks(state, urlString = "") {
   const { urls, links } = state.entities;
   return Object.keys(links)
     .map(key => links[key])
-    .filter(link => link.src.url == url)
+    .filter(link => link.src.url == urlString)
     .map((link) => {
-      return urls[link.dst.url] || link.dst;
+      let url = urls[link.dst.url] || link.dst;
+      url.state = state.urlStates[link.dst.url] || {};
+      return url;
     });
 }
 
-export function selectInboundLinks(state, url = "") {
+export function selectInboundLinks(state, urlString = "") {
   const { urls, links } = state.entities;
   return Object.keys(links)
     .map(key => links[key])
-    .filter(link => link.dst.url == url)
+    .filter(link => link.dst.url == urlString)
     .map((link) => {
-      return urls[link.src.url] || link.src;
+      let url = urls[link.src.url] || link.src;
+      url.state = state.urlStates[link.dst.url] || {};
+      return url;
     });
 }
