@@ -9,7 +9,7 @@ import TabBar from '../components/TabBar';
 import UrlItem from '../components/item/UrlItem';
 
 import { loadContentConsensus, loadContentMetadata, loadContentUrls } from '../actions/content';
-import { selectContentUrls } from '../selectors/content';
+import { selectContentUrls, selectContentConsensus, selectContentMetadata } from '../selectors/content';
 
 class Content extends React.Component {
   constructor(props) {
@@ -97,7 +97,7 @@ class Content extends React.Component {
 Content.propTypes = {
   hash: PropTypes.string.isRequired,
 
-  consensus: PropTypes.object,
+  consensus: PropTypes.object.isRequired,
   metadata: PropTypes.array,
   urls: PropTypes.array,
   history: PropTypes.array,
@@ -108,6 +108,7 @@ Content.propTypes = {
 };
 
 Content.defaultProps = {
+  consensus: {},
 };
 
 function mapStateToProps(state, ownProps) {
@@ -116,6 +117,8 @@ function mapStateToProps(state, ownProps) {
   return Object.assign({
     hash,
     urls: selectContentUrls(state, hash),
+    consensus: selectContentConsensus(state, hash),
+    metadata: selectContentMetadata(state, hash),
   }, ownProps);
 }
 

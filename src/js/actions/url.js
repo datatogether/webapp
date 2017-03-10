@@ -63,3 +63,25 @@ export function loadOutboundLinks(url = "") {
     return dispatch(fetchOutboundLinks(url));
   };
 }
+
+export const URL_FETCH_INBOUND_LINKS_REQUEST = "URL_FETCH_INBOUND_LINKS_REQUEST";
+export const URL_FETCH_INBOUND_LINKS_SUCCESS = "URL_FETCH_INBOUND_LINKS_SUCCESS";
+export const URL_FETCH_INBOUND_LINKS_FAILURE = "URL_FETCH_INBOUND_LINKS_FAILURE";
+
+export function fetchInboundLinks(url = "") {
+  return {
+    [CALL_API]: {
+      types: [URL_FETCH_INBOUND_LINKS_REQUEST, URL_FETCH_INBOUND_LINKS_SUCCESS, URL_FETCH_INBOUND_LINKS_FAILURE],
+      schema: Schemas.LINK_ARRAY,
+      endpoint: '/url/links/inbound',
+      data: { url },
+    },
+  };
+}
+
+export function loadInboundLinks(url = "") {
+  return (dispatch) => {
+    // TODO - check for local url copy
+    return dispatch(fetchInboundLinks(url));
+  };
+}

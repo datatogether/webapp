@@ -3,10 +3,10 @@ import React, { PropTypes } from 'react';
 const Consensus = ({ data, onClickKey }) => {
   return (
     <div className="consensus">
-      {Object.keys(data).forEach((key) => {
+      {Object.keys(data).map((key) => {
         return (
-          <div>
-            <p key={key} className="key" onClick={onClickKey}>{key}</p>
+          <div key={key}>
+            <p className="key" onClick={onClickKey}>{key}</p>
           </div>
         );
       })}

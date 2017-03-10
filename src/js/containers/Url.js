@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { selectUrl, selectOutboundLinks, urlStats } from '../selectors/url';
-import { loadUrl, loadOutboundLinks, archiveUrl } from '../actions/url';
+import { selectUrl, selectOutboundLinks, selectInboundLinks, urlStats } from '../selectors/url';
+import { loadUrl, loadOutboundLinks, loadInboundLinks, archiveUrl } from '../actions/url';
 
 import List from '../components/List';
 import NotFound from '../components/NotFound';
@@ -24,7 +24,7 @@ class Url extends React.Component {
 
     [
       'handleArchive',
-      'handlChangeTab',
+      'handleChangeTab',
     ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
@@ -47,7 +47,20 @@ class Url extends React.Component {
     this.props.archiveUrl(this.props.url.url);
   }
 
-  handlChangeTab(tab) {
+  handleChangeTab(tab) {
+    const { urlParam } = this.props;
+    switch (tab) {
+      case "outbound links":
+        this.props.loadOutboundLinks(urlParam);
+        break;
+      case "inbound links":
+        this.props.loadInboundLinks(urlParam);
+        break;
+      case "snapshots":
+        break;
+      default:
+        break;
+    }
     this.setState({ tab });
   }
 
@@ -55,7 +68,7 @@ class Url extends React.Component {
     const { tab } = this.state;
     switch (tab) {
       case "outbound links":
-        return <List data={this.props.outboundLinks} component={UrlItem}/>
+        return <List data={this.props.outboundLinks} component={UrlItem} />;
       case "inbound links":
         return <List data={this.props.inboundLinks} component={UrlItem} />;
       case "snapshots":
@@ -69,13 +82,13 @@ class Url extends React.Component {
     const { url } = this.props;
     const { tab } = this.state;
 
-    if (url.contentSniff != "text/html") {
+    if (url.contentSniff != "text/html; charset=utf-8") {
       return (
         <div className="row">
           <div className="col-md-12">
             <hr className="green" />
             <label>Content</label>
-            <Link to={`/content/${url.hash}`}>{url.hash}</Link> 
+            <Link to={`/content/${url.hash}`}>{url.hash}</Link>
           </div>
         </div>
       );
@@ -83,7 +96,7 @@ class Url extends React.Component {
 
     return (
       <div>
-        <TabBar value={tab} tabs={["outbound links", "inbound links", "snapshots"]} onChange={this.handlChangeTab} />
+        <TabBar value={tab} tabs={["outbound links", "inbound links", "snapshots"]} onChange={this.handleChangeTab} />
         <div className="row">
           {this.renderCurrentTab()}
         </div>
@@ -93,7 +106,7 @@ class Url extends React.Component {
 
   render() {
     const { url } = this.props;
-    const { loading, tab } = this.state;
+    const { loading } = this.state;
 
     if (loading) {
       return <Spinner />;
@@ -135,11 +148,13 @@ function mapStateToProps(state, ownProps) {
     urlParam,
     url: selectUrl(state, urlParam),
     outboundLinks: selectOutboundLinks(state, urlParam),
+    inboundLinks: selectInboundLinks(state, urlParam),
   }, ownProps);
 }
 
 export default connect(mapStateToProps, {
   loadUrl,
   loadOutboundLinks,
+  loadInboundLinks,
   archiveUrl,
 })(Url);

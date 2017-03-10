@@ -24,3 +24,13 @@ export function selectOutboundLinks(state, url = "") {
       return urls[link.dst.url] || link.dst;
     });
 }
+
+export function selectInboundLinks(state, url = "") {
+  const { urls, links } = state.entities;
+  return Object.keys(links)
+    .map(key => links[key])
+    .filter(link => link.dst.url == url)
+    .map((link) => {
+      return urls[link.src.url] || link.src;
+    });
+}

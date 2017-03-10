@@ -3,6 +3,65 @@ import { normalize } from 'normalizr';
 import Schemas from '../schemas';
 // import { setErrorMessage, resetErrorMessage } from '../actions/app';
 
+
+// "expectations" allows us to have duplexed communication behave
+// in a request/response style by storing requests we've sent by id
+// with resolve & reject functions that correspond to expected outcomes.
+// expecting is an object in the form:
+// {
+//    requestId : {
+//      successActionType: resolve(action),
+//      failureActionType: reject(action),
+//    },
+//    ...
+//  }
+let expectations = {};
+
+// TODO - we should assign an ID to each request & track
+// expectations as objects that track against that ID. Server will need
+// to return that request ID every time, and ids will need to be unique
+// system-wide? meh, only kinda.
+
+// Generate an id for this request
+function newRequestId() {
+  return 'xxxxxxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    let r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+// add an expected response to the expecting list.
+// @param {string} - requestId
+// @param {object} - outcomes is an object with action types as keys &
+//                   promise resolve / reject as values
+function addExpectation(requestId, outcomes) {
+  expectations[requestId] = outcomes;
+}
+
+// received events should call meetExpectation to check the list of
+// currently expected events, resolve their promises, and remove
+// them from the list
+function meetExpectation(action) {
+  const id = Object.keys(expectations).find((requestId) => {
+    if (action.requestId == requestId) {
+      const func = expectations[requestId][action.type];
+      if (typeof func == 'function') {
+        func(action);
+      }
+      return true;
+    }
+
+    return false;
+  });
+
+  if (id) {
+    // remove any found requestId from the list of expectations
+    // regardless of weather function was called or not
+    delete expectations[id];
+  }
+}
+
+// the URL to dial to 
 const WEBSOCKET_URL = "localhost:3000/ws";
 
 // Variable to hold the connection
@@ -26,9 +85,8 @@ export function connect(dispatch, reconnectTimeout = 6500) {
         let res = JSON.parse(evt.data);
         if (res.schema) {
           res.response = normalize(res.data, Schemas[res.schema]);
-          dispatch(res);
-          return;
         }
+        meetExpectation(res);
         dispatch(res);
       };
 
@@ -88,20 +146,48 @@ export function callApiAction(store, next, action) {
     throw new Error('Expected action types to be strings.');
   }
 
+  const requestId = newRequestId();
+  const [requestType, successType, failureType] = types;
+
   function actionWith(d) {
-    const finalAction = Object.assign({}, action, d);
+    const finalAction = Object.assign({ requestId }, action, d);
     // delete finalAction[CALL_API]
     return finalAction;
   }
 
-  const [requestType] = types;
-
-  // fire an action indicating a request has been made
+  // fire an action indicating a request will be nade
   next(actionWith({ type: requestType }));
 
-  // send the request through the socket
-  return conn.send(JSON.stringify({
+  // make the request
+  conn.send(JSON.stringify({
     type: requestType,
+    requestId,
     data,
   }));
+
+  // return a promise with it's resolve/reject wired
+  // to an expectation
+  return new Promise((resolve, reject) => {
+    addExpectation(requestId, {
+      [successType]: resolve,
+      [failureType]: (act) => {
+        reject(act.error);
+      },
+    });
+
+    // If the server takes too long, meet our own expectation 
+    // with a request timeout error
+    setTimeout(() => {
+      if (expectations[requestId]) {
+        if (typeof expectations[requestId][failureType] == "function") {
+          expectations[requestId][failureType]({ 
+            requestId,
+            type: failureType, 
+            error : "request timed out",
+          });
+        }
+        delete expectations[requestId];
+      }
+    }, 1000 * 25);
+  });
 }

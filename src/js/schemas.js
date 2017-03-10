@@ -17,7 +17,7 @@ const searchResultSchema = new Schema('searchResults', { idAttribute: 'url' });
 const urlSchema = new Schema('urls', { idAttribute: 'url' });
 const linkSchema = new Schema('links', { idAttribute: link => `${link.src.url}.${link.dst.url}` });
 const consensusSchema = new Schema('consensus', { idAttribute: 'subject' });
-const contentSchema = new Schema('content', { idAttribute: 'subject' });
+const contentSchema = new Schema('content', { idAttribute: 'hash' });
 const collectionSchema = new Schema('colletions');
 
 metadataSchema.new = function(attrs) {
