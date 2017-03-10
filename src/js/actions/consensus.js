@@ -1,7 +1,7 @@
 import { CALL_API } from '../middleware/api';
 import Schemas from '../schemas';
 
-import { selectConsensus } from '../selectors/consensus';
+// import { selectConsensus } from '../selectors/consensus';
 
 export const CONSENSUS_REQUEST = 'CONSENSUS_REQUEST';
 export const CONSENSUS_SUCCESS = 'CONSENSUS_SUCCESS';
@@ -18,16 +18,9 @@ export function fetchConsensus(subject) {
   };
 }
 
-export function loadConsensus(subject, requiredFields = []) {
-  return (dispatch, getState) => {
-    const consensus = selectConsensus(getState(), subject);
-    if (consensus.schema != null) {
-      return null;
-    }
-    // if (consensus && requiredFields.every(key => consensus.hasOwnProperty(key))) {
-    //   return null
-    // }
-
-    return dispatch(fetchConsensus(subject, requiredFields));
-  };
+export function loadConsensus(subject) {
+  return fetchConsensus(subject);
+  // return (dispatch) => {
+  //   return dispatch(fetchConsensus(subject));
+  // };
 }

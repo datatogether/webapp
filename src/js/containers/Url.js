@@ -1,15 +1,17 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
-import { selectUrl, selectOutboundLinks } from '../selectors/url';
+import { selectUrl, selectOutboundLinks, urlStats } from '../selectors/url';
 import { loadUrl, loadOutboundLinks, archiveUrl } from '../actions/url';
 
-// import ValidInput from '../components/ValidInput';
-// import ValidTextarea from '../components/ValidTextarea';
-// import validateUser from '../validators/user';
-
-import Spinner from '../components/Spinner';
+import List from '../components/List';
 import NotFound from '../components/NotFound';
+import SnapshotItem from '../components/item/SnapshotItem';
+import Spinner from '../components/Spinner';
+import StatsBar from '../components/StatsBar';
+import UrlItem from '../components/item/UrlItem';
+import TabBar from '../components/TabBar';
 
 class Url extends React.Component {
   constructor(props) {
@@ -17,14 +19,13 @@ class Url extends React.Component {
 
     this.state = {
       loading: !!props.url,
+      tab: 'outbound links',
     };
 
     [
-      // 'handleChange',
-      // 'handleSave',
-      // 'handleDelete'
       'handleArchive',
-    ].forEach(m => this[m] = this[m].bind(this));
+      'handlChangeTab',
+    ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
   componentWillMount() {
@@ -42,64 +43,89 @@ class Url extends React.Component {
     }
   }
 
-  // handleDelete(key) {
-  //   this.props.deleteSshKey(key.name, key.sha256);
-  // }
-  // handleChange(name, value, e) {
-  //   let key = Object.assign({}, this.state.key)
-  //   key[name] = value;
-  //   this.setState({ key });
-  // }
-  // handleSave(e) {
-  //   const { user, validation, createSshKey } = this.props;
-  //   e.preventDefault();
-
-  //   // if (!validation.isValid) {
-  //   //  if (!this.state.showErrors) {
-  //   //    this.setState({ showErrors : true });
-  //   //  }
-  //   // } else {
-  //     this.setState({ saving : true });
-  //     createSshKey(this.state.key.name, this.state.key.key);
-  //   // }
-  // }
-
-  handleArchive(e) {
+  handleArchive() {
     this.props.archiveUrl(this.props.url.url);
   }
 
-  render() {
-    const { loading } = this.state;
-    const { user, url, outboundLinks } = this.props;
-    
-    if (loading) {
-      return <Spinner />
+  handlChangeTab(tab) {
+    this.setState({ tab });
+  }
+
+  renderCurrentTab() {
+    const { tab } = this.state;
+    switch (tab) {
+      case "outbound links":
+        return <List data={this.props.outboundLinks} component={UrlItem}/>
+      case "inbound links":
+        return <List data={this.props.inboundLinks} component={UrlItem} />;
+      case "snapshots":
+        return <List data={this.props.snapshots} component={SnapshotItem} />;
+      default:
+        return undefined;
+    }
+  }
+
+  renderContent() {
+    const { url } = this.props;
+    const { tab } = this.state;
+
+    if (url.contentSniff != "text/html") {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <hr className="green" />
+            <label>Content</label>
+            <Link to={`/content/${url.hash}`}>{url.hash}</Link> 
+          </div>
+        </div>
+      );
     }
 
-    if (!url) {
-      return <NotFound />
+    return (
+      <div>
+        <TabBar value={tab} tabs={["outbound links", "inbound links", "snapshots"]} onChange={this.handlChangeTab} />
+        <div className="row">
+          {this.renderCurrentTab()}
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    const { url } = this.props;
+    const { loading, tab } = this.state;
+
+    if (loading) {
+      return <Spinner />;
+    } else if (!url) {
+      return <NotFound />;
     }
 
     return (
       <div className="container">
-        <h3>{url.url}</h3>
-        <p>{url.hash}</p>
-        <div className="clear"></div>
-        {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
-        <h3>Outbound Links</h3>
-        {outboundLinks.map((url, i) => {
-          return <p key={i}>{url.url}</p>
-        })}
+        <header className="row">
+          <div className="col-md-12">
+            <hr className="green" />
+            <label>URL</label>
+            <h3>{url.url}</h3>
+            {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
+            <hr className="green" />
+          </div>
+        </header>
+        <StatsBar stats={urlStats(url)} />
+        {this.renderContent()}
       </div>
     );
   }
 }
 
 Url.propTypes = {
-  user: PropTypes.object,
   url: PropTypes.object,
   loadUrl: PropTypes.func.isRequired,
-}
+  outboundLinks: PropTypes.array,
+  inboundLinks: PropTypes.array,
+  snapshots: PropTypes.array,
+};
 
 function mapStateToProps(state, ownProps) {
   const urlParam = ownProps.location.query.url;
@@ -108,7 +134,7 @@ function mapStateToProps(state, ownProps) {
     // user : selectLocalSessionUser(state),
     urlParam,
     url: selectUrl(state, urlParam),
-    outboundLinks : selectOutboundLinks(state, urlParam),
+    outboundLinks: selectOutboundLinks(state, urlParam),
   }, ownProps);
 }
 

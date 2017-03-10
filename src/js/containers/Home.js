@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 // import { debounce } from 'lodash';
 
 import { search } from '../actions/search';
 import { loadUserByUsername } from '../actions/user';
+import { archiveUrl } from '../actions/url';
 import { selectSessionUser } from '../selectors/session';
-// import { selectUserByUsername } from '../selectors/user';
 import { selectSearchQuery, selectSearchResults } from '../selectors/search';
 
 import List from '../components/List';
@@ -18,24 +18,37 @@ class Home extends React.Component {
 
     [
       "handleSearchChange",
+      "handleArchiveUrl",
     ].forEach((m) => { this[m] = this[m].bind(this); });
-  }
-
-  componentWillMount() {
-    // this.props.loadUserByUsername(this.props.username);
-    // Debounce search to avoid hammering the server with relentless queries
-    // 250ms delay should be enough
-    // this.props.search = debounce(this.props.search, 250);
-  }
-
-  componentWillReceiveProps() {
-    // if (nextProps.username != this.props.username) {
-    //   nextProps.loadUserByUsername(nextProps.username)
-    // }
   }
 
   handleSearchChange(e) {
     this.props.search(e.target.value);
+  }
+
+  handleArchiveUrl(url) {
+    this.props.archiveUrl(url);
+    // TODO - horrible hack
+    setTimeout(() => {
+      browserHistory.push(`/urls?url=${url}`)
+    },800);
+  }
+
+  renderArchiveUrl() {
+    const { query, results } = this.props;
+    if (query && query.length > 4 && !results.length) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h6>Hrm... looks like we don't have a record for that url.</h6>
+            <p>Would You Like to try to archive it?</p>
+            <button className="btn btn-primary" onClick={this.handleArchiveUrl.bind(this, query)}>Archive Url</button>
+          </div>
+        </div>
+        )
+    }
+    
+    return undefined;
   }
 
   render() {
@@ -46,12 +59,16 @@ class Home extends React.Component {
         <div className="row">
           <header className="yellow col-md-12">
             <hr className="yellow" />
-            <input value={query} onChange={this.handleSearchChange} />
+            <div className="form-group">
+              <label className="form-label">search:</label>
+              <input className="form-control" value={query} onChange={this.handleSearchChange} />
+            </div>
           </header>
         </div>
         <div className="row">
           <List component={SearchResultItem} data={results} />
         </div>
+        {this.renderArchiveUrl()}
       </div>
     );
   }
@@ -76,5 +93,6 @@ function mapStateToProps(state, ownProps) {
 
 export default connect(mapStateToProps, {
   loadUserByUsername,
+  archiveUrl,
   search,
 })(Home);

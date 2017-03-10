@@ -25,6 +25,24 @@ export default {
 			}
 		},
 		{
+			path: '/url',
+			getComponent(location, cb) {
+			 import('./containers/Url').then(loadRoute(cb)).catch(errorLoading);
+			}
+		},
+		{
+			path: '/content/:hash',
+			getComponent(location, cb) {
+			 import('./containers/Content').then(loadRoute(cb)).catch(errorLoading);
+			}
+		},
+		{
+			path: '/metadata/:hash',
+			getComponent(location, cb) {
+			 import('./containers/MetadataList').then(loadRoute(cb)).catch(errorLoading);
+			}
+		},
+		{
 			path: '/settings',
 			getComponent(location, cb) {
 				import('./containers/UserSettings').then(loadRoute(cb)).catch(errorLoading);

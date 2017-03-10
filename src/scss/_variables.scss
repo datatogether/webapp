@@ -47,17 +47,18 @@ $dark-slate: #272727;
 // $med-blue-slate: #40515D;
 // $light-blue-slate: #A1B2BC;
 
-$text: #ABCAD6;
+// $text: #ABCAD6;
+$text: $slate;
 $background-text: #657780;
 
 // brand colors
-$green: #C3E88D;
-$blue: #89DDFF;
-$purple: #C792E2;
-$red: #FF5370;
-$yellow: #FAC465;
-$orange: #F78C6C;
-$tope: #DFE2CE;
+$green: #B2D77C;
+$blue: #78CCEE;
+$purple: #B681D1;
+$red: #EE4360;
+$yellow: #E9B354;
+$orange: #E67B5B;
+$tope: #CED1BD;
 
 $gray-dark:                 #373a3c !default;
 $gray:                      #55595c !default;
@@ -124,7 +125,7 @@ $border-width: 0.5px !default;
 //
 // Settings for the `<body>` element.
 
-$body-bg:    $slate !default;
+$body-bg:    white !default;
 $body-color: $text !default;
 
 
@@ -132,7 +133,7 @@ $body-color: $text !default;
 //
 // Style anchor elements.
 
-$link-color:            $brand-primary !default;
+$link-color:            $green !default;
 $link-decoration:       none !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;

@@ -6,6 +6,15 @@ export function selectUrl(state, url = "") {
   return id ? urls[id] : undefined;
 }
 
+export function urlStats(url) {
+  return { 
+    "last get": new Date(url.lastGet).toString(),
+    "status": url.status,
+    "size": url.contentLength,
+    "content type" : url.contentSniff,
+  };
+}
+
 export function selectOutboundLinks(state, url = "") {
   const { urls, links } = state.entities;
   return Object.keys(links)

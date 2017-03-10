@@ -3,8 +3,10 @@
  * Gooby pls. Don 4get to update the prod routes.js file
  */
 import App from './containers/App';
+import Content from './containers/Content';
 import Home from './containers/Home';
 import Login from './containers/Login';
+import MetadataList from './containers/MetadataList';
 import Signup from './containers/Signup';
 import Stylesheet from './containers/Stylesheet';
 import SshKeys from './containers/SshKeys';
@@ -24,6 +26,14 @@ export default {
     {
       path: "/url",
       component: Url,
+    },
+    {
+      path: "/content/:hash",
+      component: Content,
+    },
+    {
+      path: "/metadata/:hash",
+      component: MetadataList,
     },
     {
       path: '/settings',

@@ -28,31 +28,27 @@ export const METADATA_REQUEST = 'METADATA_REQUEST';
 export const METADATA_SUCCESS = 'METADATA_SUCCESS';
 export const METADATA_FAILURE = 'METADATA_FAILURE';
 
-export function fetchMetadata(address) {
+export function fetchMetadata(userId, hash) {
   return {
     [CALL_API]: {
       types: [METADATA_REQUEST, METADATA_SUCCESS, METADATA_FAILURE],
-      endpoint: `/datasets?address=${address}`,
+      endpoint: `/metadata/${userId}/${hash}`,
       schema: Schemas.METADATA,
-      address,
+      data: { userId, hash },
     },
   };
 }
 
-export function loadMetadata(address, requiredFields = []) {
+export function loadMetadata(userId, hash, requiredFields = []) {
   return (dispatch, getState) => {
-    const dataset = selectMetadata(getState(), address);
-    if (dataset.schema != null) {
+    const metadata = selectMetadata(getState(), userId, hash);
+    if (metadata && requiredFields.every(key => Object.prototype.hasOwnProperty(metadata, key))) {
       return null;
     }
-    // if (dataset && requiredFields.every(key => dataset.hasOwnProperty(key))) {
-    //   return null;
-    // }
 
-    return dispatch(fetchMetadata(address, requiredFields));
+    return dispatch(fetchMetadata(userId, hash, requiredFields));
   };
 }
-
 
 export const METADATA_SAVE_REQUEST = "METADATA_SAVE_REQUEST";
 export const METADATA_SAVE_SUCCESS = "METADATA_SAVE_SUCCESS";

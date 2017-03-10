@@ -1,18 +1,26 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router';
 
-import { search } from '../actions/search';
-import { loadUserByUsername } from '../actions/user';
-import { selectSessionUser } from '../selectors/session';
-// import { selectUserByUsername } from '../selectors/user';
+import Consensus from '../components/Consensus';
+import HistoryItem from '../components/item/HistoryItem';
+import List from '../components/List';
+import Metadata from '../components/Metadata';
+import TabBar from '../components/TabBar';
+import UrlItem from '../components/item/UrlItem';
+
+import { loadContentConsensus, loadContentMetadata, loadContentUrls } from '../actions/content';
+import { selectContentUrls } from '../selectors/content';
 
 class Content extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      tab: "metadata",
+    };
+
     [
-      "handleSearchChange",
+      "handleSetTab",
     ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
@@ -30,39 +38,89 @@ class Content extends React.Component {
     // }
   }
 
+  handleSetTab(tab) {
+    const { hash } = this.props;
+    switch (tab) {
+      case "consensus":
+        this.props.loadContentConsensus(hash);
+        break;
+      case "metadata":
+        this.props.loadContentMetadata(hash);
+        break;
+      case "urls":
+        this.props.loadContentUrls(hash);
+        break;
+      case "history":
+        break;
+      default:
+        break;
+    }
+    this.setState({ tab });
+  }
+
+  renderCurrentTab() {
+    const { tab } = this.state;
+    switch (tab) {
+      case "consensus":
+        return <Consensus data={this.props.consensus} />;
+      case "metadata":
+        return <List data={this.props.metadata} component={Metadata} />;
+      case "urls":
+        return <List data={this.props.urls} component={UrlItem} />;
+      case "history":
+        return <List data={this.props.history} component={HistoryItem} />;
+      default:
+        return undefined;
+    }
+  }
+
   render() {
-    const { query, results } = this.props;
+    const { hash } = this.props;
+    const { tab } = this.state;
 
     return (
       <div id="content" className="container">
         <div className="row">
           <header className="yellow col-md-12">
             <hr className="yellow" />
+            <label>Content</label>
+            <h5>{hash}</h5>
           </header>
         </div>
-        <div className="row">
-        </div>
+        <TabBar value={tab} tabs={["consensus", "metadata", "urls", "history"]} onChange={this.handleSetTab} />
+        {this.renderCurrentTab()}
       </div>
     );
   }
 }
 
 Content.propTypes = {
-  // pages: PropTypes.object.isRequired,
+  hash: PropTypes.string.isRequired,
+
+  consensus: PropTypes.object,
+  metadata: PropTypes.array,
+  urls: PropTypes.array,
+  history: PropTypes.array,
+
+  loadContentUrls: PropTypes.func.isRequired,
+  loadContentMetadata: PropTypes.func.isRequired,
+  loadContentConsensus: PropTypes.func.isRequired,
 };
 
 Content.defaultProps = {
 };
 
 function mapStateToProps(state, ownProps) {
-  const session = selectSessionUser(state);
+  const hash = ownProps.params.hash;
+
   return Object.assign({
-    session,
-    query: selectSearchQuery(state),
-    results: selectSearchResults(state),
+    hash,
+    urls: selectContentUrls(state, hash),
   }, ownProps);
 }
 
 export default connect(mapStateToProps, {
-  loadUserByUsername,
+  loadContentConsensus,
+  loadContentMetadata,
+  loadContentUrls,
 })(Content);
