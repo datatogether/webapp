@@ -48,7 +48,7 @@ export default {
       component: User,
     },
     {
-      path: '/invites/:id',
+      path: '/signup',
       component: Signup,
     },
     {

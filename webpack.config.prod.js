@@ -10,10 +10,10 @@ var ENV = {
     DEVELOP : JSON.stringify(false),
     STAGING : JSON.stringify(false),
 
-    BASE_URL : JSON.stringify("http://www.qri.io"),
-    API_URL : JSON.stringify("http://www.qri.io"),
-    STATIC_ASSETS_URL : JSON.stringify("http://static.qri.io"),
-    SEGMENT_KEY : JSON.stringify("b4iAxJT8ISitRFQ6qZGS9w7RTnaOpvju")
+    BASE_URL : JSON.stringify("http://house-of-knowledge.herokuapp.com"),
+    WEBSOCKET_URL : JSON.stringify("house-of-knowledge.herokuapp.com/ws"),
+    API_URL : JSON.stringify("http://house-of-knowledge.herokuapp.com"),
+    STATIC_ASSETS_URL : JSON.stringify("http://house-of-knowledge.herokuapp.com"),
   }
 };
 
@@ -34,7 +34,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath : "http://static.qri.io/js/",
+    publicPath : "http://house-of-knowledge.herokuapp.com/js/",
     filename: '[name].min.js',
     chunkFilename: "[name].chunk.min.js"
   },

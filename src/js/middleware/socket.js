@@ -1,4 +1,4 @@
-/* globals window, WebSocket */
+/* globals window, WebSocket, __BUILD__ */
 import { normalize } from 'normalizr';
 import Schemas from '../schemas';
 // import { setErrorMessage, resetErrorMessage } from '../actions/app';
@@ -61,8 +61,8 @@ function meetExpectation(action) {
   }
 }
 
-// the URL to dial to 
-const WEBSOCKET_URL = "localhost:3000/ws";
+// the URL to dial to
+const WEBSOCKET_URL = __BUILD__.WEBSOCKET_URL;
 
 // Variable to hold the connection
 let conn;
@@ -189,15 +189,15 @@ export function callApiAction(store, next, action) {
       },
     });
 
-    // If the server takes too long, meet our own expectation 
+    // If the server takes too long, meet our own expectation
     // with a request timeout error
     setTimeout(() => {
       if (expectations[requestId]) {
         if (typeof expectations[requestId][failureType] == "function") {
-          expectations[requestId][failureType]({ 
+          expectations[requestId][failureType]({
             requestId,
-            type: failureType, 
-            error : "request timed out",
+            type: failureType,
+            error: "request timed out",
           });
         }
         delete expectations[requestId];
