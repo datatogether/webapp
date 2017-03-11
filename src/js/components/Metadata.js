@@ -14,6 +14,10 @@ export default class Metadata extends Component {
 		return (
 			<div className="metadata">
 				{Object.keys(metadata).map((key) => {
+					// TODO - this is a hack for demo purposes. remove when ready.
+					if (key == "subjectHash" || key == "userId" || key == "requestId") {
+						return <div key={key}></div>
+					}
 					return (
 						<div key={key}>
 							<label>{key}</label>

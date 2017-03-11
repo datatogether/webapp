@@ -6,7 +6,7 @@ export default class ValidTextarea extends React.Component {
 
 		return (
 			<div className={ (error && showError) ? "validFormField form-group has-error" : "validFormField form-group" }>
-				{label ? <label for={name}>{label}</label> : undefined }
+				{label ? <label htmlFor={name}>{label}</label> : undefined }
 				<textarea
 					id={name}
 					name={name} 

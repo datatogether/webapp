@@ -91,7 +91,13 @@ export function connect(dispatch, reconnectTimeout = 6500) {
           return;
         }
         if (res.schema) {
-          res.response = normalize(res.data, Schemas[res.schema]);
+          try {
+            res.response = normalize(res.data, Schemas[res.schema]);
+          } catch(e) {
+            console.log(e);
+            console.log(res.data);
+            return;
+          }
         }
         meetExpectation(res);
         dispatch(res);
@@ -137,10 +143,20 @@ export function callApiAction(store, next, action) {
   let { endpoint } = action;
   const { schema, types, data } = action;
 
-  if (typeof endpoint === 'function') {
-    endpoint = endpoint(store.getState());
+  // if we're in "connecting" state, defer until connection
+  // occurs
+  if (conn.readyState == 0) {
+    const prev = conn.onopen
+    conn.onopen = (evt) => {
+      callApiAction(store, next, action);
+      prev(evt);
+    }
+    return null;
   }
 
+  // websockets doesn't use endpoint but it's worth warning
+  // when endpoint isn't set to maintain cross-compatibility
+  // with the json API
   if (typeof endpoint !== 'string') {
     throw new Error('Specify a string endpoint URL.');
   }
@@ -184,7 +200,7 @@ export function callApiAction(store, next, action) {
       [successType]: resolve,
       [failureType]: (act) => {
         if (reject) {
-          reject(act.error);
+          reject(`${act.type} ${act.error}`);
         }
       },
     });
@@ -197,7 +213,7 @@ export function callApiAction(store, next, action) {
           expectations[requestId][failureType]({
             requestId,
             type: failureType,
-            error: "request timed out",
+            error: `request ${requestId} timed out`,
           });
         }
         delete expectations[requestId];

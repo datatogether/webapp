@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { selectUrl, selectOutboundLinks, selectInboundLinks, urlStats } from '../selectors/url';
+import { selectUrl, selectOutboundLinks, selectInboundLinks, urlStats, concatUrlString } from '../selectors/url';
 import { loadUrl, loadOutboundLinks, loadInboundLinks, archiveUrl } from '../actions/url';
 
 import List from '../components/List';
@@ -24,13 +24,14 @@ class Url extends React.Component {
 
     [
       'handleArchive',
+      'handleUncrawlableClick',
       'handleChangeTab',
     ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
   componentWillMount() {
     this.props.loadUrl(this.props.urlParam);
-    this.props.loadOutboundLinks(this.props.urlParam);
+    this.props.loadInboundLinks(this.props.urlParam);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,10 +42,15 @@ class Url extends React.Component {
     } if (nextProps.url && this.state.loading) {
       this.setState({ loading: false });
     }
+    // TODO - detect content type & set appropriate tab
   }
 
   handleArchive() {
     this.props.archiveUrl(this.props.url.url);
+  }
+
+  handleUncrawlableClick() {
+
   }
 
   handleChangeTab(tab) {
@@ -66,7 +72,15 @@ class Url extends React.Component {
 
   renderCurrentTab() {
     const { tab } = this.state;
+    const { url } = this.props;
+
     switch (tab) {
+      case "content":
+        return (
+          <div className="col-md-12">
+            <label>Content</label><br />
+            <Link to={`/content/${url.hash}`}>{url.hash}</Link>
+          </div>);
       case "outbound links":
         return <List data={this.props.outboundLinks} component={UrlItem} />;
       case "inbound links":
@@ -82,21 +96,15 @@ class Url extends React.Component {
     const { url } = this.props;
     const { tab } = this.state;
 
+    let tabs = ["outbound links", "inbound links", "snapshots"];
+
     if (url.contentSniff && url.contentSniff != "text/html; charset=utf-8") {
-      return (
-        <div className="row">
-          <div className="col-md-12">
-            <hr className="green" />
-            <label>Content</label><br />
-            <Link to={`/content/${url.hash}`}>{url.hash}</Link>
-          </div>
-        </div>
-      );
+      tabs = ["content", "inbound links"];
     }
 
     return (
       <div>
-        <TabBar value={tab} tabs={["outbound links", "inbound links", "snapshots"]} onChange={this.handleChangeTab} />
+        <TabBar value={tab} tabs={tabs} onChange={this.handleChangeTab} />
         <div className="row">
           {this.renderCurrentTab()}
         </div>
@@ -119,9 +127,12 @@ class Url extends React.Component {
         <header className="row">
           <div className="col-md-12">
             <hr className="green" />
+            <a className="right" target="_blank" rel="noopener noreferrer" href={url.url}>link</a>
             <label>URL</label>
-            <h3>{url.url}</h3>
+            <h4>{concatUrlString(url.url, 55)}</h4>
+            <br />
             {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
+            {url.hash ? <button className="btn" onClick={this.handleUncrawlableClick}>Missing Content</button> : undefined}
             <hr className="green" />
           </div>
         </header>

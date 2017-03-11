@@ -1,27 +1,27 @@
 import { CALL_API } from '../middleware/api';
 import Schemas from '../schemas';
 
-import { selectMetadata } from '../selectors/metadata';
-import { newLocalModel, updateLocalModel, editLocalModel, removeLocalModel } from './locals';
+import { selectMetadata, metadataId } from '../selectors/metadata';
+import { newLocalModel, updateLocalModel, editModel, removeLocalModel } from './locals';
+
+const blankMetadata = {
+  title: "",
+  description: "",
+};
 
 const METADATA_NEW = "METADATA_NEW";
 export function newMetadata(userId, subjectHash) {
-  const model = {
-    userId,
-    subjectHash,
-    title: "",
-  };
-  return newLocalModel(Schemas.METADATA, METADATA_NEW, model);
+  return newLocalModel(Schemas.METADATA, METADATA_NEW, Object.assign({}, blankMetadata, { userId, subjectHash }));
 }
 
 const METADATA_EDIT = "METADATA_EDIT";
 export function editMetadata(metadata) {
-  return editLocalModel(Schemas.METADATA, METADATA_EDIT, metadata);
+  return editModel(Schemas.METADATA, METADATA_EDIT, Object.assign({}, blankMetadata, metadata));
 }
 
 const METADATA_CANCEL_EDIT = "METADATA_CANCEL_EDIT";
-export function cancelMetadataEdit(id) {
-  return removeLocalModel(Schemas.METADATA, METADATA_CANCEL_EDIT, id);
+export function cancelMetadataEdit(metadata) {
+  return removeLocalModel(Schemas.METADATA, METADATA_CANCEL_EDIT, metadataId(metadata));
 }
 
 const METADATA_UPDATE = "METADATA_UPDATE";
@@ -60,12 +60,17 @@ export const METADATA_SAVE_SUCCESS = "METADATA_SAVE_SUCCESS";
 export const METADATA_SAVE_FAILURE = "METADATA_SAVE_FAILURE";
 
 export function saveMetadata(metadata = {}) {
-  return {
-    [CALL_API]: {
-      types: [METADATA_SAVE_REQUEST, METADATA_SAVE_SUCCESS, METADATA_SAVE_FAILURE],
-      schema: Schemas.METADATA,
-      endpoint: "/metadata",
-      data: metadata,
-    },
+  return (dispatch) => {
+    return dispatch({
+      [CALL_API]: {
+        types: [METADATA_SAVE_REQUEST, METADATA_SAVE_SUCCESS, METADATA_SAVE_FAILURE],
+        schema: Schemas.METADATA,
+        endpoint: "/metadata",
+        data: metadata,
+      },
+    }).then((action) => {
+      console.log("huh?");
+      cancelMetadataEdit(metadata.userId, metadata.subjectHash);
+    });
   };
 }

@@ -49,6 +49,7 @@ export default () => next => (action) => {
     case CLEAR_MODEL:
       // TODO
       // return next(actionWith({ locals: { schema.getKey() : { schema.getId(attributes) : undefined }}}))
+      // return next(actionWith({ locals: normalize(attributes, schema) }));
       break;
     default:
       console.warn("unknown model action method: %s", method);

@@ -1,6 +1,6 @@
 import React from 'react'
 import App from './containers/App'
-import Stylesheet from './containers/Stylesheet'
+import Home from './containers/Home'
 
 function errorLoading(err) {
 	console.error('Dynamic page loading failed', err);
@@ -13,9 +13,9 @@ function loadRoute(cb) {
 export default {
 	path : "/",
 	component: App,
-	indexRoute : { component : Stylesheet },
+	indexRoute : { component : Home },
 	// getIndexRoute(partialState, cb) {
-	// 	import('./containers/Stylesheet').then(loadRoute(cb)).catch(errorLoading)
+	// 	import('./containers/Home').then(loadRoute(cb)).catch(errorLoading)
 	// },
 	childRoutes: [
 		{

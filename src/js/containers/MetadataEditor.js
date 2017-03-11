@@ -39,7 +39,7 @@ class MetadataEditor extends React.Component {
   }
 
   handleEdit() {
-    this.props.editMetadata(this.props.userId, this.props.subjectHash);
+    this.props.editMetadata(this.props.savedMetadata);
   }
 
   handleChange(name, value) {
@@ -47,11 +47,13 @@ class MetadataEditor extends React.Component {
   }
 
   handleCancel() {
-    this.props.cancelMetadataEdit(this.props.userId, this.props.subjectHash);
+    this.props.cancelMetadataEdit(this.props.metadata);
   }
 
   handleSave(metadata) {
-    this.props.saveMetadata(metadata);
+    this.props.saveMetadata(metadata)
+    // TODO - this should be in a "then" clause on saveMetadata
+    this.props.cancelMetadataEdit(this.props.metadata);
   }
 
   render() {
