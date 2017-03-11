@@ -1,2 +1,2 @@
-# Web
-### react & redux webapp for qri.io
+# Context
+A react & redux webapp for contributing metata
