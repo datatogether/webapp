@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // this.props.loadSessionUser()
+    this.props.dispatch(loadSessionUser());
 
     // attempt to connect websocket, passing in the dispatcher
     socket.connect(this.props.dispatch, 6500).then(() => {

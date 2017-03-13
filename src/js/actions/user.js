@@ -1,4 +1,4 @@
-import { CALL_API } from '../middleware/api';
+import { USERS_API } from '../middleware/users';
 import Schemas from '../schemas';
 import { selectUserByUsername } from '../selectors/user';
 
@@ -10,7 +10,7 @@ export const USER_FAILURE = 'USER_FAILURE';
 // Relies on the custom API middleware defined in ../middleware/api.js.
 function fetchUser(login) {
   return {
-    [CALL_API]: {
+    [USERS_API]: {
       types: [USER_REQUEST, USER_SUCCESS, USER_FAILURE],
       endpoint: `/users/${login}`,
       schema: Schemas.USER,
@@ -33,7 +33,7 @@ export function loadUser(login, requiredFields = []) {
 
 export function fetchUserByUsername(username) {
   return {
-    [CALL_API]: {
+    [USERS_API]: {
       types: [USER_REQUEST, USER_SUCCESS, USER_FAILURE],
       endpoint: `/users?username=${username}`,
       schema: Schemas.USER,

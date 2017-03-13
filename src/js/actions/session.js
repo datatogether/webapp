@@ -1,10 +1,28 @@
 import { push } from 'react-router-redux';
-import { CALL_API } from '../middleware/api';
+import { USERS_API } from '../middleware/users';
 
 import Schemas from '../schemas';
 import { setMessage, resetMessage } from './app';
 import { updateLocalModel, editModel } from './locals';
 import { selectSessionUser } from '../selectors/session';
+
+export const SESSION_SIGNUP_REQUEST = 'SESSION_SIGNUP_REQUEST';
+export const SESSION_SIGNUP_SUCCESS = 'SESSION_SIGNUP_SUCCESS';
+export const SESSION_SIGNUP_FAILURE = 'SESSION_SIGNUP_FAILURE';
+
+export function signup(user) {
+  return (dispatch, getState) => {
+    return dispatch({
+      [USERS_API]: {
+        types: [SESSION_SIGNUP_REQUEST, SESSION_USER_SUCCESS, SESSION_SIGNUP_FAILURE],
+        endpoint: `/users`,
+        method: "POST",
+        schema: Schemas.SESSION_USER,
+        data: user,
+      },
+    });
+  };
+}
 
 export const SESSION_USER_REQUEST = 'SESSION_USER_REQUEST';
 export const SESSION_USER_SUCCESS = 'SESSION_USER_SUCCESS';
@@ -12,9 +30,9 @@ export const SESSION_USER_FAILURE = 'SESSION_USER_FAILURE';
 
 // Fetches a single user from Github API.
 // Relies on the custom API middleware defined in ../middleware/api.js.
-function fetchSessionUser() {
+export function fetchSessionUser() {
   return {
-    [CALL_API]: {
+    [USERS_API]: {
       types: [SESSION_USER_REQUEST, SESSION_USER_SUCCESS, SESSION_USER_FAILURE],
       endpoint: `/session`,
       schema: Schemas.SESSION_USER,
@@ -58,7 +76,7 @@ export const SAVE_SESSION_USER_FAILURE = 'SAVE_SESSION_USER_FAILURE';
 export function saveSessionUser(user) {
   return (dispatch) => {
     return dispatch({
-      [CALL_API]: {
+      [USERS_API]: {
         types: [SAVE_SESSION_USER_REQUEST, SAVE_SESSION_USER_SUCCESS, SAVE_SESSION_USER_FAILURE],
         endpoint: '/session',
         method: 'PUT',
@@ -85,7 +103,7 @@ export const SESSION_LOGIN_FAILURE = 'SESSION_LOGIN_FAILURE';
 
 export function loginUser(username, password) {
   return {
-    [CALL_API]: {
+    [USERS_API]: {
       types: [SESSION_LOGIN_REQUEST, SESSION_LOGIN_SUCCESS, SESSION_LOGIN_FAILURE],
       endpoint: '/session',
       method: 'POST',
@@ -110,7 +128,7 @@ export const SESSION_SSH_KEYS_FAILURE = 'SESSION_SSH_KEYS_FAILURE';
 
 export function fetchSshKeys() {
   return {
-    [CALL_API]: {
+    [USERS_API]: {
       types: [SESSION_SSH_KEYS_REQUEST, SESSION_SSH_KEYS_SUCCESS, SESSION_SSH_KEYS_FAILURE],
       endpoint: `/session/keys`,
       schema: Schemas.SSH_KEY_ARRAY,
@@ -136,7 +154,7 @@ export const SESSION_CREATE_SSH_KEY_FAILURE = 'SESSION_CREATE_SSH_KEY_FAILURE';
 export function createSshKey(name = "", key = "") {
   return (dispatch) => {
     return dispatch({
-      [CALL_API]: {
+      [USERS_API]: {
         types: [SESSION_CREATE_SSH_KEY_REQUEST, SESSION_CREATE_SSH_KEY_SUCCESS, SESSION_CREATE_SSH_KEY_FAILURE],
         endpoint: "/session/keys",
         method: "POST",
@@ -165,7 +183,7 @@ export const SESSION_DELETE_SSH_KEY_FAILURE = 'SESSION_DELETE_SSH_KEY_FAILURE';
 export function deleteSshKey(name = "", sha = "") {
   return (dispatch) => {
     return dispatch({
-      [CALL_API]: {
+      [USERS_API]: {
         types: [SESSION_DELETE_SSH_KEY_REQUEST, SESSION_DELETE_SSH_KEY_SUCCESS, SESSION_DELETE_SSH_KEY_FAILURE],
         endpoint: `/session/keys/${sha}`,
         method: "DELETE",
