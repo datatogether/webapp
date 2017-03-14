@@ -24,13 +24,13 @@ class Login extends React.Component {
 
 	componentWillMount() {
 		if (this.props.user != null ) {
-			browserHistory.push('/browse')
+			browserHistory.push('/')
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user != null ) {
-			browserHistory.push('/browse')
+			browserHistory.push('/')
 		}
 	}
 
@@ -56,7 +56,7 @@ class Login extends React.Component {
 						<ValidInput type="text" label="Username" name="username" value={username} error={validation.username} showError={false} onChange={this.handleChange} />
 						<ValidInput type="password" label="Password" name="password" value={password} error={validation.username} showError={false} onChange={this.handleChange} />
 						<input className="login bg-green btn btn-standard" type="submit" value="login" />
-						<a href="/login/forgot">I forgot my password</a>
+						{/* TODO - re-enable: <a href="/login/forgot">I forgot my password</a> */}
 					</form>
 				</div>
 			</div>
