@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Consensus from '../components/Consensus';
 import HistoryItem from '../components/item/HistoryItem';
 import List from '../components/List';
-import Metadata from '../components/Metadata';
+// import Metadata from '../components/Metadata';
 import TabBar from '../components/TabBar';
 import UrlItem from '../components/item/UrlItem';
 

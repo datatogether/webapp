@@ -9,85 +9,85 @@ import validateUser from '../validators/user';
 
 // TODO - add validation logic
 class Signup extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			username: "",
-			name: "",
-			email: "",
-			password: "",
-			showErrors: false,
-		};
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      name: "",
+      email: "",
+      password: "",
+      showErrors: false,
+    };
 
-		['handleChange','handleSignupSubmit'].forEach((m) => { this[m] = this[m].bind(this); });
-	}
+    ['handleChange', 'handleSignupSubmit'].forEach((m) => { this[m] = this[m].bind(this); });
+  }
 
-	componentWillMount() {
-		if (this.props.user != null ) {
-			browserHistory.push('/');
-		}
-	}
+  componentWillMount() {
+    if (this.props.user != null) {
+      browserHistory.push('/');
+    }
+  }
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.user != null ) {
-			browserHistory.push('/');
-		}
-	}
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user != null) {
+      browserHistory.push('/');
+    }
+  }
 
-	handleSignupSubmit(e) {
-		e.preventDefault();
-		const validation = validateUser(this.state);
-		if (validation.isValid) {
-			this.setState({ loading: true });
-			this.props.signup(this.state).then((action) => {
-				if (action.type == SESSION_SIGNUP_FAILURE) {
-					this.setState({ loading : false });
-				}
-			});
-		} else if (!this.state.showErrors) {
-			this.setState({ showErrors: true });
-		}
-	}
+  handleSignupSubmit(e) {
+    e.preventDefault();
+    const validation = validateUser(this.state);
+    if (validation.isValid) {
+      this.setState({ loading: true });
+      this.props.signup(this.state).then((action) => {
+        if (action.type == SESSION_SIGNUP_FAILURE) {
+          this.setState({ loading: false });
+        }
+      });
+    } else if (!this.state.showErrors) {
+      this.setState({ showErrors: true });
+    }
+  }
 
-	handleChange(name, value, e) {
-		const inv = Object.assign({}, this.state, { [name] : value });
-		this.setState(inv);
-	}
+  handleChange(name, value) {
+    const inv = Object.assign({}, this.state, { [name]: value });
+    this.setState(inv);
+  }
 
-	render() {
-		const { username, name, email, password, showErrors, loading } = this.state;
-		const validation = validateUser(this.state);
-		
-		return (
-			<div id="signup">
-				<div className="container">
-					<form onSubmit={this.handleSignupSubmit} className="form col-md-4 offset-md-4">
-						<h3>Signup:</h3>
-						<ValidInput type="text" label="Username" name="username" value={username} error={validation.username} showError={showErrors} onChange={this.handleChange} />
-						<ValidInput type="text" label="Email" name="email" value={email} error={validation.email} showError={showErrors} onChange={this.handleChange} />
-						<ValidInput type="password" label="Password" name="password" value={password} error={validation.password} showError={showErrors} onChange={this.handleChange} />
-						<input className="signup btn btn-standard" disabled={loading} type="submit" value="signup" />
-					</form>
-				</div>
-			</div>
-		);
-	}
+  render() {
+    const { username, email, password, showErrors, loading } = this.state;
+    const validation = validateUser(this.state);
+
+    return (
+      <div id="signup">
+        <div className="container">
+          <form onSubmit={this.handleSignupSubmit} className="form col-md-4 offset-md-4">
+            <h3>Signup:</h3>
+            <ValidInput type="text" label="Username" name="username" value={username} error={validation.username} showError={showErrors} onChange={this.handleChange} />
+            <ValidInput type="text" label="Email" name="email" value={email} error={validation.email} showError={showErrors} onChange={this.handleChange} />
+            <ValidInput type="password" label="Password" name="password" value={password} error={validation.password} showError={showErrors} onChange={this.handleChange} />
+            <input className="signup btn btn-standard" disabled={loading} type="submit" value="signup" />
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 
 Signup.propTypes = {
-	signup: PropTypes.func.isRequired,
+  signup: PropTypes.func.isRequired,
 };
 
 Signup.defaultProps = {
 
 };
 
-function mapStateToProps(state, ownProps) {
-	return {
-		user: selectSessionUser(state),
-	};
+function mapStateToProps(state) {
+  return {
+    user: selectSessionUser(state),
+  };
 }
 
 export default connect(mapStateToProps, {
-	signup,
+  signup,
 })(Signup);

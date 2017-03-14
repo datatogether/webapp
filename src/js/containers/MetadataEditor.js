@@ -51,7 +51,7 @@ class MetadataEditor extends React.Component {
   }
 
   handleSave(metadata) {
-    this.props.saveMetadata(metadata)
+    this.props.saveMetadata(metadata);
     // TODO - this should be in a "then" clause on saveMetadata
     this.props.cancelMetadataEdit(this.props.metadata);
   }

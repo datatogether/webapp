@@ -1,10 +1,11 @@
+/* global window */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { debounce } from 'lodash';
 
-import { CALL_API } from '../middleware/api';
-import Schemas from '../schemas';
+// import { CALL_API } from '../middleware/api';
+// import Schemas from '../schemas';
 import * as socket from '../middleware/socket';
 
 import { toggleMenu, hideMenu, resetMessage, resetErrorMessage, showModal, hideModal } from '../actions/app';
@@ -12,7 +13,7 @@ import { layoutResize } from '../actions/layout';
 import { loadSessionUser } from '../actions/session';
 import { selectSessionUser } from '../selectors/session';
 
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 import MainMenu from '../components/MainMenu';
 
 const BETA_SIGNUP_MODAL = 'BETA_SIGNUP_MODAL';
@@ -21,16 +22,16 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    [ 
-      "handleChange", 
-      "handleDismissErrorMessage", 
-      "handleDismissStatusMessage", 
+    [
+      "handleChange",
+      "handleDismissErrorMessage",
+      "handleDismissStatusMessage",
       "handleHideMenu",
       "handleMenuToggle",
       "handleGimmieInvite",
       "handleHideModal",
-      "modal"
-    ].forEach(m => this[m] = this[m].bind(this));
+      "modal",
+    ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
   componentWillMount() {
@@ -39,13 +40,13 @@ class App extends Component {
     // attempt to connect websocket, passing in the dispatcher
     socket.connect(this.props.dispatch, 6500).then(() => {
       // socket connected.
-    })
+    });
 
     this._oldResize = window.onresize;
     // debounce device resizing to not be a jerk on resize
-    window.onresize = debounce((e) => {
+    window.onresize = debounce(() => {
       this.props.dispatch(layoutResize(window.innerWidth, window.innerHeight));
-    }, 250)
+    }, 250);
 
     // initial call to make things not crazy
     this.props.dispatch(layoutResize(window.innerWidth, window.innerHeight));
@@ -60,23 +61,23 @@ class App extends Component {
   }
 
   handleChange(nextValue) {
-    browserHistory.push(`/${nextValue}`)
+    browserHistory.push(`/${nextValue}`);
   }
   handleDismissErrorMessage(e) {
-    this.props.dispatch(resetErrorMessage())
-    e.preventDefault()
+    this.props.dispatch(resetErrorMessage());
+    e.preventDefault();
   }
 
   handleDismissStatusMessage(e) {
-    this.props.dispatch(resetMessage())
-    e.preventDefault()
+    this.props.dispatch(resetMessage());
+    e.preventDefault();
   }
 
   handleMenuToggle(e) {
     e.stopPropagation();
     this.props.dispatch(toggleMenu());
   }
-  handleHideMenu(e) {
+  handleHideMenu() {
     if (this.props.showMenu) {
       this.props.dispatch(hideMenu());
     }
@@ -92,7 +93,7 @@ class App extends Component {
 
 
   /* app implements the modal pattern as well as using it */
-  modal(name, data) {
+  modal(name) {
     switch (name) {
       // case BETA_SIGNUP_MODAL:
       //   return <BetaSignup onSaved={this.handleHideModal} onCancelled={this.handleHideModal} />
@@ -110,18 +111,20 @@ class App extends Component {
     if (this.props.modal) {
       return (
         <div id="modal-wrap">
-          <div className="modal dialog"  tabindex="-1" role="dialog">
+          <div className="modal dialog" tabIndex="-1" role="dialog">
             {this.props.modal.element ? this.props.modal.element.modal(this.props.modal.name, this.props.modal.data) : undefined}
           </div>
         </div>
       );
     }
+
+    return undefined;
   }
 
   renderErrorMessage() {
-    const { errorMessage } = this.props
+    const { errorMessage } = this.props;
     if (!errorMessage) {
-      return null
+      return null;
     }
 
     return (
@@ -129,36 +132,32 @@ class App extends Component {
         <div className="row">
           <div className="col-md-12">
             <p className="message">{errorMessage}</p>
-            <a className="dismiss" href="#" onClick={this.handleDismissErrorMessage}>Dismiss</a>
+            <a className="dismiss" onClick={this.handleDismissErrorMessage}>Dismiss</a>
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   renderStatusMessage() {
-    const { statusMessage } = this.props
+    const { statusMessage } = this.props;
     if (!statusMessage) {
-      return null
+      return null;
     }
 
     return (
       <div className="alert alert-success" role="alert">
         <b>{statusMessage}</b>
-        {' '}
-        (<a href="#"
-            onClick={this.handleDismissStatusMessage}>
-          Dismiss
-        </a>)
+        <a onClick={this.handleDismissStatusMessage}>Dismiss</a>
       </div>
-    )
+    );
   }
 
   render() {
-    const { children, inputValue, user, showMenu, layout } = this.props
+    const { children, user, showMenu } = this.props;
     return (
       <div id="app" onClick={this.handleHideMenu}>
-        {/*<Navbar 
+        {/* <Navbar
           user={user}
           style={Object.assign({
             position : "absolute"
@@ -171,36 +170,36 @@ class App extends Component {
         {children}
         {this.renderModal()}
       </div>
-    )
+    );
   }
 }
 
 App.propTypes = {
   // Injected by React Redux
   errorMessage: PropTypes.string,
-  message : PropTypes.string,
-  inputValue: PropTypes.string.isRequired,
+  // message: PropTypes.string,
+  // inputValue: PropTypes.string.isRequired,
   // Injected by React Router
   children: PropTypes.node,
-  user : PropTypes.object,
+  user: PropTypes.object,
 
   // resetErrorMessage: PropTypes.func.isRequired,
   // resetMessage: PropTypes.func.isRequired,
   // loadSessionUser: PropTypes.func.isRequired,
   // hideMenu: PropTypes.func.isRequired
-}
+};
 
 function mapStateToProps(state, ownProps) {
   return {
     statusMessage: state.statusMessage,
     errorMessage: state.errorMessage,
     inputValue: ownProps.location.pathname.substring(1),
-    user : selectSessionUser(state),
-    showMenu : state.app.showMenu,
-    layout : state.layout,
+    user: selectSessionUser(state),
+    showMenu: state.app.showMenu,
+    layout: state.layout,
 
-    modal : state.app.modal,
-  }
+    modal: state.app.modal,
+  };
 }
 
 // function createHandlers(dispatch) {
@@ -220,4 +219,4 @@ function mapStateToProps(state, ownProps) {
 // }
 
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);

@@ -29,7 +29,7 @@ class Home extends React.Component {
   handleArchiveUrl(url) {
     this.props.archiveUrl(url).then(() => {
       browserHistory.push(`/url?url=${url}`);
-    })
+    });
   }
 
   renderArchiveUrl() {
@@ -38,14 +38,14 @@ class Home extends React.Component {
       return (
         <div className="row">
           <div className="col-md-12">
-            <h6>Hrm... looks like we don't have a record for that url.</h6>
+            <h6>Hrm... looks like we don&apos;t have a record for that url.</h6>
             <p>Would You Like to try to archive it?</p>
             <button className="btn btn-primary" onClick={this.handleArchiveUrl.bind(this, query)}>Archive Url</button>
           </div>
         </div>
-        )
+      );
     }
-    
+
     return undefined;
   }
 
