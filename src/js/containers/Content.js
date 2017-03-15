@@ -10,8 +10,10 @@ import UrlItem from '../components/item/UrlItem';
 
 import MetadataEditor from './MetadataEditor';
 
-import { loadContentConsensus, loadContentMetadata, loadContentUrls } from '../actions/content';
-import { selectContentUrls, selectContentConsensus, selectContentMetadata } from '../selectors/content';
+import { loadConsensus } from '../actions/consensus';
+import { loadContentMetadata, loadContentUrls } from '../actions/content';
+import { selectConsensus } from '../selectors/consensus';
+import { selectContentUrls, selectContentMetadata } from '../selectors/content';
 
 class Content extends React.Component {
   constructor(props) {
@@ -28,7 +30,6 @@ class Content extends React.Component {
 
   componentWillMount() {
     // this.props.loadUserByUsername(this.props.username);
-
     // Debounce search to avoid hammering the server with relentless queries
     // 250ms delay should be enough
     // this.props.search = debounce(this.props.search, 250);
@@ -44,7 +45,7 @@ class Content extends React.Component {
     const { hash } = this.props;
     switch (tab) {
       case "consensus":
-        this.props.loadContentConsensus(hash);
+        this.props.loadConsensus(hash);
         break;
       case "metadata":
         this.props.loadContentMetadata(hash);
@@ -64,7 +65,7 @@ class Content extends React.Component {
     const { tab } = this.state;
     switch (tab) {
       case "consensus":
-        return <Consensus data={this.props.consensus} />;
+        return <Consensus data={this.props.consensus ? this.props.consensus.data : {}} />;
       case "metadata":
         return <MetadataEditor subjectHash={this.props.hash} />;
       case "urls":
@@ -101,18 +102,17 @@ class Content extends React.Component {
 Content.propTypes = {
   hash: PropTypes.string.isRequired,
 
-  consensus: PropTypes.object.isRequired,
+  consensus: PropTypes.object,
   // metadata: PropTypes.array,
   urls: PropTypes.array,
   history: PropTypes.array,
 
   loadContentUrls: PropTypes.func.isRequired,
   loadContentMetadata: PropTypes.func.isRequired,
-  loadContentConsensus: PropTypes.func.isRequired,
+  loadConsensus: PropTypes.func.isRequired,
 };
 
 Content.defaultProps = {
-  consensus: {},
 };
 
 function mapStateToProps(state, ownProps) {
@@ -121,13 +121,13 @@ function mapStateToProps(state, ownProps) {
   return Object.assign({
     hash,
     urls: selectContentUrls(state, hash),
-    consensus: selectContentConsensus(state, hash),
+    consensus: selectConsensus(state, hash),
     metadata: selectContentMetadata(state, hash),
   }, ownProps);
 }
 
 export default connect(mapStateToProps, {
-  loadContentConsensus,
+  loadConsensus,
   loadContentMetadata,
   loadContentUrls,
 })(Content);

@@ -1,6 +1,5 @@
 
 
-export function selectConsensus(subject) {
-  // TODO
-  return undefined;
+export function selectConsensus(state, subject) {
+  return state.entities.consensus[subject];
 }

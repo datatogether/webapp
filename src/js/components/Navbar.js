@@ -9,9 +9,9 @@ const Navbar = ({ user, onGimmieInvite, style }) => {
         <div className="row">
           <Link id="logotype" className="col-md-3 col-sm-4" href={__BUILD__.BASE_URL}>ARCHIVERS 2.0 <span className="blue">BETA</span></Link>
           <div className="menu col-md-4 offset-md-5">
+            <a className="blue" target="_blank" rel="noopener noreferrer" href="http://github.com/qri-io/context/issues">Issues</a>
             <Link to="/">Search</Link>
             <Link to="/primers">Primers</Link>
-            <a href="http://github.com/edgi-govdata-archiving/archivers.space/issues">Issues</a>
             {
               user ?
                 <Link to={`/users/${user.username}`}>{user.username}</Link> :

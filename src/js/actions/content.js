@@ -28,30 +28,30 @@ export function loadContent(hash) {
   };
 }
 
-export const CONTENT_CONSENSUS_REQUEST = 'CONTENT_CONSENSUS_REQUEST';
-export const CONTENT_CONSENSUS_SUCCESS = 'CONTENT_CONSENSUS_SUCCESS';
-export const CONTENT_CONSENSUS_FAILURE = 'CONTENT_CONSENSUS_FAILURE';
+// export const CONTENT_CONSENSUS_REQUEST = 'CONTENT_CONSENSUS_REQUEST';
+// export const CONTENT_CONSENSUS_SUCCESS = 'CONTENT_CONSENSUS_SUCCESS';
+// export const CONTENT_CONSENSUS_FAILURE = 'CONTENT_CONSENSUS_FAILURE';
 
-export function fetchContentConsensus(hash) {
-  return {
-    [CALL_API]: {
-      types: [CONTENT_CONSENSUS_REQUEST, CONTENT_CONSENSUS_SUCCESS, CONTENT_CONSENSUS_FAILURE],
-      endpoint: `/consensus/${hash}`,
-      schema: Schemas.CONSENSUS,
-      data: { hash },
-    },
-  };
-}
+// export function fetchContentConsensus(hash) {
+//   return {
+//     [CALL_API]: {
+//       types: [CONTENT_CONSENSUS_REQUEST, CONTENT_CONSENSUS_SUCCESS, CONTENT_CONSENSUS_FAILURE],
+//       endpoint: `/consensus/${hash}`,
+//       schema: Schemas.CONSENSUS,
+//       data: { hash },
+//     },
+//   };
+// }
 
-export function loadContentConsensus(hash) {
-  return (dispatch, getState) => {
-    if (selectContentConsensus(getState(), hash)) {
-      return null;
-    }
+// export function loadContentConsensus(hash) {
+//   return (dispatch, getState) => {
+//     if (selectContentConsensus(getState(), hash)) {
+//       return null;
+//     }
 
-    return dispatch(fetchContentConsensus(hash));
-  };
-}
+//     return dispatch(fetchContentConsensus(hash));
+//   };
+// }
 
 
 export const CONTENT_METADATA_REQUEST = 'CONTENT_METADATA_REQUEST';

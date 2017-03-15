@@ -6,7 +6,8 @@ const Consensus = ({ data, onClickKey }) => {
       {Object.keys(data).map((key) => {
         return (
           <div key={key}>
-            <p className="key" onClick={onClickKey}>{key}</p>
+            <label className="key" onClick={onClickKey}>{key}</label>
+            <p>{data[key][0]}</p>
           </div>
         );
       })}

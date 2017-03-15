@@ -13,7 +13,7 @@ export function fetchConsensus(subject) {
       types: [CONSENSUS_REQUEST, CONSENSUS_SUCCESS, CONSENSUS_FAILURE],
       endpoint: `/consensus?subject=${subject}`,
       schema: Schemas.CONSENSUS,
-      subject,
+      data: { subject },
     },
   };
 }
