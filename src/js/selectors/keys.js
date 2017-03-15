@@ -8,12 +8,12 @@ export function selectDefaultKey(state) {
       return key;
     }
     return a;
-  });
+  }, {});
 }
 
 export function selectDefaultKeyId(state) {
-  const key = selectDefaultKey(state) || {};
-  return key.sha256;
+  const key = selectDefaultKey(state);
+  return key.sha256 || "";
 }
 
 export function selectKeys(state) {

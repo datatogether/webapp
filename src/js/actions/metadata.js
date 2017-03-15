@@ -5,13 +5,15 @@ import { selectMetadata, metadataId } from '../selectors/metadata';
 import { newLocalModel, updateLocalModel, editModel, removeLocalModel } from './locals';
 
 const blankMetadata = {
-  title: "",
-  description: "",
+  meta : {
+    title: "",
+    description: "",
+  }
 };
 
 const METADATA_NEW = "METADATA_NEW";
-export function newMetadata(userId, subjectHash) {
-  return newLocalModel(Schemas.METADATA, METADATA_NEW, Object.assign({}, blankMetadata, { userId, subjectHash }));
+export function newMetadata(keyId, subject) {
+  return newLocalModel(Schemas.METADATA, METADATA_NEW, Object.assign({}, blankMetadata, { keyId, subject }));
 }
 
 const METADATA_EDIT = "METADATA_EDIT";
@@ -33,25 +35,25 @@ export const METADATA_REQUEST = 'METADATA_REQUEST';
 export const METADATA_SUCCESS = 'METADATA_SUCCESS';
 export const METADATA_FAILURE = 'METADATA_FAILURE';
 
-export function fetchMetadata(userId, subjectHash) {
+export function fetchMetadata(keyId, subject) {
   return {
     [CALL_API]: {
       types: [METADATA_REQUEST, METADATA_SUCCESS, METADATA_FAILURE],
-      endpoint: `/metadata/${userId}/${subjectHash}`,
+      endpoint: `/metadata/${keyId}/${subject}`,
       schema: Schemas.METADATA,
-      data: { userId, subjectHash },
+      data: { keyId, subject },
     },
   };
 }
 
-export function loadMetadata(userId, hash, requiredFields = []) {
+export function loadMetadata(keyId, subject, requiredFields = []) {
   return (dispatch, getState) => {
-    const metadata = selectMetadata(getState(), userId, hash);
-    if (metadata && requiredFields.every(key => Object.prototype.hasOwnProperty(metadata, key))) {
+    const metadata = selectMetadata(getState(), keyId, subject);
+    if (metadata && requiredFields.every(key => Object.prototype.hasOwnProperty.call(metadata, key))) {
       return null;
     }
 
-    return dispatch(fetchMetadata(userId, hash, requiredFields));
+    return dispatch(fetchMetadata(keyId, subject, requiredFields));
   };
 }
 
@@ -69,8 +71,9 @@ export function saveMetadata(metadata = {}) {
         data: metadata,
       },
     }).then((action) => {
-      console.log("huh?");
-      cancelMetadataEdit(metadata.userId, metadata.subjectHash);
+      if (action.type == METADATA_SUCCESS) {
+        cancelMetadataEdit(metadata.keyId, metadata.subject);
+      }
     });
   };
 }

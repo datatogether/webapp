@@ -34,7 +34,7 @@ class Home extends React.Component {
 
   renderArchiveUrl() {
     const { query, results } = this.props;
-    if (query && query.length > 4 && !results.length) {
+    if (query && query.length > 4 && !results.find(r => r.url == query)) {
       return (
         <div className="row">
           <div className="col-md-12">

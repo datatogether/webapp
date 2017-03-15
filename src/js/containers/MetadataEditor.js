@@ -22,17 +22,15 @@ class MetadataEditor extends React.Component {
   }
 
   componentWillMount() {
-    // this.props.loadUserByUsername(this.props.username);
-    // Debounce search to avoid hammering the server with relentless queries
-    // 250ms delay should be enough
-    // this.props.search = debounce(this.props.search, 250);
-    this.props.loadMetadata(this.props.sessionKeyId, this.props.subjectHash);
+    if (this.props.sessionKeyId) {
+      this.props.loadMetadata(this.props.sessionKeyId, this.props.subjectHash);
+    }
   }
 
-  componentWillReceiveProps() {
-    // if (nextProps.username != this.props.username) {
-    //   nextProps.loadUserByUsername(nextProps.username)
-    // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.sessionKeyID != this.props.sessionKeyId) {
+      nextProps.loadMetadata(nextProps.sessionKeyId, this.props.subjectHash);
+    }
   }
 
   handleNew() {
@@ -44,15 +42,16 @@ class MetadataEditor extends React.Component {
   }
 
   handleChange(name, value) {
-    this.props.updateMetadata(Object.assign({}, this.props.metadata, { [name]: value }));
+    const change = { meta: Object.assign({}, this.props.metadata.meta, { [name]: value }) };
+    this.props.updateMetadata(Object.assign({}, this.props.metadata, change));
   }
 
   handleCancel() {
     this.props.cancelMetadataEdit(this.props.metadata);
   }
 
-  handleSave(metadata) {
-    this.props.saveMetadata(metadata);
+  handleSave(meta) {
+    this.props.saveMetadata({ keyId : this.props.sessionKeyId, subject: this.props.subjectHash, meta });
     // TODO - this should be in a "then" clause on saveMetadata
     this.props.cancelMetadataEdit(this.props.metadata);
   }
@@ -63,7 +62,7 @@ class MetadataEditor extends React.Component {
     if (savedMetadata && !metadata) {
       return (
         <div className="metadata editor">
-          <Metadata metadata={savedMetadata} />
+          <Metadata metadata={savedMetadata.meta} />
           <button className="btn btn-primary" onClick={this.handleEdit}>Edit</button>
         </div>
       );
@@ -78,7 +77,7 @@ class MetadataEditor extends React.Component {
     return (
       <div className="metadata editor">
         <MetadataForm
-          metadata={metadata}
+          metadata={metadata.meta}
           onChange={this.handleChange}
           onCancel={this.handleCancel}
           onSubmit={this.handleSave}

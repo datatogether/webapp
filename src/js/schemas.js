@@ -11,7 +11,7 @@ const sessionUserSchema = new Schema('session');
 const keySchema = new Schema('keys', { idAttribute: 'sha256' });
 const userSchema = new Schema('users');
 const groupsSchema = new Schema('groups');
-const metadataSchema = new Schema('metadata', { idAttribute: metadata => `${metadata.userId}.${metadata.subjectHash}`});
+const metadataSchema = new Schema('metadata', { idAttribute: metadata => `${metadata.keyId}.${metadata.subject}` });
 const messageSchema = new Schema('messages');
 const searchResultSchema = new Schema('searchResults', { idAttribute: 'url' });
 const urlSchema = new Schema('urls', { idAttribute: 'url' });
@@ -20,9 +20,9 @@ const consensusSchema = new Schema('consensus', { idAttribute: 'subject' });
 const contentSchema = new Schema('content', { idAttribute: 'hash' });
 const collectionSchema = new Schema('colletions');
 
-metadataSchema.new = function(attrs) {
+metadataSchema.new = (attrs) => {
   return Object.assign({}, attrs);
-}
+};
 
 // Schemas for Github API responses.
 const Schemas = {
