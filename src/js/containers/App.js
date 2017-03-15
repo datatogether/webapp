@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { debounce } from 'lodash';
 
-// import { CALL_API } from '../middleware/api';
-// import Schemas from '../schemas';
 import * as socket from '../middleware/socket';
 
 import { toggleMenu, hideMenu, resetMessage, resetErrorMessage, showModal, hideModal } from '../actions/app';
@@ -13,7 +11,7 @@ import { layoutResize } from '../actions/layout';
 import { loadSessionUser } from '../actions/session';
 import { selectSessionUser } from '../selectors/session';
 
-// import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar';
 import MainMenu from '../components/MainMenu';
 
 const BETA_SIGNUP_MODAL = 'BETA_SIGNUP_MODAL';
@@ -154,16 +152,17 @@ class App extends Component {
   }
 
   render() {
-    const { children, user, showMenu } = this.props;
+    const { children, user, showMenu, layout } = this.props;
     return (
       <div id="app" onClick={this.handleHideMenu}>
-        {/* <Navbar
+        <Navbar
           user={user}
           style={Object.assign({
             position : "absolute"
           }, layout.navbar)}
           onToggleMenu={this.handleMenuToggle}
-          onGimmieInvite={this.handleGimmieInvite} />*/}
+          onGimmieInvite={this.handleGimmieInvite}
+        />
         <MainMenu user={user} show={showMenu} onGimmieInvite={this.handleGimmieInvite} />
         {this.renderErrorMessage()}
         {this.renderStatusMessage()}

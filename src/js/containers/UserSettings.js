@@ -61,16 +61,18 @@ class UserSettings extends React.Component {
     }
 
     return (
-      <div className="container">
-        <div className="col-md-6 col-md-offset-3">
-          <header>
-            <h3>User Settings</h3>
-            <ValidInput type="text" label="name" name="name" value={user.name} showError={showErrors} error={validation.name} onChange={this.handleChange} />
-            <ValidInput type="text" label="username" name="username" value={user.username} showError={showErrors} error={validation.username} onChange={this.handleChange} />
-            <ValidInput type="text" label="email" name="email" value={user.email} showError={showErrors} error={validation.email} onChange={this.handleChange} />
-            <ValidTextarea label="bio/description/about" name="description" value={user.description} showError={showErrors} error={validation.description} onChange={this.handleChange} />
-            <button className="btn btn-primary" disabled={(!validation.isValid && showErrors)} onClick={this.handleSave}>Update</button>
-          </header>
+      <div id="userSettings" className="page">
+        <div className="container">
+          <div className="col-md-6 col-md-offset-3">
+            <header>
+              <h3>User Settings</h3>
+              <ValidInput type="text" label="name" name="name" value={user.name} showError={showErrors} error={validation.name} onChange={this.handleChange} />
+              <ValidInput type="text" label="username" name="username" value={user.username} showError={showErrors} error={validation.username} onChange={this.handleChange} />
+              <ValidInput type="text" label="email" name="email" value={user.email} showError={showErrors} error={validation.email} onChange={this.handleChange} />
+              <ValidTextarea label="bio/description/about" name="description" value={user.description} showError={showErrors} error={validation.description} onChange={this.handleChange} />
+              <button className="btn btn-primary" disabled={(!validation.isValid && showErrors)} onClick={this.handleSave}>Update</button>
+            </header>
+          </div>
         </div>
       </div>
     );

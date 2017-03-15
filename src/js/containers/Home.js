@@ -53,20 +53,22 @@ class Home extends React.Component {
     const { query, results } = this.props;
 
     return (
-      <div id="home" className="user container">
-        <div className="row">
-          <header className="yellow col-md-12">
-            <hr className="yellow" />
-            <div className="form-group">
-              <label className="form-label">search:</label>
-              <input className="form-control" value={query} onChange={this.handleSearchChange} />
-            </div>
-          </header>
+      <div id="home" className="page">
+        <div className="user container">
+          <div className="row">
+            <header className="yellow col-md-12">
+              <hr className="yellow" />
+              <div className="form-group">
+                <label className="form-label">search:</label>
+                <input className="form-control" value={query} onChange={this.handleSearchChange} />
+              </div>
+            </header>
+          </div>
+          <div className="row">
+            <List component={SearchResultItem} data={results} />
+          </div>
+          {this.renderArchiveUrl()}
         </div>
-        <div className="row">
-          <List component={SearchResultItem} data={results} />
-        </div>
-        {this.renderArchiveUrl()}
       </div>
     );
   }

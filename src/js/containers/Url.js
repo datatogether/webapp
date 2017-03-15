@@ -123,21 +123,23 @@ class Url extends React.Component {
     }
 
     return (
-      <div className="container">
-        <header className="row">
-          <div className="col-md-12">
-            <hr className="green" />
-            <a className="right" target="_blank" rel="noopener noreferrer" href={url.url}>link</a>
-            <label>URL</label>
-            <h4>{concatUrlString(url.url, 55)}</h4>
-            <br />
-            {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
-            {url.hash ? <button className="btn" onClick={this.handleUncrawlableClick}>Missing Content</button> : undefined}
-            <hr className="green" />
-          </div>
-        </header>
-        <StatsBar stats={urlStats(url)} />
-        {this.renderContent()}
+      <div id="url" className="page">
+        <div className="container">
+          <header className="row">
+            <div className="col-md-12">
+              <hr className="green" />
+              <a className="right" target="_blank" rel="noopener noreferrer" href={url.url}>link</a>
+              <label>URL</label>
+              <h4>{concatUrlString(url.url, 55)}</h4>
+              <br />
+              {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
+              {url.hash ? <button className="btn" onClick={this.handleUncrawlableClick}>Missing Content</button> : undefined}
+              <hr className="green" />
+            </div>
+          </header>
+          <StatsBar stats={urlStats(url)} />
+          {this.renderContent()}
+        </div>
       </div>
     );
   }

@@ -6,6 +6,7 @@ import MetadataForm from '../components/MetadataForm';
 
 import { newMetadata, editMetadata, updateMetadata, cancelMetadataEdit, saveMetadata, loadMetadata } from '../actions/metadata';
 import { selectLocalMetadata, selectMetadata } from '../selectors/metadata';
+import { selectDefaultKeyId } from '../selectors/keys';
 
 class MetadataEditor extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class MetadataEditor extends React.Component {
     // Debounce search to avoid hammering the server with relentless queries
     // 250ms delay should be enough
     // this.props.search = debounce(this.props.search, 250);
-    this.props.loadMetadata(this.props.userId, this.props.subjectHash);
+    this.props.loadMetadata(this.props.sessionKeyId, this.props.subjectHash);
   }
 
   componentWillReceiveProps() {
@@ -35,7 +36,7 @@ class MetadataEditor extends React.Component {
   }
 
   handleNew() {
-    this.props.newMetadata(this.props.userId, this.props.subjectHash);
+    this.props.newMetadata(this.props.sessionKeyId, this.props.subjectHash);
   }
 
   handleEdit() {
@@ -88,7 +89,7 @@ class MetadataEditor extends React.Component {
 }
 
 MetadataEditor.propTypes = {
-  userId: PropTypes.string,
+  sessionKeyId: PropTypes.string,
   subjectHash: PropTypes.string.isRequired,
 
   metadata: PropTypes.object,
@@ -107,11 +108,12 @@ MetadataEditor.defaultProps = {
 
 function mapStateToProps(state, ownProps) {
   const subjectHash = ownProps.subjectHash;
+  const sessionKeyId = selectDefaultKeyId(state);
 
   return Object.assign({
-    userId: "user",
-    savedMetadata: selectMetadata(state, "user", subjectHash),
-    metadata: selectLocalMetadata(state, "user", subjectHash),
+    sessionKeyId,
+    savedMetadata: selectMetadata(state, sessionKeyId, subjectHash),
+    metadata: selectLocalMetadata(state, sessionKeyId, subjectHash),
   }, ownProps);
 }
 

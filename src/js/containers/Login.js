@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 import { loginUser } from '../actions/session';
 import { selectSessionUser } from '../selectors/session';
@@ -55,6 +55,7 @@ class Login extends React.Component {
             <ValidInput type="password" label="Password" name="password" value={password} error={validation.username} showError={false} onChange={this.handleChange} />
             <input className="login bg-green btn btn-standard" type="submit" value="login" />
             {/* TODO - re-enable: <a href="/login/forgot">I forgot my password</a> */}
+            <Link to="/signup">Signup</Link>
           </form>
         </div>
       </div>

@@ -6,15 +6,15 @@ import * as ActionTypes from '../actions/app';
 
 // import pagination from './pagination';
 // import sessionReducer from './session';
-// import layoutReducer from './layout';
+import layoutReducer from './layout';
 import appReducer from './app';
 import locals from './locals';
 import urlStates from './urlStates';
 
 const initialEntitiesState = {
   session: {},
+  keys: {},
   users: {},
-  sshKeys: {},
 
   groups: {},
   messages: {},
@@ -79,6 +79,7 @@ const rootReducer = combineReducers({
   entities,
   locals,
   app: appReducer,
+  layout: layoutReducer,
   urlStates,
   routing,
   errorMessage,

@@ -51,7 +51,7 @@ export default {
 				{
 					path : "/keys",
 					getComponent(location, cb) {
-						import('./containers/SshKeys').then(loadRoute(cb)).catch(errorLoading);
+						import('./containers/Keys').then(loadRoute(cb)).catch(errorLoading);
 					}
 				}
 			]

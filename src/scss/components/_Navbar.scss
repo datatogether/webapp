@@ -1,13 +1,17 @@
 #navbar {
+	z-index: 2;
   padding: 15px 0;
   background: $slate;
 
 	#logotype {
-	  max-width: 100px;
 	  display: block;
-		img {
-		  width: 80%;
-		}
+	  color: $tope;
+	  font-weight: 700;
+	  letter-spacing: 2px;
+	  font-size: 1.2em;
+	  margin-top: -1px;
+	  padding-top: 0;
+		text-decoration: none;
 	}
 
 	.alpha {
@@ -24,6 +28,7 @@
 		  text-transform: uppercase;
 		  font-weight: 500;
 		  font-size: 14px;
+		  color: $tope;
 		}
 	}
 }

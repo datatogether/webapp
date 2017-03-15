@@ -59,7 +59,7 @@ class Signup extends React.Component {
     const validation = validateUser(this.state);
 
     return (
-      <div id="signup">
+      <div id="signup" className="page">
         <div className="container">
           <form onSubmit={this.handleSignupSubmit} className="form col-md-4 offset-md-4">
             <h3>Signup:</h3>

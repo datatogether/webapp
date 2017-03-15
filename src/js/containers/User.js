@@ -35,15 +35,17 @@ class User extends React.Component {
     }
 
     return (
-      <div className="user container">
-        <div className="row">
-          <header className="yellow col-md-12">
-            <hr className="yellow" />
-            <h1><Link className="yellow" to={`/${user.username}`}>{user.username}</Link></h1>
-            { permissions.edit ? <Link to="/settings" >settings </Link> : undefined }
-            { permissions.edit ? <a href="/logout">logout</a> : undefined }
-            <p>{ user.description }</p>
-          </header>
+      <div id="user" className="page">
+        <div className="container">
+          <div className="row">
+            <header className="yellow col-md-12">
+              <hr className="yellow" />
+              <h1><Link className="yellow" to={`/${user.username}`}>{user.username}</Link></h1>
+              { permissions.edit ? <Link to="/settings" >settings </Link> : undefined }
+              { permissions.edit ? <a href="/logout">logout</a> : undefined }
+              <p>{ user.description }</p>
+            </header>
+          </div>
         </div>
       </div>
     );

@@ -11,10 +11,10 @@ export const SESSION_SIGNUP_SUCCESS = 'SESSION_SIGNUP_SUCCESS';
 export const SESSION_SIGNUP_FAILURE = 'SESSION_SIGNUP_FAILURE';
 
 export function signup(user) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     return dispatch({
       [USERS_API]: {
-        types: [SESSION_SIGNUP_REQUEST, SESSION_USER_SUCCESS, SESSION_SIGNUP_FAILURE],
+        types: [SESSION_SIGNUP_REQUEST, SESSION_SIGNUP_SUCCESS, SESSION_SIGNUP_FAILURE],
         endpoint: `/users`,
         method: "POST",
         schema: Schemas.SESSION_USER,
@@ -31,22 +31,34 @@ export const SESSION_USER_FAILURE = 'SESSION_USER_FAILURE';
 // Fetches a single user from Github API.
 // Relies on the custom API middleware defined in ../middleware/api.js.
 export function fetchSessionUser() {
-  return {
-    [USERS_API]: {
-      types: [SESSION_USER_REQUEST, SESSION_USER_SUCCESS, SESSION_USER_FAILURE],
-      endpoint: `/session`,
-      schema: Schemas.SESSION_USER,
-      silentError: true,
-    },
+  return (dispatch, getState) => {
+    return dispatch({
+      [USERS_API]: {
+        types: [SESSION_USER_REQUEST, SESSION_USER_SUCCESS, SESSION_USER_FAILURE],
+        endpoint: `/session`,
+        schema: Schemas.SESSION_USER,
+        silentError: true,
+      },
+    }).then(action => {
+      if (action.type == SESSION_USER_SUCCESS) {
+        dispatch(fetchKeys())
+      }
+    });
   };
 }
 
 // Relies on Redux Thunk middleware.
 export function loadSessionUser() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     // if (getState().session.requestedSession) {
     //   return null
     // }
+
+    if (Object.keys(getState().entities.session).length) {
+      return new Promise((resolve) => {
+        resolve({});
+      });
+    }
 
     return dispatch(fetchSessionUser());
   };
@@ -113,56 +125,48 @@ export function loginUser(username, password) {
   };
 }
 
-export const SESSION_ADD_HISTORY_ENTRY = 'SESSION_ADD_HISTORY_ENTRY';
 
-export function addHistoryEntry(query) {
-  return {
-    type: SESSION_ADD_HISTORY_ENTRY,
-    value: query,
-  };
-}
+export const SESSION_KEYS_REQUEST = 'SESSION_KEYS_REQUEST';
+export const SESSION_KEYS_SUCCESS = 'SESSION_KEYS_SUCCESS';
+export const SESSION_KEYS_FAILURE = 'SESSION_KEYS_FAILURE';
 
-export const SESSION_SSH_KEYS_REQUEST = 'SESSION_SSH_KEYS_REQUEST';
-export const SESSION_SSH_KEYS_SUCCESS = 'SESSION_SSH_KEYS_SUCCESS';
-export const SESSION_SSH_KEYS_FAILURE = 'SESSION_SSH_KEYS_FAILURE';
-
-export function fetchSshKeys() {
+export function fetchKeys() {
   return {
     [USERS_API]: {
-      types: [SESSION_SSH_KEYS_REQUEST, SESSION_SSH_KEYS_SUCCESS, SESSION_SSH_KEYS_FAILURE],
+      types: [SESSION_KEYS_REQUEST, SESSION_KEYS_SUCCESS, SESSION_KEYS_FAILURE],
       endpoint: `/session/keys`,
-      schema: Schemas.SSH_KEY_ARRAY,
+      schema: Schemas.KEY_ARRAY,
       silentError: true,
     },
   };
 }
 
-export function loadSshKeys() {
+export function loadKeys() {
   return (dispatch, getState) => {
     if (getState().entities.ssh_keys) {
       return null;
     }
 
-    return dispatch(fetchSshKeys());
+    return dispatch(fetchKeys());
   };
 }
 
-export const SESSION_CREATE_SSH_KEY_REQUEST = 'SESSION_CREATE_SSH_KEY_REQUEST';
-export const SESSION_CREATE_SSH_KEY_SUCCESS = 'SESSION_CREATE_SSH_KEY_SUCCESS';
-export const SESSION_CREATE_SSH_KEY_FAILURE = 'SESSION_CREATE_SSH_KEY_FAILURE';
+export const SESSION_CREATE_KEY_REQUEST = 'SESSION_CREATE_KEY_REQUEST';
+export const SESSION_CREATE_KEY_SUCCESS = 'SESSION_CREATE_KEY_SUCCESS';
+export const SESSION_CREATE_KEY_FAILURE = 'SESSION_CREATE_KEY_FAILURE';
 
-export function createSshKey(name = "", key = "") {
+export function createKey(name = "", key = "") {
   return (dispatch) => {
     return dispatch({
       [USERS_API]: {
-        types: [SESSION_CREATE_SSH_KEY_REQUEST, SESSION_CREATE_SSH_KEY_SUCCESS, SESSION_CREATE_SSH_KEY_FAILURE],
+        types: [SESSION_CREATE_KEY_REQUEST, SESSION_CREATE_KEY_SUCCESS, SESSION_CREATE_KEY_FAILURE],
         endpoint: "/session/keys",
         method: "POST",
-        schema: Schemas.SSH_KEY,
+        schema: Schemas.KEY,
         data: { name, key },
       },
     }).then((action) => {
-      if (action.type == SESSION_CREATE_SSH_KEY_SUCCESS) {
+      if (action.type == SESSION_CREATE_KEY_SUCCESS) {
         dispatch(setMessage(`added ssh key:${name}`));
         setTimeout(() => {
           dispatch(resetMessage());
@@ -176,21 +180,21 @@ export function createSshKey(name = "", key = "") {
 }
 
 
-export const SESSION_DELETE_SSH_KEY_REQUEST = 'SESSION_DELETE_SSH_KEY_REQUEST';
-export const SESSION_DELETE_SSH_KEY_SUCCESS = 'SESSION_DELETE_SSH_KEY_SUCCESS';
-export const SESSION_DELETE_SSH_KEY_FAILURE = 'SESSION_DELETE_SSH_KEY_FAILURE';
+export const SESSION_DELETE_KEY_REQUEST = 'SESSION_DELETE_KEY_REQUEST';
+export const SESSION_DELETE_KEY_SUCCESS = 'SESSION_DELETE_KEY_SUCCESS';
+export const SESSION_DELETE_KEY_FAILURE = 'SESSION_DELETE_KEY_FAILURE';
 
-export function deleteSshKey(name = "", sha = "") {
+export function deleteKey(name = "", sha = "") {
   return (dispatch) => {
     return dispatch({
       [USERS_API]: {
-        types: [SESSION_DELETE_SSH_KEY_REQUEST, SESSION_DELETE_SSH_KEY_SUCCESS, SESSION_DELETE_SSH_KEY_FAILURE],
+        types: [SESSION_DELETE_KEY_REQUEST, SESSION_DELETE_KEY_SUCCESS, SESSION_DELETE_KEY_FAILURE],
         endpoint: `/session/keys/${sha}`,
         method: "DELETE",
-        schema: Schemas.SSH_KEY,
+        schema: Schemas.KEY,
       },
     }).then((action) => {
-      if (action.type == SESSION_DELETE_SSH_KEY_SUCCESS) {
+      if (action.type == SESSION_DELETE_KEY_SUCCESS) {
         dispatch(setMessage(`deleted ssh key: ${name}`));
         setTimeout(() => {
           dispatch(resetMessage());

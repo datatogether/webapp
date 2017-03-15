@@ -8,7 +8,7 @@ import { Schema, arrayOf } from 'normalizr';
 
 // Read more about Normalizr: https://github.com/paularmstrong/normalizr
 const sessionUserSchema = new Schema('session');
-const sshKeySchema = new Schema('sshKeys', { idAttribute: 'sha256' });
+const keySchema = new Schema('keys', { idAttribute: 'sha256' });
 const userSchema = new Schema('users');
 const groupsSchema = new Schema('groups');
 const metadataSchema = new Schema('metadata', { idAttribute: metadata => `${metadata.userId}.${metadata.subjectHash}`});
@@ -31,9 +31,9 @@ const Schemas = {
   // users. many users. much parcipation.
   USER: userSchema,
   USER_ARRAY: arrayOf(userSchema),
-  // user ssh key management. currently unimplemented, but planned
-  SSH_KEY: sshKeySchema,
-  SSH_KEY_ARRAY: arrayOf(sshKeySchema),
+  // user key management
+  KEY: keySchema,
+  KEY_ARRAY: arrayOf(keySchema),
 
   // groups of users, currently unimplemeneted
   GROUP: groupsSchema,

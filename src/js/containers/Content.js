@@ -81,16 +81,18 @@ class Content extends React.Component {
     const { tab } = this.state;
 
     return (
-      <div id="content" className="container">
-        <div className="row">
-          <header className="yellow col-md-12">
-            <hr className="yellow" />
-            <label>Content</label>
-            <h5>{hash}</h5>
-          </header>
+      <div id="content" className="page">
+        <div className="container">
+          <div className="row">
+            <header className="yellow col-md-12">
+              <hr className="yellow" />
+              <label>Content</label>
+              <h5>{hash}</h5>
+            </header>
+          </div>
+          <TabBar value={tab} tabs={["consensus", "metadata", "urls", "history"]} onChange={this.handleSetTab} />
+          {this.renderCurrentTab()}
         </div>
-        <TabBar value={tab} tabs={["consensus", "metadata", "urls", "history"]} onChange={this.handleSetTab} />
-        {this.renderCurrentTab()}
       </div>
     );
   }

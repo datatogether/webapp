@@ -6,14 +6,6 @@ export function selectSessionUser(state) {
   return (users.length == 1) ? users[0] : undefined;
 }
 
-export function selectSshKeys(state) {
-  const { sshKeys } = state.entities;
-  if (!sshKeys) {
-    return undefined;
-  }
-  return Object.keys(sshKeys).map(id => sshKeys[id]);
-}
-
 export function selectLocalSessionUser(state) {
   const { session } = state.locals;
   if (!session) {
