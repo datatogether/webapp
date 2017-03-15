@@ -17,8 +17,8 @@ const initialEntitiesState = {
   users: {},
 
   groups: {},
-  messages: {},
   
+  primers : {},
   urls: {},
   links: {},
   

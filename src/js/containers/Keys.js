@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { selectLocalSessionUser, selectSshKeys } from '../selectors/session';
-import { loadSshKeys, createSshKey, deleteSshKey } from '../actions/session';
+import { selectLocalSessionUser, selectKeys } from '../selectors/session';
+import { loadKeys, createKey, deleteKey } from '../actions/session';
 
 import ValidInput from '../components/ValidInput';
 import ValidTextarea from '../components/ValidTextarea';
@@ -10,7 +10,7 @@ import validateUser from '../validators/user';
 
 import Spinner from '../components/Spinner';
 
-class SshKeys extends React.Component {
+class Keys extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +31,7 @@ class SshKeys extends React.Component {
   }
 
   componentWillMount() {
-    this.props.loadSshKeys();
+    this.props.loadKeys();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,7 +41,7 @@ class SshKeys extends React.Component {
   }
 
   handleDelete(key) {
-    this.props.deleteSshKey(key.name, key.sha256);
+    this.props.deleteKey(key.name, key.sha256);
   }
   handleChange(name, value) {
     let key = Object.assign({}, this.state.key);
@@ -49,8 +49,8 @@ class SshKeys extends React.Component {
     this.setState({ key });
   }
   handleSave(e) {
-    // const { validation, createSshKey } = this.props;
-    const { createSshKey } = this.props;
+    // const { validation, createKey } = this.props;
+    const { createKey } = this.props;
     e.preventDefault();
 
     // if (!validation.isValid) {
@@ -59,7 +59,7 @@ class SshKeys extends React.Component {
     //  }
     // } else {
     this.setState({ saving: true });
-    createSshKey(this.state.key.name, this.state.key.key);
+    createKey(this.state.key.name, this.state.key.key);
     // }
   }
   render() {
@@ -106,14 +106,14 @@ class SshKeys extends React.Component {
   }
 }
 
-SshKeys.propTypes = {
+Keys.propTypes = {
   // user: PropTypes.object,
   keys: PropTypes.array,
   validation: PropTypes.object,
 
-  loadSshKeys: PropTypes.func.isRequired,
-  createSshKey: PropTypes.func.isRequired,
-  deleteSshKey: PropTypes.func.isRequired,
+  loadKeys: PropTypes.func.isRequired,
+  createKey: PropTypes.func.isRequired,
+  deleteKey: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -121,12 +121,12 @@ function mapStateToProps(state) {
   return {
     user,
     validation: validateUser(user),
-    keys: selectSshKeys(state),
+    keys: selectKeys(state),
   };
 }
 
 export default connect(mapStateToProps, {
-  loadSshKeys,
-  createSshKey,
-  deleteSshKey,
-})(SshKeys);
+  loadKeys,
+  createKey,
+  deleteKey,
+})(Keys);

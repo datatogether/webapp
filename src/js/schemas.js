@@ -12,13 +12,13 @@ const keySchema = new Schema('keys', { idAttribute: 'sha256' });
 const userSchema = new Schema('users');
 const groupsSchema = new Schema('groups');
 const metadataSchema = new Schema('metadata', { idAttribute: metadata => `${metadata.keyId}.${metadata.subject}` });
-const messageSchema = new Schema('messages');
 const searchResultSchema = new Schema('searchResults', { idAttribute: 'url' });
 const urlSchema = new Schema('urls', { idAttribute: 'url' });
 const linkSchema = new Schema('links', { idAttribute: link => `${link.src.url}.${link.dst.url}` });
 const consensusSchema = new Schema('consensus', { idAttribute: 'subject' });
 const contentSchema = new Schema('content', { idAttribute: 'hash' });
 const collectionSchema = new Schema('colletions');
+const primerSchema = new Schema('primers', { idAttribute: 'host' });
 
 metadataSchema.new = (attrs) => {
   return Object.assign({}, attrs);
@@ -38,10 +38,10 @@ const Schemas = {
   // groups of users, currently unimplemeneted
   GROUP: groupsSchema,
   GROUP_ARRAY: arrayOf(groupsSchema),
-  // user messaging
-  MESSAGE: messageSchema,
-  MESSAGE_ARRAY: arrayOf(messageSchema),
 
+  //
+  PRIMER: primerSchema,
+  PRIMER_ARRAY: arrayOf(primerSchema),
   // an external url for archiving
   URL: urlSchema,
   URL_ARRAY: arrayOf(urlSchema),
