@@ -46,24 +46,24 @@ export function loadPrimer(id = "") {
   };
 }
 
-// export const PRIMER_URLS_REQUEST = "PRIMER_URLS_REQUEST";
-// export const PRIMER_URLS_SUCCESS = "PRIMER_URLS_SUCCESS";
-// export const PRIMER_URLS_FAILURE = "PRIMER_URLS_FAILURE";
+export const PRIMER_SUBPRIMERS_REQUEST = "PRIMER_SUBPRIMERS_REQUEST";
+export const PRIMER_SUBPRIMERS_SUCCESS = "PRIMER_SUBPRIMERS_SUCCESS";
+export const PRIMER_SUBPRIMERS_FAILURE = "PRIMER_SUBPRIMERS_FAILURE";
 
-// export function fetchPrimerUrls(id = "") {
-//   return {
-//     [CALL_API]: {
-//       types: [PRIMER_URLS_REQUEST, PRIMER_URLS_SUCCESS, PRIMER_URLS_FAILURE],
-//       schema: Schemas.PRIMER_ARRAY,
-//       endpoint: `/primers/${id}/urls`,
-//       data: { id },
-//     },
-//   };
-// }
+export function fetchSubprimers(id = "") {
+  return {
+    [CALL_API]: {
+      types: [PRIMER_SUBPRIMERS_REQUEST, PRIMER_SUBPRIMERS_SUCCESS, PRIMER_SUBPRIMERS_FAILURE],
+      schema: Schemas.SUBPRIMER_ARRAY,
+      endpoint: `/primers/${id}/subprimers`,
+      data: { id },
+    },
+  };
+}
 
-// export function loadPrimerUrls(id = "") {
-//   return (dispatch) => {
-//     // TODO - check for local url copy via getState
-//     return dispatch(fetchPrimerUrls(id));
-//   };
-// }
+export function loadSubprimers(id = "") {
+  return (dispatch) => {
+    // TODO - check for local url copy via getState
+    return dispatch(fetchSubprimers(id));
+  };
+}

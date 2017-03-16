@@ -46,24 +46,27 @@ export function loadSubprimer(id = "") {
   };
 }
 
-// export const SUBPRIMER_URLS_REQUEST = "SUBPRIMER_URLS_REQUEST";
-// export const SUBPRIMER_URLS_SUCCESS = "SUBPRIMER_URLS_SUCCESS";
-// export const SUBPRIMER_URLS_FAILURE = "SUBPRIMER_URLS_FAILURE";
+export const SUBPRIMER_URLS_REQUEST = "SUBPRIMER_URLS_REQUEST";
+export const SUBPRIMER_URLS_SUCCESS = "SUBPRIMER_URLS_SUCCESS";
+export const SUBPRIMER_URLS_FAILURE = "SUBPRIMER_URLS_FAILURE";
 
-// export function fetchSubprimerUrls(id = "") {
-//   return {
-//     [CALL_API]: {
-//       types: [SUBPRIMER_URLS_REQUEST, SUBPRIMER_URLS_SUCCESS, SUBPRIMER_URLS_FAILURE],
-//       schema: Schemas.SUBPRIMER_ARRAY,
-//       endpoint: `/primers/${id}/urls`,
-//       data: { id },
-//     },
-//   };
-// }
+export function fetchSubprimerUrls(id = "", page = 1, pageSize = 200) {
+  return {
+    [CALL_API]: {
+      types: [SUBPRIMER_URLS_REQUEST, SUBPRIMER_URLS_SUCCESS, SUBPRIMER_URLS_FAILURE],
+      schema: Schemas.SUBPRIMER_ARRAY,
+      endpoint: `/primers/${id}/urls`,
+      data: { id, page, pageSize },
+      id,
+      page,
+      pageSize,
+    },
+  };
+}
 
-// export function loadSubprimerUrls(id = "") {
-//   return (dispatch) => {
-//     // TODO - check for local url copy via getState
-//     return dispatch(fetchSubprimerUrls(id));
-//   };
-// }
+export function loadSubprimerUrls(id = "", page = 1, pageSize = 200) {
+  return (dispatch) => {
+    // TODO - check pagination
+    return dispatch(fetchSubprimerUrls(id));
+  };
+}

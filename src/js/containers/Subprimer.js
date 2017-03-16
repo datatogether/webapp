@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { selectSubprimer } from '../selectors/subprimers';
-import { loadSubprimer } from '../actions/subprimer';
+import { selectSubprimer, selectSubprimerUndescribedUrls } from '../selectors/subprimers';
+import { loadSubprimer, loadSubprimerUrls } from '../actions/subprimer';
 
 import Spinner from '../components/Spinner';
 import StatsBar from '../components/StatsBar';
+import List from '../components/List';
+import UrlItem from '../components/item/UrlItem';
 
 class Subprimer extends React.Component {
   constructor(props) {
@@ -19,6 +21,7 @@ class Subprimer extends React.Component {
 
   componentWillMount() {
     this.props.loadSubprimer(this.props.id);
+    this.props.loadSubprimerUrls(this.props.id);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,7 +32,7 @@ class Subprimer extends React.Component {
   
   render() {
     const { loading } = this.state;
-    const { subprimer } = this.props;
+    const { subprimer, urls } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -57,9 +60,7 @@ class Subprimer extends React.Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-6">
-              <p>{subprimer.url}</p>
-            </div>
+            <List data={urls} component={UrlItem} />
           </div>
         </div>
       </div>
@@ -70,16 +71,20 @@ class Subprimer extends React.Component {
 Subprimer.propTypes = {
   id : PropTypes.string.isRequired,
   subprimer: PropTypes.object,
+  urls: PropTypes.array.isRequired,
   loadSubprimer: PropTypes.func.isRequired,
+  loadSubprimerUrls: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     id : ownProps.params.id,
     subprimer: selectSubprimer(state, ownProps.params.id),
+    urls: selectSubprimerUndescribedUrls(state, ownProps.params.id),
   };
 }
 
 export default connect(mapStateToProps, {
   loadSubprimer,
+  loadSubprimerUrls,
 })(Subprimer);

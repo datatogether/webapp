@@ -37,14 +37,14 @@ class Primer extends React.Component {
       <div>
         <div className="row">
           <div className="col-md-12">
-            <h3>SubPrimers:</h3>
+            <h3>Sub Primers:</h3>
           </div>
         </div>
         {primer.crawlUrls.map((crawlUrl, i) => {
           return (
             <div key={i} className="row">
               <div className="col-md-12">
-                <Link to={`/subprimers/${crawlUrl.id}`}>{crawlUrl.url}</Link>
+                <h4><Link to={`/subprimers/${crawlUrl.id}`}>{crawlUrl.url}</Link></h4>
               </div>
             </div>
           );
@@ -71,7 +71,7 @@ class Primer extends React.Component {
             </div>
           </header>
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-12 col-lg-8">
               <p>{primer.description}</p>
             </div>
           </div>

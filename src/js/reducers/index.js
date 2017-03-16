@@ -4,7 +4,7 @@ import { routerReducer as routing } from 'react-router-redux';
 
 import * as ActionTypes from '../actions/app';
 
-// import pagination from './pagination';
+import pagination from './pagination';
 // import sessionReducer from './session';
 import layoutReducer from './layout';
 import appReducer from './app';
@@ -81,6 +81,7 @@ const rootReducer = combineReducers({
   locals,
   app: appReducer,
   layout: layoutReducer,
+  pagination,
   urlStates,
   routing,
   errorMessage,
