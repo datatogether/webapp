@@ -5,13 +5,11 @@ import { concatUrlString } from '../../selectors/url';
 
 const PrimerItem = ({ data }) => {
   const primer = data;
-  const uri = encodeURIComponent(primer.host);
 
   return (
     <div className="search result item col-md-12">
-      <Link to={`/primers/${uri}`}>
+      <Link to={`/primers/${primer.id}`}>
         { primer.title ? <h5>{primer.title}</h5> : undefined }
-        {concatUrlString(primer.host)}
       </Link>
     </div>
   );

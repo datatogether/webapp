@@ -5,6 +5,6 @@ export function selectPrimers(state) {
   return Object.keys(primers).map(k => primers[k]);
 }
 
-export function selectPrimer(state, host = "") {
-  return state.entities.primers[host];
+export function selectPrimer(state, id = "") {
+  return state.entities.primers[id];
 }

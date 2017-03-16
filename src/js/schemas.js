@@ -18,7 +18,7 @@ const linkSchema = new Schema('links', { idAttribute: link => `${link.src.url}.$
 const consensusSchema = new Schema('consensus', { idAttribute: 'subject' });
 const contentSchema = new Schema('content', { idAttribute: 'hash' });
 const collectionSchema = new Schema('colletions');
-const primerSchema = new Schema('primers', { idAttribute: 'host' });
+const primerSchema = new Schema('primers');
 
 metadataSchema.new = (attrs) => {
   return Object.assign({}, attrs);

@@ -28,20 +28,42 @@ export const PRIMER_FETCH_REQUEST = "PRIMER_FETCH_REQUEST";
 export const PRIMER_FETCH_SUCCESS = "PRIMER_FETCH_SUCCESS";
 export const PRIMER_FETCH_FAILURE = "PRIMER_FETCH_FAILURE";
 
-export function fetchPrimer(host = "") {
+export function fetchPrimer(id = "") {
   return {
     [CALL_API]: {
       types: [PRIMER_FETCH_REQUEST, PRIMER_FETCH_SUCCESS, PRIMER_FETCH_FAILURE],
       schema: Schemas.PRIMER_ARRAY,
-      endpoint: '/primers',
-      data: { host },
+      endpoint: `/primers/${id}`,
+      data: { id },
     },
   };
 }
 
-export function loadPrimer(url = "") {
+export function loadPrimer(id = "") {
   return (dispatch) => {
     // TODO - check for local url copy via getState
-    return dispatch(fetchPrimer(url));
+    return dispatch(fetchPrimer(id));
   };
 }
+
+// export const PRIMER_URLS_REQUEST = "PRIMER_URLS_REQUEST";
+// export const PRIMER_URLS_SUCCESS = "PRIMER_URLS_SUCCESS";
+// export const PRIMER_URLS_FAILURE = "PRIMER_URLS_FAILURE";
+
+// export function fetchPrimerUrls(id = "") {
+//   return {
+//     [CALL_API]: {
+//       types: [PRIMER_URLS_REQUEST, PRIMER_URLS_SUCCESS, PRIMER_URLS_FAILURE],
+//       schema: Schemas.PRIMER_ARRAY,
+//       endpoint: `/primers/${id}/urls`,
+//       data: { id },
+//     },
+//   };
+// }
+
+// export function loadPrimerUrls(id = "") {
+//   return (dispatch) => {
+//     // TODO - check for local url copy via getState
+//     return dispatch(fetchPrimerUrls(id));
+//   };
+// }
