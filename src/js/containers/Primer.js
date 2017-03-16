@@ -6,6 +6,8 @@ import { selectPrimer } from '../selectors/primers';
 import { loadPrimer } from '../actions/primers';
 
 import Spinner from '../components/Spinner';
+import List from '../components/List';
+import SubprimerItem from '../components/item/SubprimerItem';
 
 class Primer extends React.Component {
   constructor(props) {
@@ -29,7 +31,7 @@ class Primer extends React.Component {
 
   renderSubprimers() {
     const { primer } = this.props;
-    if (!primer.crawlUrls) {
+    if (!primer.subprimers) {
       return undefined;
     }
 
@@ -37,18 +39,14 @@ class Primer extends React.Component {
       <div>
         <div className="row">
           <div className="col-md-12">
-            <h3>Sub Primers:</h3>
+            <hr className="yellow" />
+            <h3 className="yellow">Subprimers:</h3>
+            <br />
           </div>
         </div>
-        {primer.crawlUrls.map((crawlUrl, i) => {
-          return (
-            <div key={i} className="row">
-              <div className="col-md-12">
-                <h4><Link to={`/subprimers/${crawlUrl.id}`}>{crawlUrl.url}</Link></h4>
-              </div>
-            </div>
-          );
-        })}
+        <div className="row">
+          <List data={primer.subprimers} component={SubprimerItem} />
+        </div>
       </div>
     );
   }
@@ -66,8 +64,9 @@ class Primer extends React.Component {
         <div className="container">
           <header className="row">
             <div className="col-md-12">
+              <hr className="blue" />
               <label>Primer</label>
-              <h1>{primer.title}</h1>
+              <h1 className="blue">{primer.title}</h1>
             </div>
           </header>
           <div className="row">

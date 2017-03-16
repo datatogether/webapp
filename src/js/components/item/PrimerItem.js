@@ -8,8 +8,8 @@ const PrimerItem = ({ data }) => {
 
   return (
     <div className="search result item col-md-12">
-      <Link to={`/primers/${primer.id}`}>
-        { primer.title ? <h5>{primer.title}</h5> : undefined }
+      <Link to={`/primers/${primer.id}`} className="blue">
+        <h3>{primer.title}</h3>
       </Link>
     </div>
   );

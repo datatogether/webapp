@@ -41,10 +41,14 @@ class Primers extends React.Component {
         <div className="container">
           <header className="row">
             <div className="col-md-12">
-              <h1>Primers:</h1>
+              <hr className="blue" />
+              <h1 className="blue">Primers:</h1>
+              <p>In order to make our archiving efforts as thorough and systematic as possible, we use Agency Archiving Primers to identify key programs, datasets, and documents that are vulnerable to change and loss. Primers are composed of <i>subprimers</i>, which each specify a url as a starting point for archiving.</p>
+              <hr className="blue" />
             </div>
           </header>
           <div className="row">
+            <br />
             <List data={primers} component={PrimerItem} />
           </div>
         </div>

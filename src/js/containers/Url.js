@@ -50,7 +50,7 @@ class Url extends React.Component {
   }
 
   handleUncrawlableClick() {
-
+    alert("marking links as uncrawlable coming soon!");
   }
 
   handleChangeTab(tab) {

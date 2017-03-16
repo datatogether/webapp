@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { selectSubprimer, selectSubprimerUndescribedUrls } from '../selectors/subprimers';
 import { loadSubprimer, loadSubprimerUrls } from '../actions/subprimer';
 
+import List from '../components/List';
+import ProgressBar from '../components/ProgressBar';
 import Spinner from '../components/Spinner';
 import StatsBar from '../components/StatsBar';
-import List from '../components/List';
 import UrlItem from '../components/item/UrlItem';
 
 class Subprimer extends React.Component {
@@ -43,20 +44,26 @@ class Subprimer extends React.Component {
         <div className="container">
           <header className="row">
             <div className="col-md-12">
+              <hr className="yellow" />
               <label>Subprimer</label>
-              <h1>{subprimer.url}</h1>
+              <h1 className="yellow">{subprimer.url}</h1>
             </div>
           </header>
           <div className="row">
             <div className="col-md-12">
-              <hr className="orange" />
+              <ProgressBar total={subprimer.stats.contentUrlCount} progress={subprimer.stats.contentMetadataCount} color="yellow" />
               <StatsBar stats={{ 
                 "urls": subprimer.stats.urlCount,
                 "content": subprimer.stats.contentUrlCount,
                 "documented": subprimer.stats.contentMetadataCount,
                 }}
               />
-              <hr className="orange" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <hr className="green" />
+              <h4 className="green">Content Needing Metadata:</h4>
             </div>
           </div>
           <div className="row">

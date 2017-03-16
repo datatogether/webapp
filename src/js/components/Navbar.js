@@ -7,7 +7,7 @@ const Navbar = ({ user, onGimmieInvite, style }) => {
     <div id="navbar" style={style}>
       <div className="container">
         <div className="row">
-          <Link id="logotype" className="col-md-6 col-sm-6" href={__BUILD__.BASE_URL}>ARCHIVERS 2.0 <span className="blue">BETA</span></Link>
+          <Link id="logotype" className="col-md-6 col-sm-6" href={__BUILD__.BASE_URL}>ARCHIVERS 2.0 <span className="red">ALPHA</span></Link>
           <div className="menu col-md-4 offset-md-2 col-sm-6">
             <a className="blue" target="_blank" rel="noopener noreferrer" href="http://github.com/qri-io/context/issues">Issues</a>
             <Link to="/">Search</Link>
@@ -15,9 +15,8 @@ const Navbar = ({ user, onGimmieInvite, style }) => {
             {
               user ?
                 <Link to={`/users/${user.username}`}>{user.username}</Link> :
-                <a onClick={onGimmieInvite}>Gimmie beta</a>
+                <Link to="/login">Login</Link>
             }
-            { user ? undefined : <Link to="/login">Login</Link>}
           </div>
         </div>
       </div>
