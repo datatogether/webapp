@@ -9,6 +9,7 @@ import Login from './containers/Login';
 import MetadataList from './containers/MetadataList';
 import Primers from './containers/Primers';
 import Primer from './containers/Primer';
+import Subprimer from './containers/Subprimer';
 import Signup from './containers/Signup';
 import Stylesheet from './components/Stylesheet';
 import Keys from './containers/Keys';
@@ -64,6 +65,10 @@ export default {
     {
       path: '/primers/:id',
       component: Primer,
+    },
+    {
+      path: '/subprimers/:id',
+      component: Subprimer,
     },
   ],
 };

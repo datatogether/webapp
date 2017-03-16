@@ -67,5 +67,17 @@ export default {
         import('./containers/Primers').then(loadRoute(cb)).catch(errorLoading);
       },
     },
+    {
+      path: '/primers/:id',
+      getComponent(location, cb) {
+        import('./containers/Primer').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
+      path: '/subprimers/:id',
+      getComponent(location, cb) {
+        import('./containers/Subprimer').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
   ],
 };

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { selectPrimer } from '../selectors/primers';
 import { loadPrimer } from '../actions/primers';
@@ -26,7 +27,7 @@ class Primer extends React.Component {
     }
   }
 
-  renderCrawlUrls() {
+  renderSubprimers() {
     const { primer } = this.props;
     if (!primer.crawlUrls) {
       return undefined;
@@ -43,7 +44,7 @@ class Primer extends React.Component {
           return (
             <div key={i} className="row">
               <div className="col-md-12">
-                <p>{crawlUrl.url}</p>
+                <Link to={`/subprimers/${crawlUrl.id}`}>{crawlUrl.url}</Link>
               </div>
             </div>
           );
@@ -65,6 +66,7 @@ class Primer extends React.Component {
         <div className="container">
           <header className="row">
             <div className="col-md-12">
+              <label>Primer</label>
               <h1>{primer.title}</h1>
             </div>
           </header>
@@ -73,7 +75,7 @@ class Primer extends React.Component {
               <p>{primer.description}</p>
             </div>
           </div>
-          {this.renderCrawlUrls()}
+          {this.renderSubprimers()}
         </div>
       </div>
     );
