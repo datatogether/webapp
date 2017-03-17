@@ -34,13 +34,13 @@ export function editModel(schema, type, attributes) {
   };
 }
 
-export function removeLocalModel(schema, type, id) {
+export function removeLocalModel(schema, type, attributes) {
   return {
     [LOCAL_ACTION]: {
       method: CLEAR_MODEL,
       type,
       schema,
-      id,
+      attributes,
     },
   };
 }

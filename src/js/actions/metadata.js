@@ -23,7 +23,7 @@ export function editMetadata(metadata) {
 
 const METADATA_CANCEL_EDIT = "METADATA_CANCEL_EDIT";
 export function cancelMetadataEdit(metadata) {
-  return removeLocalModel(Schemas.METADATA, METADATA_CANCEL_EDIT, metadataId(metadata));
+  return removeLocalModel(Schemas.METADATA, METADATA_CANCEL_EDIT, metadata);
 }
 
 const METADATA_UPDATE = "METADATA_UPDATE";

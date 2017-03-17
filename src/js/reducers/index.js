@@ -40,7 +40,6 @@ function entities(state = initialEntitiesState, action) {
     return merge({}, state, action.response.entities);
   }
 
-
   if (action.type === ActionTypes.REMOVE_MODEL) {
     const newState = merge({}, state);
     newState[action.schema.getKey()] = merge({}, newState[action.schema.getKey()]);
