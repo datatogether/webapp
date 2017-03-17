@@ -5,10 +5,10 @@ import { selectMetadata, metadataId } from '../selectors/metadata';
 import { newLocalModel, updateLocalModel, editModel, removeLocalModel } from './locals';
 
 const blankMetadata = {
-  meta : {
+  meta: {
     title: "",
     description: "",
-  }
+  },
 };
 
 const METADATA_NEW = "METADATA_NEW";

@@ -1,7 +1,7 @@
 import { CALL_API } from '../middleware/api';
 import Schemas from '../schemas';
 
-import { selectContent, selectContentUrls, selectContentMetadata, selectContentConsensus } from '../selectors/content';
+import { selectContent, selectContentUrls, selectContentMetadata } from '../selectors/content';
 
 export const CONTENT_REQUEST = 'CONTENT_REQUEST';
 export const CONTENT_SUCCESS = 'CONTENT_SUCCESS';

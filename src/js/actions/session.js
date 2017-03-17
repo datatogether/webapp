@@ -24,46 +24,6 @@ export function signup(user) {
   };
 }
 
-export const SESSION_USER_REQUEST = 'SESSION_USER_REQUEST';
-export const SESSION_USER_SUCCESS = 'SESSION_USER_SUCCESS';
-export const SESSION_USER_FAILURE = 'SESSION_USER_FAILURE';
-
-// Fetches a single user from Github API.
-// Relies on the custom API middleware defined in ../middleware/api.js.
-export function fetchSessionUser() {
-  return (dispatch, getState) => {
-    return dispatch({
-      [USERS_API]: {
-        types: [SESSION_USER_REQUEST, SESSION_USER_SUCCESS, SESSION_USER_FAILURE],
-        endpoint: `/session`,
-        schema: Schemas.SESSION_USER,
-        silentError: true,
-      },
-    }).then(action => {
-      if (action.type == SESSION_USER_SUCCESS) {
-        dispatch(fetchKeys())
-      }
-    });
-  };
-}
-
-// Relies on Redux Thunk middleware.
-export function loadSessionUser() {
-  return (dispatch, getState) => {
-    // if (getState().session.requestedSession) {
-    //   return null
-    // }
-
-    if (Object.keys(getState().entities.session).length) {
-      return new Promise((resolve) => {
-        resolve({});
-      });
-    }
-
-    return dispatch(fetchSessionUser());
-  };
-}
-
 export const EDIT_SESSION_USER = 'EDIT_SESSION_USER';
 export function editSessionUser() {
   return (dispatch, getState) => {
@@ -222,3 +182,45 @@ export function deleteKey(name = "", sha = "") {
     });
   };
 }
+
+
+export const SESSION_USER_REQUEST = 'SESSION_USER_REQUEST';
+export const SESSION_USER_SUCCESS = 'SESSION_USER_SUCCESS';
+export const SESSION_USER_FAILURE = 'SESSION_USER_FAILURE';
+
+// Fetches a single user from Github API.
+// Relies on the custom API middleware defined in ../middleware/api.js.
+export function fetchSessionUser() {
+  return (dispatch) => {
+    return dispatch({
+      [USERS_API]: {
+        types: [SESSION_USER_REQUEST, SESSION_USER_SUCCESS, SESSION_USER_FAILURE],
+        endpoint: `/session`,
+        schema: Schemas.SESSION_USER,
+        silentError: true,
+      },
+    }).then((action) => {
+      if (action.type == SESSION_USER_SUCCESS) {
+        dispatch(fetchKeys());
+      }
+    });
+  };
+}
+
+// Relies on Redux Thunk middleware.
+export function loadSessionUser() {
+  return (dispatch, getState) => {
+    // if (getState().session.requestedSession) {
+    //   return null
+    // }
+
+    if (Object.keys(getState().entities.session).length) {
+      return new Promise((resolve) => {
+        resolve({});
+      });
+    }
+
+    return dispatch(fetchSessionUser());
+  };
+}
+

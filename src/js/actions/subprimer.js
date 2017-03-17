@@ -67,6 +67,6 @@ export function fetchSubprimerUrls(id = "", page = 1, pageSize = 200) {
 export function loadSubprimerUrls(id = "", page = 1, pageSize = 200) {
   return (dispatch) => {
     // TODO - check pagination
-    return dispatch(fetchSubprimerUrls(id));
+    return dispatch(fetchSubprimerUrls(id, page, pageSize));
   };
 }
