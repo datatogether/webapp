@@ -12,7 +12,7 @@ const MetadataForm = ({ metadata, onChange, onCancel, onSubmit }) => {
   const handleCancel = (e) => {
     e.preventDefault();
     onCancel(e);
-  }
+  };
 
   return (
     <form className="metadata row" onSubmit={handleSubmit}>

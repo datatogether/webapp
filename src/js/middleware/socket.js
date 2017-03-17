@@ -72,7 +72,7 @@ let conn;
 export function connect(dispatch, reconnectTimeout = 6500) {
   return new Promise((resolve, reject) => {
     if (window.WebSocket) {
-      conn = new WebSocket(`ws://${WEBSOCKET_URL}`);
+      conn = new WebSocket(WEBSOCKET_URL);
       conn.onclose = () => {
         if (reconnectTimeout) {
           setTimeout(() => {

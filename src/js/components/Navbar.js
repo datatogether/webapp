@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const Navbar = ({ user, onGimmieInvite, style }) => {
+const Navbar = ({ user, style }) => {
   return (
     <div id="navbar" style={style}>
       <div className="container">
@@ -29,7 +29,6 @@ Navbar.propTypes = {
     React.PropTypes.object,
     React.PropTypes.null]),
   // onToggleMenu: PropTypes.func.isRequired,
-  onGimmieInvite: PropTypes.func.isRequired,
 };
 
 Navbar.defaultProps = {

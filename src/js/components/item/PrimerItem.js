@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import { concatUrlString } from '../../selectors/url';
-
 const PrimerItem = ({ data }) => {
   const primer = data;
 

@@ -1,31 +1,31 @@
-import React from 'react'
+import React from 'react';
 
 function selectFunc(fn, data, i) {
-	return () => {
-		if (fn) {
-			fn(i, data)
-		}
-	}
+  return () => {
+    if (fn) {
+      fn(i, data);
+    }
+  };
 }
 
-export default class List extends React.Component {
-	render() {
-		const { data, onSelectItem, className } = this.props
-		return (
-			<div className={className}>
-				{data.map((data, i) => <this.props.component data={data} key={i} index={i} onSelect={selectFunc(onSelectItem, data, i)} />)}
-			</div>
-		);
-	}
-}
+const List = ({ data, onSelectItem, className }) => {
+  return (
+    <div className={className}>
+      {data.map((item, i) => <this.props.component data={item} key={i} index={i} onSelect={selectFunc(onSelectItem, item, i)} />)}
+    </div>
+  );
+};
 
 List.propTypes = {
-	data : React.PropTypes.array,
-	component : React.PropTypes.func.isRequired,
-	onSelectItem : React.PropTypes.func
-}
+  data: React.PropTypes.array,
+  // eslint-disable-next-line react/no-unused-prop-types
+  component: React.PropTypes.func.isRequired,
+  onSelectItem: React.PropTypes.func,
+};
 
 List.defaultProps = {
-	data : [],
-	className : "list"
-}
+  data: [],
+  className: "list",
+};
+
+export default List;

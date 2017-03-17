@@ -62,6 +62,12 @@ export default {
       },
     },
     {
+      path: '/signup',
+      getComponent(location, cb) {
+        import('./containers/Signup').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: '/primers',
       getComponent(location, cb) {
         import('./containers/Primers').then(loadRoute(cb)).catch(errorLoading);

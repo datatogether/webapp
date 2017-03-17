@@ -10,10 +10,11 @@ var ENV = {
     DEVELOP : JSON.stringify(false),
     STAGING : JSON.stringify(false),
 
-    BASE_URL : JSON.stringify("http://house-of-knowledge.herokuapp.com"),
-    WEBSOCKET_URL : JSON.stringify("house-of-knowledge.herokuapp.com/ws"),
-    API_URL : JSON.stringify("http://house-of-knowledge.herokuapp.com"),
-    STATIC_ASSETS_URL : JSON.stringify("http://house-of-knowledge.herokuapp.com"),
+    BASE_URL : JSON.stringify("https://alpha.archivers.space"),
+    API_URL : JSON.stringify("https://alpha.archivers.space"),
+    USERS_API_URL : JSON.stringify("https://ident.archivers.space"),
+    WEBSOCKET_URL : JSON.stringify("wss://alpha.archivers.space/ws"),
+    STATIC_ASSETS_URL : JSON.stringify("http://alpha.archivers.space"),
   }
 };
 
@@ -34,7 +35,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath : "http://house-of-knowledge.herokuapp.com/js/",
+    publicPath : "https://s3.amazonaws.com/static.qri.io/js/archivers/",
     filename: '[name].min.js',
     chunkFilename: "[name].chunk.min.js"
   },

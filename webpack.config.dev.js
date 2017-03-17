@@ -13,7 +13,7 @@ var ENV = {
     BASE_URL : JSON.stringify("http://localhost:3000"),
     API_URL : JSON.stringify("http://localhost:3000"),
     USERS_API_URL : JSON.stringify("http://localhost:3100"),
-    WEBSOCKET_URL : JSON.stringify("localhost:3000/ws"),
+    WEBSOCKET_URL : JSON.stringify("ws://localhost:3000/ws"),
     STATIC_ASSETS_URL : JSON.stringify("http://localhost:3000"),
     SEGMENT_KEY : JSON.stringify("not_a_key"),
   }

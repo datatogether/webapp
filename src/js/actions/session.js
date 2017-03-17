@@ -125,6 +125,22 @@ export function loginUser(username, password) {
   };
 }
 
+export const SESSION_LOGOUT_REQUEST = 'SESSION_LOGOUT_REQUEST';
+export const SESSION_LOGOUT_SUCCESS = 'SESSION_LOGOUT_SUCCESS';
+export const SESSION_LOGOUT_FAILURE = 'SESSION_LOGOUT_FAILURE';
+
+export function logoutUser(username, password) {
+  return {
+    [USERS_API]: {
+      types: [SESSION_LOGOUT_REQUEST, SESSION_LOGOUT_SUCCESS, SESSION_LOGOUT_FAILURE],
+      endpoint: '/session',
+      method: 'DELETE',
+      schema: Schemas.SESSION_USER,
+      data: { username, password },
+    },
+  };
+}
+
 
 export const SESSION_KEYS_REQUEST = 'SESSION_KEYS_REQUEST';
 export const SESSION_KEYS_SUCCESS = 'SESSION_KEYS_SUCCESS';

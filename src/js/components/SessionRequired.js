@@ -1,23 +1,15 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
-export default class SessionRequired extends React.Component {
-	render() {
-		return (
-			<div id="wrapper" className="sessionRequired">
-				<div className="container">
-					<div className="col-md-12">
-						<h3 className="center-text">You must be logged-in to do this</h3>
-					</div>
-				</div>
-			</div>
-		);
-	}
-}
+const SessionRequired = () => {
+  return (
+    <div id="wrapper" className="sessionRequired">
+      <div className="container">
+        <div className="col-md-12">
+          <h3 className="center-text">You must be logged-in to do this</h3>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-SessionRequired.propTypes = {
-	
-}
-
-SessionRequired.defaultProps = {
-	
-}
+export default SessionRequired;

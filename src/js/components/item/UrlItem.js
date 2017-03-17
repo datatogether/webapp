@@ -6,13 +6,13 @@ import { concatUrlString } from '../../selectors/url';
 const UrlItem = ({ data }) => {
   const url = data;
   const uri = encodeURIComponent(url.url);
-  
+
   const urlState = (state) => {
     if (state) {
-      return <p>{url.state.loading ? "loading" : ""} {url.state.success ? "success!" : ""} {url.state.error ? url.state.error : "" }</p>
+      return <p>{url.state.loading ? "loading" : ""} {url.state.success ? "success!" : ""} {url.state.error ? url.state.error : "" }</p>;
     }
     return undefined;
-  }
+  };
 
   return (
     <div className="search result item col-md-12">

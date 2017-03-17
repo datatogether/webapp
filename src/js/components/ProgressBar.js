@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 
 const ProgressBar = ({ total, progress, size, color }) => {
+  const width = ((progress / (total || 0.001)) * 100);
   return (
     <div className={`progressbar ${size}`}>
-      <div className={`progress bg-${color}`} style={{ width : ((progress / (total || 0.001)) * 100) + "%" }}></div>
+      <div className={`progress bg-${color}`} style={{ width: `${width}%` }}></div>
     </div>
   );
 };
