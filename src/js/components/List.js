@@ -1,26 +1,29 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-function selectFunc(fn, data, i) {
-  return () => {
-    if (fn) {
-      fn(i, data);
-    }
+const List = (props) => {
+  // This strange props destructuring is so props.component
+  // can be referenced as a jsx component below
+  const { data, onSelectItem, className } = props;
+  const selectFunc = (fn, d, i) => {
+    return () => {
+      if (fn) {
+        fn(i, d);
+      }
+    };
   };
-}
 
-const List = ({ data, onSelectItem, className }) => {
   return (
     <div className={className}>
-      {data.map((item, i) => <this.props.component data={item} key={i} index={i} onSelect={selectFunc(onSelectItem, item, i)} />)}
+      {data.map((item, i) => <props.component data={item} key={i} index={i} onSelect={selectFunc(onSelectItem, item, i)} />)}
     </div>
   );
 };
 
 List.propTypes = {
-  data: React.PropTypes.array,
+  data: PropTypes.array,
   // eslint-disable-next-line react/no-unused-prop-types
-  component: React.PropTypes.func.isRequired,
-  onSelectItem: React.PropTypes.func,
+  component: PropTypes.func.isRequired,
+  onSelectItem: PropTypes.func,
 };
 
 List.defaultProps = {

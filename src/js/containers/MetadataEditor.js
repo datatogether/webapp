@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import Metadata from '../components/Metadata';
 import MetadataForm from '../components/MetadataForm';
@@ -28,7 +29,7 @@ class MetadataEditor extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.sessionKeyID != this.props.sessionKeyId) {
+    if (nextProps.sessionKeyId != this.props.sessionKeyId) {
       nextProps.loadMetadata(nextProps.sessionKeyId, this.props.subjectHash);
     }
   }
@@ -57,19 +58,19 @@ class MetadataEditor extends React.Component {
   }
 
   render() {
-    const { savedMetadata, metadata } = this.props;
+    const { savedMetadata, metadata, sessionKeyId } = this.props;
 
     if (savedMetadata && !metadata) {
       return (
         <div className="metadata editor">
           <Metadata metadata={savedMetadata.meta} />
-          <button className="btn btn-primary" onClick={this.handleEdit}>Edit</button>
+          {sessionKeyId ? <button className="btn btn-primary" onClick={this.handleEdit}>Edit</button> : <p><Link to="/signup">Signup</Link> to edit metadata.</p>}
         </div>
       );
     } else if (!metadata) {
       return (
         <div className="metadata editor">
-          <button className="btn btn-primary" onClick={this.handleNew}>Add Metadata</button>
+          {sessionKeyId ? <button className="btn btn-primary" onClick={this.handleNew}>Add Metadata</button> : <p><Link to="/signup">Signup</Link> to add metadata.</p>}
         </div>
       );
     }
