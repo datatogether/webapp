@@ -17,13 +17,13 @@ const initialEntitiesState = {
   users: {},
 
   groups: {},
-  
-  primers : {},
-  subprimers : {},
+
+  primers: {},
+  subprimers: {},
   urls: {},
   links: {},
-  
-  content : {},
+
+  content: {},
   metadata: {},
   consensus: {},
   collections: {},

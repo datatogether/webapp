@@ -2,7 +2,6 @@
 /* globals __BUILD__, fetch */
 import 'isomorphic-fetch';
 import { normalize } from 'normalizr';
-import * as socket from './socket';
 
 export const API_ROOT = `${__BUILD__.USERS_API_URL}`;
 

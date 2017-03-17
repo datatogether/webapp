@@ -3,7 +3,6 @@ import { URL_SET_LOADING, URL_SET_SUCCESS, URL_SET_ERROR } from '../actions/url'
 const initialState = {};
 
 export default function urlStates(state = initialState, action) {
-
   switch (action.type) {
     case URL_SET_LOADING:
       return Object.assign({}, state, {

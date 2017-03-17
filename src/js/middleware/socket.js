@@ -24,10 +24,12 @@ let expectations = {};
 
 // Generate an id for this request
 function newRequestId() {
+  /* eslint-disable no-bitwise, no-mixed-operators */
   return 'xxxxxxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     let r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
+  /* eslint-enable no-bitwise, no-mixed-operators */
 }
 
 // add an expected response to the expecting list.
@@ -93,7 +95,7 @@ export function connect(dispatch, reconnectTimeout = 6500) {
         if (res.schema) {
           try {
             res.response = normalize(res.data, Schemas[res.schema]);
-          } catch(e) {
+          } catch (e) {
             console.log(e);
             console.log(res.data);
             return;
@@ -146,11 +148,11 @@ export function callApiAction(store, next, action) {
   // if we're in "connecting" state, defer until connection
   // occurs
   if (conn.readyState == 0) {
-    const prev = conn.onopen
+    const prev = conn.onopen;
     conn.onopen = (evt) => {
       callApiAction(store, next, action);
       prev(evt);
-    }
+    };
     return null;
   }
 
