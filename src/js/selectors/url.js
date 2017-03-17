@@ -1,7 +1,7 @@
 
 export function concatUrlString(u, max = 80) {
   return (u.length < max) ? u : `${u.slice(0, max)}...`;
-};
+}
 
 export function selectUrl(state, urlString = "") {
   const { urls } = state.entities;
