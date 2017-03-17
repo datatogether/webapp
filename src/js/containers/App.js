@@ -158,7 +158,7 @@ class App extends Component {
         <Navbar
           user={user}
           style={Object.assign({
-            position : "absolute"
+            position: "absolute",
           }, layout.navbar)}
           onToggleMenu={this.handleMenuToggle}
           onGimmieInvite={this.handleGimmieInvite}

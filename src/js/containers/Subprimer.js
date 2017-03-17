@@ -30,7 +30,7 @@ class Subprimer extends React.Component {
       this.setState({ loading: false });
     }
   }
-  
+
   render() {
     const { loading } = this.state;
     const { subprimer, urls } = this.props;
@@ -52,10 +52,11 @@ class Subprimer extends React.Component {
           <div className="row">
             <div className="col-md-12">
               <ProgressBar total={subprimer.stats.contentUrlCount} progress={subprimer.stats.contentMetadataCount} color="yellow" />
-              <StatsBar stats={{ 
-                "urls": subprimer.stats.urlCount,
-                "content": subprimer.stats.contentUrlCount,
-                "documented": subprimer.stats.contentMetadataCount,
+              <StatsBar
+                stats={{
+                  urls: subprimer.stats.urlCount,
+                  content: subprimer.stats.contentUrlCount,
+                  documented: subprimer.stats.contentMetadataCount,
                 }}
               />
             </div>
@@ -76,7 +77,7 @@ class Subprimer extends React.Component {
 }
 
 Subprimer.propTypes = {
-  id : PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   subprimer: PropTypes.object,
   urls: PropTypes.array.isRequired,
   loadSubprimer: PropTypes.func.isRequired,
@@ -85,7 +86,7 @@ Subprimer.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    id : ownProps.params.id,
+    id: ownProps.params.id,
     subprimer: selectSubprimer(state, ownProps.params.id),
     urls: selectSubprimerUndescribedUrls(state, ownProps.params.id),
   };

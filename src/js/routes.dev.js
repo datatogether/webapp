@@ -6,7 +6,6 @@ import App from './containers/App';
 import Content from './containers/Content';
 import Home from './containers/Home';
 import Login from './containers/Login';
-import MetadataList from './containers/MetadataList';
 import Primers from './containers/Primers';
 import Primer from './containers/Primer';
 import Subprimer from './containers/Subprimer';
@@ -33,10 +32,6 @@ export default {
     {
       path: "/content/:hash",
       component: Content,
-    },
-    {
-      path: "/metadata/:hash",
-      component: MetadataList,
     },
     {
       path: '/settings',

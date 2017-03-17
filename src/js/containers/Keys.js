@@ -17,7 +17,7 @@ class Keys extends React.Component {
       showErrors: false,
       saving: false,
       loading: true,
-      key: {
+      newKey: {
         name: "",
         key: "",
       },
@@ -44,13 +44,10 @@ class Keys extends React.Component {
     this.props.deleteKey(key.name, key.sha256);
   }
   handleChange(name, value) {
-    let key = Object.assign({}, this.state.key);
-    key[name] = value;
-    this.setState({ key });
+    this.setState({ newKey: Object.assign({}, this.state.newKey, { [name]: value }) });
   }
   handleSave(e) {
     // const { validation, createKey } = this.props;
-    const { createKey } = this.props;
     e.preventDefault();
 
     // if (!validation.isValid) {
@@ -59,11 +56,11 @@ class Keys extends React.Component {
     //  }
     // } else {
     this.setState({ saving: true });
-    createKey(this.state.key.name, this.state.key.key);
+    this.props.createKey(this.state.newKey.name, this.state.newKey.key);
     // }
   }
   render() {
-    const { key, showErrors, loading } = this.state;
+    const { newKey, showErrors, loading } = this.state;
     const { keys, validation } = this.props;
 
     if (loading) {
@@ -96,8 +93,8 @@ class Keys extends React.Component {
         <div className="col-md-6 col-md-offset-3">
           <header>
             <h3>Add a Key:</h3>
-            <ValidInput type="text" label="name" name="name" value={key.name} showError={showErrors} error={validation.name} onChange={this.handleChange} />
-            <ValidTextarea label="paste key here" name="key" value={key.key} showError={showErrors} error={validation.description} onChange={this.handleChange} />
+            <ValidInput type="text" label="name" name="name" value={newKey.name} showError={showErrors} error={validation.name} onChange={this.handleChange} />
+            <ValidTextarea label="paste key here" name="key" value={newKey.key} showError={showErrors} error={validation.description} onChange={this.handleChange} />
             <button className="btn btn-primary" disabled={showErrors} onClick={this.handleSave}>Add Key</button>
           </header>
         </div>

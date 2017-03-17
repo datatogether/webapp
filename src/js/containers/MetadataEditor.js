@@ -51,7 +51,7 @@ class MetadataEditor extends React.Component {
   }
 
   handleSave(meta) {
-    this.props.saveMetadata({ keyId : this.props.sessionKeyId, subject: this.props.subjectHash, meta });
+    this.props.saveMetadata({ keyId: this.props.sessionKeyId, subject: this.props.subjectHash, meta });
     // TODO - this should be in a "then" clause on saveMetadata
     this.props.cancelMetadataEdit(this.props.metadata);
   }

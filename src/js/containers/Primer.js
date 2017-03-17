@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 
 import { selectPrimer } from '../selectors/primers';
 import { loadPrimer } from '../actions/primers';
@@ -50,7 +49,7 @@ class Primer extends React.Component {
       </div>
     );
   }
-  
+
   render() {
     const { loading } = this.state;
     const { primer } = this.props;
@@ -82,14 +81,14 @@ class Primer extends React.Component {
 }
 
 Primer.propTypes = {
-  id : PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   primer: PropTypes.object,
   loadPrimer: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    id : ownProps.params.id,
+    id: ownProps.params.id,
     primer: selectPrimer(state, ownProps.params.id),
   };
 }
