@@ -45,7 +45,7 @@ class Subprimer extends React.Component {
           <header className="row">
             <div className="col-md-12">
               <hr className="yellow" />
-              <label>Subprimer</label>
+              <label className="label">Subprimer</label>
               <h1 className="yellow">{subprimer.url}</h1>
             </div>
           </header>

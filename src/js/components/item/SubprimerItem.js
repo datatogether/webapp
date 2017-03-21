@@ -8,10 +8,10 @@ const SubprimerItem = ({ data }) => {
 
   return (
     <div className="subprimer item col-md-12">
-      <Link to={`/subprimers/${subprimer.id}`} className="yellow">
+      <Link to={`/subprimers/${subprimer.id}`} className="orange">
         <h4>{subprimer.url}</h4>
         {/* <small>{subprimer.stats.contentMetadataCount}/{subprimer.stats.contentUrlCount}</small> */}
-        <ProgressBar size="micro" color="yellow" total={subprimer.stats.contentUrlCount} progress={subprimer.stats.contentMetadataCount} />
+        <ProgressBar size="micro" color="orange" total={subprimer.stats.contentUrlCount} progress={subprimer.stats.contentMetadataCount} />
       </Link>
     </div>
   );

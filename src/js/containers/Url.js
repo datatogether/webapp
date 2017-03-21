@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { selectUrl, selectOutboundLinks, selectInboundLinks, urlStats, concatUrlString } from '../selectors/url';
+import { selectUrl, selectOutboundLinks, selectInboundLinks, urlStats } from '../selectors/url';
 import { loadUrl, loadOutboundLinks, loadInboundLinks, archiveUrl } from '../actions/url';
 
 import List from '../components/List';
@@ -79,7 +79,7 @@ class Url extends React.Component {
         return (
           <div className="col-md-12">
             <label>Content</label><br />
-            <Link to={`/content/${url.hash}`}>{url.hash}</Link>
+            <Link className="yellow" to={`/content/${url.hash}`}>{url.hash}</Link>
           </div>);
       case "outbound links":
         return <List data={this.props.outboundLinks} component={UrlItem} />;
@@ -104,7 +104,7 @@ class Url extends React.Component {
 
     return (
       <div>
-        <TabBar value={tab} tabs={tabs} onChange={this.handleChangeTab} />
+        <TabBar value={tab} tabs={tabs} onChange={this.handleChangeTab} color="blue" />
         <div className="row">
           {this.renderCurrentTab()}
         </div>
@@ -127,14 +127,14 @@ class Url extends React.Component {
         <div className="container">
           <header className="row">
             <div className="col-md-12">
-              <hr className="green" />
+              <hr className="blue" />
               <a className="right" target="_blank" rel="noopener noreferrer" href={url.url}>link</a>
-              <label>URL</label>
-              <h4>{concatUrlString(url.url, 55)}</h4>
+              <label className="label">URL</label>
+              <h4 className="blue">{url.url}</h4>
               <br />
               {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
               {url.hash ? <button className="btn" onClick={this.handleUncrawlableClick}>Missing Content</button> : undefined}
-              <hr className="green" />
+              <hr className="blue" />
             </div>
           </header>
           <StatsBar stats={urlStats(url)} />

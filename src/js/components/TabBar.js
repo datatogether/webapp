@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const TabBar = ({ tabs, value, onChange }) => {
+const TabBar = ({ tabs, value, onChange, color }) => {
   const handleClick = (tab) => {
     return () => {
       onChange(tab);
@@ -10,7 +10,7 @@ const TabBar = ({ tabs, value, onChange }) => {
   return (
     <div className="tab bar row">
       <div className="col-md-12">
-        <hr className="green" />
+        <hr className={color} />
         {tabs.map((tab, i) => {
           return (
             <a
@@ -20,16 +20,21 @@ const TabBar = ({ tabs, value, onChange }) => {
             >{tab}</a>
           );
         })}
-        <hr className="green" />
+        <hr className={color} />
       </div>
     </div>
   );
 };
 
 TabBar.propTypes = {
+  color: PropTypes.string,
   tabs: PropTypes.array.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+};
+
+TabBar.defaultProps = {
+  color: "",
 };
 
 export default TabBar;

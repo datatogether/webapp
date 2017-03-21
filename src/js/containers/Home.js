@@ -56,10 +56,9 @@ class Home extends React.Component {
       <div id="home" className="page">
         <div className="user container">
           <div className="row">
-            <header className="yellow col-md-12">
-              <hr className="yellow" />
+            <header className="orange col-md-12">
               <div className="form-group">
-                <label className="form-label">search:</label>
+                <label className="form-label label">search</label>
                 <input className="form-control" value={query} onChange={this.handleSearchChange} />
               </div>
             </header>

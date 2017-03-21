@@ -1,7 +1,7 @@
 import { CALL_API } from '../middleware/api';
 import Schemas from '../schemas';
 
-import { selectMetadata, metadataId } from '../selectors/metadata';
+import { selectMetadata } from '../selectors/metadata';
 import { newLocalModel, updateLocalModel, editModel, removeLocalModel } from './locals';
 
 const blankMetadata = {

@@ -23,16 +23,6 @@ hr.red { border-top: 1px solid $red; }
 hr.yellow { border-top: 1px solid $yellow; }
 hr.orange { border-top: 1px solid $orange; }
 
-.dt-any { color: $text; }
-.dt-string { color: $text; }
-.dt-integer { color: $blue; }
-.dt-float { color: $blue; }
-.dt-boolean { color: $red; }
-.dt-date { color: $orange; }
-.dt-url { color: $green; }
-.dt-object { color: $text; }
-.dt-array { color: $text; }
-
 header > hr {
   margin-top: 0;
 }
@@ -45,24 +35,6 @@ header > hr {
   min-height: 100%
 }
 
-.logotype {
-  background: url('/svg/logotype.svg') center left no-repeat;
-  display: block;
-  overflow: hidden;
-  width: 100px;
-  height: 70px;
-  text-indent: -5000px;
-}
-
-.logotype.large {
-  margin: 150px auto 15px auto;
-}
-
-.tagline {
-  text-align: center;
-  color: #999999;
-}
-
 a {
   text-decoration: none;
   transition: color 0.5s;
@@ -71,7 +43,7 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: #9FFFF0;
+  color: #666;
 }
 
 .address {

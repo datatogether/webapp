@@ -87,11 +87,11 @@ class Content extends React.Component {
           <div className="row">
             <header className="yellow col-md-12">
               <hr className="yellow" />
-              <label>Content</label>
+              <label className="label">Content</label>
               <h5>{hash}</h5>
             </header>
           </div>
-          <TabBar value={tab} tabs={["consensus", "metadata", "urls", "history"]} onChange={this.handleSetTab} />
+          <TabBar value={tab} tabs={["consensus", "metadata", "urls", "history"]} onChange={this.handleSetTab} color="yellow" />
           {this.renderCurrentTab()}
         </div>
       </div>

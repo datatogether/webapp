@@ -16,11 +16,11 @@ const UrlItem = ({ data }) => {
 
   return (
     <div className="search result item col-md-12">
-      <Link to={`/url?url=${uri}`}>
+      <Link className="blue" to={`/url?url=${uri}`}>
         { url.title ? <h5>{url.title}</h5> : undefined }
         {concatUrlString(url.url)}
       </Link>
-      <p>{ url.contentSniff && url.contentSniff != "text/html; charset=utf-8" ? <Link to={`/content/${url.hash}`}>{url.hash}</Link> : undefined }</p>
+      <p>{ url.contentSniff && url.contentSniff != "text/html; charset=utf-8" ? <Link className="yellow" to={`/content/${url.hash}`}>{url.hash}</Link> : undefined }</p>
       {urlState(url.state)}
     </div>
   );

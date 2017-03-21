@@ -38,8 +38,8 @@ class Primer extends React.Component {
       <div>
         <div className="row">
           <div className="col-md-12">
-            <hr className="yellow" />
-            <h3 className="yellow">Subprimers:</h3>
+            <hr className="orange" />
+            <h3 className="orange">Subprimers:</h3>
             <br />
           </div>
         </div>
@@ -63,9 +63,9 @@ class Primer extends React.Component {
         <div className="container">
           <header className="row">
             <div className="col-md-12">
-              <hr className="blue" />
-              <label>Primer</label>
-              <h1 className="blue">{primer.title}</h1>
+              <hr className="orange" />
+              <label className="label">Primer</label>
+              <h1 className="orange">{primer.title}</h1>
             </div>
           </header>
           <div className="row">

@@ -67,8 +67,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/qri-io/webconsole"
+    "url": "github.com/qri-io/context"
   },
   "author": "Brendan O'Brien",
-  "license": "ISC"
+  "license": "AGPL 3.0"
 }
