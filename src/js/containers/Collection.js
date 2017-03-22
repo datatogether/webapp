@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { selectCollection, selectLocalCollection } from '../selectors/collections';
 import { loadCollection, newCollection, editCollection } from '../actions/collections';
@@ -16,7 +17,9 @@ class Collection extends React.Component {
       loading: true,
     };
 
-    [].forEach((m) => { this[m] = this[m].bind(this); });
+    [
+
+    ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
   componentWillMount() {
@@ -53,7 +56,7 @@ class Collection extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { collection } = this.props;
+    const { collection, sessionKeyId } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -73,6 +76,7 @@ class Collection extends React.Component {
             <div className="col-md-12 col-lg-8">
               <p>{collection.description}</p>
             </div>
+            {sessionKeyId ? <Link to="/collections/new">New Collection</Link> : undefined}
           </div>
           {this.renderContents()}
         </div>
@@ -86,7 +90,7 @@ Collection.propTypes = {
   sessionKeyId: PropTypes.string,
 
   collection: PropTypes.object,
-  local: PropTypes.object,
+  // local: PropTypes.object,
   loadCollection: PropTypes.func.isRequired,
 };
 
@@ -103,4 +107,6 @@ function mapStateToProps(state, ownProps) {
 
 export default connect(mapStateToProps, {
   loadCollection,
+  newCollection,
+  editCollection,
 })(Collection);

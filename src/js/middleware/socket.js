@@ -97,7 +97,7 @@ export function connect(dispatch, reconnectTimeout = 6500) {
             res.response = normalize(res.data, Schemas[res.schema]);
           } catch (e) {
             console.log(e);
-            console.log(res.data);
+            console.log(res);
             return;
           }
         }

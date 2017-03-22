@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import ValidInput from './ValidInput';
-import ValidTextarea from './ValidTextarea';
+// import ValidTextarea from './ValidTextarea';
 
 const CollectionForm = ({ collection, onChange, onCancel, onSubmit }) => {
   const handleSubmit = (e) => {

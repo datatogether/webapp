@@ -17,3 +17,12 @@ export function selectSubprimerUndescribedUrls(state, id = "") {
 
   return pages[id].ids.map(urlId => state.entities.urls[urlId]);
 }
+
+export function selectSubprimerAttributedUrls(state, id = "") {
+  const pages = state.pagination.subprimerAttributedUrls;
+  if (!pages[id]) {
+    return [];
+  }
+
+  return pages[id].ids.map(urlId => state.entities.urls[urlId]);
+}

@@ -12,7 +12,7 @@ const Navbar = ({ user, style }) => {
             <a className="blue" target="_blank" rel="noopener noreferrer" href="http://github.com/qri-io/context/issues">Issues</a>
             <Link to="/">Search</Link>
             <Link to="/primers">Primers</Link>
-            <Link to="/collections">Collections</Link>
+            {/* <Link to="/collections">Collections</Link> */}
             {
               user ?
                 <Link to={`/users/${user.username}`}>{user.username}</Link> :

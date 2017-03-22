@@ -70,3 +70,28 @@ export function loadSubprimerUrls(id = "", page = 1, pageSize = 200) {
     return dispatch(fetchSubprimerUrls(id, page, pageSize));
   };
 }
+
+export const SUBPRIMER_ATTRIBUTED_URLS_REQUEST = "SUBPRIMER_ATTRIBUTED_URLS_REQUEST";
+export const SUBPRIMER_ATTRIBUTED_URLS_SUCCESS = "SUBPRIMER_ATTRIBUTED_URLS_SUCCESS";
+export const SUBPRIMER_ATTRIBUTED_URLS_FAILURE = "SUBPRIMER_ATTRIBUTED_URLS_FAILURE";
+
+export function fetchSubprimerAttributedUrls(id = "", page = 1, pageSize = 200) {
+  return {
+    [CALL_API]: {
+      types: [SUBPRIMER_ATTRIBUTED_URLS_REQUEST, SUBPRIMER_ATTRIBUTED_URLS_SUCCESS, SUBPRIMER_ATTRIBUTED_URLS_FAILURE],
+      schema: Schemas.SUBPRIMER_ARRAY,
+      endpoint: `/primers/${id}/urls/attributed`,
+      data: { id, page, pageSize },
+      id,
+      page,
+      pageSize,
+    },
+  };
+}
+
+export function loadSubprimerAttributedUrls(id = "", page = 1, pageSize = 200) {
+  return (dispatch) => {
+    // TODO - check pagination
+    return dispatch(fetchSubprimerAttributedUrls(id, page, pageSize));
+  };
+}

@@ -5,6 +5,10 @@ import {
   SUBPRIMER_URLS_REQUEST,
   SUBPRIMER_URLS_SUCCESS,
   SUBPRIMER_URLS_FAILURE,
+
+  SUBPRIMER_ATTRIBUTED_URLS_REQUEST,
+  SUBPRIMER_ATTRIBUTED_URLS_SUCCESS,
+  SUBPRIMER_ATTRIBUTED_URLS_FAILURE,
 } from '../actions/subprimer';
 
 // Updates the pagination data for different actions.
@@ -15,6 +19,15 @@ const pagination = combineReducers({
       SUBPRIMER_URLS_REQUEST,
       SUBPRIMER_URLS_SUCCESS,
       SUBPRIMER_URLS_FAILURE,
+    ],
+  }),
+
+  subprimerAttributedUrls: paginate({
+    mapActionToKey: action => action.id,
+    types: [
+      SUBPRIMER_ATTRIBUTED_URLS_REQUEST,
+      SUBPRIMER_ATTRIBUTED_URLS_SUCCESS,
+      SUBPRIMER_ATTRIBUTED_URLS_FAILURE,
     ],
   }),
 });
