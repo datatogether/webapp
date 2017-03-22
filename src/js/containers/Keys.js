@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { selectLocalSessionUser, selectKeys } from '../selectors/session';
 import { loadKeys, createKey, deleteKey } from '../actions/session';
 
-import ValidInput from '../components/ValidInput';
-import ValidTextarea from '../components/ValidTextarea';
+import ValidInput from '../components/form/ValidInput';
+import ValidTextarea from '../components/form/ValidTextarea';
 import validateUser from '../validators/user';
 
 import Spinner from '../components/Spinner';

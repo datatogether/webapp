@@ -3,6 +3,8 @@
  * Gooby pls. Don 4get to update the prod routes.js file
  */
 import App from './containers/App';
+import Collection from './containers/Collection';
+import Collections from './containers/Collections';
 import Content from './containers/Content';
 import Home from './containers/Home';
 import Login from './containers/Login';
@@ -28,6 +30,14 @@ export default {
     {
       path: "/url",
       component: Url,
+    },
+    {
+      path: "/collections",
+      component: Collections,
+    },
+    {
+      path: "/collections/:id",
+      component: Collection,
     },
     {
       path: "/content/:hash",

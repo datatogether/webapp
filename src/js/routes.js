@@ -30,6 +30,18 @@ export default {
       },
     },
     {
+      path: '/collections',
+      getComponent(location, cb) {
+        import('./containers/Collections').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
+      path: '/collections/:id',
+      getComponent(location, cb) {
+        import('./containers/Collection').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: '/content/:hash',
       getComponent(location, cb) {
         import('./containers/Content').then(loadRoute(cb)).catch(errorLoading);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import Metadata from '../components/Metadata';
-import MetadataForm from '../components/MetadataForm';
+import MetadataForm from '../components/form/MetadataForm';
 
 import { newMetadata, editMetadata, updateMetadata, cancelMetadataEdit, saveMetadata, loadMetadata } from '../actions/metadata';
 import { selectLocalMetadata, selectMetadata } from '../selectors/metadata';

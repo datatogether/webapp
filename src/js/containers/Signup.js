@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 
 import { signup, SESSION_SIGNUP_FAILURE } from '../actions/session';
 import { selectSessionUser } from '../selectors/session';
-import ValidInput from '../components/ValidInput';
+import ValidInput from '../components/form/ValidInput';
 import validateUser from '../validators/user';
 
 // TODO - add validation logic
