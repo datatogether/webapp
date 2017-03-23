@@ -6,12 +6,12 @@ const Metadata = ({ metadata }) => {
     <div className="metadata">
       {Object.keys(metadata).map((key) => {
         // TODO - this is a hack for demo purposes. remove when ready.
-        if (key == "subjectHash" || key == "userId" || key == "requestId") {
-          return <div key={key}></div>;
-        }
+        // if (key == "subjectHash" || key == "userId" || key == "requestId") {
+        //   return <div key={key}></div>;
+        // }
         return (
           <div key={key}>
-            <label>{key}</label>
+            <label className="yellow meta label">{key}</label>
             <p>{metadata[key]}</p>
           </div>
         );
