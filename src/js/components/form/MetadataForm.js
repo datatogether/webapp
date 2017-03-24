@@ -24,7 +24,7 @@ const MetadataForm = ({ metadata, onChangeValue, onCancel, onSubmit, onRenameFie
   };
 
   return (
-    <div className="metadata row">
+    <div className="metadata">
       <div className="col-md-12">
         {Object.keys(metadata).map((key, i) => {
           return (

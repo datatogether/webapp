@@ -1,7 +1,11 @@
 
-
 export function metadataId(userId, subjectHash) {
   return `${userId}.${subjectHash}`;
+}
+
+export function selectMetadataByKey(state, key) {
+  const { metadata } = state.entities;
+  return Object.keys(metadata).filter(id => metadata[id].key == key).map(id => metadata[id]);
 }
 
 export function selectLocalMetadata(state, userId, subjectHash) {
