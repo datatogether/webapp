@@ -9,7 +9,7 @@ import { loadMetadataByKey } from '../actions/metadata';
 import { selectSessionUser } from '../selectors/session';
 import { selectUserByUsername } from '../selectors/user';
 import { selectMetadataByKey } from '../selectors/metadata';
-import { selectDefaultKeyId } from '../selectors/keys';
+// import { selectDefaultKeyId } from '../selectors/keys';
 
 import NotFound from '../components/NotFound';
 import List from '../components/List';
@@ -36,10 +36,9 @@ class User extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.user, this.state.loading);
     if (nextProps.username != this.props.username) {
       nextProps.loadUserByUsername(nextProps.username);
-      this.setState({ loading : true });
+      this.setState({ loading: true });
     } else if (nextProps.user && this.state.loading) {
       console.log("huh?");
       if (nextProps.user && nextProps.user.currentKey) {

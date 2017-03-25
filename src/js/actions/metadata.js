@@ -8,6 +8,12 @@ const blankMetadata = {
   meta: {
     title: "",
     description: "",
+    keyword: "",
+    license: "",
+    rights: "",
+    language: "",
+    landingPage: "",
+    theme: "",
   },
 };
 

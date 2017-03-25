@@ -101,7 +101,6 @@ export function logoutUser(username, password) {
   };
 }
 
-
 export const SESSION_KEYS_REQUEST = 'SESSION_KEYS_REQUEST';
 export const SESSION_KEYS_SUCCESS = 'SESSION_KEYS_SUCCESS';
 export const SESSION_KEYS_FAILURE = 'SESSION_KEYS_FAILURE';
@@ -207,7 +206,6 @@ export function fetchSessionUser() {
   };
 }
 
-// Relies on Redux Thunk middleware.
 export function loadSessionUser() {
   return (dispatch, getState) => {
     // if (getState().session.requestedSession) {
