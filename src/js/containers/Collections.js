@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import { selectSessionUser } from '../selectors/session';
 import { selectCollections } from '../selectors/collections';
 import { loadCollections } from '../actions/collections';
 
@@ -30,7 +32,7 @@ class Collections extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { collections } = this.props;
+    const { collections, user } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -42,6 +44,7 @@ class Collections extends React.Component {
           <header className="row">
             <div className="col-md-12">
               <hr className="green" />
+              { user && (<Link className="btn bg-green white right" to="/collections/new">New Collection</Link>)}
               <h1 className="green">Collections:</h1>
               <p>Collections are groupings of content</p>
               <hr className="green" />
@@ -65,6 +68,7 @@ Collections.propTypes = {
 
 function mapStateToProps(state) {
   return {
+    user: selectSessionUser(state),
     collections: selectCollections(state),
   };
 }

@@ -36,6 +36,7 @@ class App extends Component {
     this.props.dispatch(loadSessionUser());
 
     // attempt to connect websocket, passing in the dispatcher
+    // TODO - move this up the app boostrapping stack
     socket.connect(this.props.dispatch, 6500).then(() => {
       // socket connected.
     });
@@ -101,8 +102,11 @@ class App extends Component {
   }
 
   /**
-   * presenting modals is easy! fun even! yay! import showModal from actions/app, and call it with ("name", [element that will present modal], [data object])
-   * it's expected that the element that presents the modal will have a method "modal", that will return either a react element or undefined
+   * presenting modals is easy! fun even! yay! in your component of choice
+   * import showModal from actions/app, and call it with the signature
+   * ("name", [component that will present modal], [data object])
+   * it's expected that the element that presents the modal will have a method "modal", 
+   * that will return either a react element or undefined
    * Whatever it gives back will be presented
    */
   renderModal() {
@@ -163,7 +167,7 @@ class App extends Component {
           onToggleMenu={this.handleMenuToggle}
           onGimmieInvite={this.handleGimmieInvite}
         />
-        <MainMenu user={user} show={showMenu} onGimmieInvite={this.handleGimmieInvite} />
+        <MainMenu user={user} show={showMenu} />
         {this.renderErrorMessage()}
         {this.renderStatusMessage()}
         {children}

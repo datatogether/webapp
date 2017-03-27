@@ -2,12 +2,22 @@ html, body, #root, #app {
   min-height: 100%;
 }
 
+body {
+  // grossness to make sure the app always consumes the entire window
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .bg-green { background: $green; }
 .bg-blue { background: $blue; }
 .bg-purple { background: $purple; }
 .bg-red { background: $red; }
 .bg-yellow { background: $yellow; }
 .bg-orange { background: $orange; }
+.bg-white { background: white; }
 
 .green { color: $green; }
 .blue { color: $blue; }
@@ -15,6 +25,7 @@ html, body, #root, #app {
 .red { color: $red; }
 .yellow { color: $yellow; }
 .orange { color: $orange; }
+.white { color: white; }
 
 hr.green { border-top: 1px solid $green; }
 hr.blue { border-top: 1px solid $blue; }

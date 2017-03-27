@@ -9,12 +9,14 @@ import { selectDefaultKeyId } from '../selectors/keys';
 import Spinner from '../components/Spinner';
 import List from '../components/List';
 import ContentItem from '../components/item/ContentItem';
+import CollectionForm from '../components/form/CollectionForm';
+import CollectionView from '../components/Collection';
 
 class Collection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: !(props.id == "new"),
     };
 
     [
@@ -23,7 +25,9 @@ class Collection extends React.Component {
   }
 
   componentWillMount() {
-    this.props.loadCollection(this.props.id);
+    (this.props.id == "new") ?
+      this.props.newCollection(this.props.sessionKeyId):
+      this.props.loadCollection(this.props.id);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,55 +36,37 @@ class Collection extends React.Component {
     }
   }
 
-  renderContents() {
-    const { collection } = this.props;
-    if (!collection.contents) {
-      return undefined;
-    }
+  handleChange(name, value) {
 
-    return (
-      <div>
-        <div className="row">
-          <div className="col-md-12">
-            <hr className="green" />
-            <h3 className="green">Contents:</h3>
-            <br />
-          </div>
-        </div>
-        <div className="row">
-          <List data={collection.contents} component={ContentItem} />
-        </div>
-      </div>
-    );
+  }
+  handleCancel() {
+    
+  }
+  handleSave() {
+    
   }
 
   render() {
     const { loading } = this.state;
-    const { collection, sessionKeyId } = this.props;
+    const { collection, local, sessionKeyId } = this.props;
 
     if (loading) {
       return <Spinner />;
+    } else if (!collection && !local) {
+      return null;
+    } else if (local) {
+      return (
+        <CollectionForm
+          data={local}
+          onChange={this.handleChange}
+          onCancel={this.handleCancel}
+          onSubmit={this.handleSave}
+        />
+      );
     }
 
     return (
-      <div id="collection" className="page">
-        <div className="container">
-          <header className="row">
-            <div className="col-md-12">
-              <hr className="green" />
-              <label className="label">Collection</label>
-              <h1 className="green">{collection.title}</h1>
-            </div>
-          </header>
-          <div className="row">
-            <div className="col-md-12 col-lg-8">
-              <p>{collection.description}</p>
-            </div>
-            {sessionKeyId ? <Link to="/collections/new">New Collection</Link> : undefined}
-          </div>
-          {this.renderContents()}
-        </div>
-      </div>
+      <CollectionView data={collection} />
     );
   }
 }
@@ -90,18 +76,20 @@ Collection.propTypes = {
   sessionKeyId: PropTypes.string,
 
   collection: PropTypes.object,
-  // local: PropTypes.object,
+  local: PropTypes.object,
   loadCollection: PropTypes.func.isRequired,
+  // editCollection: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
+  const { id } = ownProps.params;
   const sessionKeyId = selectDefaultKeyId(state);
 
   return {
-    id: ownProps.params.id,
+    id,
     sessionKeyId,
-    local: selectLocalCollection(state, ownProps.params.id),
-    collection: selectCollection(state, ownProps.params.id),
+    local: selectLocalCollection(state, id),
+    collection: selectCollection(state, id),
   };
 }
 

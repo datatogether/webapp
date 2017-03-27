@@ -25,16 +25,20 @@ export default class MainMenu extends React.Component {
     const { user, show, onGimmieInvite } = this.props;
     return (
       <div id="main_menu" onClick={this.onClick} className={show ? "show" : "hide"}>
-        <Link className="blue" to="/">Datasets</Link>
-        <Link className="green" to="/browse">Docs</Link>
-        {/* user ? <a className="orange" href="http://docs.qri.io">Docs</a> : undefined */}
-        { user ? <a className="orange" href="/beta">Beta Info</a> : undefined}
+        <Link className="blue" to="/">Home</Link>
+        <Link className="blue" to="/">Search</Link>
+        <Link className="blue" to="/primers">Primers</Link>
+        {/*<Link className="blue" to="/collections">Collections</Link>*/}
         {
-          user ?
-            <Link className="yellow" to={`/users/${user.username}`}>{user.username}</Link> :
-            <a onClick={onGimmieInvite}>Gimmie beta</a>
+          !user &&
+            (<div>
+              <Link className="yellow" to="/login">Login</Link>
+              <Link className="yellow" to="/signup">Signup</Link>
+            </div>)
         }
-        { user ? undefined : <Link to="/login">Login</Link>}
+        <a className="orange" href="https://docs.archivers.space/archivers">Docs</a>
+        <a className="orange" href="https://github.com/edgi-govdata-archiving/proposed-services">Proposal</a>
+        <a className="orange" href="https://github.com/qri-io/context/issues">App Issues</a>
       </div>
     );
   }
@@ -45,7 +49,6 @@ MainMenu.propTypes = {
     PropTypes.object,
     PropTypes.null]),
   show: PropTypes.bool,
-  onGimmieInvite: PropTypes.func,
 };
 
 MainMenu.defaultProps = {

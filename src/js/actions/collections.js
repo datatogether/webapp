@@ -11,8 +11,8 @@ const blankCollection = {
 };
 
 const COLLECTION_NEW = "COLLECTION_NEW";
-export function newCollection(keyId, subject) {
-  return newLocalModel(Schemas.COLLECTION, COLLECTION_NEW, Object.assign({}, blankCollection, { keyId, subject }));
+export function newCollection(keyId) {
+  return newLocalModel(Schemas.COLLECTION, COLLECTION_NEW, Object.assign({}, blankCollection, { keyId }));
 }
 
 const COLLECTION_EDIT = "COLLECTION_EDIT";

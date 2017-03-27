@@ -17,13 +17,17 @@ const urlSchema = new Schema('urls', { idAttribute: 'url' });
 const linkSchema = new Schema('links', { idAttribute: link => `${link.src.url}.${link.dst.url}` });
 const consensusSchema = new Schema('consensus', { idAttribute: 'subject' });
 const contentSchema = new Schema('content', { idAttribute: 'hash' });
-const collectionSchema = new Schema('colletions');
+const collectionSchema = new Schema('collections');
 const primerSchema = new Schema('primers');
 const subprimerSchema = new Schema('subprimers');
 
 metadataSchema.new = (attrs) => {
   return Object.assign({}, attrs);
 };
+
+collectionSchema.new = (attrs) => {
+  return Object.assign({ id: "new" }, attrs);
+}
 
 // Schemas for Github API responses.
 const Schemas = {
