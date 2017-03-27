@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 // import { debounce } from 'lodash';
@@ -13,7 +12,7 @@ import { selectSearchQuery, selectSearchResults } from '../selectors/search';
 import List from '../components/List';
 import SearchResultItem from '../components/item/SearchResultItem';
 
-class Home extends React.Component {
+class Archives extends React.Component {
   constructor(props) {
     super(props);
 
@@ -33,38 +32,53 @@ class Home extends React.Component {
     });
   }
 
+  renderArchiveUrl() {
+    const { query, results } = this.props;
+    if (query && query.length > 4 && !results.find(r => r.url == query)) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <h6>Hrm... looks like we don&apos;t have a record for that url.</h6>
+            <p>Would You Like to try to archive it?</p>
+            <button className="btn btn-primary" onClick={this.handleArchiveUrl.bind(this, query)}>Archive Url</button>
+          </div>
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
   render() {
-    const { query, results, session } = this.props;
+    const { query, results } = this.props;
 
     return (
       <div id="home" className="page">
-        <div className="container">
+        <div className="user container">
           <div className="row">
-            <header className="orange col-md-8 offset-md-2">
-              <h1>Welcome!</h1>
+            <header className="orange col-md-12">
+              <div className="form-group">
+                <label className="form-label label">search archives</label>
+                <input className="form-control" value={query} onChange={this.handleSearchChange} />
+              </div>
             </header>
           </div>
           <div className="row">
-            <div className="col-md-8 offset-md-2">
-              <p>We're on a mission to discover, backup, and catalogue <i>lots &amp; lots of government data</i>, and we need your help! 
-              A large amount the data we discover doesn't have proper metadata, and isn't very organized.
-              With your help we can build an archive that will last for years to come.
-              Join us & help rescue data!</p>
-              <Link to={ session ? "/primers" : "/signup" } className="btn btn-large bg-orange white">Start Archiving Now</Link>
-            </div>
+            <List component={SearchResultItem} data={results} />
           </div>
+          {this.renderArchiveUrl()}
         </div>
       </div>
     );
   }
 }
 
-Home.propTypes = {
+Archives.propTypes = {
   // pages: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
 };
 
-Home.defaultProps = {
+Archives.defaultProps = {
 };
 
 function mapStateToProps(state, ownProps) {
@@ -80,4 +94,4 @@ export default connect(mapStateToProps, {
   loadUserByUsername,
   archiveUrl,
   search,
-})(Home);
+})(Archives);

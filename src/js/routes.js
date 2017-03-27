@@ -30,6 +30,12 @@ export default {
       },
     },
     {
+      path: "/archives",
+      getComponent(location, cb){
+        import('./containers/Archives').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: '/collections',
       getComponent(location, cb) {
         import('./containers/Collections').then(loadRoute(cb)).catch(errorLoading);

@@ -3,6 +3,7 @@
  * Gooby pls. Don 4get to update the prod routes.js file
  */
 import App from './containers/App';
+import Archives from './containers/Archives';
 import Collection from './containers/Collection';
 import Collections from './containers/Collections';
 import Content from './containers/Content';
@@ -30,6 +31,10 @@ export default {
     {
       path: "/url",
       component: Url,
+    },
+    {
+      path: "/archives",
+      component: Archives,
     },
     {
       path: "/collections",
