@@ -14,6 +14,7 @@ const blankMetadata = {
     language: "",
     landingPage: "",
     theme: "",
+    license: "http://www.usa.gov/publicdomain/label/1.0/",
   },
 };
 

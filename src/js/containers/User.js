@@ -40,7 +40,6 @@ class User extends React.Component {
       nextProps.loadUserByUsername(nextProps.username);
       this.setState({ loading: true });
     } else if (nextProps.user && this.state.loading) {
-      console.log("huh?");
       if (nextProps.user && nextProps.user.currentKey) {
         this.props.loadMetadataByKey(nextProps.user.currentKey);
       }

@@ -2,7 +2,7 @@ html, body, #root, #app {
   min-height: 100%;
 }
 
-body {
+body, #root {
   // grossness to make sure the app always consumes the entire window
   position: fixed;
   width: 100%;

@@ -16,10 +16,7 @@ class MetadataEditor extends React.Component {
     [
       "handleNew",
       "handleEdit",
-      "handleAddField",
-      "handleRenameField",
-      "handleRemoveField",
-      "handleChangeValue",
+      "handleChange",
       "handleCancel",
       "handleSave",
     ].forEach((m) => { this[m] = this[m].bind(this); });
@@ -45,24 +42,7 @@ class MetadataEditor extends React.Component {
     this.props.editMetadata(this.props.savedMetadata);
   }
 
-  handleAddField() {
-    const change = { meta: Object.assign({}, this.props.metadata.meta, { new_field: "" }) };
-    this.props.updateMetadata({ meta: Object.assign({}, this.props.metadata, change) });
-  }
-
-  handleRenameField(prevName, newName) {
-    const change = { meta: Object.assign({}, this.props.metadata.meta, { [newName]: this.props.metadata.meta[prevName] }) };
-    delete change.meta[prevName];
-    this.props.updateMetadata(Object.assign({}, this.props.metadata, change));
-  }
-
-  handleRemoveField(field) {
-    const change = { meta: Object.assign({}, this.props.metadata.meta) };
-    delete change.meta[field];
-    this.props.updateMetadata(Object.assign({}, this.props.metadata, change));
-  }
-
-  handleChangeValue(name, value) {
+  handleChange(name, value) {
     const change = { meta: Object.assign({}, this.props.metadata.meta, { [name]: value }) };
     this.props.updateMetadata(Object.assign({}, this.props.metadata, change));
   }
@@ -98,11 +78,8 @@ class MetadataEditor extends React.Component {
     return (
       <div className="metadata editor">
         <MetadataForm
-          metadata={metadata.meta}
-          onAddField={this.handleAddField}
-          onRenameField={this.handleRenameField}
-          onRemoveField={this.handleRemoveField}
-          onChangeValue={this.handleChangeValue}
+          data={metadata.meta}
+          onChange={this.handleChange}
           onCancel={this.handleCancel}
           onSubmit={this.handleSave}
         />

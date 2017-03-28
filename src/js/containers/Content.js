@@ -91,7 +91,7 @@ class Content extends React.Component {
               <h5>{hash}</h5>
             </header>
           </div>
-          <TabBar value={tab} tabs={["consensus", "metadata", "urls", "history"]} onChange={this.handleSetTab} color="yellow" />
+          <TabBar value={tab} tabs={["metadata", "consensus", "urls", "history"]} onChange={this.handleSetTab} color="yellow" />
           {this.renderCurrentTab()}
         </div>
       </div>
