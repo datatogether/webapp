@@ -17,4 +17,4 @@ const KeyValueInput = ({ name, value, onChangeValue, onChangeKey, onRemove }) =>
   );
 };
 
-export defulat KeyValueInput;
+export default KeyValueInput;
