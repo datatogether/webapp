@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import analytics from '../analytics';
 import { selectSessionUser } from '../selectors/session';
 import { selectCollections } from '../selectors/collections';
 import { loadCollections } from '../actions/collections';
@@ -21,6 +22,7 @@ class Collections extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     this.props.loadCollections();
   }
 

@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import analytics from '../analytics';
 import { selectUrl, selectOutboundLinks, selectInboundLinks, urlStats } from '../selectors/url';
 import { loadUrl, loadOutboundLinks, loadInboundLinks, archiveUrl } from '../actions/url';
 
@@ -30,6 +31,7 @@ class Url extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     this.props.loadUrl(this.props.urlParam);
     this.props.loadInboundLinks(this.props.urlParam);
   }

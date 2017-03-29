@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import analytics from '../analytics';
+
 import Consensus from '../components/Consensus';
 import HistoryItem from '../components/item/HistoryItem';
 import List from '../components/List';
 // import Metadata from '../components/Metadata';
 import TabBar from '../components/TabBar';
 import UrlItem from '../components/item/UrlItem';
-
 import MetadataEditor from './MetadataEditor';
 
 import { loadConsensus } from '../actions/consensus';
@@ -29,6 +30,7 @@ class Content extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     // this.props.loadUserByUsername(this.props.username);
     // Debounce search to avoid hammering the server with relentless queries
     // 250ms delay should be enough

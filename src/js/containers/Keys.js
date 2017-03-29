@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import analytics from '../analytics';
 import { selectLocalSessionUser, selectKeys } from '../selectors/session';
 import { loadKeys, createKey, deleteKey } from '../actions/session';
 
@@ -31,6 +32,7 @@ class Keys extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     this.props.loadKeys();
   }
 

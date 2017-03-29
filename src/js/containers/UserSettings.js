@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import analytics from '../analytics';
 import { selectLocalSessionUser } from '../selectors/session';
 import { editSessionUser, updateSessionUser, saveSessionUser } from '../actions/session';
 
@@ -25,6 +26,7 @@ class UserSettings extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     this.props.editSessionUser();
   }
 

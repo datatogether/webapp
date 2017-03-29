@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import analytics from '../analytics';
 import { selectCollection, selectLocalCollection } from '../selectors/collections';
 import { loadCollection, newCollection, editCollection } from '../actions/collections';
 import { selectDefaultKeyId } from '../selectors/keys';
@@ -25,6 +26,7 @@ class Collection extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     (this.props.id == "new") ?
       this.props.newCollection(this.props.sessionKeyId):
       this.props.loadCollection(this.props.id);

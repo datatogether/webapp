@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import analytics from '../analytics';
 import { selectPrimers } from '../selectors/primers';
 import { loadPrimers } from '../actions/primers';
 
@@ -19,6 +20,7 @@ class Primers extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     this.props.loadPrimers();
   }
 

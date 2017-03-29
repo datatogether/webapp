@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
+import analytics from '../analytics';
 import { signup, SESSION_SIGNUP_FAILURE } from '../actions/session';
 import { selectSessionUser } from '../selectors/session';
 import ValidInput from '../components/form/ValidInput';
@@ -23,6 +24,7 @@ class Signup extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     if (this.props.user != null) {
       browserHistory.push('/');
     }

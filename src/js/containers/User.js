@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import analytics from '../analytics';
 import { loadUserByUsername } from '../actions/user';
 import { logoutUser, loadKeys } from '../actions/session';
 import { loadMetadataByKey } from '../actions/metadata';
@@ -28,6 +29,7 @@ class User extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     if (this.props.user && this.props.user.currentKey) {
       this.props.loadMetadataByKey(this.props.user.currentKey);
     } else {

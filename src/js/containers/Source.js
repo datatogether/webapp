@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import analytics from '../analytics';
 import { selectSource, selectSourceUndescribedUrls, selectSourceAttributedUrls } from '../selectors/sources';
 import { loadSource, loadSourceUrls, loadSourceAttributedUrls } from '../actions/source';
 
@@ -25,6 +26,7 @@ class Source extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     this.props.loadSource(this.props.id);
     this.props.loadSourceUrls(this.props.id);
   }

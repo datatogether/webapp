@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 // import { debounce } from 'lodash';
 
+import analytics from '../analytics';
 import { search } from '../actions/search';
 import { archiveUrl } from '../actions/url';
 import { loadSources } from '../actions/source';
@@ -29,6 +30,7 @@ class Archives extends React.Component {
   }
 
   componentWillMount() {
+    analytics.page('archives');
     this.props.loadRecentContentUrls(1,25);
     this.props.loadSources(1,4);
   }

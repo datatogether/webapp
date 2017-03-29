@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 // import { debounce } from 'lodash';
 
+import analytics from '../analytics';
 import { search } from '../actions/search';
 import { loadUserByUsername } from '../actions/user';
 import { archiveUrl } from '../actions/url';
@@ -21,6 +22,10 @@ class Home extends React.Component {
       "handleSearchChange",
       "handleArchiveUrl",
     ].forEach((m) => { this[m] = this[m].bind(this); });
+  }
+
+  componentWillMount() {
+    analytics.page("home");
   }
 
   handleSearchChange(e) {

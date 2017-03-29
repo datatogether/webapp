@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { debounce } from 'lodash';
 
+import analytics from '../analytics';
 import * as socket from '../middleware/socket';
 
 import { toggleMenu, hideMenu, resetMessage, resetErrorMessage, showModal, hideModal } from '../actions/app';
@@ -57,6 +58,13 @@ class App extends Component {
 
     // teardown websocket connection
     socket.disconnect();
+  }
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.user && nextProps.user)  {
+      analytics.identify(nextProps.user.id, {
+        username: nextProps.user.username,
+      });
+    }
   }
 
   handleChange(nextValue) {
