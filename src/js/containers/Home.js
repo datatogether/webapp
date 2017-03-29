@@ -50,7 +50,7 @@ class Home extends React.Component {
               A large amount the data we discover doesn't have proper metadata, and isn't very organized.
               With your help we can build an archive that will last for years to come.
               Join us & help rescue data!</p>
-              <Link to={ session ? "/primers" : "/signup" } className="btn btn-large bg-orange white">Start Archiving Now</Link>
+              <Link to={ session ? "/archives" : "/signup" } className="btn btn-large bg-orange white">Start Archiving Now</Link>
             </div>
           </div>
         </div>

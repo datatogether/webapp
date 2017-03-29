@@ -2,6 +2,10 @@ import { combineReducers } from 'redux';
 import paginate from './paginate';
 
 import {
+  SUBPRIMERS_FETCH_REQUEST,
+  SUBPRIMERS_FETCH_SUCCESS,
+  SUBPRIMERS_FETCH_FAILURE,
+
   SUBPRIMER_URLS_REQUEST,
   SUBPRIMER_URLS_SUCCESS,
   SUBPRIMER_URLS_FAILURE,
@@ -19,6 +23,15 @@ import {
 
 // Updates the pagination data for different actions.
 const pagination = combineReducers({
+  subprimers: paginate({
+    mapActionToKey: action => "created",
+    types: [
+      SUBPRIMERS_FETCH_REQUEST,
+      SUBPRIMERS_FETCH_SUCCESS,
+      SUBPRIMERS_FETCH_FAILURE,
+    ],
+  }),
+
   subprimerUndescribedUrls: paginate({
     mapActionToKey: action => action.id,
     types: [
@@ -38,7 +51,7 @@ const pagination = combineReducers({
   }),
 
   contentRecentUrls: paginate({
-    mapActionToKey: action => "recent",
+    mapActionToKey: action => "created",
     types: [
       CONTENT_RECENT_URLS_REQUEST,
       CONTENT_RECENT_URLS_SUCCESS,

@@ -24,9 +24,8 @@ export function selectContentMetadata(state, hash) {
 
 export function selectRecentContentUrls(state) {
   const pages = state.pagination.contentRecentUrls;
-  if (!pages.recent) {
+  if (!pages.created) {
     return [];
   }
-
-  return pages.recent.ids.map(urlId => state.entities.urls[urlId]);
+  return pages.created.ids.map(urlId => state.entities.urls[urlId]);
 }

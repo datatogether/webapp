@@ -5,14 +5,17 @@ import { browserHistory } from 'react-router';
 
 import { search } from '../actions/search';
 import { archiveUrl } from '../actions/url';
+import { loadSubprimers } from '../actions/subprimer';
 import { loadRecentContentUrls } from '../actions/content';
 import { selectSessionUser } from '../selectors/session';
 import { selectSearchQuery, selectSearchResults } from '../selectors/search';
 import { selectRecentContentUrls } from '../selectors/content';
+import { selectRecentSubprimers } from '../selectors/subprimers';
 
 import List from '../components/List';
 import SearchResultItem from '../components/item/SearchResultItem';
 import ContentItem from '../components/item/ContentItem';
+import SubprimersRow from '../components/SubprimersRow';
 
 class Archives extends React.Component {
   constructor(props) {
@@ -27,6 +30,7 @@ class Archives extends React.Component {
 
   componentWillMount() {
     this.props.loadRecentContentUrls(1,25);
+    this.props.loadSubprimers(1,4);
   }
 
   handleSearchChange(e) {
@@ -72,12 +76,15 @@ class Archives extends React.Component {
 
   renderRecentContent() {
     return (
-      <div className="row">
-        <div className="col-md-12">
-          <hr />
-          <label className="label">New Content Needing Metadata:</label>
+      <div>
+        <SubprimersRow data={this.props.subprimers} label="Recent Subprimers:" />
+        <div className="row">
+          <div className="col-md-12">
+            <hr />
+            <label className="label">New Content Needing Metadata:</label>
+          </div>
+          <List component={ContentItem} data={this.props.recentContent} />
         </div>
-        <List component={ContentItem} data={this.props.recentContent} />
       </div>
     );
   }
@@ -122,10 +129,12 @@ function mapStateToProps(state, ownProps) {
     query: selectSearchQuery(state),
     results: selectSearchResults(state),
     recentContent: selectRecentContentUrls(state),
+    subprimers: selectRecentSubprimers(state),
   }, ownProps);
 }
 
 export default connect(mapStateToProps, {
+  loadSubprimers,
   loadRecentContentUrls,
   archiveUrl,
   search,
