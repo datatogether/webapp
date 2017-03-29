@@ -2,18 +2,18 @@ import { combineReducers } from 'redux';
 import paginate from './paginate';
 
 import {
-  SUBPRIMERS_FETCH_REQUEST,
-  SUBPRIMERS_FETCH_SUCCESS,
-  SUBPRIMERS_FETCH_FAILURE,
+  SOURCES_FETCH_REQUEST,
+  SOURCES_FETCH_SUCCESS,
+  SOURCES_FETCH_FAILURE,
 
-  SUBPRIMER_URLS_REQUEST,
-  SUBPRIMER_URLS_SUCCESS,
-  SUBPRIMER_URLS_FAILURE,
+  SOURCE_URLS_REQUEST,
+  SOURCE_URLS_SUCCESS,
+  SOURCE_URLS_FAILURE,
 
-  SUBPRIMER_ATTRIBUTED_URLS_REQUEST,
-  SUBPRIMER_ATTRIBUTED_URLS_SUCCESS,
-  SUBPRIMER_ATTRIBUTED_URLS_FAILURE,
-} from '../actions/subprimer';
+  SOURCE_ATTRIBUTED_URLS_REQUEST,
+  SOURCE_ATTRIBUTED_URLS_SUCCESS,
+  SOURCE_ATTRIBUTED_URLS_FAILURE,
+} from '../actions/source';
 
 import {
   CONTENT_RECENT_URLS_REQUEST,
@@ -23,30 +23,30 @@ import {
 
 // Updates the pagination data for different actions.
 const pagination = combineReducers({
-  subprimers: paginate({
+  sources: paginate({
     mapActionToKey: action => "created",
     types: [
-      SUBPRIMERS_FETCH_REQUEST,
-      SUBPRIMERS_FETCH_SUCCESS,
-      SUBPRIMERS_FETCH_FAILURE,
+      SOURCES_FETCH_REQUEST,
+      SOURCES_FETCH_SUCCESS,
+      SOURCES_FETCH_FAILURE,
     ],
   }),
 
-  subprimerUndescribedUrls: paginate({
+  sourceUndescribedUrls: paginate({
     mapActionToKey: action => action.id,
     types: [
-      SUBPRIMER_URLS_REQUEST,
-      SUBPRIMER_URLS_SUCCESS,
-      SUBPRIMER_URLS_FAILURE,
+      SOURCE_URLS_REQUEST,
+      SOURCE_URLS_SUCCESS,
+      SOURCE_URLS_FAILURE,
     ],
   }),
 
-  subprimerAttributedUrls: paginate({
+  sourceAttributedUrls: paginate({
     mapActionToKey: action => action.id,
     types: [
-      SUBPRIMER_ATTRIBUTED_URLS_REQUEST,
-      SUBPRIMER_ATTRIBUTED_URLS_SUCCESS,
-      SUBPRIMER_ATTRIBUTED_URLS_FAILURE,
+      SOURCE_ATTRIBUTED_URLS_REQUEST,
+      SOURCE_ATTRIBUTED_URLS_SUCCESS,
+      SOURCE_ATTRIBUTED_URLS_FAILURE,
     ],
   }),
 

@@ -19,7 +19,7 @@ const consensusSchema = new Schema('consensus', { idAttribute: 'subject' });
 const contentSchema = new Schema('content', { idAttribute: 'hash' });
 const collectionSchema = new Schema('collections');
 const primerSchema = new Schema('primers');
-const subprimerSchema = new Schema('subprimers');
+const sourceSchema = new Schema('sources');
 
 metadataSchema.new = (attrs) => {
   return Object.assign({}, attrs);
@@ -46,9 +46,9 @@ const Schemas = {
 
   PRIMER: primerSchema,
   PRIMER_ARRAY: arrayOf(primerSchema),
-  // SUBPRIMER should be the name of an indie steampunk flick, if it isn't already.
-  SUBPRIMER: subprimerSchema,
-  SUBPRIMER_ARRAY: arrayOf(subprimerSchema),
+  
+  SOURCE: sourceSchema,
+  SOURCE_ARRAY: arrayOf(sourceSchema),
   // an external url for archiving
   URL: urlSchema,
   URL_ARRAY: arrayOf(urlSchema),

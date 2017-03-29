@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { selectSubprimer, selectSubprimerUndescribedUrls, selectSubprimerAttributedUrls } from '../selectors/subprimers';
-import { loadSubprimer, loadSubprimerUrls, loadSubprimerAttributedUrls } from '../actions/subprimer';
+import { selectSource, selectSourceUndescribedUrls, selectSourceAttributedUrls } from '../selectors/sources';
+import { loadSource, loadSourceUrls, loadSourceAttributedUrls } from '../actions/source';
 
 import List from '../components/List';
 import ProgressBar from '../components/ProgressBar';
@@ -11,11 +11,11 @@ import StatsBar from '../components/StatsBar';
 import TabBar from '../components/TabBar';
 import UrlItem from '../components/item/UrlItem';
 
-class Subprimer extends React.Component {
+class Source extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: (props.subprimer == undefined),
+      loading: (props.source == undefined),
       tab: 'unattributed content',
     };
 
@@ -25,12 +25,12 @@ class Subprimer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.loadSubprimer(this.props.id);
-    this.props.loadSubprimerUrls(this.props.id);
+    this.props.loadSource(this.props.id);
+    this.props.loadSourceUrls(this.props.id);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.subprimer && this.state.loading) {
+    if (nextProps.source && this.state.loading) {
       this.setState({ loading: false });
     }
   }
@@ -38,10 +38,10 @@ class Subprimer extends React.Component {
   handleChangeTab(tab) {
     switch (tab) {
       case "unattributed content":
-        this.props.loadSubprimerUrls(this.props.id);
+        this.props.loadSourceUrls(this.props.id);
         break;
       case "attributed content":
-        this.props.loadSubprimerAttributedUrls(this.props.id);
+        this.props.loadSourceAttributedUrls(this.props.id);
         break;
       default:
         break;
@@ -78,30 +78,30 @@ class Subprimer extends React.Component {
 
   render() {
     const { loading, tab } = this.state;
-    const { subprimer } = this.props;
+    const { source } = this.props;
 
     if (loading) {
       return <Spinner />;
     }
 
     return (
-      <div id="subprimers" className="page">
+      <div id="sources" className="page">
         <div className="container">
           <header className="row">
             <div className="col-md-12">
               <hr className="orange" />
-              <label className="label">Subprimer</label>
-              <h1 className="orange">{subprimer.url}</h1>
+              <label className="label">Source</label>
+              <h1 className="orange">{source.url}</h1>
             </div>
           </header>
           <div className="row">
             <div className="col-md-12">
-              <ProgressBar total={subprimer.stats.contentUrlCount} progress={subprimer.stats.contentMetadataCount} color="orange" />
+              <ProgressBar total={source.stats.contentUrlCount} progress={source.stats.contentMetadataCount} color="orange" />
               <StatsBar
                 stats={{
-                  urls: subprimer.stats.urlCount,
-                  content: subprimer.stats.contentUrlCount,
-                  documented: subprimer.stats.contentMetadataCount,
+                  urls: source.stats.urlCount,
+                  content: source.stats.contentUrlCount,
+                  documented: source.stats.contentMetadataCount,
                 }}
               />
             </div>
@@ -118,29 +118,29 @@ class Subprimer extends React.Component {
   }
 }
 
-Subprimer.propTypes = {
+Source.propTypes = {
   id: PropTypes.string.isRequired,
-  subprimer: PropTypes.object,
+  source: PropTypes.object,
 
   urls: PropTypes.array.isRequired,
   attributedUrls: PropTypes.array.isRequired,
 
-  loadSubprimer: PropTypes.func.isRequired,
-  loadSubprimerUrls: PropTypes.func.isRequired,
+  loadSource: PropTypes.func.isRequired,
+  loadSourceUrls: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     id: ownProps.params.id,
-    subprimer: selectSubprimer(state, ownProps.params.id),
+    source: selectSource(state, ownProps.params.id),
 
-    urls: selectSubprimerUndescribedUrls(state, ownProps.params.id),
-    attributedUrls: selectSubprimerAttributedUrls(state, ownProps.params.id),
+    urls: selectSourceUndescribedUrls(state, ownProps.params.id),
+    attributedUrls: selectSourceAttributedUrls(state, ownProps.params.id),
   };
 }
 
 export default connect(mapStateToProps, {
-  loadSubprimer,
-  loadSubprimerUrls,
-  loadSubprimerAttributedUrls,
-})(Subprimer);
+  loadSource,
+  loadSourceUrls,
+  loadSourceAttributedUrls,
+})(Source);

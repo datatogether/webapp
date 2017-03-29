@@ -11,7 +11,7 @@ import Home from './containers/Home';
 import Login from './containers/Login';
 import Primers from './containers/Primers';
 import Primer from './containers/Primer';
-import Subprimer from './containers/Subprimer';
+import Source from './containers/Source';
 import Signup from './containers/Signup';
 import Stylesheet from './components/Stylesheet';
 import Keys from './containers/Keys';
@@ -77,8 +77,8 @@ export default {
       component: Primer,
     },
     {
-      path: '/subprimers/:id',
-      component: Subprimer,
+      path: '/sources/:id',
+      component: Source,
     },
   ],
 };

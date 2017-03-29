@@ -6,7 +6,8 @@ import { loadPrimer } from '../actions/primers';
 
 import Spinner from '../components/Spinner';
 import List from '../components/List';
-import SubprimerItem from '../components/item/SubprimerItem';
+import SourceItem from '../components/item/SourceItem';
+import PrimerItem from '../components/item/PrimerItem';
 
 class Primer extends React.Component {
   constructor(props) {
@@ -28,9 +29,9 @@ class Primer extends React.Component {
     }
   }
 
-  renderSubprimers() {
+  renderSubPrimers() {
     const { primer } = this.props;
-    if (!primer.subprimers) {
+    if (!primer.subPrimers) {
       return undefined;
     }
 
@@ -39,12 +40,35 @@ class Primer extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <hr className="orange" />
-            <h3 className="orange">Subprimers:</h3>
+            <h3 className="orange">SubPrimers:</h3>
             <br />
           </div>
         </div>
         <div className="row">
-          <List data={primer.subprimers} component={SubprimerItem} />
+          <List data={primer.subPrimers} component={PrimerItem} />
+        </div>
+      </div>
+    );
+  }
+
+
+  renderSources() {
+    const { primer } = this.props;
+    if (!primer.sources) {
+      return undefined;
+    }
+
+    return (
+      <div>
+        <div className="row">
+          <div className="col-md-12">
+            <hr className="orange" />
+            <h3 className="orange">Sources:</h3>
+            <br />
+          </div>
+        </div>
+        <div className="row">
+          <List data={primer.sources} component={SourceItem} />
         </div>
       </div>
     );
@@ -73,7 +97,7 @@ class Primer extends React.Component {
               <p>{primer.description}</p>
             </div>
           </div>
-          {this.renderSubprimers()}
+          {this.renderSources()}
         </div>
       </div>
     );

@@ -94,7 +94,7 @@ export default {
     {
       path: '/subprimers/:id',
       getComponent(location, cb) {
-        import('./containers/Subprimer').then(loadRoute(cb)).catch(errorLoading);
+        import('./containers/Source').then(loadRoute(cb)).catch(errorLoading);
       },
     },
   ],

@@ -50,7 +50,7 @@ export const PRIMER_SUBPRIMERS_REQUEST = "PRIMER_SUBPRIMERS_REQUEST";
 export const PRIMER_SUBPRIMERS_SUCCESS = "PRIMER_SUBPRIMERS_SUCCESS";
 export const PRIMER_SUBPRIMERS_FAILURE = "PRIMER_SUBPRIMERS_FAILURE";
 
-export function fetchSubprimers(id = "") {
+export function fetchSources(id = "") {
   return {
     [CALL_API]: {
       types: [PRIMER_SUBPRIMERS_REQUEST, PRIMER_SUBPRIMERS_SUCCESS, PRIMER_SUBPRIMERS_FAILURE],
@@ -61,9 +61,9 @@ export function fetchSubprimers(id = "") {
   };
 }
 
-export function loadSubprimers(id = "") {
+export function loadSources(id = "") {
   return (dispatch) => {
     // TODO - check for local url copy via getState
-    return dispatch(fetchSubprimers(id));
+    return dispatch(fetchSources(id));
   };
 }

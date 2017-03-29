@@ -5,17 +5,17 @@ import { browserHistory } from 'react-router';
 
 import { search } from '../actions/search';
 import { archiveUrl } from '../actions/url';
-import { loadSubprimers } from '../actions/subprimer';
+import { loadSources } from '../actions/source';
 import { loadRecentContentUrls } from '../actions/content';
 import { selectSessionUser } from '../selectors/session';
 import { selectSearchQuery, selectSearchResults } from '../selectors/search';
 import { selectRecentContentUrls } from '../selectors/content';
-import { selectRecentSubprimers } from '../selectors/subprimers';
+import { selectRecentSources } from '../selectors/sources';
 
 import List from '../components/List';
 import SearchResultItem from '../components/item/SearchResultItem';
 import ContentItem from '../components/item/ContentItem';
-import SubprimersRow from '../components/SubprimersRow';
+import SourcesRow from '../components/SourcesRow';
 
 class Archives extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class Archives extends React.Component {
 
   componentWillMount() {
     this.props.loadRecentContentUrls(1,25);
-    this.props.loadSubprimers(1,4);
+    this.props.loadSources(1,4);
   }
 
   handleSearchChange(e) {
@@ -77,7 +77,7 @@ class Archives extends React.Component {
   renderRecentContent() {
     return (
       <div>
-        <SubprimersRow data={this.props.subprimers} label="Recent Subprimers:" />
+        <SourcesRow data={this.props.sources} label="Recent Sources:" />
         <div className="row">
           <div className="col-md-12">
             <hr />
@@ -129,12 +129,12 @@ function mapStateToProps(state, ownProps) {
     query: selectSearchQuery(state),
     results: selectSearchResults(state),
     recentContent: selectRecentContentUrls(state),
-    subprimers: selectRecentSubprimers(state),
+    sources: selectRecentSources(state),
   }, ownProps);
 }
 
 export default connect(mapStateToProps, {
-  loadSubprimers,
+  loadSources,
   loadRecentContentUrls,
   archiveUrl,
   search,

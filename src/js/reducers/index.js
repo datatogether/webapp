@@ -19,7 +19,7 @@ const initialEntitiesState = {
   groups: {},
 
   primers: {},
-  subprimers: {},
+  sources: {},
   urls: {},
   links: {},
 
