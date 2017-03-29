@@ -21,3 +21,12 @@ export function selectContentMetadata(state, hash) {
     .filter(key => metadata[key].subject == hash)
     .map(key => metadata[key]);
 }
+
+export function selectRecentContentUrls(state) {
+  const pages = state.pagination.contentRecentUrls;
+  if (!pages.recent) {
+    return [];
+  }
+
+  return pages.recent.ids.map(urlId => state.entities.urls[urlId]);
+}

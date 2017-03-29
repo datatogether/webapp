@@ -104,3 +104,31 @@ export function loadContentUrls(hash) {
     return dispatch(fetchContentUrls(hash));
   };
 }
+
+
+export const CONTENT_RECENT_URLS_REQUEST = 'CONTENT_RECENT_URLS_REQUEST';
+export const CONTENT_RECENT_URLS_SUCCESS = 'CONTENT_RECENT_URLS_SUCCESS';
+export const CONTENT_RECENT_URLS_FAILURE = 'CONTENT_RECENT_URLS_FAILURE';
+
+export function fetchRecentContentUrls(page, pageSize) {
+  return {
+    [CALL_API]: {
+      types: [CONTENT_RECENT_URLS_REQUEST, CONTENT_RECENT_URLS_SUCCESS, CONTENT_RECENT_URLS_FAILURE],
+      endpoint: `/content`,
+      schema: Schemas.URL_ARRAY,
+      data: { page, pageSize },
+      page,
+      pageSize,
+    },
+  };
+}
+
+export function loadRecentContentUrls(page = 1, pageSize = 30) {
+  return (dispatch, getState) => {
+    // if (selectContentUrls(getState(), "").length) {
+    //   return null;
+    // }
+
+    return dispatch(fetchRecentContentUrls(page, pageSize));
+  };
+}

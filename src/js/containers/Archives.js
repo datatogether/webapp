@@ -4,13 +4,15 @@ import { browserHistory } from 'react-router';
 // import { debounce } from 'lodash';
 
 import { search } from '../actions/search';
-import { loadUserByUsername } from '../actions/user';
 import { archiveUrl } from '../actions/url';
+import { loadRecentContentUrls } from '../actions/content';
 import { selectSessionUser } from '../selectors/session';
 import { selectSearchQuery, selectSearchResults } from '../selectors/search';
+import { selectRecentContentUrls } from '../selectors/content';
 
 import List from '../components/List';
 import SearchResultItem from '../components/item/SearchResultItem';
+import ContentItem from '../components/item/ContentItem';
 
 class Archives extends React.Component {
   constructor(props) {
@@ -18,12 +20,20 @@ class Archives extends React.Component {
 
     [
       "handleSearchChange",
+      "handleClearSearch",
       "handleArchiveUrl",
     ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
+  componentWillMount() {
+    this.props.loadRecentContentUrls(1,25);
+  }
+
   handleSearchChange(e) {
     this.props.search(e.target.value);
+  }
+  handleClearSearch(e) {
+    this.props.search("");
   }
 
   handleArchiveUrl(url) {
@@ -49,6 +59,29 @@ class Archives extends React.Component {
     return undefined;
   }
 
+  renderSearchResults() {
+    return (
+      <div className="row">
+        <div className="col-md-12">
+          <label className="label">results</label>
+        </div>
+        <List component={SearchResultItem} data={this.props.results} /> 
+      </div>
+    );
+  }
+
+  renderRecentContent() {
+    return (
+      <div className="row">
+        <div className="col-md-12">
+          <hr />
+          <label className="label">New Content Needing Metadata:</label>
+        </div>
+        <List component={ContentItem} data={this.props.recentContent} />
+      </div>
+    );
+  }
+
   render() {
     const { query, results } = this.props;
 
@@ -63,9 +96,10 @@ class Archives extends React.Component {
               </div>
             </header>
           </div>
-          <div className="row">
-            <List component={SearchResultItem} data={results} />
-          </div>
+          {results.length ?
+            this.renderSearchResults() :
+            this.renderRecentContent()
+          }
           {this.renderArchiveUrl()}
         </div>
       </div>
@@ -87,11 +121,12 @@ function mapStateToProps(state, ownProps) {
     session,
     query: selectSearchQuery(state),
     results: selectSearchResults(state),
+    recentContent: selectRecentContentUrls(state),
   }, ownProps);
 }
 
 export default connect(mapStateToProps, {
-  loadUserByUsername,
+  loadRecentContentUrls,
   archiveUrl,
   search,
 })(Archives);

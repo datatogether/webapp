@@ -11,6 +11,12 @@ import {
   SUBPRIMER_ATTRIBUTED_URLS_FAILURE,
 } from '../actions/subprimer';
 
+import {
+  CONTENT_RECENT_URLS_REQUEST,
+  CONTENT_RECENT_URLS_SUCCESS,
+  CONTENT_RECENT_URLS_FAILURE,
+} from '../actions/content';
+
 // Updates the pagination data for different actions.
 const pagination = combineReducers({
   subprimerUndescribedUrls: paginate({
@@ -29,6 +35,15 @@ const pagination = combineReducers({
       SUBPRIMER_ATTRIBUTED_URLS_SUCCESS,
       SUBPRIMER_ATTRIBUTED_URLS_FAILURE,
     ],
+  }),
+
+  contentRecentUrls: paginate({
+    mapActionToKey: action => "recent",
+    types: [
+      CONTENT_RECENT_URLS_REQUEST,
+      CONTENT_RECENT_URLS_SUCCESS,
+      CONTENT_RECENT_URLS_FAILURE,
+    ]
   }),
 });
 
