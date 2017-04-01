@@ -52,19 +52,20 @@ class App extends Component {
     this.props.dispatch(layoutResize(window.innerWidth, window.innerHeight));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.user && nextProps.user) {
+      analytics.identify(nextProps.user.id, {
+        username: nextProps.user.username,
+      });
+    }
+  }
+
   componentWillUnmount() {
     // restore old onResize if one exists b/c we're good citizens like that
     window.onresize = this._oldResize;
 
     // teardown websocket connection
     socket.disconnect();
-  }
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.user && nextProps.user)  {
-      analytics.identify(nextProps.user.id, {
-        username: nextProps.user.username,
-      });
-    }
   }
 
   handleChange(nextValue) {
@@ -113,7 +114,7 @@ class App extends Component {
    * presenting modals is easy! fun even! yay! in your component of choice
    * import showModal from actions/app, and call it with the signature
    * ("name", [component that will present modal], [data object])
-   * it's expected that the element that presents the modal will have a method "modal", 
+   * it's expected that the element that presents the modal will have a method "modal",
    * that will return either a react element or undefined
    * Whatever it gives back will be presented
    */

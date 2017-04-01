@@ -31,14 +31,14 @@ class Archives extends React.Component {
 
   componentWillMount() {
     analytics.page('archives');
-    this.props.loadRecentContentUrls(1,25);
-    this.props.loadSources(1,4);
+    this.props.loadRecentContentUrls(1, 25);
+    this.props.loadSources(1, 3);
   }
 
   handleSearchChange(e) {
     this.props.search(e.target.value);
   }
-  handleClearSearch(e) {
+  handleClearSearch() {
     this.props.search("");
   }
 
@@ -71,7 +71,7 @@ class Archives extends React.Component {
         <div className="col-md-12">
           <label className="label">results</label>
         </div>
-        <List component={SearchResultItem} data={this.props.results} /> 
+        <List component={SearchResultItem} data={this.props.results} />
       </div>
     );
   }

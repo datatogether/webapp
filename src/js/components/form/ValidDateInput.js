@@ -1,30 +1,23 @@
 import React, { PropTypes } from 'react';
 import DateInput from './DateInput';
 
-const ValidDateInput = ({ name, label, valid, disabled, onChange }) => {
-    var validClass = "", label, message, icon;
+const ValidDateInput = (props) => {
+  const { name, label, valid, value, placeholder, disabled, onChange, helpText, showHelpText, className, showValidation } = props;
+  let validClass = "", message;
 
-    if (this.props.label) {
-      label = <label>{this.props.label}</label>
-    }
-
-    if (this.props.showValidation) {
-      if (this.props.showValidationIcon) {
-        icon = <span className="validation icon ss-icon">{this.props.valid ? "checked" : "close" }</span>
-      }
-      message = (this.props.valid) ? "" : this.props.message
-      validClass = (this.props.valid) ? "valid " : "invalid "
-    }
-
-    return(
-      <div {...this.props} className={validClass + this.props.className}>
-        {label}
-        <DateInput initialInputDelay={this.props.initialInputDelay} disabled={this.props.disabled} name={this.props.name} placeholder={this.props.placeholder} value={this.props.value} onChange={this.onValueChange} />
-        {icon}
-        <span className="message">{message}</span>
-      </div>
-    );
+  if (showValidation) {
+    message = (valid) ? "" : message;
+    validClass = (valid) ? "valid " : "invalid ";
   }
+
+  return (
+    <div className={`${validClass} ${className}`}>
+      {label && <label className="control-label" htmlFor={name}>{label}</label>}
+      <DateInput disabled={disabled} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+      <span className="message">{message}</span>
+      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
+    </div>
+  );
 };
 
 ValidDateInput.propTypes = {
@@ -32,26 +25,22 @@ ValidDateInput.propTypes = {
   name: PropTypes.string.isRequired,
   // field value
   value: PropTypes.object,
-  // a delay (in ms) before the component will respond.
-  // good for when ui is changing under a ghost click
-  initialInputDelay: PropTypes.number,
   // onChange in the form (value, name)
-  onValueChange: PropTypes.func,
+  onChange: PropTypes.func,
   // placeholder text
-  placeholder: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   // leave undefined to display no valid
   valid: PropTypes.bool,
-  // leave undefined to display no message
-  message: PropTypes.string,
   // enable / disable the field
   disabled: PropTypes.bool,
   // className will set on the containing div
   className: PropTypes.string,
   // explicit control over weather or not to display validation
   showValidation: PropTypes.bool,
-  // flag for controlling display of a √ or x icon along with validation
-  // defaults to false (not-showing)
-  showValidationIcon: PropTypes.bool,
+  // short message to help the user
+  helpText: PropTypes.string,
+  // weather to show help text or not
+  showHelpText: PropTypes.bool,
 };
 
 ValidDateInput.defaultProps = {
@@ -60,6 +49,8 @@ ValidDateInput.defaultProps = {
   placeholder: "",
   className: " validTextArea field",
   showValidationIcon: false,
+  helpText: "",
+  showHelpText: false,
 };
 
 export default ValidDateInput;

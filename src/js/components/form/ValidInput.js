@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 
-const ValidInput = ({ label, name, type, showError, error, value, placeholder, onChange }) => {
+const ValidInput = (props) => {
+  const { label, name, type, showError, error, value, placeholder, onChange, helpText, showHelpText } = props;
   return (
     <div className={(error && showError) ? "validFormField form-group has-error" : "validFormField form-group"}>
-      {label ? <label className="control-label" htmlFor={name}>{label}</label> : undefined }
+      {label && <label className="control-label" htmlFor={name}>{label}</label>}
       <input
         id={name}
         name={name}
@@ -14,6 +15,7 @@ const ValidInput = ({ label, name, type, showError, error, value, placeholder, o
         onChange={(e) => { onChange(name, e.target.value, e); }}
       />
       {(error != "" && showError) ? <div className="control-label">{error}</div> : undefined}
+      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
     </div>
   );
 };
@@ -35,6 +37,10 @@ ValidInput.propTypes = {
   showError: PropTypes.bool,
   // change handler func. will be called with (name, value, event)
   onChange: PropTypes.func.isRequired,
+  // short message to help the user
+  helpText: PropTypes.string,
+  // weather to show help text or not
+  showHelpText: PropTypes.bool,
 };
 
 ValidInput.defaultProps = {
@@ -43,6 +49,8 @@ ValidInput.defaultProps = {
   error: undefined,
   showError: true,
   placeholder: "",
+  helpText: "",
+  showHelpText: false,
 };
 
 export default ValidInput;

@@ -124,7 +124,7 @@ export function fetchRecentContentUrls(page, pageSize) {
 }
 
 export function loadRecentContentUrls(page = 1, pageSize = 30) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     // if (selectContentUrls(getState(), "").length) {
     //   return null;
     // }

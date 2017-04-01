@@ -27,7 +27,7 @@ metadataSchema.new = (attrs) => {
 
 collectionSchema.new = (attrs) => {
   return Object.assign({ id: "new" }, attrs);
-}
+};
 
 // Schemas for Github API responses.
 const Schemas = {
@@ -46,7 +46,7 @@ const Schemas = {
 
   PRIMER: primerSchema,
   PRIMER_ARRAY: arrayOf(primerSchema),
-  
+
   SOURCE: sourceSchema,
   SOURCE_ARRAY: arrayOf(sourceSchema),
   // an external url for archiving

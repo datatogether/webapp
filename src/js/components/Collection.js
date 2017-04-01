@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import List from './List';
 import ContentItem from './item/ContentItem';
 
-const Collection = ({ data }) => {
-  const collection = data
+const Collection = ({ data, sessionKeyId }) => {
+  const collection = data;
   return (
     <div id="collection" className="page">
       <div className="container">
@@ -12,7 +13,7 @@ const Collection = ({ data }) => {
           <div className="col-md-12">
             <hr className="green" />
             <label className="label">Collection</label>
-            <h1 className="green">{local ? local.title : collection.title}</h1>
+            <h1 className="green">{collection.title}</h1>
           </div>
         </header>
         <div className="row">
@@ -38,6 +39,7 @@ const Collection = ({ data }) => {
 
 Collection.propTypes = {
   data: PropTypes.object.isRequired,
+  sessionKeyId: PropTypes.string,
 };
 
 export default Collection;

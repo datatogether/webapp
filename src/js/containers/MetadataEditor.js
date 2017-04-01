@@ -13,12 +13,17 @@ class MetadataEditor extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showHelp: true,
+    };
+
     [
       "handleNew",
       "handleEdit",
       "handleChange",
       "handleCancel",
       "handleSave",
+      "handleToggleHelp",
     ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
@@ -57,8 +62,13 @@ class MetadataEditor extends React.Component {
     this.props.cancelMetadataEdit(this.props.metadata);
   }
 
+  handleToggleHelp() {
+    this.setState({ showHelp: !this.state.showHelp });
+  }
+
   render() {
     const { savedMetadata, metadata, sessionKeyId } = this.props;
+    const { showHelp } = this.state;
 
     if (savedMetadata && !metadata) {
       return (
@@ -77,11 +87,13 @@ class MetadataEditor extends React.Component {
 
     return (
       <div className="metadata editor">
+        <a className="helpToggle right" onClick={this.handleToggleHelp}><span className="yellow">{showHelp ? "hide help" : "show help" }</span></a>
         <MetadataForm
           data={metadata.meta}
           onChange={this.handleChange}
           onCancel={this.handleCancel}
           onSubmit={this.handleSave}
+          showHelpText={showHelp}
         />
         <br />
       </div>

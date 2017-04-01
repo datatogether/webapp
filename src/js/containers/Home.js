@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 // import { debounce } from 'lodash';
 
 import analytics from '../analytics';
@@ -10,9 +9,6 @@ import { loadUserByUsername } from '../actions/user';
 import { archiveUrl } from '../actions/url';
 import { selectSessionUser } from '../selectors/session';
 import { selectSearchQuery, selectSearchResults } from '../selectors/search';
-
-import List from '../components/List';
-import SearchResultItem from '../components/item/SearchResultItem';
 
 class Home extends React.Component {
   constructor(props) {
@@ -39,7 +35,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { query, results, session } = this.props;
+    const { session } = this.props;
 
     return (
       <div id="home" className="page">
@@ -51,11 +47,11 @@ class Home extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-8 offset-md-2">
-              <p>We're on a mission to discover, backup, and catalogue <i>lots &amp; lots of government data</i>, and we need your help! 
-              A large amount the data we discover doesn't have proper metadata, and isn't very organized.
+              <p>We&apos;re on a mission to discover, backup, and catalogue <i>lots &amp; lots of government data</i>, and we need your help!
+              A large amount the data we discover doesn&apos;t have proper metadata, and isn&apos;t very organized.
               With your help we can build an archive that will last for years to come.
               Join us & help rescue data!</p>
-              <Link to={ session ? "/archives" : "/signup" } className="btn btn-large bg-orange white">Start Archiving Now</Link>
+              <Link to={session ? "/archives" : "/signup"} className="btn btn-large bg-orange white">Start Archiving Now</Link>
             </div>
           </div>
         </div>

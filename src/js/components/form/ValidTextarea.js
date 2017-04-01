@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 
-const ValidTextarea = ({ label, name, type, showError, error, value, placeholder, onChange }) => {
+const ValidTextarea = (props) => {
+  const { label, name, type, showError, error, value, placeholder, onChange, helpText, showHelpText } = props;
   return (
     <div className={(error && showError) ? "validFormField form-group has-error" : "validFormField form-group"}>
-      {label ? <label htmlFor={name}>{label}</label> : undefined }
+      {label && <label className="control-label" htmlFor={name}>{label}</label>}
       <textarea
         id={name}
         name={name}
@@ -14,6 +15,7 @@ const ValidTextarea = ({ label, name, type, showError, error, value, placeholder
         onChange={(e) => { onChange(name, e.target.value, e); }}
       />
       {(error != "" && showError) ? <div className="control-label">{error}</div> : undefined }
+      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
     </div>
   );
 };
@@ -35,6 +37,10 @@ ValidTextarea.propTypes = {
   showError: PropTypes.bool,
   // change handler func. will be called with (name, value, event)
   onChange: PropTypes.func.isRequired,
+  // short message to help the user
+  helpText: PropTypes.string,
+  // weather to show help text or not
+  showHelpText: PropTypes.bool,
 };
 
 ValidTextarea.defaultProps = {
@@ -43,6 +49,8 @@ ValidTextarea.defaultProps = {
   error: undefined,
   showError: true,
   placeholder: "",
+  helpText: "",
+  showHelpText: false,
 };
 
 export default ValidTextarea;

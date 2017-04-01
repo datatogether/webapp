@@ -13,7 +13,7 @@ export const SESSION_SIGNUP_FAILURE = 'SESSION_SIGNUP_FAILURE';
 
 export function signup(user) {
   return (dispatch) => {
-    analytics.track("User Signup", { username });
+    analytics.track("User Signup", { username: user.username });
     return dispatch({
       [USERS_API]: {
         types: [SESSION_SIGNUP_REQUEST, SESSION_SIGNUP_SUCCESS, SESSION_SIGNUP_FAILURE],
@@ -49,7 +49,7 @@ export const SAVE_SESSION_USER_FAILURE = 'SAVE_SESSION_USER_FAILURE';
 
 export function saveSessionUser(user) {
   return (dispatch) => {
-    analytics.track("User Updated", { username });
+    analytics.track("User Updated", user);
     return dispatch({
       [USERS_API]: {
         types: [SAVE_SESSION_USER_REQUEST, SAVE_SESSION_USER_SUCCESS, SAVE_SESSION_USER_FAILURE],
@@ -137,7 +137,7 @@ export const SESSION_CREATE_KEY_FAILURE = 'SESSION_CREATE_KEY_FAILURE';
 
 export function createKey(name = "", key = "") {
   return (dispatch) => {
-    analytics.track("User CreatedKey", { username });
+    analytics.track("User CreatedKey");
     return dispatch({
       [USERS_API]: {
         types: [SESSION_CREATE_KEY_REQUEST, SESSION_CREATE_KEY_SUCCESS, SESSION_CREATE_KEY_FAILURE],
@@ -166,7 +166,7 @@ export const SESSION_DELETE_KEY_SUCCESS = 'SESSION_DELETE_KEY_SUCCESS';
 export const SESSION_DELETE_KEY_FAILURE = 'SESSION_DELETE_KEY_FAILURE';
 
 export function deleteKey(name = "", sha = "") {
-  analytics.track("User DeletedKey", { username });
+  analytics.track("User DeletedKey");
   return (dispatch) => {
     return dispatch({
       [USERS_API]: {

@@ -91,6 +91,7 @@ class Content extends React.Component {
               <hr className="yellow" />
               <label className="label">Content</label>
               <h5>{hash}</h5>
+              <a className="btn bg-yellow white" href={`https://s3.amazonaws.com/edgi.qri.io/sentry/${hash.slice(4)}`} download={`${hash}`}>Download Content</a>
             </header>
           </div>
           <TabBar value={tab} tabs={["metadata", "urls", "history", "consensus"]} onChange={this.handleSetTab} color="yellow" />

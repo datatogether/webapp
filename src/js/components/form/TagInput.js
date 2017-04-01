@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
-const TagInput = ({ label, name, type, showError, error, value, placeholder, onChange }) => {
+// TODO - work in progress
+const TagInput = ({ label, name, showError, error, value, placeholder, onChange, helpText, showHelpText }) => {
   return (
     <div className={(error && showError) ? "validFormField form-group has-error" : "validFormField form-group"}>
       {label ? <label className="control-label" htmlFor={name}>{label}</label> : undefined }
@@ -14,6 +15,7 @@ const TagInput = ({ label, name, type, showError, error, value, placeholder, onC
         onChange={(e) => { onChange(name, e.target.value, e); }}
       />
       {(error != "" && showError) ? <div className="control-label">{error}</div> : undefined}
+      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
     </div>
   );
 };
@@ -33,11 +35,14 @@ TagInput.propTypes = {
   showError: PropTypes.bool,
   // change handler func. will be called with (name, value, event)
   onChange: PropTypes.func.isRequired,
+  // short message to help the user
+  helpText: PropTypes.string,
+  // weather to show help text or not
+  showHelpText: PropTypes.bool,
 };
 
 TagInput.defaultProps = {
   name: undefined,
-  type: "text",
   error: undefined,
   showError: true,
   placeholder: "",

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
-const UrlInput = ({ label, name, type, showError, error, value, placeholder, onChange }) => {
+const UrlInput = (props) => {
+  const { label, name, type, showError, error, value, placeholder, onChange, helpText, showHelpText } = props;
   return (
     <div className={(error && showError) ? "validFormField form-group has-error" : "validFormField form-group"}>
       {label ? <label className="control-label" htmlFor={name}>{label}</label> : undefined }
@@ -14,6 +15,7 @@ const UrlInput = ({ label, name, type, showError, error, value, placeholder, onC
         onChange={(e) => { onChange(name, e.target.value, e); }}
       />
       {(error != "" && showError) ? <div className="control-label">{error}</div> : undefined}
+      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
     </div>
   );
 };
@@ -35,12 +37,18 @@ UrlInput.propTypes = {
   showError: PropTypes.bool,
   // change handler func. will be called with (name, value, event)
   onChange: PropTypes.func.isRequired,
+  // short message to help the user
+  helpText: PropTypes.string,
+  // weather to show help text or not
+  showHelpText: PropTypes.bool,
 };
 
 UrlInput.defaultProps = {
   type: "text",
   showError: true,
   placeholder: "",
+  helpText: "",
+  showHelpText: false,
 };
 
 export default UrlInput;

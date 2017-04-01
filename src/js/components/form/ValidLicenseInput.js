@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 
-const ValidLicenseInput = ({ label, name, showError, error, value, onChange }) => {
+const ValidLicenseInput = (props) => {
+  const { label, name, className, showError, error, value, onChange, helpText, showHelpText } = props;
+  const errorClass = (error && showError) ? "has-error" : "";
   return (
-    <div className={(error && showError) ? "validFormField form-group has-error" : "validFormField form-group"}>
-      {label ? <label className="control-label" htmlFor={name}>{label}</label> : undefined }
+    <div className={`validFormField ${errorClass} ${className}`}>
+      {label && <label className="control-label" htmlFor={name}>{label}</label>}
       <select id={name} name={name} className="form-control" value={value} onChange={(e) => { onChange(name, e.target.value, e); }}>
         <option value="http://www.usa.gov/publicdomain/label/1.0/">US Public Domain</option>
         <option value="https://creativecommons.org/publicdomain/zero/1.0/">CC0 - Creative Commons Zero Public Domain Dedication</option>
@@ -15,6 +17,7 @@ const ValidLicenseInput = ({ label, name, showError, error, value, onChange }) =
         <option value="http://www.gnu.org/licenses/fdl-1.3.en.html">GNU Free Documentation License</option>
       </select>
       {(error != "" && showError) ? <div className="control-label">{error}</div> : undefined}
+      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
     </div>
   );
 };
@@ -32,6 +35,10 @@ ValidLicenseInput.propTypes = {
   showError: PropTypes.bool,
   // change handler func. will be called with (name, value, event)
   onChange: PropTypes.func.isRequired,
+  // short message to help the user
+  helpText: PropTypes.string,
+  // weather to show help text or not
+  showHelpText: PropTypes.bool,
 };
 
 ValidLicenseInput.defaultProps = {
@@ -41,6 +48,8 @@ ValidLicenseInput.defaultProps = {
   placeholder: "",
   // https://project-open-data.cio.gov/open-licenses/
   value: "http://www.usa.gov/publicdomain/label/1.0/",
+  helpText: "",
+  showHelpText: false,
 };
 
 export default ValidLicenseInput;

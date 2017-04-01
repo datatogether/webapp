@@ -22,7 +22,7 @@ export default class MainMenu extends React.Component {
   }
 
   render() {
-    const { user, show, onGimmieInvite } = this.props;
+    const { user, show } = this.props;
     return (
       <div id="main_menu" onClick={this.onClick} className={show ? "show" : "hide"}>
         <Link className="blue" to="/">Home</Link>

@@ -1,14 +1,17 @@
 import React, { PropTypes } from 'react';
 
-const ValidSelect = ({ label, name, options, showError, error, value, onChange }) => {
+const ValidSelect = (props) => {
+  const { label, name, className, options, showError, error, value, onChange, helpText, showHelpText } = props;
+  const errorClass = (error && showError) ? "has-error" : "";
   return (
-    <div className={(error && showError) ? "validFormField form-group has-error" : "validFormField form-group"}>
-      {label ? <label className="control-label" htmlFor={name}>{label}</label> : undefined }
+    <div className={`validFormField form-group ${errorClass} ${className}`}>
+      {label && <label className="control-label" htmlFor={name}>{label}</label> }
       <select id={name} name={name} className="form-control" value={value} onChange={(e) => { onChange(name, e.target.value, e); }}>
         <option value=""></option>
         {options.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
       </select>
       {(error != "" && showError) ? <div className="control-label">{error}</div> : undefined}
+      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
     </div>
   );
 };
@@ -28,6 +31,10 @@ ValidSelect.propTypes = {
   showError: PropTypes.bool,
   // change handler func. will be called with (name, value, event)
   onChange: PropTypes.func.isRequired,
+  // short message to help the user
+  helpText: PropTypes.string,
+  // weather to show help text or not
+  showHelpText: PropTypes.bool,
 };
 
 ValidSelect.defaultProps = {
@@ -35,6 +42,8 @@ ValidSelect.defaultProps = {
   error: undefined,
   showError: true,
   placeholder: "",
+  helpText: "",
+  showHelpText: false,
 };
 
 export default ValidSelect;

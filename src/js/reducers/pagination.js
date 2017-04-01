@@ -24,7 +24,7 @@ import {
 // Updates the pagination data for different actions.
 const pagination = combineReducers({
   sources: paginate({
-    mapActionToKey: action => "created",
+    mapActionToKey: () => "created",
     types: [
       SOURCES_FETCH_REQUEST,
       SOURCES_FETCH_SUCCESS,
@@ -51,12 +51,12 @@ const pagination = combineReducers({
   }),
 
   contentRecentUrls: paginate({
-    mapActionToKey: action => "created",
+    mapActionToKey: () => "created",
     types: [
       CONTENT_RECENT_URLS_REQUEST,
       CONTENT_RECENT_URLS_SUCCESS,
       CONTENT_RECENT_URLS_FAILURE,
-    ]
+    ],
   }),
 });
 

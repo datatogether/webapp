@@ -31,7 +31,7 @@ export default {
     },
     {
       path: "/archives",
-      getComponent(location, cb){
+      getComponent(location, cb) {
         import('./containers/Archives').then(loadRoute(cb)).catch(errorLoading);
       },
     },

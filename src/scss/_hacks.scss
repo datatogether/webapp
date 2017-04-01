@@ -1,0 +1,19 @@
+// Place Quick hacks that need to be folded properly
+// in to css here. Ideally this file is empty.
+
+.helpToggle {
+  font-weight: 800;
+  color: $green;
+}
+
+.help.hint {
+  display: block;
+  font-size: 12px;
+  line-height: 1.3em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.control-label {
+  font-weight: bold;
+}
