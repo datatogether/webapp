@@ -1,6 +1,7 @@
 import { CALL_API } from '../middleware/api';
 import Schemas from '../schemas';
 
+import analytics from '../analytics';
 import { newLocalModel, updateLocalModel, editModel, removeLocalModel } from './locals';
 
 const blankCollection = {
@@ -81,6 +82,7 @@ export const COLLECTION_SAVE_FAILURE = "COLLECTION_SAVE_FAILURE";
 
 export function saveCollection(collection = {}) {
   return (dispatch) => {
+    analytics.track(collection.id ? "Created Collection" : "Saved Collection", collection);
     return dispatch({
       [CALL_API]: {
         types: [COLLECTION_SAVE_REQUEST, COLLECTION_SAVE_SUCCESS, COLLECTION_SAVE_FAILURE],
@@ -102,6 +104,7 @@ export const COLLECTION_DELETE_SUCCESS = "COLLECTION_DELETE_SUCCESS";
 export const COLLECTION_DELETE_FAILURE = "COLLECTION_DELETE_FAILURE";
 
 export function deleteCollection(collection = {}) {
+  analytics.track("Deleted Collection", collection);
   return (dispatch) => {
     return dispatch({
       [CALL_API]: {

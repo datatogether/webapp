@@ -83,6 +83,7 @@ class MetadataEditor extends React.Component {
           onCancel={this.handleCancel}
           onSubmit={this.handleSave}
         />
+        <br />
       </div>
     );
   }

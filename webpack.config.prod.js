@@ -15,7 +15,7 @@ var ENV = {
     WEBSOCKET_URL : JSON.stringify("wss://alpha.archivers.space/ws"),
     STATIC_ASSETS_URL : JSON.stringify("http://alpha.archivers.space"),
     SEGMENT_KEY : JSON.stringify("FwUGnmKzryJpDpApVzdQy9rmwwWSiK1M"),
-    SEGMENT_PAGE_PROPERTIES: JSON.stringify('{ "app_version": "2.0.0beta1" }'),
+    SEGMENT_APP_PROPERTIES: JSON.stringify('{ "app_version": "2.0.0beta1" }'),
   }
 };
 

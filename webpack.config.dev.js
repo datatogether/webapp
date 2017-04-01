@@ -14,8 +14,8 @@ var ENV = {
     USERS_API_URL : JSON.stringify("http://localhost:3100"),
     WEBSOCKET_URL : JSON.stringify("ws://localhost:3000/ws"),
     STATIC_ASSETS_URL : JSON.stringify("http://localhost:3000"),
-    SEGMENT_KEY : JSON.stringify("FwUGnmKzryJpDpApVzdQy9rmwwWSiK1M"),
-    SEGMENT_PAGE_PROPERTIES: JSON.stringify('{ "app_version": "2.0.0beta1" }'),
+    SEGMENT_KEY : JSON.stringify(""),
+    SEGMENT_APP_PROPERTIES: JSON.stringify('{ "app_version": "2.0.0beta1" }'),
   }
 };
 

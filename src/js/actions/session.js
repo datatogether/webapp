@@ -1,6 +1,7 @@
 import { push } from 'react-router-redux';
 import { USERS_API } from '../middleware/users';
 
+import analytics from '../analytics';
 import Schemas from '../schemas';
 import { setMessage, resetMessage } from './app';
 import { updateLocalModel, editModel } from './locals';
@@ -12,6 +13,7 @@ export const SESSION_SIGNUP_FAILURE = 'SESSION_SIGNUP_FAILURE';
 
 export function signup(user) {
   return (dispatch) => {
+    analytics.track("User Signup", { username });
     return dispatch({
       [USERS_API]: {
         types: [SESSION_SIGNUP_REQUEST, SESSION_SIGNUP_SUCCESS, SESSION_SIGNUP_FAILURE],
@@ -47,6 +49,7 @@ export const SAVE_SESSION_USER_FAILURE = 'SAVE_SESSION_USER_FAILURE';
 
 export function saveSessionUser(user) {
   return (dispatch) => {
+    analytics.track("User Updated", { username });
     return dispatch({
       [USERS_API]: {
         types: [SAVE_SESSION_USER_REQUEST, SAVE_SESSION_USER_SUCCESS, SAVE_SESSION_USER_FAILURE],
@@ -74,6 +77,7 @@ export const SESSION_LOGIN_SUCCESS = 'SESSION_LOGIN_SUCCESS';
 export const SESSION_LOGIN_FAILURE = 'SESSION_LOGIN_FAILURE';
 
 export function loginUser(username, password) {
+  analytics.track("User Login", { username });
   return {
     [USERS_API]: {
       types: [SESSION_LOGIN_REQUEST, SESSION_LOGIN_SUCCESS, SESSION_LOGIN_FAILURE],
@@ -90,6 +94,7 @@ export const SESSION_LOGOUT_SUCCESS = 'SESSION_LOGOUT_SUCCESS';
 export const SESSION_LOGOUT_FAILURE = 'SESSION_LOGOUT_FAILURE';
 
 export function logoutUser(username, password) {
+  analytics.track("User Logout", { username });
   return {
     [USERS_API]: {
       types: [SESSION_LOGOUT_REQUEST, SESSION_LOGOUT_SUCCESS, SESSION_LOGOUT_FAILURE],
@@ -132,6 +137,7 @@ export const SESSION_CREATE_KEY_FAILURE = 'SESSION_CREATE_KEY_FAILURE';
 
 export function createKey(name = "", key = "") {
   return (dispatch) => {
+    analytics.track("User CreatedKey", { username });
     return dispatch({
       [USERS_API]: {
         types: [SESSION_CREATE_KEY_REQUEST, SESSION_CREATE_KEY_SUCCESS, SESSION_CREATE_KEY_FAILURE],
@@ -160,6 +166,7 @@ export const SESSION_DELETE_KEY_SUCCESS = 'SESSION_DELETE_KEY_SUCCESS';
 export const SESSION_DELETE_KEY_FAILURE = 'SESSION_DELETE_KEY_FAILURE';
 
 export function deleteKey(name = "", sha = "") {
+  analytics.track("User DeletedKey", { username });
   return (dispatch) => {
     return dispatch({
       [USERS_API]: {

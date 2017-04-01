@@ -1,6 +1,7 @@
 import { CALL_API } from '../middleware/api';
 import Schemas from '../schemas';
 
+import analytics from '../analytics';
 import { selectMetadata } from '../selectors/metadata';
 import { newLocalModel, updateLocalModel, editModel, removeLocalModel } from './locals';
 
@@ -14,6 +15,9 @@ const blankMetadata = {
     language: "",
     landingPage: "",
     theme: "",
+    identifier: "",
+    accessLevel: "public",
+    language: "english",
     license: "http://www.usa.gov/publicdomain/label/1.0/",
   },
 };
@@ -78,6 +82,7 @@ export function saveMetadata(metadata = {}) {
   });
 
   return (dispatch) => {
+    analytics.track("Created Metadata", metadata);
     return dispatch({
       [CALL_API]: {
         types: [METADATA_SAVE_REQUEST, METADATA_SAVE_SUCCESS, METADATA_SAVE_FAILURE],
