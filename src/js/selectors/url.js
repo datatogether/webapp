@@ -13,6 +13,16 @@ export function selectUrl(state, urlString = "") {
   return url;
 }
 
+export function selectUrlByHash(state, hash = "") {
+  const { urls } = state.entities;
+  const id = Object.keys(urls).find(u => (urls[u].hash == hash));
+  if (!id) { return undefined; }
+
+  let url = urls[id];
+  url.state = state.urlStates[url.url] || {};
+  return url;
+}
+
 export function urlStats(url) {
   return {
     "last get": url.lastGet ? new Date(url.lastGet).toString() : "never",

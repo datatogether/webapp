@@ -5,7 +5,6 @@ const LanguageInput = (props) => {
   return (
     <div className={(error && showError) ? "validFormField form-group has-error" : "validFormField form-group"}>
       {label && <label className="control-label" htmlFor={name}>{label}</label>}
-      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
       <select id={name} name={name} className="form-control" value={value} onChange={(e) => { onChange(name, e.target.value, e); }}>
         <option value="">-unknown-</option>
         <option value="arabic">arabic</option>
@@ -24,6 +23,7 @@ const LanguageInput = (props) => {
         <option value="spanish">spanish</option>
       </select>
       {(error != "" && showError) ? <div className="control-label">{error}</div> : undefined}
+      {(helpText && showHelpText) && <i className="help hint">{helpText}</i>}
     </div>
   );
 };

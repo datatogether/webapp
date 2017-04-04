@@ -15,6 +15,7 @@ import { loadConsensus } from '../actions/consensus';
 import { loadContentMetadata, loadContentUrls } from '../actions/content';
 import { selectConsensus } from '../selectors/consensus';
 import { selectContentUrls, selectContentMetadata } from '../selectors/content';
+import { selectUrlByHash } from '../selectors/url';
 
 class Content extends React.Component {
   constructor(props) {
@@ -31,16 +32,13 @@ class Content extends React.Component {
 
   componentWillMount() {
     analytics.page('archives');
-    // this.props.loadUserByUsername(this.props.username);
-    // Debounce search to avoid hammering the server with relentless queries
-    // 250ms delay should be enough
-    // this.props.search = debounce(this.props.search, 250);
+    this.props.loadContentUrls(this.props.hash);
   }
 
-  componentWillReceiveProps() {
-    // if (nextProps.username != this.props.username) {
-    //   nextProps.loadUserByUsername(nextProps.username)
-    // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.hash != this.props.hash) {
+      this.props.loadContentUrls(nextProps.hash);
+    }
   }
 
   handleSetTab(tab) {
@@ -80,7 +78,7 @@ class Content extends React.Component {
   }
 
   render() {
-    const { hash } = this.props;
+    const { hash, url } = this.props;
     const { tab } = this.state;
 
     return (
@@ -90,8 +88,8 @@ class Content extends React.Component {
             <header className="yellow col-md-12">
               <hr className="yellow" />
               <label className="label">Content</label>
-              <h5>{hash}</h5>
-              <a className="btn bg-yellow white" href={`https://s3.amazonaws.com/edgi.qri.io/sentry/${hash.slice(4)}`} download={`${hash}`}>Download Content</a>
+              <h5>{url ? url.fileName : hash}</h5>
+              {url && <a className="btn bg-yellow white" href={url.contentUrl} download={url.fileName}>Download Content</a> }
             </header>
           </div>
           <TabBar value={tab} tabs={["metadata", "urls", "history", "consensus"]} onChange={this.handleSetTab} color="yellow" />
@@ -123,6 +121,7 @@ function mapStateToProps(state, ownProps) {
 
   return Object.assign({
     hash,
+    url: selectUrlByHash(state, hash),
     urls: selectContentUrls(state, hash),
     consensus: selectConsensus(state, hash),
     metadata: selectContentMetadata(state, hash),
