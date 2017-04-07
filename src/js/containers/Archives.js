@@ -95,7 +95,7 @@ class Archives extends React.Component {
     const { query, results } = this.props;
 
     return (
-      <div id="home" className="page">
+      <div id="archives" className="page">
         <div className="user container">
           <div className="row">
             <header className="orange col-md-12">

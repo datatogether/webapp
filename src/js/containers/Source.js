@@ -93,7 +93,8 @@ class Source extends React.Component {
             <div className="col-md-12">
               <hr className="orange" />
               <label className="label">Source</label>
-              <h1 className="orange">{source.url}</h1>
+              <h1 className="orange">{source.title}</h1>
+              <p>{source.url}</p>
             </div>
           </header>
           <div className="row">

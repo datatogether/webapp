@@ -1,0 +1,13 @@
+#home {
+  margin-top: 2em;
+  .masthead {
+    background: top center url("https://s3.us-east-2.amazonaws.com/static.archivers.space/clouds.png") repeat-x;
+    padding-top: 50px;
+    img {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 0 0 auto;
+      display: block;
+    }
+  }
+}

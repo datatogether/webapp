@@ -20,7 +20,7 @@ const UrlItem = ({ data }) => {
         { url.title ? <h5>{url.title}</h5> : undefined }
         {concatUrlString(url.url)}
       </Link>
-      <p>{ url.contentSniff && url.contentSniff != "text/html; charset=utf-8" ? <Link className="yellow" to={`/content/${url.hash}`}>{url.hash}</Link> : undefined }</p>
+      <p>{ url.contentSniff && url.contentSniff != "text/html; charset=utf-8" ? <Link className="yellow" to={`/content/${url.hash}`}>{url.fileName || url.hash}</Link> : undefined }</p>
       {urlState(url.state)}
     </div>
   );

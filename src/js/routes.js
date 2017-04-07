@@ -92,7 +92,7 @@ export default {
       },
     },
     {
-      path: '/subprimers/:id',
+      path: '/sources/:id',
       getComponent(location, cb) {
         import('./containers/Source').then(loadRoute(cb)).catch(errorLoading);
       },

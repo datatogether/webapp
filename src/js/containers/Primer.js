@@ -9,6 +9,8 @@ import Spinner from '../components/Spinner';
 import List from '../components/List';
 import SourceItem from '../components/item/SourceItem';
 import PrimerItem from '../components/item/PrimerItem';
+import StatsBar from '../components/StatsBar';
+import ProgressBar from '../components/ProgressBar';
 
 class Primer extends React.Component {
   constructor(props) {
@@ -97,6 +99,18 @@ class Primer extends React.Component {
           <div className="row">
             <div className="col-md-12 col-lg-8">
               <p>{primer.description}</p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <ProgressBar total={primer.stats.contentUrlCount} progress={primer.stats.contentMetadataCount} color="orange" />
+              <StatsBar
+                stats={{
+                  urls: primer.stats.urlCount,
+                  content: primer.stats.contentUrlCount,
+                  documented: primer.stats.contentMetadataCount,
+                }}
+              />
             </div>
           </div>
           {this.renderSources()}
