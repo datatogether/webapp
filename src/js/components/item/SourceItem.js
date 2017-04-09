@@ -7,13 +7,18 @@ const SourceItem = ({ data }) => {
   const source = data;
 
   return (
-    <div className="source item col-md-12">
-      <Link to={`/sources/${source.id}`} className="orange">
-        <h4>{source.title}</h4>
-        <p>{source.url}</p>
-        {/* <small>{source.stats.contentMetadataCount}/{source.stats.contentUrlCount}</small> */}
-        <ProgressBar size="micro" color="orange" total={source.stats.contentUrlCount} progress={source.stats.contentMetadataCount} />
-      </Link>
+    <div className="source item col-md-3">
+      <div className="card">
+        <Link to={`/sources/${source.id}`} className="orange">
+          <header className="bg-blue">
+            <h4>{source.title}</h4>
+          </header>
+          <div className="info">
+            <ProgressBar size="micro" color="blue" total={source.stats.contentUrlCount} progress={source.stats.contentMetadataCount} />
+            <i>{source.stats.contentMetadataCount}/{source.stats.contentUrlCount}</i>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 };

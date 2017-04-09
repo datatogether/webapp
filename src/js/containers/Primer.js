@@ -44,7 +44,7 @@ class Primer extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <hr className="orange" />
-            <h3 className="orange">SubPrimers:</h3>
+            <h3 className="orange">Sub-Primers:</h3>
             <br />
           </div>
         </div>
@@ -113,6 +113,7 @@ class Primer extends React.Component {
               />
             </div>
           </div>
+          {this.renderSubPrimers()}
           {this.renderSources()}
         </div>
       </div>

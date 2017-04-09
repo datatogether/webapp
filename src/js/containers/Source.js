@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import analytics from '../analytics';
@@ -89,10 +90,11 @@ class Source extends React.Component {
     return (
       <div id="sources" className="page">
         <div className="container">
-          <header className="row">
+          <header className="row"> 
             <div className="col-md-12">
               <hr className="orange" />
               <label className="label">Source</label>
+              <Link to={`/primers/${source.primer.id}`}><h5>{source.primer.title}</h5></Link>
               <h1 className="orange">{source.title}</h1>
               <p>{source.url}</p>
             </div>

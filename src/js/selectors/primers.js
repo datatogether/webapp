@@ -6,5 +6,11 @@ export function selectPrimers(state) {
 }
 
 export function selectPrimer(state, id = "") {
-  return state.entities.primers[id];
+  if (!state.entities.primers[id]) { return undefined; }
+  const p = Object.assign({}, state.entities.primers[id]);
+  p.stats || (p.stats = {});
+  if (p.subPrimers) {
+    p.subPrimers = p.subPrimers.map(subId => state.entities.primers[subId]);
+  }
+  return p;
 }

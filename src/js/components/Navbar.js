@@ -7,8 +7,8 @@ const Navbar = ({ user, style, onToggleMenu }) => {
     <div id="navbar" style={style}>
       <div className="container">
         <div className="row">
-          <div className="col-md-6 col-sm-6">
-            <Link id="logotype" href={__BUILD__.BASE_URL}>ARCHIVERS 2.0 <span className="red">ALPHA</span></Link>
+          <div className="col-md-6 col-sm-6 col-xs-6">
+            <Link id="logotype" href={__BUILD__.BASE_URL}>ARCHIVERS 2.0 <span className="red hidden-sm-down">ALPHA</span></Link>
           </div>
           <div className="menu col-md-4 offset-md-2 col-sm-6">
             {

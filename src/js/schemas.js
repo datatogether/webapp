@@ -21,6 +21,10 @@ const collectionSchema = new Schema('collections');
 const primerSchema = new Schema('primers');
 const sourceSchema = new Schema('sources');
 
+primerSchema.define({
+  subPrimers: arrayOf(primerSchema),
+});
+
 metadataSchema.new = (attrs) => {
   return Object.assign({}, attrs);
 };

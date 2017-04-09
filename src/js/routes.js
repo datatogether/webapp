@@ -1,5 +1,6 @@
 import App from './containers/App';
 import Home from './containers/Home';
+import NotFound from './components/NotFound';
 
 function errorLoading(err) {
   console.error('Dynamic page loading failed', err);
@@ -96,6 +97,10 @@ export default {
       getComponent(location, cb) {
         import('./containers/Source').then(loadRoute(cb)).catch(errorLoading);
       },
+    },
+    {
+      path: '/*',
+      component: NotFound,
     },
   ],
 };

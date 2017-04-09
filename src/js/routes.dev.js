@@ -9,11 +9,12 @@ import Collections from './containers/Collections';
 import Content from './containers/Content';
 import Home from './containers/Home';
 import Login from './containers/Login';
+import NotFound from './components/NotFound';
 import Primers from './containers/Primers';
 import Primer from './containers/Primer';
 import Source from './containers/Source';
 import Signup from './containers/Signup';
-import Stylesheet from './components/Stylesheet';
+import Stylesheet from './containers/Stylesheet';
 import Keys from './containers/Keys';
 import Url from './containers/Url';
 import User from './containers/User';
@@ -79,6 +80,10 @@ export default {
     {
       path: '/sources/:id',
       component: Source,
+    },
+    {
+      path: "/*",
+      component: NotFound,
     },
   ],
 };
