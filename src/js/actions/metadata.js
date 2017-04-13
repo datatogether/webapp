@@ -89,6 +89,7 @@ export function saveMetadata(metadata = {}) {
         data: md,
       },
     }).then((action) => {
+      // TODO - this isn't getting called
       if (action.type == METADATA_SUCCESS) {
         cancelMetadataEdit(metadata.keyId, metadata.subject);
       }

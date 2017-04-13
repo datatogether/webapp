@@ -75,7 +75,8 @@ export function connect(dispatch, reconnectTimeout = 6500) {
   return new Promise((resolve, reject) => {
     if (window.WebSocket) {
       conn = new WebSocket(WEBSOCKET_URL);
-      conn.onclose = () => {
+      conn.onclose = (evt) => {
+        console.log("WebSocket conn closed", evt);
         if (reconnectTimeout) {
           setTimeout(() => {
             connect(dispatch, reconnectTimeout);
@@ -107,10 +108,12 @@ export function connect(dispatch, reconnectTimeout = 6500) {
       };
 
       conn.onopen = (evt) => {
+        console.log("WebSocket conn opened", evt);
         resolve(evt);
       };
 
       conn.onerror = (evt) => {
+        console.log("WebSocket conn error", evt);
         if (reject) {
           reject(evt);
         }
@@ -185,7 +188,7 @@ export function callApiAction(store, next, action) {
 
   // fire an action indicating a request will be nade
   next(actionWith({ type: requestType }));
-
+  
   // make the request
   conn.send(JSON.stringify({
     type: requestType,
@@ -221,6 +224,6 @@ export function callApiAction(store, next, action) {
         }
         delete expectations[requestId];
       }
-    }, 1000 * 25);
+    }, 1000 * 15);
   });
 }
