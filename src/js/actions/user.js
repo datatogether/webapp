@@ -51,3 +51,18 @@ export function loadUserByUsername(username, requiredFields = []) {
     return dispatch(fetchUserByUsername(username));
   };
 }
+
+export const USERS_SEARCH_REQUEST = 'USERS_SEARCH_REQUEST';
+export const USERS_SEARCH_SUCCESS = 'USERS_SEARCH_SUCCESS';
+export const USERS_SEARCH_FAILURE = 'USERS_SEARCH_FAILURE';
+
+export function usersSearch(query) {
+  return {
+    [USERS_API]: {
+      types: [USERS_SEARCH_REQUEST, USERS_SEARCH_SUCCESS, USERS_SEARCH_FAILURE],
+      endpoint: `/search?q=${query}`,
+      schema: Schemas.USER_ARRAY,
+    }
+  }
+}
+

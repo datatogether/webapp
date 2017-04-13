@@ -5,21 +5,21 @@ export const PRIMERS_FETCH_REQUEST = "PRIMERS_FETCH_REQUEST";
 export const PRIMERS_FETCH_SUCCESS = "PRIMERS_FETCH_SUCCESS";
 export const PRIMERS_FETCH_FAILURE = "PRIMERS_FETCH_FAILURE";
 
-export function fetchPrimers(page = 1, pageSize = 25) {
+export function fetchPrimers(page = 1, pageSize = 25, baseOnly = false) {
   return {
     [CALL_API]: {
       types: [PRIMERS_FETCH_REQUEST, PRIMERS_FETCH_SUCCESS, PRIMERS_FETCH_FAILURE],
       schema: Schemas.PRIMER,
       endpoint: '/primers',
-      data: { page, pageSize },
+      data: { page, pageSize, baseOnly },
     },
   };
 }
 
-export function loadPrimers(page = 1, pageSize = 25) {
+export function loadPrimers(page = 1, pageSize = 25, baseOnly = false) {
   return (dispatch) => {
     // TODO - add pagination & pagination check
-    return dispatch(fetchPrimers(page, pageSize));
+    return dispatch(fetchPrimers(page, pageSize, baseOnly));
   };
 }
 

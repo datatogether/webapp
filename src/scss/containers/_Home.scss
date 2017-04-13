@@ -1,5 +1,9 @@
 #home {
   margin-top: 2em;
+  img {
+    width: 100%;
+  }
+
   .masthead {
     background: top center url("https://s3.us-east-2.amazonaws.com/static.archivers.space/clouds.png") repeat-x;
     padding-top: 50px;
@@ -8,6 +12,21 @@
       max-width: 1200px;
       margin: 0 0 0 auto;
       display: block;
+    }
+  }
+
+  .signup {
+    margin-top: 10em;
+    .text {
+      margin-top: 35px;
+      margin-bottom: 35px;
+    }
+    .image {
+      text-align: center;
+      img {
+        margin: 0 auto;
+        max-width: 300px;
+      }
     }
   }
 }

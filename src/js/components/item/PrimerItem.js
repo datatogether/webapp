@@ -21,7 +21,7 @@ const PrimerItem = ({ data }) => {
           {primer.stats &&
             <div className="stats">
               <b className="left">{primer.stats.urlCount} urls</b>
-              <p className="right">{primer.stats.contentUrlCount} / {primer.stats.contentMetadataCount} completed</p>
+              <p className="right">{primer.stats.contentMetadataCount} / {primer.stats.contentUrlCount} completed</p>
             </div>
           }
         </div>

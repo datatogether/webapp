@@ -14,7 +14,7 @@ const SourcesRow = ({ data, label }) => {
       {sources.map((source, i) => {
         return (
           <Link key={i} to={`/sources/${source.id}`} className="col-md-4 orange">
-            <h4>{source.url}</h4>
+            <h4>{source.title}</h4>
             <ProgressBar size="micro" color="orange" total={source.stats.contentUrlCount} progress={source.stats.contentMetadataCount} />
           </Link>
         );

@@ -21,7 +21,7 @@ class Primers extends React.Component {
 
   componentWillMount() {
     analytics.page('archives');
-    this.props.loadPrimers();
+    this.props.loadPrimers(1, 25, true);
   }
 
   componentWillReceiveProps(nextProps) {

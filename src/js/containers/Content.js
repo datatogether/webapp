@@ -7,6 +7,7 @@ import Consensus from '../components/Consensus';
 import HistoryItem from '../components/item/HistoryItem';
 import List from '../components/List';
 // import Metadata from '../components/Metadata';
+import StatsBar from '../components/StatsBar';
 import TabBar from '../components/TabBar';
 import UrlItem from '../components/item/UrlItem';
 import MetadataEditor from './MetadataEditor';
@@ -15,7 +16,7 @@ import { loadConsensus } from '../actions/consensus';
 import { loadContentMetadata, loadContentUrls } from '../actions/content';
 import { selectConsensus } from '../selectors/consensus';
 import { selectContentUrls, selectContentMetadata } from '../selectors/content';
-import { selectUrlByHash } from '../selectors/url';
+import { selectUrlByHash, urlStats } from '../selectors/url';
 
 class Content extends React.Component {
   constructor(props) {
@@ -84,14 +85,18 @@ class Content extends React.Component {
     return (
       <div id="content" className="page">
         <div className="container">
-          <div className="row">
-            <header className="yellow col-md-12">
+          <header className="row">
+            <div className="yellow col-md-12">
               <hr className="yellow" />
               <label className="label">Content</label>
               <h5>{url ? url.fileName : hash}</h5>
               {url && <a className="btn bg-yellow white" href={url.contentUrl} download={url.fileName}>Download Content</a> }
-            </header>
-          </div>
+              <br />
+              <br />
+              <hr className="yellow" />
+            </div>
+          </header>
+          <StatsBar stats={urlStats(url)} />
           <TabBar value={tab} tabs={["metadata", "urls", "history", "consensus"]} onChange={this.handleSetTab} color="yellow" />
           {this.renderCurrentTab()}
         </div>

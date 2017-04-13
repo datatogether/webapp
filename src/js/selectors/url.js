@@ -23,11 +23,27 @@ export function selectUrlByHash(state, hash = "") {
   return url;
 }
 
+export function fileSize(len = 0) {
+  let rounded;
+  if (len < 1000) {
+    return `${len} bytes`;
+  } else if (len < (1000 * 1000 * 1000)) {
+    rounded = Math.round(len/1000);
+    return `${rounded} kb`;
+  } else if (len < (1000 * 1000 * 1000 * 1000)) {
+    rounded = Math.round(len/1000/1000) / 100;
+    return `${rounded} Mb`;
+  } else {
+    rounded = Math.round(len/1000/1000/1000) / 100;
+    return `${rounded} Gb`;
+  }
+}
+
 export function urlStats(url) {
   return {
     "last get": url.lastGet ? new Date(url.lastGet).toString() : "never",
     status: url.status,
-    size: url.contentLength,
+    size: fileSize(url.contentLength),
     "content type": url.contentSniff,
   };
 }
