@@ -62,7 +62,7 @@ class Source extends React.Component {
         return (
           <div className="row">
             <div className="col-md-12">
-              <h4 className="orange">Content Needing Metadata:</h4>
+              <h4>Content Needing Metadata:</h4>
             </div>
             <List data={urls} component={UrlItem} />
           </div>);
@@ -70,7 +70,7 @@ class Source extends React.Component {
         return (
           <div className="row">
             <div className="col-md-12">
-              <h4 className="orange">Content With Metadata:</h4>
+              <h4>Content With Metadata:</h4>
             </div>
             <List data={attributedUrls} component={UrlItem} />
           </div>);
@@ -88,29 +88,39 @@ class Source extends React.Component {
     }
 
     return (
-      <div id="sources" className="page">
-        <div className="container">
-          <header className="row"> 
-            <div className="col-md-12">
-              <hr className="orange" />
-              <label className="label">Source</label>
-              <Link to={`/primers/${source.primer.id}`}><h5>{source.primer.title}</h5></Link>
-              <h1 className="orange">{source.title}</h1>
-              <p>{source.url}</p>
+      <div id="source" className="source page">
+        <header className="colorized">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr />
+                <label className="label">Source</label>
+                <h1 className="title">{source.title}</h1>
+                <p>{source.url}</p>
+                <label className="label">Primer:</label>
+                <Link className="primer" to={`/primers/${source.primer.id}`}>
+                  <h5 className="title">{source.primer.title}</h5>
+                </Link>
+              </div>
             </div>
-          </header>
-          <div className="row">
-            <div className="col-md-12">
-              <ProgressBar total={source.stats.contentUrlCount} progress={source.stats.contentMetadataCount} color="orange" />
-              <StatsBar
-                stats={{
-                  urls: source.stats.urlCount,
-                  content: source.stats.contentUrlCount,
-                  documented: source.stats.contentMetadataCount,
-                }}
-              />
+            <div className="row">
+              <div className="col-md-12">
+                <ProgressBar 
+                  total={source.stats.contentUrlCount}
+                  progress={source.stats.contentMetadataCount}
+                />
+                <StatsBar
+                  stats={{
+                    urls: source.stats.urlCount,
+                    content: source.stats.contentUrlCount,
+                    documented: source.stats.contentMetadataCount,
+                  }}
+                />
+              </div>
             </div>
           </div>
+        </header>
+        <div className="container">
           <div className="row">
             <div className="col-md-12">
               <TabBar value={tab} tabs={["unattributed content", "attributed content"]} onChange={this.handleChangeTab} color="orange" />

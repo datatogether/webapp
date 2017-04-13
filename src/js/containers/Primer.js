@@ -40,11 +40,10 @@ class Primer extends React.Component {
     }
 
     return (
-      <div>
+      <div className="primer container">
         <div className="row">
           <div className="col-md-12">
-            <hr className="orange" />
-            <h3 className="orange">Sub-Primers:</h3>
+            <h3 className="title">Sub-Primers:</h3>
             <br />
           </div>
         </div>
@@ -63,11 +62,10 @@ class Primer extends React.Component {
     }
 
     return (
-      <div>
+      <div className="source container">
         <div className="row">
           <div className="col-md-12">
-            <hr className="orange" />
-            <h3 className="orange">Sources:</h3>
+            <h3>Sources:</h3>
             <br />
           </div>
         </div>
@@ -87,35 +85,40 @@ class Primer extends React.Component {
     }
 
     return (
-      <div id="primers" className="page">
-        <div className="container">
-          <header className="row">
-            <div className="col-md-12">
-              <hr className="orange" />
-              <label className="label">Primer</label>
-              <h1 className="orange">{primer.title}</h1>
+      <div id="primers" className="primer page">
+        <header className="colorized">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr/>
+                <label className="label">Primer</label>
+                <h1 className="title">{primer.title}</h1>
+              </div>
             </div>
-          </header>
-          <div className="row">
-            <div className="col-md-12 col-lg-8">
-              <p>{primer.description}</p>
+            <div className="row">
+              <div className="col-md-12 col-lg-8">
+                <p>{primer.description}</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                <ProgressBar 
+                  total={primer.stats.contentUrlCount}
+                  progress={primer.stats.contentMetadataCount}
+                />
+                <StatsBar
+                  stats={{
+                    urls: primer.stats.urlCount,
+                    content: primer.stats.contentUrlCount,
+                    documented: primer.stats.contentMetadataCount,
+                  }}
+                />
+              </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-12">
-              <ProgressBar total={primer.stats.contentUrlCount} progress={primer.stats.contentMetadataCount} color="orange" />
-              <StatsBar
-                stats={{
-                  urls: primer.stats.urlCount,
-                  content: primer.stats.contentUrlCount,
-                  documented: primer.stats.contentMetadataCount,
-                }}
-              />
-            </div>
-          </div>
-          {this.renderSubPrimers()}
-          {this.renderSources()}
-        </div>
+        </header>
+        {this.renderSubPrimers()}
+        {this.renderSources()}
       </div>
     );
   }

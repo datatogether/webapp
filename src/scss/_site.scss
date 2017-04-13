@@ -18,7 +18,9 @@ body, #root {
 .bg-yellow { background: $yellow; }
 .bg-orange { background: $orange; }
 .bg-white { background: white; }
+.bg-tope { background: $tope; }
 
+.tope { color: $tope; }
 .green { color: $green; }
 .blue { color: $blue; }
 .purple { color: $purple; }
@@ -27,12 +29,12 @@ body, #root {
 .orange { color: $orange; }
 .white { color: white; }
 
-hr.green { border-top: 1px solid $green; }
-hr.blue { border-top: 1px solid $blue; }
-hr.purple { border-top: 1px solid $purple; }
-hr.red { border-top: 1px solid $red; }
-hr.yellow { border-top: 1px solid $yellow; }
-hr.orange { border-top: 1px solid $orange; }
+hr.green { border-top: 2px solid $green; }
+hr.blue { border-top: 2px solid $blue; }
+hr.purple { border-top: 2px solid $purple; }
+hr.red { border-top: 2px solid $red; }
+hr.yellow { border-top: 2px solid $yellow; }
+hr.orange { border-top: 2px solid $orange; }
 
 header > hr {
   margin-top: 0;
@@ -74,4 +76,120 @@ a:hover {
   font-weight: "bold";
   font-size: 13px;
   letter-spacing: 0;
+}
+
+
+.source,
+.source.item {
+  hr {
+    border-top: 2px solid $yellow;
+  }
+  .title,
+  .label {
+    color: $yellow;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $yellow;
+  }
+}
+
+.url,
+.url.item {
+  hr {
+    border-top: 2px solid $purple;
+  }
+  .title,
+  .label {
+    color: $purple;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $purple;
+  }
+}
+
+.metadata,
+.metadata.item {
+  hr {
+    border-top: 2px solid $teal;
+  }
+  .title,
+  .label {
+    color: $teal;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $teal;
+  }
+}
+
+.collection,
+.collection.item {
+  hr {
+    border-top: 2px solid $green;
+  }
+  .title,
+  .label {
+    color: $green;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $green;
+  }
+}
+
+.link {
+  hr {
+    border-top: 2px solid $blue;
+  }
+  .title,
+  .label {
+    color: $blue;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $blue;
+  }
+}
+
+.content,
+.content.item {
+  hr {
+    border-top: 2px solid $magenta;
+  }
+  .title,
+  .label {
+    color: $magenta;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $magenta;
+  }
+}
+
+.primer,
+.primer.item {
+  hr {
+   border-top: 2px solid $tope; 
+  }
+  .label,
+  .title {
+    color: $tope;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $tope;
+  }
+}
+
+.colorized {
+  color: white;
+  .title,
+  .label {
+    color: white;
+  }
+  .progressbar .progress {
+    background: white;
+  }
 }

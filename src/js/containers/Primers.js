@@ -39,12 +39,12 @@ class Primers extends React.Component {
     }
 
     return (
-      <div id="primers" className="page">
-        <div className="container">
-          <header className="row">
+      <div id="primers" className="primer page">
+         <header className="container">
+          <div className="row">
             <div className="col-md-12">
-              <hr className="orange" />
-              <h1 className="orange">Primers:</h1>
+              <hr />
+              <h1>Primers:</h1>
             </div>
             <div className="col-md-6">
               <p>In order to make our archiving efforts as thorough and systematic as possible,
@@ -53,9 +53,11 @@ class Primers extends React.Component {
               which each specify a url as a starting point for archiving.</p>
             </div>
             <div className="col-md-12">
-              <hr className="orange" />
+              <hr className="" />
             </div>
-          </header>
+          </div>
+        </header>
+        <div className="container">
           <div className="row">
             <br />
             <List data={primers} component={PrimerItem} />

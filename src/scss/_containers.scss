@@ -2,6 +2,10 @@
 @import "containers/Home";
 
 .page {
-  margin-top: 4em;
+  margin-top: 3em;
   margin-bottom: 8em;
+  header {
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+  }
 }

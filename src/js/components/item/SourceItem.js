@@ -8,17 +8,13 @@ const SourceItem = ({ data }) => {
 
   return (
     <div className="source item col-md-3">
-      <div className="card">
-        <Link to={`/sources/${source.id}`} className="orange">
-          <header className="bg-blue">
-            <h4>{source.title}</h4>
-          </header>
-          <div className="info">
-            <ProgressBar size="micro" color="blue" total={source.stats.contentUrlCount} progress={source.stats.contentMetadataCount} />
-            <i>{source.stats.contentMetadataCount}/{source.stats.contentUrlCount}</i>
-          </div>
-        </Link>
-      </div>
+      <Link to={`/sources/${source.id}`}>
+        <h4 className="title">{source.title}</h4>
+        <div className="info">
+          <ProgressBar size="micro" color="blue" total={source.stats.contentUrlCount} progress={source.stats.contentMetadataCount} />
+          <i>{source.stats.contentMetadataCount}/{source.stats.contentUrlCount}</i>
+        </div>
+      </Link>
     </div>
   );
 };
