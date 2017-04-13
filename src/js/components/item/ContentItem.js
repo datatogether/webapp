@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import { fileSizeString, fileTypeString } from '../../selectors/format';
+
 const ContentItem = ({ data }) => {
   const content = data;
   return (
     <div className="content item col-md-12">
-      <Link className="yellow" to={`/content/${content.hash}`}>{content.fileName || content.hash}</Link>
-      <br />
-      <Link className="blue" to={`/content/${content.hash}`}>{content.url}</Link>
+      <Link to={`/content/${content.hash}`}><h5 className="title">{content.fileName || "unnamed content"}</h5></Link>
+      <p>{fileSizeString(content.contentLength)} | {fileTypeString(content.contentSniff)}</p>
     </div>
   );
 };

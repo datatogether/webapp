@@ -16,7 +16,7 @@ import { selectRecentSources } from '../selectors/sources';
 import List from '../components/List';
 import SearchResultItem from '../components/item/SearchResultItem';
 import ContentItem from '../components/item/ContentItem';
-import SourcesRow from '../components/SourcesRow';
+import SourceItem from '../components/item/SourceItem';
 
 class Archives extends React.Component {
   constructor(props) {
@@ -52,12 +52,10 @@ class Archives extends React.Component {
     const { query, results } = this.props;
     if (query && query.length > 4 && !results.find(r => r.url == query)) {
       return (
-        <div className="row">
-          <div className="col-md-12">
-            <h6>Hrm... looks like we don&apos;t have a record for that url.</h6>
-            <p>Would You Like to try to archive it?</p>
-            <button className="btn btn-primary" onClick={this.handleArchiveUrl.bind(this, query)}>Archive Url</button>
-          </div>
+        <div className="col-md-12">
+          <h6>Hrm... looks like we don&apos;t have a record for that url.</h6>
+          <p>Would You Like to try to archive it?</p>
+          <button className="btn btn-primary" onClick={this.handleArchiveUrl.bind(this, query)}>Archive Url</button>
         </div>
       );
     }
@@ -72,6 +70,7 @@ class Archives extends React.Component {
           <label className="label">results</label>
         </div>
         <List component={SearchResultItem} data={this.props.results} />
+        {this.renderArchiveUrl()}
       </div>
     );
   }
@@ -79,7 +78,13 @@ class Archives extends React.Component {
   renderRecentContent() {
     return (
       <div>
-        <SourcesRow data={this.props.sources} label="Recent Sources:" />
+        <div className="row">
+          <div className="col-md-12">
+            <hr />
+            <label className="label">Sources</label>
+          </div>
+          <List data={this.props.sources} component={SourceItem}  />
+        </div>
         <div className="row">
           <div className="col-md-12">
             <hr />
@@ -95,21 +100,25 @@ class Archives extends React.Component {
     const { query, results } = this.props;
 
     return (
-      <div id="archives" className="page">
-        <div className="user container">
-          <div className="row">
-            <header className="orange col-md-12">
-              <div className="form-group">
-                <label className="form-label label">search archives</label>
-                <input className="form-control" value={query} onChange={this.handleSearchChange} />
+      <div id="archives" className="archives page">
+        <header>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr />
+                <div className="form-group">
+                  <label className="form-label label">search archives</label>
+                  <input className="form-control" value={query} onChange={this.handleSearchChange} />
+                </div>
               </div>
-            </header>
+            </div>
           </div>
+        </header>
+        <div className="container">
           {results.length ?
             this.renderSearchResults() :
             this.renderRecentContent()
           }
-          {this.renderArchiveUrl()}
         </div>
       </div>
     );

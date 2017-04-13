@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import { concatUrlString } from '../../selectors/url';
+import { concatUrlString, containsContent } from '../../selectors/url';
 
 const UrlItem = ({ data }) => {
   const url = data;
@@ -15,12 +15,12 @@ const UrlItem = ({ data }) => {
   };
 
   return (
-    <div className="search result item col-md-12">
-      <Link className="blue" to={`/url?url=${uri}`}>
+    <div className="url item col-md-12">
+      <Link className="title" to={`/url?url=${uri}`}>
         { url.title ? <h5>{url.title}</h5> : undefined }
         {concatUrlString(url.url)}
       </Link>
-      <p>{ url.contentSniff && url.contentSniff != "text/html; charset=utf-8" ? <Link className="yellow" to={`/content/${url.hash}`}>{url.fileName || url.hash}</Link> : undefined }</p>
+      <p>{containsContent(url) && <Link className="content" to={`/content/${url.hash}`}>{url.fileName || "unnamed content"}</Link>}</p>
       {urlState(url.state)}
     </div>
   );

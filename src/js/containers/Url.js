@@ -106,13 +106,13 @@ class Url extends React.Component {
     }
 
     return (
-      <div>
+      <div className="container">
         {containsContent(url) &&
           <div className="row">
             <div className="col-md-12">
               <br />
               <label>Content</label><br />
-              <Link className="yellow" to={`/content/${url.hash}`}><b>{url.fileName || url.hash}</b></Link>
+              <Link className="content" to={`/content/${url.hash}`}><b>{url.fileName || url.hash}</b></Link>
             </div>
           </div>
         }
@@ -135,24 +135,26 @@ class Url extends React.Component {
     }
 
     return (
-      <div id="url" className="page">
-        <div className="container">
-          <header className="row">
-            <div className="col-md-12">
-              <hr className="blue" />
-              <a className="right" target="_blank" rel="noopener noreferrer" href={url.url}>link</a>
-              <label className="label">URL</label>
-              <h4 className="blue">{url.title}</h4>
-              <h5 className="blue">{url.url}</h5>
-              <br />
-              {!url.hash && <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
-              {url.hash && !containsContent(url) && <button className="btn" onClick={this.handleUncrawlableClick}>Missing Content</button>}
-              <hr className="blue" />
+      <div id="url" className="url page">
+        <header className="colorized">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr className="blue" />
+                <a className="right" target="_blank" rel="noopener noreferrer" href={url.url}>link</a>
+                <label className="label">URL</label>
+                <h4 className="title">{url.title}</h4>
+                <h5>{url.url}</h5>
+                <br />
+                {!url.hash && <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
+                {url.hash && !containsContent(url) && <button className="btn" onClick={this.handleUncrawlableClick}>Missing Content</button>}
+                <hr className="blue" />
+              </div>
             </div>
-          </header>
-          <StatsBar stats={urlStats(url)} />
-          {this.renderContent()}
-        </div>
+            <StatsBar stats={urlStats(url)} />
+          </div>
+        </header>
+        {this.renderContent()}
       </div>
     );
   }

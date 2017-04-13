@@ -28,7 +28,7 @@ export function selectUrlByHash(state, hash = "") {
   return url;
 }
 
-export function urlStats(url) {
+export function urlStats(url = {}) {
   return {
     "last get": url.lastGet ? dateString(url.lastGet) : "never",
     status: url.status,

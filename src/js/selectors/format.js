@@ -19,3 +19,14 @@ export function dateString(d) {
   d = new Date(d)
   return d.toISOString().slice(0,-14);
 }
+
+export function fileTypeString(mime) {
+  switch (mime) {
+    case "application/pdf":
+      return "pdf";
+    case "application/csv":
+      return "csv";
+    default:
+      return mime;
+  }
+}

@@ -1,3 +1,4 @@
+import { fileSizeString, dateString, fileTypeString } from './format';
 
 export function selectContent(state, hash) {
   return state.entities.content[hash];
@@ -28,4 +29,13 @@ export function selectRecentContentUrls(state) {
     return [];
   }
   return pages.created.ids.map(urlId => state.entities.urls[urlId]);
+}
+
+export function contentStats(url = {}) {
+  return {
+    size: fileSizeString(url.contentLength),
+    "content type": fileTypeString(url.contentSniff),
+    "last get": url.lastGet ? dateString(url.lastGet) : "never",
+    status: url.status,
+  };
 }

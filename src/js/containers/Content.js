@@ -16,7 +16,8 @@ import { loadConsensus } from '../actions/consensus';
 import { loadContentMetadata, loadContentUrls } from '../actions/content';
 import { selectConsensus } from '../selectors/consensus';
 import { selectContentUrls, selectContentMetadata } from '../selectors/content';
-import { selectUrlByHash, urlStats } from '../selectors/url';
+import { selectUrlByHash } from '../selectors/url';
+import { contentStats } from '../selectors/content';
 
 class Content extends React.Component {
   constructor(props) {
@@ -83,22 +84,26 @@ class Content extends React.Component {
     const { tab } = this.state;
 
     return (
-      <div id="content" className="page">
-        <div className="container">
-          <header className="row">
-            <div className="yellow col-md-12">
-              <hr className="yellow" />
-              <label className="label">Content</label>
-              <h5>{url ? url.fileName : hash}</h5>
-              {url && <a className="btn bg-yellow white" href={url.contentUrl} download={url.fileName}>Download Content</a> }
-              <br />
-              <br />
-              <hr className="yellow" />
+      <div id="content" className="content page">
+        <header className="colorized">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr className="" />
+                <label className="label">Content</label>
+                <h3 className="title">{url && url.fileName ? url.fileName : "unnamed content"}</h3>
+                {url && <a className="btn" href={url.contentUrl} download={url.fileName}>Download File</a> }
+                <hr />
+              </div>
             </div>
-          </header>
-          <StatsBar stats={urlStats(url)} />
+            <StatsBar stats={contentStats(url)} />
+          </div>
+        </header>
+        <div className="container">
           <TabBar value={tab} tabs={["metadata", "urls", "history", "consensus"]} onChange={this.handleSetTab} color="yellow" />
-          {this.renderCurrentTab()}
+          <div className="row">
+            {this.renderCurrentTab()}
+          </div>
         </div>
       </div>
     );
