@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import analytics from '../analytics';
-import { selectUrl, selectOutboundLinks, selectInboundLinks, urlStats } from '../selectors/url';
+import { selectUrl, selectOutboundLinks, selectInboundLinks, urlStats, containsContent } from '../selectors/url';
 import { loadUrl, loadOutboundLinks, loadInboundLinks, archiveUrl } from '../actions/url';
 
 import List from '../components/List';
@@ -14,13 +14,21 @@ import StatsBar from '../components/StatsBar';
 import UrlItem from '../components/item/UrlItem';
 import TabBar from '../components/TabBar';
 
+function defaultTab(props) {
+  let tab = 'outbound links';
+  if (props.url && containsContent(props.url)) {
+    tab = 'content';
+  }
+  return tab;
+}
+
 class Url extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       loading: !!props.url,
-      tab: 'outbound links',
+      tab: defaultTab(props),
     };
 
     [
@@ -31,7 +39,7 @@ class Url extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('url');
     this.props.loadUrl(this.props.urlParam);
     this.props.loadInboundLinks(this.props.urlParam);
   }
@@ -40,11 +48,10 @@ class Url extends React.Component {
     if (nextProps.urlParam != this.props.urlParam) {
       this.props.loadUrl(nextProps.urlParam);
       this.props.loadOutboundLinks(this.props.urlParam);
-      this.setState({ loading: true });
-    } if (nextProps.url && this.state.loading) {
-      this.setState({ loading: false });
+      this.setState({ loading: true, tab: defaultTab(nextProps) });
+    } if (nextProps.url && !this.props.url) {
+      this.setState({ loading: false, tab: defaultTab(nextProps) });
     }
-    // TODO - detect content type & set appropriate tab
   }
 
   handleArchive() {
@@ -77,12 +84,6 @@ class Url extends React.Component {
     const { url } = this.props;
 
     switch (tab) {
-      case "content":
-        return (
-          <div className="col-md-12">
-            <label>Content</label><br />
-            <Link className="yellow" to={`/content/${url.hash}`}>{url.hash}</Link>
-          </div>);
       case "outbound links":
         return <List data={this.props.outboundLinks} component={UrlItem} />;
       case "inbound links":
@@ -100,12 +101,21 @@ class Url extends React.Component {
 
     let tabs = ["outbound links", "inbound links", "snapshots"];
 
-    if (url.contentSniff && url.contentSniff != "text/html; charset=utf-8") {
-      tabs = ["content", "inbound links"];
+    if (containsContent(url)) {
+      tabs = ["inbound links"];
     }
 
     return (
       <div>
+        {containsContent(url) &&
+          <div className="row">
+            <div className="col-md-12">
+              <br />
+              <label>Content</label><br />
+              <Link className="yellow" to={`/content/${url.hash}`}><b>{url.fileName || url.hash}</b></Link>
+            </div>
+          </div>
+        }
         <TabBar value={tab} tabs={tabs} onChange={this.handleChangeTab} color="blue" />
         <div className="row">
           {this.renderCurrentTab()}
@@ -132,10 +142,11 @@ class Url extends React.Component {
               <hr className="blue" />
               <a className="right" target="_blank" rel="noopener noreferrer" href={url.url}>link</a>
               <label className="label">URL</label>
-              <h4 className="blue">{url.url}</h4>
+              <h4 className="blue">{url.title}</h4>
+              <h5 className="blue">{url.url}</h5>
               <br />
-              {url.hash ? undefined : <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
-              {url.hash ? <button className="btn" onClick={this.handleUncrawlableClick}>Missing Content</button> : undefined}
+              {!url.hash && <button className="btn btn-primary" onClick={this.handleArchive}>Archive Url</button>}
+              {url.hash && !containsContent(url) && <button className="btn" onClick={this.handleUncrawlableClick}>Missing Content</button>}
               <hr className="blue" />
             </div>
           </header>

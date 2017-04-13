@@ -22,7 +22,7 @@ class Collections extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('collections');
     this.props.loadCollections();
   }
 

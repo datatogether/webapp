@@ -1,6 +1,11 @@
+import { fileSizeString, dateString } from './format';
 
 export function concatUrlString(u, max = 80) {
   return (u.length < max) ? u : `${u.slice(0, max)}...`;
+}
+
+export function containsContent(url = {}) {
+  return (url.contentSniff && url.contentSniff != "text/html; charset=utf-8");
 }
 
 export function selectUrl(state, urlString = "") {
@@ -23,27 +28,11 @@ export function selectUrlByHash(state, hash = "") {
   return url;
 }
 
-export function fileSize(len = 0) {
-  let rounded;
-  if (len < 1000) {
-    return `${len} bytes`;
-  } else if (len < (1000 * 1000 * 1000)) {
-    rounded = Math.round(len/1000);
-    return `${rounded} kb`;
-  } else if (len < (1000 * 1000 * 1000 * 1000)) {
-    rounded = Math.round(len/1000/1000) / 100;
-    return `${rounded} Mb`;
-  } else {
-    rounded = Math.round(len/1000/1000/1000) / 100;
-    return `${rounded} Gb`;
-  }
-}
-
 export function urlStats(url) {
   return {
-    "last get": url.lastGet ? new Date(url.lastGet).toString() : "never",
+    "last get": url.lastGet ? dateString(url.lastGet) : "never",
     status: url.status,
-    size: fileSize(url.contentLength),
+    size: fileSizeString(url.contentLength),
     "content type": url.contentSniff,
   };
 }

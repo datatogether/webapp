@@ -29,7 +29,7 @@ class User extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('user');
     if (this.props.user && this.props.user.currentKey) {
       this.props.loadMetadataByKey(this.props.user.currentKey);
     } else {

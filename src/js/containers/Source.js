@@ -27,7 +27,7 @@ class Source extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('source');
     this.props.loadSource(this.props.id);
     this.props.loadSourceUrls(this.props.id);
   }

@@ -10,6 +10,8 @@ import { archiveUrl } from '../actions/url';
 import { selectSessionUser } from '../selectors/session';
 import { selectSearchQuery, selectSearchResults } from '../selectors/search';
 
+import Footer from '../components/Footer';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -57,6 +59,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

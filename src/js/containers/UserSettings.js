@@ -26,7 +26,7 @@ class UserSettings extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('user_settings');
     this.props.editSessionUser();
   }
 

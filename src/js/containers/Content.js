@@ -32,7 +32,7 @@ class Content extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('content');
     this.props.loadContentUrls(this.props.hash);
   }
 

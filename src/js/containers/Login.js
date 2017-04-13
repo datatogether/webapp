@@ -24,7 +24,7 @@ class Login extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('login');
     if (this.props.user != null) {
       browserHistory.push('/');
     }

@@ -26,7 +26,7 @@ class Collection extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('collection');
     (this.props.id == "new") ?
       this.props.newCollection(this.props.sessionKeyId):
       this.props.loadCollection(this.props.id);

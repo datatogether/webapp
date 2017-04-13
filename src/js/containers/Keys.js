@@ -32,7 +32,7 @@ class Keys extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('keys');
     this.props.loadKeys();
   }
 

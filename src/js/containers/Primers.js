@@ -20,7 +20,7 @@ class Primers extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('primers');
     this.props.loadPrimers(1, 25, true);
   }
 

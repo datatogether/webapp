@@ -24,7 +24,7 @@ class Signup extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('signup');
     if (this.props.user != null) {
       browserHistory.push('/');
     }

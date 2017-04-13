@@ -23,7 +23,7 @@ class Primer extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('primer');
     this.props.loadPrimer(this.props.id);
   }
 
