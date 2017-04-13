@@ -60,21 +60,27 @@ class User extends React.Component {
     }
 
     return (
-      <div id="user" className="page">
-        <div className="container">
-          <div className="row">
-            <header className="red col-md-12">
-              <hr className="red" />
-              <h1><Link className="red" to={`/${user.username}`}>{user.username}</Link></h1>
-              { permissions.edit ? <Link to="/settings" >settings </Link> : undefined }
-              { permissions.edit ? <a onClick={this.handleLogout}>logout</a> : undefined }
-              <p>{ user.description }</p>
-            </header>
+      <div id="user" className="user page">
+        <header className="colorized">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr className="" />
+                <label className="label">User</label>
+                <Link className="" to={`/${user.username}`}>
+                  <h1 className="title">{user.username}</h1>
+                </Link>
+                { permissions.edit ? <Link to="/settings" >settings </Link> : undefined }
+                { permissions.edit ? <a onClick={this.handleLogout}>logout</a> : undefined }
+                <p>{ user.description }</p>
+              </div>
+            </div>
           </div>
-          <div className="row">
+        </header>
+        <div className="container">
+          <div className="metadata row">
             <div className="col-md-12">
-              <hr className="red" />
-              <h4>Metadata:</h4>
+              <h4 className="title">Metadata:</h4>
             </div>
             <List data={metadata} component={MetadataItem} />
           </div>

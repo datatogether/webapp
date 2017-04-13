@@ -12,7 +12,7 @@ const PrimerItem = ({ data }) => {
     <div className="primer item col-md-4">
       <div className="card">
         <Link to={`/primers/${primer.id}`}>
-          <header className="bg-orange">
+          <header className="colorized">
             <h3>{primer.shortTitle}</h3>
           </header>
         </Link>

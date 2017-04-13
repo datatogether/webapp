@@ -5,7 +5,7 @@ const MetadataItem = ({ data }) => {
   const metadata = data;
   return (
     <div className="metadata item col-md-12">
-      <Link className="yellow" to={`/content/${metadata.hash}`}>{metadata.hash}</Link>
+      <Link to={`/content/${metadata.hash}`}>{metadata.hash}</Link>
     </div>
   );
 };

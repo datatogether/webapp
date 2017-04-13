@@ -183,6 +183,21 @@ a:hover {
   }
 }
 
+.user,
+.user.item {
+  hr {
+   border-top: 2px solid $red; 
+  }
+  .label,
+  .title {
+    color: $red;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $red;
+  }
+}
+
 .colorized {
   color: white;
   .title,
@@ -191,5 +206,8 @@ a:hover {
   }
   .progressbar .progress {
     background: white;
+  }
+  a {
+    color: white;
   }
 }
