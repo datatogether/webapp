@@ -60,9 +60,9 @@
   },
   "scripts": {
     "develop": "NODE_ENV=development node server.js",
-    "test": "jest",
-    "build": "NODE_ENV=production webpack --progress --config webpack.config.prod",
-    "build:staging": "NODE_ENV=development webpack --progress --config webpack.config.staging",
+    "test": "./node_modules/.bin/jest",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --progress --config webpack.config.prod",
+    "build:staging": "NODE_ENV=development ./node_modules/.bin/webpack --progress --config webpack.config.staging",
     "publish": "./scripts/publish.sh"
   },
   "repository": {
