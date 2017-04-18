@@ -25,9 +25,8 @@ function defaultTab(props) {
 class Url extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      loading: !!props.url,
+      loading: (props.url == undefined),
       tab: defaultTab(props),
     };
 
@@ -112,7 +111,7 @@ class Url extends React.Component {
             <div className="col-md-12">
               <br />
               <label>Content</label><br />
-              <Link className="content" to={`/content/${url.hash}`}><b>{url.fileName || url.hash}</b></Link>
+              <b><Link className="content" to={`/content/${url.hash}`}>{url.fileName || url.hash}</Link></b>
             </div>
           </div>
         }

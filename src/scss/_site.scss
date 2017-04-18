@@ -164,8 +164,7 @@ a:hover {
     border-top: 2px solid $magenta;
   }
   .title,
-  .label,
-  a.content {
+  .label {
     color: $magenta;
   }
   .colorized,
@@ -173,6 +172,8 @@ a:hover {
     background: $magenta;
   }
 }
+a.content { color: $magenta; }
+
 
 .primer,
 .primer.item {
