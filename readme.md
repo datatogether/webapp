@@ -14,14 +14,17 @@ It's main job is to get users to contribute metadata about content that has been
 
 ### Getting Started
 
-So, running this locally is [totally not fun to set up right now](https://github.com/qri-io/context/issues/13), I'll put some time into this ASAP, but to get a feel try the following:
+To get started with dev, make sure you have [docker](https://store.docker.com/search?type=edition&offering=community) and [docker compose](https://docs.docker.com/compose/install/) And then run:
 
 ```shell
 $ git clone git@github.com:qri-io/context.git
 $ cd context
-$ npm install
-$ npm run develop
+$ docker-compose up
 ```
+
+this'll spin up a whole bunch of servers and make lots of noise. Once you see `webpack built` you can go to `http://localhost:3000` to see the app running locally.
+
+Developing is as simple as editing files in source, if webpack can it'll automatically recomplie & update your browser window. Def have the browser's console open to make sure nothing's exploding.
 
 ### Project Organization
 
