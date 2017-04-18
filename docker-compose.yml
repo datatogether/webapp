@@ -1,17 +1,18 @@
 version: '2'
 services:
-  node:
+  context:
     build: .
     volumes:
-      - .:/context
+      - ./src:/home/context/src
     ports:
      - 4000:4000
     networks:
       - back-tier
     depends_on:
       - patchbay
+
   identity:
-    image: archivers/identity:0.1.3
+    image: archivers/identity:latest
     networks:
       - back-tier
     depends_on:
@@ -21,6 +22,7 @@ services:
     environment:
       - PORT=3100
       - GOLANG_ENV=develop
+      - ALLOWED_ORIGINS=http://localhost:3000
       - POSTGRES_DB_URL=postgres://postgres@postgres/postgres?sslmode=disable
       - |
         PUBLIC_KEY=-----BEGIN PUBLIC KEY-----
@@ -37,8 +39,9 @@ services:
         0/eSfoWZ6N8tIQIhAI2y6gPN6SxRjqdr42EkTah3D93xBK5X4k9XtAninGrRAiB7
         k4uJgqHl8hgs3bndGibFuepdLWJed7YXa+eF57FdmA==
         -----END RSA PRIVATE KEY-----
+
   patchbay:
-    image: archivers/patchbay:0.1.3
+    image: archivers/patchbay:latest
     ports:
      - 3000:3000
     networks:
@@ -46,19 +49,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - PORT=3200
-      - GOLANG_ENV=develop
-      - POSTGRES_DB_URL=postgres://postgres@postgres/postgres?sslmode=disable
-  identity:
-    image: archivers/identity:0.1.3
-    networks:
-      - back-tier
-    depends_on:
-      - postgres
-    ports:
-      - 3100:3100
-    environment:
-      - PORT=3100
+      - PORT=3000
       - GOLANG_ENV=develop
       - POSTGRES_DB_URL=postgres://postgres@postgres/postgres?sslmode=disable
       - |
@@ -76,14 +67,11 @@ services:
         0/eSfoWZ6N8tIQIhAI2y6gPN6SxRjqdr42EkTah3D93xBK5X4k9XtAninGrRAiB7
         k4uJgqHl8hgs3bndGibFuepdLWJed7YXa+eF57FdmA==
         -----END RSA PRIVATE KEY-----
+
   postgres:
-    image: "postgres:9.6-alpine"
+    image: postgres:9.6-alpine
     networks:
       - back-tier
-    # environment:
-    #   POSTGRES_USER: archivers
-    #   POSTGRES_DB: archives
-    #   POSTGRES_PASSWORD: ""
 
 volumes:
   db-data:
