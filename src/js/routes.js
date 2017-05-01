@@ -59,7 +59,7 @@ export default {
       getComponent(location,cb) {
         import('./containers/Coverage').then(loadRoute(cb)).catch(errorLoading);
       }
-    }
+    },
     {
       path: '/settings',
       getComponent(location, cb) {
