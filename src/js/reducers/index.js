@@ -7,9 +7,11 @@ import * as ActionTypes from '../actions/app';
 import pagination from './pagination';
 // import sessionReducer from './session';
 import layoutReducer from './layout';
+import coverageReducer from './coverage';
 import appReducer from './app';
 import locals from './locals';
 import urlStates from './urlStates';
+import selectionReducer from './selection';
 
 const initialEntitiesState = {
   session: {},
@@ -80,6 +82,8 @@ const rootReducer = combineReducers({
   locals,
   app: appReducer,
   layout: layoutReducer,
+  coverage: coverageReducer,
+  selection: selectionReducer,
   pagination,
   urlStates,
   routing,

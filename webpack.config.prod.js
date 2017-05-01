@@ -12,6 +12,7 @@ var ENV = {
     BASE_URL : JSON.stringify("https://alpha.archivers.space"),
     API_URL : JSON.stringify("https://alpha.archivers.space"),
     USERS_API_URL : JSON.stringify("https://ident.archivers.space"),
+    COVERAGE_API_URL : JSON.stringify("https://coverage.archivers.space"),
     WEBSOCKET_URL : JSON.stringify("wss://alpha.archivers.space/ws"),
     STATIC_ASSETS_URL : JSON.stringify("http://alpha.archivers.space"),
     SEGMENT_KEY : JSON.stringify("FwUGnmKzryJpDpApVzdQy9rmwwWSiK1M"),

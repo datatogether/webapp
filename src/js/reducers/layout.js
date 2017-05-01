@@ -42,14 +42,14 @@ function layout(state) {
     main: {
       width: sidebar.collapsed ? stage.width - COLLAPSED_WIDTH : stage.width * (1 - sidebar.pct_width),
       height: stage.height - navbar.height,
-      top: 0,
+      top: navbar.height,
       left: 0,
     },
     sidebar: {
       width: sidebar.collapsed ? COLLAPSED_WIDTH : stage.width * sidebar.pct_width,
       height: stage.height - navbar.height,
       left: sidebar.collapsed ? stage.width - COLLAPSED_WIDTH : stage.width * (1 - sidebar.pct_width),
-      top: 0,
+      top: navbar.height,
       collapsed: sidebar.collapsed,
       pct_width: sidebar.pct_width,
     },

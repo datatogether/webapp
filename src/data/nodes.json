@@ -1,0 +1,4774 @@
+[
+  {
+    "id": 0,
+    "name": "EPA",
+    "descendants": 626,
+    "descendantsDownloadedOnce": 51,
+    "descendantsArchivedOnce": 35
+  },
+  {
+    "id": 1,
+    "name": "https",
+    "descendants": 467,
+    "descendantsDownloadedOnce": 47,
+    "descendantsArchivedOnce": 33
+  },
+  {
+    "id": 2,
+    "name": "www.epa.gov",
+    "descendants": 71,
+    "descendantsDownloadedOnce": 19,
+    "descendantsArchivedOnce": 11
+  },
+  {
+    "id": 3,
+    "name": "enviro",
+    "descendants": 18,
+    "descendantsDownloadedOnce": 8,
+    "descendantsArchivedOnce": 4
+  },
+  {
+    "id": 4,
+    "name": "system-data-searches",
+    "archivers.space": {
+      "priority": 6,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 5,
+    "name": "chp",
+    "descendants": 2
+  },
+  {
+    "id": 6,
+    "name": "dchpp-chp-policies-and-incentives-database",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 7,
+    "name": "actor.epa.gov",
+    "descendants": 6,
+    "descendantsDownloadedOnce": 2,
+    "descendantsArchivedOnce": 2
+  },
+  {
+    "id": 8,
+    "name": "actor",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 9,
+    "name": "home.xhtml",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 6,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 10,
+    "name": "epa-regional-kml-download",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 6,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 11,
+    "name": "geospatial-data-download-service",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 12,
+    "name": "cromerr",
+    "descendants": 3,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 13,
+    "name": "frequently-asked-questions-about-cromerr",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 14,
+    "name": "ftp",
+    "descendants": 13,
+    "descendantsDownloadedOnce": 2,
+    "descendantsArchivedOnce": 2
+  },
+  {
+    "id": 15,
+    "name": "newftp.epa.gov",
+    "descendants": 5,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 16,
+    "name": "EPADataCommons",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 17,
+    "name": "comptox.epa.gov",
+    "descendants": 2
+  },
+  {
+    "id": 18,
+    "name": "dashboard",
+    "descendants": 1
+  },
+  {
+    "id": 19,
+    "name": "downloads",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 20,
+    "name": "ofmpub.epa.gov",
+    "descendants": 31,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 21,
+    "name": "apex",
+    "descendants": 12
+  },
+  {
+    "id": 22,
+    "name": "public_reports",
+    "descendants": 2
+  },
+  {
+    "id": 23,
+    "name": "f",
+    "descendants": 1
+  },
+  {
+    "id": 24,
+    "name": "p=ENVIRO_PUBLIC:DATA_STEWARDS::::::",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 25,
+    "name": "epa.gov",
+    "descendants": 133,
+    "descendantsDownloadedOnce": 13,
+    "descendantsArchivedOnce": 7
+  },
+  {
+    "id": 26,
+    "name": "ghgemissions",
+    "descendants": 2
+  },
+  {
+    "id": 27,
+    "name": "us-greenhouse-gas-inventory-report-archive",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 28,
+    "name": "toxics-release-inventory-tri-program",
+    "descendants": 13,
+    "descendantsDownloadedOnce": 2
+  },
+  {
+    "id": 29,
+    "name": "cancer-data-tri-listed-chemicals",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 30,
+    "name": "ejscreen.epa.gov",
+    "descendants": 1
+  },
+  {
+    "id": 31,
+    "name": "mapper",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 32,
+    "name": "iaspub.epa.gov",
+    "descendants": 24
+  },
+  {
+    "id": 33,
+    "name": "triexplorer",
+    "descendants": 1
+  },
+  {
+    "id": 34,
+    "name": "tri_release.chemical",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 35,
+    "name": "trinationalanalysis",
+    "descendants": 1
+  },
+  {
+    "id": 36,
+    "name": "where-you-live-2015-tri-national-analysis",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 37,
+    "name": "nepis.epa.gov",
+    "descendants": 8,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 38,
+    "name": "www3.epa.gov",
+    "descendants": 31,
+    "descendantsDownloadedOnce": 5,
+    "descendantsArchivedOnce": 5
+  },
+  {
+    "id": 39,
+    "name": "enviro",
+    "descendants": 15,
+    "descendantsDownloadedOnce": 3,
+    "descendantsArchivedOnce": 3,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 40,
+    "name": "epa-state-combined-csv-download-files",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 6,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 41,
+    "name": "cfpub.epa.gov",
+    "descendants": 29,
+    "descendantsDownloadedOnce": 4,
+    "descendantsArchivedOnce": 3
+  },
+  {
+    "id": 42,
+    "name": "c-ferst",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1
+  },
+  {
+    "id": 43,
+    "name": "ViewMap.cfm",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 44,
+    "name": "irmpoli8",
+    "descendants": 1
+  },
+  {
+    "id": 45,
+    "name": "current-information-directives",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 46,
+    "name": "ols",
+    "descendants": 2
+  },
+  {
+    "id": 47,
+    "name": "catalog",
+    "descendants": 1
+  },
+  {
+    "id": 48,
+    "name": "catalog_lookup.cfm",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 49,
+    "name": "toxics-release-inventory-tri-program",
+    "descendants": 4,
+    "descendantsDownloadedOnce": 3,
+    "descendantsArchivedOnce": 2,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 50,
+    "name": "sor_internet",
+    "descendants": 13
+  },
+  {
+    "id": 51,
+    "name": "registry",
+    "descendants": 12
+  },
+  {
+    "id": 52,
+    "name": "substreg",
+    "descendants": 7
+  },
+  {
+    "id": 53,
+    "name": "searchandretrieve",
+    "descendants": 4
+  },
+  {
+    "id": 54,
+    "name": "substancesearch",
+    "descendants": 1
+  },
+  {
+    "id": 55,
+    "name": "search.do",
+    "archivers.space": {
+      "priority": 6,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 56,
+    "name": "dmr",
+    "descendants": 3,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 57,
+    "name": "facts",
+    "descendants": 8,
+    "descendantsDownloadedOnce": 3,
+    "descendantsArchivedOnce": 3
+  },
+  {
+    "id": 58,
+    "name": "rcrainfo",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 59,
+    "name": "search.html",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 60,
+    "name": "rsei",
+    "descendants": 2
+  },
+  {
+    "id": 61,
+    "name": "get-easyrsei",
+    "archivers.space": {
+      "priority": 2,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 62,
+    "name": "trinationalanalysis",
+    "descendants": 1
+  },
+  {
+    "id": 63,
+    "name": "supporting-data-files-2015-tri-national-analysis",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 64,
+    "name": "http",
+    "descendants": 143,
+    "descendantsDownloadedOnce": 2
+  },
+  {
+    "id": 65,
+    "name": "ftp.epa.gov",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 66,
+    "name": "tri-basic-data-files-calendar-years-1987-2015",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 67,
+    "name": "edg.epa.gov",
+    "descendants": 11
+  },
+  {
+    "id": 68,
+    "name": "metadata",
+    "descendants": 7
+  },
+  {
+    "id": 69,
+    "name": "catalog",
+    "descendants": 6
+  },
+  {
+    "id": 70,
+    "name": "search",
+    "descendants": 5
+  },
+  {
+    "id": 71,
+    "name": "resource",
+    "descendants": 4
+  },
+  {
+    "id": 72,
+    "name": "details.page",
+    "descendants": 3
+  },
+  {
+    "id": 73,
+    "name": "uuid={1D329CAA-31BB-496B-B0DF-23CBDA27E3AD}",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 74,
+    "name": "roe",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 75,
+    "name": "pcs-icis-customized-search",
+    "archivers.space": {
+      "priority": 1,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 76,
+    "name": "air-emissions-inventories",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 2,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 7,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 77,
+    "name": "national-emissions-inventory-nei",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 78,
+    "name": "outdoor-air-quality-data",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 79,
+    "name": "sor_internet",
+    "descendants": 13,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 80,
+    "name": "registry",
+    "descendants": 9
+  },
+  {
+    "id": 81,
+    "name": "systmreg",
+    "descendants": 3
+  },
+  {
+    "id": 82,
+    "name": "home",
+    "descendants": 2
+  },
+  {
+    "id": 83,
+    "name": "overview",
+    "descendants": 1
+  },
+  {
+    "id": 84,
+    "name": "home.do",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 85,
+    "name": "rsei-results-map",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 86,
+    "name": "noi",
+    "descendants": 1
+  },
+  {
+    "id": 87,
+    "name": "notices-intent-sue-us-environmental-protection-agency-documents",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 88,
+    "name": "tri-chemical-hazard-information-profiles",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 89,
+    "name": "sites",
+    "descendants": 10
+  },
+  {
+    "id": 90,
+    "name": "production",
+    "descendants": 9
+  },
+  {
+    "id": 91,
+    "name": "files",
+    "descendants": 8
+  },
+  {
+    "id": 92,
+    "name": "2016-03",
+    "descendants": 1
+  },
+  {
+    "id": 93,
+    "name": "all_doc_collections.json",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 94,
+    "name": "ghg",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 95,
+    "name": "search.html",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 96,
+    "name": "EJSCREEN",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 97,
+    "name": "cdxnodengn.epa.gov",
+    "descendants": 4
+  },
+  {
+    "id": 98,
+    "name": "cdx-enepa-public",
+    "descendants": 3
+  },
+  {
+    "id": 99,
+    "name": "action",
+    "descendants": 2
+  },
+  {
+    "id": 100,
+    "name": "eis",
+    "descendants": 1
+  },
+  {
+    "id": 101,
+    "name": "search",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 102,
+    "name": "nepa",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 103,
+    "name": "nepassist",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 7,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 104,
+    "name": "EME",
+    "descendants": 1
+  },
+  {
+    "id": 105,
+    "name": "download.html",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 106,
+    "name": "chemical-research",
+    "descendants": 3
+  },
+  {
+    "id": 107,
+    "name": "models-applications-and-databases-safer-chemicals-research",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 108,
+    "name": "research",
+    "descendants": 1
+  },
+  {
+    "id": 109,
+    "name": "human-health-risk-assessment-research-methods-models-tools-and-databases",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 110,
+    "name": "healthresearch",
+    "descendants": 1
+  },
+  {
+    "id": 111,
+    "name": "health-research-methods-models-tools-and-databases",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 112,
+    "name": "java.epa.gov",
+    "descendants": 10
+  },
+  {
+    "id": 113,
+    "name": "castnet",
+    "descendants": 8
+  },
+  {
+    "id": 114,
+    "name": "datatypepage.do",
+    "descendants": 5
+  },
+  {
+    "id": 115,
+    "name": "reportTypeId=REP_001\u0026reportTypeLabel=Measurement (Raw Data)",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 116,
+    "name": "reportTypeId=REP_002\u0026reportTypeLabel=Aggregate Concentration Data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 117,
+    "name": "reportTypeId=REP_003\u0026reportTypeLabel=Aggregate Deposition Data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 118,
+    "name": "toxicity-forecaster-toxcasttm-data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 119,
+    "name": "risk",
+    "descendants": 1
+  },
+  {
+    "id": 120,
+    "name": "risk-tools-and-databases",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 121,
+    "name": "children",
+    "descendants": 2
+  },
+  {
+    "id": 122,
+    "name": "tools-and-databases-support-childrens-health-protective-decisions",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 123,
+    "name": "ftp.epa.gov",
+    "descendants": 6,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 124,
+    "name": "castnet",
+    "descendants": 3,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 125,
+    "name": "tdep",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 126,
+    "name": "grids",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 127,
+    "name": "downloadable-computational-toxicology-data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 128,
+    "name": "geospatial",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1
+  },
+  {
+    "id": 129,
+    "name": "epa-geospatial-data",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 130,
+    "name": "watersgeo.epa.gov",
+    "descendants": 8
+  },
+  {
+    "id": 131,
+    "name": "beacon2",
+    "archivers.space": {
+      "priority": 1,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 132,
+    "name": "dockets",
+    "descendants": 1
+  },
+  {
+    "id": 133,
+    "name": "view-dockets-open-public-comment-program-office",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 134,
+    "name": "developer.epa.gov",
+    "descendants": 2
+  },
+  {
+    "id": 135,
+    "name": "category",
+    "descendants": 1
+  },
+  {
+    "id": 136,
+    "name": "widgets",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 137,
+    "name": "apex",
+    "descendants": 7
+  },
+  {
+    "id": 138,
+    "name": "waters",
+    "descendants": 2
+  },
+  {
+    "id": 139,
+    "name": "f",
+    "descendants": 1
+  },
+  {
+    "id": 140,
+    "name": "p=ASKWATERS:MAIN_MENU",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 141,
+    "name": "endocrine-disruption",
+    "descendants": 4,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 142,
+    "name": "endocrine-disruptor-screening-program-edsp-estrogen-receptor-bioactivity",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 143,
+    "name": "waterdata",
+    "descendants": 7
+  },
+  {
+    "id": 144,
+    "name": "waters-geospatial-data-downloads",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 145,
+    "name": "echo.epa.gov",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 146,
+    "name": "mwm",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 147,
+    "name": "ejscreen",
+    "descendants": 1,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 148,
+    "name": "download-ejscreen-data",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 149,
+    "name": "enforcement",
+    "descendants": 1
+  },
+  {
+    "id": 150,
+    "name": "cases",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 151,
+    "name": "envirofacts-data-service-api",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 9,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 152,
+    "name": "gispub.epa.gov",
+    "descendants": 4,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 153,
+    "name": "arcgis",
+    "descendants": 2
+  },
+  {
+    "id": 154,
+    "name": "rest",
+    "descendants": 1
+  },
+  {
+    "id": 155,
+    "name": "services",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 156,
+    "name": "nutrient-policy-data",
+    "descendants": 1
+  },
+  {
+    "id": 157,
+    "name": "nitrogen-and-phosphorus-pollution-data-access-tool",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 158,
+    "name": "nhdplus-national-data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 159,
+    "name": "nhdplus-global-data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 160,
+    "name": "hem-nhdevent-xml-conversion-tool-hem2xml",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 161,
+    "name": "endocrine-disruptor-screening-program-chemical-screening-and-testing-progress",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 162,
+    "name": "national-aquatic-resource-surveys",
+    "descendants": 1
+  },
+  {
+    "id": 163,
+    "name": "data-national-aquatic-resource-surveys",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 164,
+    "name": "viewing-waters-data-using-google-earth",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 165,
+    "name": "pacific-southwest-media-center",
+    "descendants": 1
+  },
+  {
+    "id": 166,
+    "name": "epa-pacific-southwest-annual-progress-reports",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 167,
+    "name": "waters-web-services",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 168,
+    "name": "cleanups",
+    "descendants": 1
+  },
+  {
+    "id": 169,
+    "name": "cleanups-my-community",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 170,
+    "name": "geodata.epa.gov",
+    "descendants": 8
+  },
+  {
+    "id": 171,
+    "name": "arcgis",
+    "descendants": 7
+  },
+  {
+    "id": 172,
+    "name": "rest",
+    "descendants": 6
+  },
+  {
+    "id": 173,
+    "name": "services",
+    "descendants": 5
+  },
+  {
+    "id": 174,
+    "name": "OAR_OAP",
+    "descendants": 4
+  },
+  {
+    "id": 175,
+    "name": "GrowingSeasonLength",
+    "descendants": 1
+  },
+  {
+    "id": 176,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 5,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 177,
+    "name": "yosemite.epa.gov",
+    "descendants": 15
+  },
+  {
+    "id": 178,
+    "name": "r9",
+    "descendants": 4
+  },
+  {
+    "id": 179,
+    "name": "sfund",
+    "descendants": 3
+  },
+  {
+    "id": 180,
+    "name": "r9sfdocw.nsf",
+    "descendants": 2
+  },
+  {
+    "id": 181,
+    "name": "About+Administrative+Records",
+    "descendants": 1
+  },
+  {
+    "id": 182,
+    "name": "OpenPage",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 183,
+    "name": "environmentaljustice",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 184,
+    "name": "environmental-justice-funding-communities",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 3,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 185,
+    "name": "automatedservices",
+    "descendants": 1
+  },
+  {
+    "id": 186,
+    "name": "index.jsp",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 187,
+    "name": "cimc",
+    "descendants": 2
+  },
+  {
+    "id": 188,
+    "name": "f",
+    "descendants": 1
+  },
+  {
+    "id": 189,
+    "name": "p=CIMC:CREATETABLE::::::",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 190,
+    "name": "endocrine-disruptor-screening-program-tier-1-screening-determinations-and",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 191,
+    "name": "universe-chemicals-potential-endocrine-disruptor-screening-and-testing",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 192,
+    "name": "enviro",
+    "descendants": 4
+  },
+  {
+    "id": 193,
+    "name": "geospatial-data-download-service",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 194,
+    "name": "chemical-data-reporting",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 195,
+    "name": "2012-chemical-data-reporting-results",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 196,
+    "name": "waterdata",
+    "descendants": 1
+  },
+  {
+    "id": 197,
+    "name": "waters-tools",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 198,
+    "name": "nhdplus-national-hydrography-dataset-plus",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 199,
+    "name": "cpcat",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 200,
+    "name": "faces",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 201,
+    "name": "download.xhtml",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 202,
+    "name": "tsca-inventory",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 203,
+    "name": "how-access-tsca-inventory",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 6,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 204,
+    "name": "tsca",
+    "descendants": 1
+  },
+  {
+    "id": 205,
+    "name": "tsca_search.html",
+    "archivers.space": {
+      "priority": 1,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 206,
+    "name": "datareg",
+    "descendants": 3
+  },
+  {
+    "id": 207,
+    "name": "searchandretrieve",
+    "descendants": 2
+  },
+  {
+    "id": 208,
+    "name": "datadictionaries",
+    "descendants": 1
+  },
+  {
+    "id": 209,
+    "name": "browse.do",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 210,
+    "name": "uuid={5C850324-7726-4F56-B82D-11061EA50855}",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 211,
+    "name": "uuid=7b5C850324-7726-4F56-B82D-11061EA508557d",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 212,
+    "name": "Streamflow_Indicators",
+    "descendants": 1
+  },
+  {
+    "id": 213,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 214,
+    "name": "newftp.epa.gov",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 215,
+    "name": "echo.epa.gov",
+    "descendants": 5,
+    "descendantsArchivedOnce": 1,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 216,
+    "name": "AIR_QUALITY_DATA",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 217,
+    "name": "AIR_QUALITY_DATA",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 218,
+    "name": "epa_jsp",
+    "descendants": 1
+  },
+  {
+    "id": 219,
+    "name": "prepackageddata.jsp",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 220,
+    "name": "reportTypeId=REP_004\u0026reportTypeLabel=Factual Data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 221,
+    "name": "pcs-icis-search",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 7,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 222,
+    "name": "cromerr-overview-epa-programs-and-regions",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 223,
+    "name": "tri-customized-search",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 6,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 224,
+    "name": "cleanups",
+    "descendants": 2
+  },
+  {
+    "id": 225,
+    "name": "cleanups-my-community",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 226,
+    "name": "enviroatlas",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 2
+  },
+  {
+    "id": 227,
+    "name": "enviroatlas-communities",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 3,
+      "harvested": true,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 228,
+    "name": "CommunityDataTable.cfm",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 229,
+    "name": "carbon-footprint-calculator",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 3,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 230,
+    "name": "images",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 231,
+    "name": "ArcGIS",
+    "descendants": 5
+  },
+  {
+    "id": 232,
+    "name": "rest",
+    "descendants": 4
+  },
+  {
+    "id": 233,
+    "name": "services",
+    "descendants": 3
+  },
+  {
+    "id": 234,
+    "name": "OWRAD_NP21",
+    "descendants": 2
+  },
+  {
+    "id": 235,
+    "name": "NPDES_NP21",
+    "descendants": 1
+  },
+  {
+    "id": 236,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 237,
+    "name": "myenviromapper",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 238,
+    "name": "data-downloads",
+    "archivers.space": {
+      "priority": 7,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 239,
+    "name": "frs-query-page",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 240,
+    "name": "enviro",
+    "descendants": 1
+  },
+  {
+    "id": 241,
+    "name": "em4ef.home",
+    "archivers.space": {
+      "priority": 1,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 242,
+    "name": "frs-physical-data-model",
+    "archivers.space": {
+      "priority": 1,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 243,
+    "name": "energy",
+    "descendants": 2
+  },
+  {
+    "id": 244,
+    "name": "power-profiler",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 245,
+    "name": "energy",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 246,
+    "name": "emissions-generation-resource-integrated-database-egrid",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 5,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 247,
+    "name": "html",
+    "descendants": 3
+  },
+  {
+    "id": 248,
+    "name": "fii",
+    "descendants": 2
+  },
+  {
+    "id": 249,
+    "name": "myproperty",
+    "descendants": 1
+  },
+  {
+    "id": 250,
+    "name": "index.html",
+    "archivers.space": {
+      "priority": 1,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 251,
+    "name": "sems-search",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 5,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 252,
+    "name": "ncea",
+    "descendants": 8,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 253,
+    "name": "iris",
+    "descendants": 4
+  },
+  {
+    "id": 254,
+    "name": "search",
+    "descendants": 3
+  },
+  {
+    "id": 255,
+    "name": "index.cfm",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 256,
+    "name": "EPA",
+    "descendants": 3,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 257,
+    "name": "html",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 258,
+    "name": "pubs",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 259,
+    "name": "pubtitle.html",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 260,
+    "name": "sample-cromerr-applications-and-checklists",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 3,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 261,
+    "name": "cimc-about-data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 262,
+    "name": "sdwis-search",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 263,
+    "name": "webinars-and-presentations",
+    "archivers.space": {
+      "priority": 2,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 264,
+    "name": "node",
+    "descendants": 1
+  },
+  {
+    "id": 265,
+    "name": "126",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 266,
+    "name": "semspub.epa.gov",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 267,
+    "name": "superfund",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 268,
+    "name": "superfund-data-and-reports",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 269,
+    "name": "substreg",
+    "descendants": 4
+  },
+  {
+    "id": 270,
+    "name": "LandingPage.do",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 271,
+    "name": "opei",
+    "descendants": 1
+  },
+  {
+    "id": 272,
+    "name": "RuleGate.nsf",
+    "archivers.space": {
+      "priority": 1,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 273,
+    "name": "enviroatlas.epa.gov",
+    "descendants": 10
+  },
+  {
+    "id": 274,
+    "name": "enviroatlas",
+    "descendants": 6
+  },
+  {
+    "id": 275,
+    "name": "InteractiveMapEntrance",
+    "descendants": 2
+  },
+  {
+    "id": 276,
+    "name": "InteractiveMap",
+    "descendants": 1
+  },
+  {
+    "id": 277,
+    "name": "index.html",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 278,
+    "name": "myenviro",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 279,
+    "name": "frs-exchange-network",
+    "archivers.space": {
+      "priority": 2,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 280,
+    "name": "Tools",
+    "descendants": 2
+  },
+  {
+    "id": 281,
+    "name": "EcoHealth_RelationshipBrowser",
+    "descendants": 1
+  },
+  {
+    "id": 282,
+    "name": "index.html",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 283,
+    "name": "radnet-customized-search",
+    "archivers.space": {
+      "priority": 6,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 284,
+    "name": "data",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 285,
+    "name": "tri-basic-plus-data-files-calendar-years-1987-2015",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 286,
+    "name": "facilities",
+    "descendants": 2,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 287,
+    "name": "facility-search",
+    "descendants": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 288,
+    "name": "results",
+    "descendantsArchivedOnce": 1,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": true
+    }
+  },
+  {
+    "id": 289,
+    "name": "epa-frs-facilities-state-single-file-csv-download",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 290,
+    "name": "about-the-data.cfm",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 291,
+    "name": "basic",
+    "descendants": 1
+  },
+  {
+    "id": 292,
+    "name": "index.cfm",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 293,
+    "name": "aqsdr1.epa.gov",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 294,
+    "name": "ghgdata.epa.gov",
+    "descendants": 2
+  },
+  {
+    "id": 295,
+    "name": "ghgp",
+    "descendants": 1
+  },
+  {
+    "id": 296,
+    "name": "main.do",
+    "archivers.space": {
+      "priority": 1,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 297,
+    "name": "aboutepa",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1
+  },
+  {
+    "id": 298,
+    "name": "about-office-general-counsel-ogc",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 299,
+    "name": "locator",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 300,
+    "name": "index.cfm",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 301,
+    "name": "COMPTOX",
+    "archivers.space": {
+      "priority": 8,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 302,
+    "name": "greenhouse-gas-equivalencies-calculator",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 303,
+    "name": "air-pollutant-emissions-trends-data",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 304,
+    "name": "aqsdr1.epa.gov",
+    "descendants": 4,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 305,
+    "name": "aqsweb",
+    "descendants": 3,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 306,
+    "name": "aqstmp",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 307,
+    "name": "airdata",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 308,
+    "name": "download_files.html",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 309,
+    "name": "ttncatc1",
+    "descendants": 3
+  },
+  {
+    "id": 310,
+    "name": "cica",
+    "descendants": 2
+  },
+  {
+    "id": 311,
+    "name": "monvals_e.html",
+    "descendants": 1
+  },
+  {
+    "id": 312,
+    "name": "ba~sd iv no cj bl ot~San Diego/Tijuana, Imperial Valley, Nogales, Ciudad Juarez/El Paso, Brownsville/Laredo, Outlying Sites",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 313,
+    "name": "icis-air-search",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 314,
+    "name": "NATA",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 3,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 315,
+    "name": "icis-air-search",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 316,
+    "name": "index.cfm",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 317,
+    "name": "pesticides",
+    "descendants": 3
+  },
+  {
+    "id": 318,
+    "name": "f",
+    "descendants": 2
+  },
+  {
+    "id": 319,
+    "name": "p=chemicalsearch:1",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 320,
+    "name": "p=HHBP:home",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 321,
+    "name": "semspub.epa.gov",
+    "descendants": 2
+  },
+  {
+    "id": 322,
+    "name": "src",
+    "descendants": 1
+  },
+  {
+    "id": 323,
+    "name": "search",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 324,
+    "name": "children epa.gov",
+    "descendants": 2
+  },
+  {
+    "id": 325,
+    "name": "epahome",
+    "descendants": 1
+  },
+  {
+    "id": 326,
+    "name": "children.htm",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 327,
+    "name": "childrens-environmental-health-online-resources-healthcare-providers",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 328,
+    "name": "climate-change-science",
+    "descendants": 1
+  },
+  {
+    "id": 329,
+    "name": "causes-climate-change",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 330,
+    "name": "climate-impacts",
+    "descendants": 1
+  },
+  {
+    "id": 331,
+    "name": "climate-change-health-and-populations-concern",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 332,
+    "name": "epa.gov",
+    "descendants": 51
+  },
+  {
+    "id": 333,
+    "name": "climate-impacts",
+    "descendants": 1
+  },
+  {
+    "id": 334,
+    "name": "climate-impacts-human-health",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 335,
+    "name": "climatechange",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 336,
+    "name": "ground-water-and-drinking-water",
+    "descendants": 1
+  },
+  {
+    "id": 337,
+    "name": "basic-information-about-lead-drinking-water",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 338,
+    "name": "outdoor-air-quality-data",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 339,
+    "name": "interactive-map-air-quality-monitors",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 340,
+    "name": "index.html",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 341,
+    "name": "response.epa.gov",
+    "archivers.space": {
+      "priority": 5,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 342,
+    "name": "hfstudy",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 343,
+    "name": "recordisplay.cfm",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 344,
+    "name": "deid=308341",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 8,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 345,
+    "name": "widgets",
+    "descendants": 2
+  },
+  {
+    "id": 346,
+    "name": "ghg_calc",
+    "descendants": 1
+  },
+  {
+    "id": 347,
+    "name": "calculator.html",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 348,
+    "name": "tri",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 349,
+    "name": "p2.html",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 9,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 350,
+    "name": "aqs",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 351,
+    "name": "Exe",
+    "descendants": 3
+  },
+  {
+    "id": 352,
+    "name": "ZyNET.EXE",
+    "descendants": 2
+  },
+  {
+    "id": 353,
+    "name": "ZyActionL=Register",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 354,
+    "name": "ampd.epa.gov",
+    "descendants": 1
+  },
+  {
+    "id": 355,
+    "name": "ampd",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 356,
+    "name": "inventory-us-greenhouse-gas-emissions-and-sinks-1990-2014",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 357,
+    "name": "pesticides",
+    "descendants": 1
+  },
+  {
+    "id": 358,
+    "name": "pesticides-industry-sales-and-usage-2006-and-2007-market-estimates",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 359,
+    "name": "epamap17.epa.gov",
+    "descendants": 1
+  },
+  {
+    "id": 360,
+    "name": "arra",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 361,
+    "name": "epamap37.epa.gov",
+    "descendants": 1
+  },
+  {
+    "id": 362,
+    "name": "dwmaps",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 363,
+    "name": "edg.epa.gov",
+    "descendants": 4
+  },
+  {
+    "id": 364,
+    "name": "metadata",
+    "descendants": 3,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 365,
+    "name": "catalog",
+    "descendants": 2
+  },
+  {
+    "id": 366,
+    "name": "data",
+    "descendants": 1
+  },
+  {
+    "id": 367,
+    "name": "data.page",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 368,
+    "name": "airquality",
+    "descendants": 2,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 369,
+    "name": "airtrends",
+    "descendants": 1
+  },
+  {
+    "id": 370,
+    "name": "values.html",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 371,
+    "name": "approved-sips",
+    "descendants": 1
+  },
+  {
+    "id": 372,
+    "name": "regional-sip-coordinators",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 373,
+    "name": "dwssa",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 374,
+    "name": "cleanwaterrule",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 375,
+    "name": "documents-related-clean-water-rule",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 10,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 376,
+    "name": "storet",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 377,
+    "name": "legacy",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 378,
+    "name": "gateway.htm",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 7,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 379,
+    "name": "registry2",
+    "descendants": 2,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 380,
+    "name": "reusereg",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1
+  },
+  {
+    "id": 381,
+    "name": "searchandretrieve",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 1,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 382,
+    "name": "storpubl",
+    "descendants": 1
+  },
+  {
+    "id": 383,
+    "name": "dw_pages.querycriteria",
+    "archivers.space": {
+      "priority": 5,
+      "harvested": false,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 384,
+    "name": "dashboard",
+    "archivers.space": {
+      "priority": 5,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 385,
+    "name": "iris",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 5,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 386,
+    "name": "epa-regional-kml-download",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 387,
+    "name": "enviroatlas-dynamic-data-matrix",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 7,
+      "harvested": true,
+      "done": false
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 388,
+    "name": "arcgis",
+    "descendants": 2
+  },
+  {
+    "id": 389,
+    "name": "rest",
+    "descendants": 1
+  },
+  {
+    "id": 390,
+    "name": "services",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 391,
+    "name": "national-air-toxics-assessment",
+    "descendants": 1,
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 392,
+    "name": "2011-nata-assessment-results",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 393,
+    "name": "adv_search.cfm",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 394,
+    "name": "reportTypeId=REP_006\u0026reportTypeLabel=Cloud Deposition Data",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 395,
+    "name": "download-daily-data",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 6,
+      "harvested": true,
+      "done": true
+    }
+  },
+  {
+    "id": 396,
+    "name": "opendata.epa.gov",
+    "descendants": 1
+  },
+  {
+    "id": 397,
+    "name": "home.xhtml",
+    "archivers.space": {
+      "priority": 2,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 398,
+    "name": "tri-chemical-hazard-information-profiles",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 399,
+    "name": "tri-for-communities",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 400,
+    "name": "myenviromapper",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 401,
+    "name": "tri-basic-plus-data-files-calendar-years-1987-2015",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 402,
+    "name": "tri-dioxin-and-dioxin-compounds-and-teq-data-files-calendar",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 403,
+    "name": "tri-basic-data-files-calendar-years-1987-2015",
+    "archivers.space": {
+      "priority": 2,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 404,
+    "name": "inventory-tri-community-outreach-and-education-materials-1989",
+    "archivers.space": {
+      "priority": 2,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 405,
+    "name": "climatechange",
+    "descendants": 2
+  },
+  {
+    "id": 406,
+    "name": "ghgemissions",
+    "descendants": 1
+  },
+  {
+    "id": 407,
+    "name": "inventoryexplorer",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 408,
+    "name": "my-right-know-application",
+    "archivers.space": {
+      "priority": 2,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 409,
+    "name": "dmdnload",
+    "descendants": 1
+  },
+  {
+    "id": 410,
+    "name": "emissions",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 411,
+    "name": "chemview",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 412,
+    "name": "rsei",
+    "archivers.space": {
+      "priority": 3,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 413,
+    "name": "assessing-and-managing-chemicals-under-tsca",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 414,
+    "name": "archive.epa.gov",
+    "descendants": 8
+  },
+  {
+    "id": 415,
+    "name": "epawaste",
+    "descendants": 7
+  },
+  {
+    "id": 416,
+    "name": "nonhaz",
+    "descendants": 6
+  },
+  {
+    "id": 417,
+    "name": "industrial",
+    "descendants": 5
+  },
+  {
+    "id": 418,
+    "name": "special",
+    "descendants": 4
+  },
+  {
+    "id": 419,
+    "name": "fossil",
+    "descendants": 3
+  },
+  {
+    "id": 420,
+    "name": "web",
+    "descendants": 2
+  },
+  {
+    "id": 421,
+    "name": "html",
+    "descendants": 1
+  },
+  {
+    "id": 422,
+    "name": "index-3.html",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 423,
+    "name": "Client=EPA\u0026Init=1\u0026Password=anonymous\u0026User=anonymous\u0026ZyActionL=Register",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 424,
+    "name": "statelocalclimate",
+    "descendants": 1
+  },
+  {
+    "id": 425,
+    "name": "avoided-emissions-and-generation-tool-avert",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 426,
+    "name": "sab",
+    "descendants": 7
+  },
+  {
+    "id": 427,
+    "name": "sabproduct.nsf",
+    "descendants": 3
+  },
+  {
+    "id": 428,
+    "name": "WebBOARD",
+    "descendants": 2
+  },
+  {
+    "id": 429,
+    "name": "advisoryreports",
+    "descendants": 1
+  },
+  {
+    "id": 430,
+    "name": "OpenDocument",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 431,
+    "name": "coalash",
+    "descendants": 1
+  },
+  {
+    "id": 432,
+    "name": "list-publicly-accessible-internet-sites-hosting-compliance-data-and-information-required",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 433,
+    "name": "superfund",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 434,
+    "name": "airmarkets",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 435,
+    "name": "t-ferst",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 436,
+    "name": "enviroatlas",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 437,
+    "name": "air-quality-implementation-plans",
+    "descendants": 1
+  },
+  {
+    "id": 438,
+    "name": "sip-status-reports",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 439,
+    "name": "si",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 440,
+    "name": "green-book",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 441,
+    "name": "smartgrowth",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 442,
+    "name": "brownfields",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 443,
+    "name": "communityhealth",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 444,
+    "name": "dwreginfo",
+    "descendants": 1
+  },
+  {
+    "id": 445,
+    "name": "lead-and-copper-rule",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 446,
+    "name": "dwcapacity",
+    "descendants": 1
+  },
+  {
+    "id": 447,
+    "name": "capacity-building-program-management-drinking-water-systems",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 448,
+    "name": "enforcement",
+    "descendants": 2,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 449,
+    "name": "clean-air-act-vehicle-and-engine-enforcement-case-resolutions",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 450,
+    "name": "title-v-operating-permits",
+    "descendants": 1
+  },
+  {
+    "id": 451,
+    "name": "title-v-petition-database",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 452,
+    "name": "coal-fired-power-plant-enforcement",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 453,
+    "name": "rcra",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 454,
+    "name": "webfire",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 455,
+    "name": "sabpeople.nsf",
+    "descendants": 2
+  },
+  {
+    "id": 456,
+    "name": "WebCommittees",
+    "descendants": 1
+  },
+  {
+    "id": 457,
+    "name": "CASAC",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 458,
+    "name": "chronic-non-cancer-toxicity-data-tri-listed-chemicals",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 459,
+    "name": "RBLC",
+    "descendants": 2
+  },
+  {
+    "id": 460,
+    "name": "index.cfm",
+    "descendants": 1
+  },
+  {
+    "id": 461,
+    "name": "action=Home.Home",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 462,
+    "name": "acute-toxicity-data-tri-listed-chemicals",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 463,
+    "name": "airmarkets",
+    "descendants": 3
+  },
+  {
+    "id": 464,
+    "name": "progress",
+    "descendants": 2
+  },
+  {
+    "id": 465,
+    "name": "reports",
+    "descendants": 1
+  },
+  {
+    "id": 466,
+    "name": "emissions_reductions_so2.html",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 467,
+    "name": "toxicity-data-category-tri-listed-chemicals",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 468,
+    "name": "tri-listed-chemicals",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 469,
+    "name": "2016-06",
+    "descendants": 2
+  },
+  {
+    "id": 470,
+    "name": "documents",
+    "descendants": 1
+  },
+  {
+    "id": 471,
+    "name": "ccr_impoundmnt_asesmnt_rprts.pdf",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 472,
+    "name": "c-ferst",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 473,
+    "name": "searchbylist",
+    "descendants": 1
+  },
+  {
+    "id": 474,
+    "name": "search.do",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 475,
+    "name": "regulation-biotechnology-under-tsca-and-fifra",
+    "descendants": 1
+  },
+  {
+    "id": 476,
+    "name": "modernizing-regulatory-system-biotechnology-products",
+    "archivers.space": {
+      "priority": 4,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 477,
+    "name": "ghgreporting",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 5,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 478,
+    "name": "caa-permitting",
+    "descendants": 1
+  },
+  {
+    "id": 479,
+    "name": "electronic-permit-submittal-system-region-9",
+    "archivers.space": {
+      "priority": 0,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 480,
+    "name": "environmental-toxicity-data-tri-listed-chemicals",
+    "descendantsDownloadedOnce": 1,
+    "downloadedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": false
+    }
+  },
+  {
+    "id": 481,
+    "name": "tri-dioxin-and-dioxin-compounds-and-teq-data-files-calendar",
+    "descendantsDownloadedOnce": 1,
+    "descendantsArchivedOnce": 1,
+    "downloadedOnce": true,
+    "archivedOnce": true,
+    "archivers.space": {
+      "priority": 0,
+      "harvested": true,
+      "done": true
+    },
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 482,
+    "name": "airdata",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 483,
+    "name": "climatechange",
+    "descendants": 3
+  },
+  {
+    "id": 484,
+    "name": "Downloads",
+    "descendants": 2
+  },
+  {
+    "id": 485,
+    "name": "EPAactivities",
+    "descendants": 1
+  },
+  {
+    "id": 486,
+    "name": "DataAnnex_EPA_NonCO2_Projections_2011_draft.zip",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 487,
+    "name": "eco-research",
+    "descendants": 1
+  },
+  {
+    "id": 488,
+    "name": "ecoregions",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 489,
+    "name": "emergency-response",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 490,
+    "name": "enviro",
+    "descendants": 9
+  },
+  {
+    "id": 491,
+    "name": "cerclis-overview",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 492,
+    "name": "facility-registry-service-frs",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 493,
+    "name": "html",
+    "descendants": 5
+  },
+  {
+    "id": 494,
+    "name": "fii",
+    "descendants": 4
+  },
+  {
+    "id": 495,
+    "name": "downloads",
+    "descendants": 3
+  },
+  {
+    "id": 496,
+    "name": "EPAFileGdbDownload.zip",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 497,
+    "name": "enviroatlas",
+    "descendants": 1
+  },
+  {
+    "id": 498,
+    "name": "enviroatlas-data",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 499,
+    "name": "state_files",
+    "descendants": 1
+  },
+  {
+    "id": 500,
+    "name": "Facility State File Documentation.pdf",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 501,
+    "name": "geospatial",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 502,
+    "name": "roe",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 503,
+    "name": "geodata.epa.gov",
+    "descendants": 15
+  },
+  {
+    "id": 504,
+    "name": "arcgis",
+    "descendants": 5
+  },
+  {
+    "id": 505,
+    "name": "rest",
+    "descendants": 4
+  },
+  {
+    "id": 506,
+    "name": "services",
+    "descendants": 3
+  },
+  {
+    "id": 507,
+    "name": "OEI",
+    "descendants": 2
+  },
+  {
+    "id": 508,
+    "name": "FRS_INTERESTS",
+    "descendants": 1
+  },
+  {
+    "id": 509,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 510,
+    "name": "national-aquatic-resource-surveys",
+    "descendants": 1
+  },
+  {
+    "id": 511,
+    "name": "streamcat",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 512,
+    "name": "reva",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 513,
+    "name": "igeo.epa.gov",
+    "descendants": 8
+  },
+  {
+    "id": 514,
+    "name": "arcgis",
+    "descendants": 7
+  },
+  {
+    "id": 515,
+    "name": "rest",
+    "descendants": 6
+  },
+  {
+    "id": 516,
+    "name": "services",
+    "descendants": 5
+  },
+  {
+    "id": 517,
+    "name": "OEI",
+    "descendants": 4
+  },
+  {
+    "id": 518,
+    "name": "FRS_ESF10",
+    "descendants": 1
+  },
+  {
+    "id": 519,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 520,
+    "name": "region09",
+    "descendants": 3
+  },
+  {
+    "id": 521,
+    "name": "air",
+    "descendants": 2
+  },
+  {
+    "id": 522,
+    "name": "maps",
+    "descendants": 1
+  },
+  {
+    "id": 523,
+    "name": "index.html",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 524,
+    "name": "map22.epa.gov",
+    "descendants": 6
+  },
+  {
+    "id": 525,
+    "name": "arcgis",
+    "descendants": 5
+  },
+  {
+    "id": 526,
+    "name": "rest",
+    "descendants": 4
+  },
+  {
+    "id": 527,
+    "name": "services",
+    "descendants": 3
+  },
+  {
+    "id": 528,
+    "name": "cimc",
+    "descendants": 2
+  },
+  {
+    "id": 529,
+    "name": "Cleanups_geoplatform",
+    "descendants": 1
+  },
+  {
+    "id": 530,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 531,
+    "name": "2015",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 532,
+    "name": "gispub.epa.gov",
+    "descendants": 13
+  },
+  {
+    "id": 533,
+    "name": "arcgis",
+    "descendants": 12
+  },
+  {
+    "id": 534,
+    "name": "rest",
+    "descendants": 11
+  },
+  {
+    "id": 535,
+    "name": "services",
+    "descendants": 10
+  },
+  {
+    "id": 536,
+    "name": "Region9",
+    "descendants": 6
+  },
+  {
+    "id": 537,
+    "name": "ADMA_2015_Designated_Areas",
+    "descendants": 2
+  },
+  {
+    "id": 538,
+    "name": "MapServer",
+    "descendants": 1
+  },
+  {
+    "id": 539,
+    "name": "f=lyr",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 540,
+    "name": "greenbook",
+    "descendants": 1
+  },
+  {
+    "id": 541,
+    "name": "index.html",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 542,
+    "name": "ADMA_2015_AQS_Design_Value",
+    "descendants": 2
+  },
+  {
+    "id": 543,
+    "name": "MapServer",
+    "descendants": 1
+  },
+  {
+    "id": 544,
+    "name": "f=lyr",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 545,
+    "name": "FRS_ESF3",
+    "descendants": 1
+  },
+  {
+    "id": 546,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 547,
+    "name": "orator.epa.gov",
+    "descendants": 6
+  },
+  {
+    "id": 548,
+    "name": "arcgis",
+    "descendants": 5
+  },
+  {
+    "id": 549,
+    "name": "rest",
+    "descendants": 4
+  },
+  {
+    "id": 550,
+    "name": "services",
+    "descendants": 3
+  },
+  {
+    "id": 551,
+    "name": "OEI",
+    "descendants": 2
+  },
+  {
+    "id": 552,
+    "name": "FRS_ESF10",
+    "descendants": 1
+  },
+  {
+    "id": 553,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 554,
+    "name": "region9",
+    "descendants": 7
+  },
+  {
+    "id": 555,
+    "name": "marine-debris",
+    "descendants": 1
+  },
+  {
+    "id": 556,
+    "name": "zerotrash.html",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 557,
+    "name": "aboutepa",
+    "descendants": 1
+  },
+  {
+    "id": 558,
+    "name": "epa-region-1-new-england",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 559,
+    "name": "air",
+    "descendants": 1
+  },
+  {
+    "id": 560,
+    "name": "maps",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 561,
+    "name": "map11.epa.gov",
+    "descendants": 12
+  },
+  {
+    "id": 562,
+    "name": "arcgis",
+    "descendants": 11
+  },
+  {
+    "id": 563,
+    "name": "rest",
+    "descendants": 10
+  },
+  {
+    "id": 564,
+    "name": "services",
+    "descendants": 9
+  },
+  {
+    "id": 565,
+    "name": "EMEF",
+    "descendants": 8
+  },
+  {
+    "id": 566,
+    "name": "efpoints",
+    "descendants": 2
+  },
+  {
+    "id": 567,
+    "name": "MapServer",
+    "descendants": 1
+  },
+  {
+    "id": 568,
+    "name": "f=lyr",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 569,
+    "name": "EJgrants",
+    "descendants": 2
+  },
+  {
+    "id": 570,
+    "name": "MapServer",
+    "descendants": 1
+  },
+  {
+    "id": 571,
+    "name": "f=lyr",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 572,
+    "name": "web-services",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 573,
+    "name": "superfund",
+    "descendants": 2
+  },
+  {
+    "id": 574,
+    "name": "navajo-nation",
+    "descendants": 1
+  },
+  {
+    "id": 575,
+    "name": "stakeholder.html",
+    "archivers.space": {
+      "priority": 8,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 576,
+    "name": "epa.maps.arcgis.com",
+    "descendants": 4
+  },
+  {
+    "id": 577,
+    "name": "home",
+    "descendants": 3
+  },
+  {
+    "id": 578,
+    "name": "webmap",
+    "descendants": 2
+  },
+  {
+    "id": 579,
+    "name": "viewer.html",
+    "descendants": 1
+  },
+  {
+    "id": 580,
+    "name": "url=https://gispub.epa.gov/arcgis/rest/services/ORD/EnvironmentalQualityIndex/MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 581,
+    "name": "ORD",
+    "descendants": 2
+  },
+  {
+    "id": 582,
+    "name": "EnvironmentalQualityIndex",
+    "descendants": 1
+  },
+  {
+    "id": 583,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 584,
+    "name": "tribal",
+    "descendants": 1
+  },
+  {
+    "id": 585,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 586,
+    "name": "archive.epa.gov",
+    "descendants": 3
+  },
+  {
+    "id": 587,
+    "name": "clearskies",
+    "descendants": 2
+  },
+  {
+    "id": 588,
+    "name": "web",
+    "descendants": 1
+  },
+  {
+    "id": 589,
+    "name": "html",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 590,
+    "name": "iclus",
+    "descendants": 1
+  },
+  {
+    "id": 591,
+    "name": "about-iclus",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 592,
+    "name": "ArcGIS",
+    "descendants": 8
+  },
+  {
+    "id": 593,
+    "name": "rest",
+    "descendants": 7
+  },
+  {
+    "id": 594,
+    "name": "services",
+    "descendants": 6
+  },
+  {
+    "id": 595,
+    "name": "OECA",
+    "descendants": 2
+  },
+  {
+    "id": 596,
+    "name": "CAFO_Density",
+    "descendants": 1
+  },
+  {
+    "id": 597,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 598,
+    "name": "OEI",
+    "descendants": 2
+  },
+  {
+    "id": 599,
+    "name": "EPA_Locations",
+    "descendants": 1
+  },
+  {
+    "id": 600,
+    "name": "MapServer",
+    "archivers.space": {
+      "priority": 10,
+      "harvested": false,
+      "done": false
+    }
+  },
+  {
+    "id": 601,
+    "name": "www.airnow.gov",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 602,
+    "name": "foiaonline.regulations.gov",
+    "descendants": 4
+  },
+  {
+    "id": 603,
+    "name": "foia",
+    "descendants": 3
+  },
+  {
+    "id": 604,
+    "name": "action",
+    "descendants": 2
+  },
+  {
+    "id": 605,
+    "name": "public",
+    "descendants": 1
+  },
+  {
+    "id": 606,
+    "name": "search",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 607,
+    "name": "airnow.gov",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 608,
+    "name": "drinkingwatersrf",
+    "descendants": 2
+  },
+  {
+    "id": 609,
+    "name": "drinking-water-state-revolving-fund-national-information-management-system-reports",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 610,
+    "name": "annual-allotment-federal-funds-states-tribes-and-territories",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 611,
+    "name": "safewater",
+    "descendants": 2
+  },
+  {
+    "id": 612,
+    "name": "f",
+    "descendants": 1
+  },
+  {
+    "id": 613,
+    "name": "p=136:102::::::",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 614,
+    "name": "sfdw",
+    "descendants": 2
+  },
+  {
+    "id": 615,
+    "name": "f",
+    "descendants": 1
+  },
+  {
+    "id": 616,
+    "name": "p=108:200::::::",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 617,
+    "name": "www.waterqualitydata.us",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 618,
+    "name": "searchandretrieve",
+    "descendants": 2
+  },
+  {
+    "id": 619,
+    "name": "substancesearch",
+    "descendants": 1
+  },
+  {
+    "id": 620,
+    "name": "search.do",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 621,
+    "name": "epamap37.epa.gov",
+    "descendants": 1
+  },
+  {
+    "id": 622,
+    "name": "dwmaps",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 623,
+    "name": "communitywaterresilience",
+    "descendants": 1
+  },
+  {
+    "id": 624,
+    "name": "community-based-water-resiliency-tool",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 625,
+    "name": "laws-regulations",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  },
+  {
+    "id": 626,
+    "name": "adr",
+    "eotNominationTool": {
+      "uncrawlable": true
+    }
+  }
+]

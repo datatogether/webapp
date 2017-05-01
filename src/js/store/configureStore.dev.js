@@ -8,13 +8,14 @@ import users from '../middleware/users';
 import locals from '../middleware/locals';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
+import coverage from '../middleware/coverage';
 
 export default function configureStore(preloadedState) {
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
-      applyMiddleware(thunk, api, locals, users, routerMiddleware(browserHistory)),
+      applyMiddleware(thunk, api, locals, users, coverage, routerMiddleware(browserHistory)),
       DevTools.instrument(),
     ),
   );

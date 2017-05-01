@@ -4,6 +4,7 @@
  */
 import App from './containers/App';
 import Archives from './containers/Archives';
+import Coverage from './containers/Coverage';
 import Collection from './containers/Collection';
 import Collections from './containers/Collections';
 import Content from './containers/Content';
@@ -28,6 +29,10 @@ export default {
     {
       path: '/login',
       component: Login,
+    },
+    {
+      path: '/coverage',
+      component: Coverage,
     },
     {
       path: "/url",
