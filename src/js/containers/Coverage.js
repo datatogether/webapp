@@ -2,9 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router'
 
-import nodes from '../../data/nodes';
-import links from '../../data/links';
-
 import { loadNode } from '../actions/coverage';
 import { flattenTree } from '../selectors/coverage';
 import { selectionTypes, select, deselect } from '../actions/selection';

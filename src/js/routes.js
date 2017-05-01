@@ -55,6 +55,12 @@ export default {
       },
     },
     {
+      path: '/coverage',
+      getComponent(location,cb) {
+        import('./containers/Coverage').then(loadRoute(cb)).catch(errorLoading);
+      }
+    }
+    {
       path: '/settings',
       getComponent(location, cb) {
         import('./containers/UserSettings').then(loadRoute(cb)).catch(errorLoading);
