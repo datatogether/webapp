@@ -1,4 +1,5 @@
 import { 
+  COVERAGE_NODE_TOGGLE,
   COVERAGE_NODE_SUCCESS,
   // COVERAGE_USER_FAILURE,
   // COVERAGE_LOGIN_SUCCESS,
@@ -12,14 +13,30 @@ const initialState = {
 
 export default function coverageReducer(state = initialState, action) {
   switch (action.type) {
+    case COVERAGE_NODE_TOGGLE:
+      return {
+        tree: copyWalk(state.tree, (n) => {
+          if (n && n.id != action.id) {
+            return n;
+          } else {
+            if (n.children) {
+              return Object.assign({}, n, { _children: n.children, children: undefined });
+            } else if (n._children) {
+              return Object.assign({}, n, { children: n._children, _children: undefined });
+            } else {
+              return n;
+            }
+          }
+        })
+      }
     case COVERAGE_NODE_SUCCESS:
       if (action.tree.id == "root") {
         return {
-          tree : action.tree,
+          tree: action.tree,
         }
       }
       return Object.assign({}, state, { 
-        tree : copyWalk(state.tree, (n) => (n && n.id == action.tree.id) ? action.tree : n)
+        tree: copyWalk(state.tree, (n) => (n && n.id == action.tree.id) ? action.tree : n)
       });
     default:
       return state;

@@ -2,84 +2,112 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router'
 
-import { loadNode } from '../actions/coverage';
-import { flattenTree } from '../selectors/coverage';
+import { loadNode, toggleNode } from '../actions/coverage';
+import { flattenTree,  completionColor, searchTree} from '../selectors/coverage';
 import { selectionTypes, select, deselect } from '../actions/selection';
 import { showSidebar, hideSidebar } from '../actions/layout';
 import { selectNode } from '../selectors/coverage';
 
-import ForceGraph from '../components/ForceGraph';
-import InteractiveForceGraph from '../components/InteractiveForceGraph';
-import ForceGraphNode from '../components/ForceGraphNode';
+// import ForceGraph from '../components/ForceGraph';
+// import InteractiveForceGraph from '../components/InteractiveForceGraph';
+// import ForceGraphNode from '../components/ForceGraphNode';
 // import ForceGraphLink from '../components/ForceGraphLink';
-import ForceGraphLink from '../components/ForceGraphLink';
+// import ForceGraphLink from '../components/ForceGraphLink';
 import NodeSummary from '../components/NodeSummary';
+import TreeGraph from '../components/TreeGraph';
+import ValidInput from '../components/form/ValidInput';
 
 class Coverage extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      query: "",
+      selectedPath: "",
+    };
+
     [
       'handleSelectNode',
       'handleDeselect',
-      'renderNodeInfo'
+      'handleSearchChange',
     ].forEach(m => this[m] = this[m].bind(this));
   }
 
   componentWillMount() {
     this.props.loadNode("root");
+    this.props.showSidebar();
   }
 
   handleSelectNode(e, node) {
-    // browserHistory.push("/" + node.address.replace(/\./gi, "/"));
     e.stopPropagation();
-    this.props.showSidebar();
-    this.props.loadNode(node.id);
-    this.props.select(selectionTypes.NODE, node.id);
+
+    if (this.props.selectedNode && this.props.selectedNode.id == node.data.id) {
+      this.props.toggleNode(node.data.id);
+      this.props.deselect();
+    } else {
+      this.props.loadNode(node.data.id);
+      this.props.select(selectionTypes.NODE, node.data.id);
+      
+      let n = node;
+      let path = "";
+      let selectedNodes = [n];
+      while (n.parent) {
+        path = (n.parent.parent != null) ? `${n.data.name}/${path}` : `${n.data.name}://${path}`;
+        selectedNodes.unshift(n);
+        n = n.parent;
+      }
+      selectedNodes.unshift(n);
+      this.setState({ path, selectedNodes });
+    }
+  }
+
+  handleSearchChange(name, value) {
+    this.setState({ query: value, path: "", selectedNodes: undefined });
+    this.props.deselect();
   }
 
   handleDeselect(e) {
     this.props.deselect();
-    this.props.hideSidebar();
   }
 
-  renderNodeInfo() {
-    const {node, layout} = this.props;
+  renderSidebar() {
+    const {selectedNode, layout} = this.props;
     const sidebar = layout.sidebar;
 
-    if (!node) {
-      return undefined;
-    }
-
     return (
-      <div style={Object.assign({ position: "absolute" }, sidebar)}>
-        <NodeSummary node={node} />
+      <div style={Object.assign({ position: "absolute" }, sidebar)} className="container">
+        <br />
+        <ValidInput name="search" onChange={this.handleSearchChange} value={this.state.query} type="text" placeholder="search" />
+        <NodeSummary path={this.state.path} node={selectedNode} />
       </div>
     );
   }
 
   render() {
-    const { nodes, links, layout, node } = this.props;
+    const { nodes, links, layout, selectedNode, tree } = this.props;
 
-    if (nodes.length == 0) {
-      return <div></div>
-    }
+    let t = this.state.query ? searchTree(tree, this.state.query) : tree;
+
+    // if (!t) {
+    //   return <div></div>
+    // }
 
     function nodeForId(id) {
       return nodes.find((n) => n.id === id);
     }
 
     return (
-      <div className="namespace" onClick={this.handleDeselect}>
+      <div className="coverage" onClick={this.handleDeselect}>
         <div className="main" style={{ 
           position: "absolute", 
-          width : layout.main.w,
-          height : layout.main.h,
-          top : layout.main.t,
-          left : layout.main.l
+          width: layout.main.width,
+          height: layout.main.height,
+          top: layout.main.top,
+          left: layout.main.left,
+          overflow: 'auto',
         }}>
           {/*<hr className="green" />*/}
-          <InteractiveForceGraph
+          {/*<InteractiveForceGraph
             labelOffset={{
               x : ({ radius = 10 }) => 17, 
               y : ({ radius = 10 }) => 6,
@@ -104,9 +132,16 @@ class Coverage extends Component {
             {links.map((c, i) => {
               return (<ForceGraphLink key={`link-${i}`} link={c} />);
             })}
-          </InteractiveForceGraph>
+          </InteractiveForceGraph>*/}
+          <TreeGraph
+            data={t}
+            layout={layout.main}
+            selectedNodes={this.state.selectedNodes}
+            onSelectNode={this.handleSelectNode}
+            colorNode={completionColor}
+          />
         </div>
-        {this.renderNodeInfo()}
+        {this.renderSidebar()}
       </div>
     );
   }
@@ -122,21 +157,23 @@ Coverage.defaultProps = {
 function mapStateToProps(state, ownProps) {
   const { links, nodes } = flattenTree(state.coverage.tree);
 
-  let node;
+  let selectedNode;
   if (state.selection.type == selectionTypes.NODE) {
-    node = selectNode(state, state.selection.value);
+    selectedNode = selectNode(state, state.selection.value);
   }
 
   return {
+    tree: state.coverage.tree,
     nodes,
     links,
-    node,
+    selectedNode,
     layout : state.layout,
   }
 }
 
 export default connect(mapStateToProps, {
   loadNode,
+  toggleNode,
   select,
   deselect,
   showSidebar,

@@ -20,7 +20,10 @@ function sizeClass(width) {
 
 
 function layout(state) {
-  const { stage, navbar, sidebar, commandbar } = state;
+  const { stage, navbar, sidebar, main } = state;
+
+  let sidebarWidth = sidebar.collapsed ? COLLAPSED_WIDTH : stage.width * sidebar.pct_width;
+  if (!sidebar.collapsed && sidebarWidth > sidebar.maxWidth) { sidebarWidth = sidebar.maxWidth; }
 
   return {
     size: sizeClass(state.stage.width),
@@ -32,23 +35,17 @@ function layout(state) {
       top: 0,
       collapsed: navbar.collapsed,
     },
-    commandbar: {
-      width: stage.width,
-      height: commandbar.height,
-      left: 0,
-      bottom: 0,
-      collapsed: commandbar.collapsed,
-    },
     main: {
-      width: sidebar.collapsed ? stage.width - COLLAPSED_WIDTH : stage.width * (1 - sidebar.pct_width),
+      width: stage.width - sidebarWidth,
       height: stage.height - navbar.height,
       top: navbar.height,
       left: 0,
     },
     sidebar: {
-      width: sidebar.collapsed ? COLLAPSED_WIDTH : stage.width * sidebar.pct_width,
+      maxWidth: sidebar.maxWidth,
+      width: sidebarWidth,
       height: stage.height - navbar.height,
-      left: sidebar.collapsed ? stage.width - COLLAPSED_WIDTH : stage.width * (1 - sidebar.pct_width),
+      left: stage.width - sidebarWidth,
       top: navbar.height,
       collapsed: sidebar.collapsed,
       pct_width: sidebar.pct_width,
@@ -56,16 +53,13 @@ function layout(state) {
   };
 }
 
-
 const initialState = {
   size: 'xs',
   stage: { width: 100, height: 100 },
   navbar: { width: 100, height: 50, left: 0, bottom: 0, collapsed: false },
-  commandbar: { width: 100, height: 50, left: 0, bottom: 0, collapsed: false },
   main: { width: 100, height: 100, left: 0, top: 0 },
-  sidebar: { width: COLLAPSED_WIDTH, height: 100, left: 0, top: 0, collapsed: true, pct_width: 0.35 },
+  sidebar: { maxWidth: 250, width: COLLAPSED_WIDTH, height: 100, left: 0, top: 0, collapsed: true, pct_width: 0.35 },
 };
-
 
 export default function layoutReducer(state = initialState, action) {
   switch (action.type) {

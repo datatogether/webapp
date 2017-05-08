@@ -1,4 +1,18 @@
+import { walk, filter } from '../utils/tree';
 
+
+const completionColors = ["#ee005c", "#e01f54", "#d43a4e", "#c85647", "#bc7040", "#b08a3a", "#a4a533", "#98c02c", "#8adf24"];
+export function completionColor(node) {
+  if (!node.numDescendants) {
+    return node.coverage && node.coverage.length ? completionColors[completionColors.length - 1] : completionColors[0];
+  }
+  const compl = ((node.numDescendantsArchived || 0) / node.numDescendants);
+  return completionColors[Math.floor(compl * completionColors.length)];
+}
+
+export function searchTree(tree, query) {
+  return filter(tree, (n) => ~~n.name.indexOf(query) >= 0);
+}
 
 export function selectNode(state,id) {
   const { tree } = state.coverage;
@@ -11,19 +25,6 @@ export function selectNode(state,id) {
   return node;
 }
 
-// walk a provide tree, calling fn on each node
-// if fn returns a falsy value walk will halt
-// and return the current node
-export function walk(tree, fn) {
-  if (!tree) { return }
-  fn(tree)
-  if (tree.children) {
-    tree.children.forEach((c) => {
-      walk(c,fn)
-    })
-  }
-}
-
 export function flattenTree(tree) {
   let links = [], nodes = [];
 
@@ -33,8 +34,6 @@ export function flattenTree(tree) {
       nodes
     };
   }
-
-  // console.log(tree);
 
   walk(tree,(n) => {
     nodes.push({
@@ -60,11 +59,7 @@ export function flattenTree(tree) {
     return true;
   });
 
-  // console.log(nodes);
-  // console.log(links);
-
   return {
-    // links: [{ source : "root", target: "200095a1-a38b-41ee-abd9-1b929eec9808"}],
     links,
     nodes,
   }  

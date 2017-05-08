@@ -5,16 +5,21 @@ import ProgressBar from './ProgressBar';
 
 // TODO - remove this badness
 import { archiveService } from '../selectors/archiveServices';
+import { completionColor } from '../selectors/coverage';
 
 export default class NodeDetails extends React.Component {
 	render() {
-		const { node } = this.props;
+		const { node, path } = this.props;
+		if (!node) {
+			return null;
+		}
+
 		return (
 			<div className="node detail source">
 				<br />
-				<h3>{node.name}</h3>
+				<strong>{path || node.name}</strong>
 				<p>{node.numDescendantsArchived || 0} / {node.numDescendants} | {Math.floor((node.numDescendantsArchived / node.numDescendants || 0.001)*100)}% complete</p>
-				<ProgressBar progress={node.numDescendantsArchived} total={node.numDescendants} />
+				<ProgressBar backgroundColor={completionColor(node)} progress={node.numDescendantsArchived} total={node.numDescendants} />
 				{node.coverage && <h4>Coverage:</h4>}
 				<ul>
 				{node.coverage && node.coverage.map((c, i) => {
@@ -34,7 +39,7 @@ export default class NodeDetails extends React.Component {
 }
 
 NodeDetails.propTypes = {
-	node: PropTypes.object.isRequired,
+	node: PropTypes.object,
 }
 
 NodeDetails.defaultProps = {
