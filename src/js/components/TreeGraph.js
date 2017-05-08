@@ -74,6 +74,7 @@ export default class TreeGraph extends PureRenderComponent {
           </g>
           <g className="nodes">
             {t.descendants().map((d) => {
+              const leaf = (!d.data.numChildren || d.data.numChildren == 0)
               return (
                 <g 
                   key={d.data.id}
@@ -84,11 +85,14 @@ export default class TreeGraph extends PureRenderComponent {
                   dy="3"
                   x={d.children ? -8 : 8}
                   textAnchor={d.children ? "end" : "start"}
+                  onClick={(e) => { onSelectNode.call(this, e, d) }}
                   style={{ opacity : hasSelection ? nodeIsSelected(d) ? 1.0 : 0.25 : 1.0}}
                 >{d.data.name}</text>
                 <circle 
                   r="6"
                   fill={colorNode(d.data)}
+                  strokeWidth={ leaf ? 3 : 0}
+                  stroke={ leaf ? "#999999" : "none" }
                   onClick={(e) => { onSelectNode.call(this, e, d) }}
                   style={{ opacity : hasSelection ? nodeIsSelected(d) ? 1.0 : 0.25 : 1.0}}
                 ></circle>

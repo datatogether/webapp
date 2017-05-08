@@ -8,11 +8,6 @@ import { selectionTypes, select, deselect } from '../actions/selection';
 import { showSidebar, hideSidebar } from '../actions/layout';
 import { selectNode } from '../selectors/coverage';
 
-// import ForceGraph from '../components/ForceGraph';
-// import InteractiveForceGraph from '../components/InteractiveForceGraph';
-// import ForceGraphNode from '../components/ForceGraphNode';
-// import ForceGraphLink from '../components/ForceGraphLink';
-// import ForceGraphLink from '../components/ForceGraphLink';
 import NodeSummary from '../components/NodeSummary';
 import TreeGraph from '../components/TreeGraph';
 import ValidInput from '../components/form/ValidInput';
@@ -30,6 +25,7 @@ class Coverage extends Component {
       'handleSelectNode',
       'handleDeselect',
       'handleSearchChange',
+      'handleStageClick',
     ].forEach(m => this[m] = this[m].bind(this));
   }
 
@@ -38,16 +34,22 @@ class Coverage extends Component {
     this.props.showSidebar();
   }
 
+  handleStageClick(e) {
+    this.props.deselect();
+    this.setState({ path: "", selectedNodes: undefined });
+  }
+
   handleSelectNode(e, node) {
     e.stopPropagation();
 
     if (this.props.selectedNode && this.props.selectedNode.id == node.data.id) {
       this.props.toggleNode(node.data.id);
       this.props.deselect();
+      this.setState({ path: "", selectedNodes : undefined })
     } else {
       this.props.loadNode(node.data.id);
       this.props.select(selectionTypes.NODE, node.data.id);
-      
+
       let n = node;
       let path = "";
       let selectedNodes = [n];
@@ -98,41 +100,30 @@ class Coverage extends Component {
 
     return (
       <div className="coverage" onClick={this.handleDeselect}>
-        <div className="main" style={{ 
-          position: "absolute", 
-          width: layout.main.width,
-          height: layout.main.height,
-          top: layout.main.top,
-          left: layout.main.left,
-          overflow: 'auto',
-        }}>
-          {/*<hr className="green" />*/}
-          {/*<InteractiveForceGraph
-            labelOffset={{
-              x : ({ radius = 10 }) => 17, 
-              y : ({ radius = 10 }) => 6,
-            }}
-            zoom
-            onSelectNode={this.handleSelectNode}
-            labelAttr="name"
-            selectedNode={ node ? nodeForId(node.id) : undefined }
-            simulationOptions={{ height: layout.main.height, width: layout.main.width, animate : true, strength : { linkDistance: 100, charge : -400 } }}>
-            {nodes.map((node, i) => {
-              return (<ForceGraphNode 
-                        key={`node-${i}`} 
-                        node={node} 
-                        fill={ node.archived ? "#88c21d" : "#212e33"  }
-                        labelClass="label" 
-                        labelStyle={{ fontSize : 12, fill : "#444" }}
-                        style={{ 
-                          // opacity : (node.numDescendants && node.numDescendantsArchived) ? (node.numDescendantsArchived / node.numDescendants) : 1 
-                        }}
-                      />);
-            })}
-            {links.map((c, i) => {
-              return (<ForceGraphLink key={`link-${i}`} link={c} />);
-            })}
-          </InteractiveForceGraph>*/}
+        <div 
+          className="main" 
+          onClick={this.handleStageClick}
+          style={{ 
+            position: "absolute", 
+            width: layout.main.width,
+            height: layout.main.height,
+            top: layout.main.top,
+            left: layout.main.left,
+            overflow: 'auto',
+          }}
+        >
+          <div
+            onClick={(e)=> { e.stopPropagation(); }}
+            style={{
+              position: "fixed", 
+              left: 10, 
+              top: 60, 
+              zIndex: 5, 
+              borderRadius: 3, 
+              padding: 5, 
+              background: "white" }}>
+            <h5>{this.state.path}</h5>
+          </div>
           <TreeGraph
             data={t}
             layout={layout.main}

@@ -1,12 +1,12 @@
 import { walk, filter } from '../utils/tree';
 
-
 const completionColors = ["#ee005c", "#e01f54", "#d43a4e", "#c85647", "#bc7040", "#b08a3a", "#a4a533", "#98c02c", "#8adf24"];
 export function completionColor(node) {
-  if (!node.numDescendants) {
+  if (!node.numLeaves) {
     return node.coverage && node.coverage.length ? completionColors[completionColors.length - 1] : completionColors[0];
   }
-  const compl = ((node.numDescendantsArchived || 0) / node.numDescendants);
+  const compl = ((node.numLeavesArchived || 0) / node.numLeaves);
+  if (compl == 1) return completionColors[completionColors.length - 1];
   return completionColors[Math.floor(compl * completionColors.length)];
 }
 
@@ -40,8 +40,8 @@ export function flattenTree(tree) {
       id : n.id,
       name: n.name,
       radius: 5,
-      numDescendants: n.numDescendants,
-      numDescendantsArchived: n.numDescendantsArchived,
+      numLeaves: n.numLeaves,
+      numLeavesArchived: n.numLeavesArchived,
       numChildren: n.numChildren,
       coverage: n.coverage,
       collapsed: n.collapsed,

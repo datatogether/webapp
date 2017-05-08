@@ -17,9 +17,9 @@ export default class NodeDetails extends React.Component {
 		return (
 			<div className="node detail source">
 				<br />
-				<strong>{path || node.name}</strong>
-				<p>{node.numDescendantsArchived || 0} / {node.numDescendants} | {Math.floor((node.numDescendantsArchived / node.numDescendants || 0.001)*100)}% complete</p>
-				<ProgressBar backgroundColor={completionColor(node)} progress={node.numDescendantsArchived} total={node.numDescendants} />
+				<strong>{node.name}</strong>
+				<p>{node.numLeavesArchived || 0} / {node.numLeaves} | {Math.floor((node.numLeavesArchived / node.numLeaves || 0.001)*100)}% complete</p>
+				<ProgressBar backgroundColor={completionColor(node)} progress={node.numLeavesArchived} total={node.numLeaves} />
 				{node.coverage && <h4>Coverage:</h4>}
 				<ul>
 				{node.coverage && node.coverage.map((c, i) => {
