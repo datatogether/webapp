@@ -24,11 +24,11 @@ export default class NodeDetails extends React.Component {
 				<ul>
 				{node.coverage && node.coverage.map((c, i) => {
 					let s = archiveService(c.serviceId);
-					console.log(s, c.serviceId);
 					if (!s) { return null; }
 					return (
 						<div key={i}>
 							<p>{i}. {s.name}</p>
+							{c.archiveUrl && <a target="_blank" href={c.archiveUrl}>link</a>}
 						</div>
 					);
 				})}
