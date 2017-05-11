@@ -117,6 +117,12 @@ export default {
       },
     },
     {
+      path: '/edit',
+      getComponent(location, cb) {
+        import('./containers/FileEditor').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: '/*',
       component: NotFound,
     },

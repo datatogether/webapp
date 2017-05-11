@@ -3,6 +3,7 @@
 const initialState = {
   sshKeys: {},
   groups: {},
+  files: {},
   metadata: {},
   collections: {},
   uncrawlables: {},

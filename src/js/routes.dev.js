@@ -8,6 +8,7 @@ import Coverage from './containers/Coverage';
 import Collection from './containers/Collection';
 import Collections from './containers/Collections';
 import Content from './containers/Content';
+import FileEditor from './containers/FileEditor';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import NotFound from './components/NotFound';
@@ -95,6 +96,10 @@ export default {
     {
       path: '/uncrawlables/:id',
       component: Uncrawlable,
+    },
+    {
+      path: '/edit',
+      component: FileEditor,
     },
     {
       path: "/*",

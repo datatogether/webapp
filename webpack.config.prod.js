@@ -63,6 +63,12 @@ module.exports = {
           "sass-loader"
         ]
       },
+      {
+        test: /\.css$/,
+        use: [
+          "css-loader",
+        ]
+      }
     ]
   }
 };

@@ -10,6 +10,7 @@ import { Schema, arrayOf } from 'normalizr';
 const sessionUserSchema = new Schema('session');
 const keySchema = new Schema('keys', { idAttribute: 'sha256' });
 const userSchema = new Schema('users');
+const fileSchema = new Schema('files');
 const groupsSchema = new Schema('groups');
 const metadataSchema = new Schema('metadata', { idAttribute: metadata => `${metadata.keyId}.${metadata.subject}` });
 const searchResultSchema = new Schema('searchResults', { idAttribute: 'url' });
@@ -25,6 +26,10 @@ const uncrawlableSchema = new Schema('uncrawlable');
 primerSchema.define({
   subPrimers: arrayOf(primerSchema),
 });
+
+fileSchema.new = (attrs) => {
+  return Object.assign({}, attrs);
+}
 
 metadataSchema.new = (attrs) => {
   return Object.assign({}, attrs);
@@ -83,6 +88,10 @@ const Schemas = {
   // TODO - finish comment
   UNCRAWLABLE: uncrawlableSchema,
   UNCRAWLABLE_ARRAY: arrayOf(uncrawlableSchema),
+
+  // TODO - finish comment
+  FILE: fileSchema,
+  FILE_ARRAY: arrayOf(fileSchema),
 };
 
 export default Schemas;
