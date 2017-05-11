@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router'
 
+import analytics from '../analytics';
 import { loadNode, toggleNode } from '../actions/coverage';
 import { flattenTree,  completionColor, searchTree} from '../selectors/coverage';
 import { selectionTypes, select, deselect } from '../actions/selection';
@@ -32,6 +33,10 @@ class Coverage extends Component {
   componentWillMount() {
     this.props.loadNode("root");
     this.props.showSidebar();
+  }
+
+  componentDidMount() {
+    analytics.page('coverage');
   }
 
   handleStageClick(e) {

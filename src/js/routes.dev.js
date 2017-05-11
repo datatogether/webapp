@@ -20,6 +20,8 @@ import Keys from './containers/Keys';
 import Url from './containers/Url';
 import User from './containers/User';
 import UserSettings from './containers/UserSettings';
+import Uncrawlables from './containers/Uncrawlables';
+import Uncrawlable from './containers/Uncrawlable';
 
 export default {
   path: "/",
@@ -85,6 +87,14 @@ export default {
     {
       path: '/sources/:id',
       component: Source,
+    },
+    {
+      path: '/uncrawlables',
+      component: Uncrawlables,
+    },
+    {
+      path: '/uncrawlables/:id',
+      component: Uncrawlable,
     },
     {
       path: "/*",

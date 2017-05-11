@@ -5,6 +5,7 @@ const initialState = {
   groups: {},
   metadata: {},
   collections: {},
+  uncrawlables: {},
 };
 
 // updates an entity cache in response to any actuion with response.local.

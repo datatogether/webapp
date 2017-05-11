@@ -105,6 +105,18 @@ export default {
       },
     },
     {
+      path: '/uncrawlables',
+      getComponent(location, cb) {
+        import('./containers/Uncrawlables').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
+      path: '/uncrawlables/:id',
+      getComponent(location, cb) {
+        import('./containers/Uncrawlable').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: '/*',
       component: NotFound,
     },

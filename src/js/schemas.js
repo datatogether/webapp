@@ -20,6 +20,7 @@ const contentSchema = new Schema('content', { idAttribute: 'hash' });
 const collectionSchema = new Schema('collections');
 const primerSchema = new Schema('primers');
 const sourceSchema = new Schema('sources');
+const uncrawlableSchema = new Schema('uncrawlable');
 
 primerSchema.define({
   subPrimers: arrayOf(primerSchema),
@@ -78,6 +79,10 @@ const Schemas = {
   // searchResult wraps those discrete types
   SEARCH_RESULT: searchResultSchema,
   SEARCH_RESULT_ARRAY: arrayOf(searchResultSchema),
+
+  // TODO - finish comment
+  UNCRAWLABLE: uncrawlableSchema,
+  UNCRAWLABLE_ARRAY: arrayOf(uncrawlableSchema),
 };
 
 export default Schemas;

@@ -29,6 +29,10 @@ const initialEntitiesState = {
   metadata: {},
   consensus: {},
   collections: {},
+  uncrawlables: {
+    "1" : { id : "1", url : "https://epa.gov/uncrawlable" },
+    "2" : { id : "2", url : "https://epa.gov/def/not/crawlable" },
+  },
 
   searchResults: {},
 
