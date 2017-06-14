@@ -4,18 +4,18 @@
 
 // a list of constants for all types of things that can be selected
 export const selectionTypes = {
-	NODE : "NODE",
-}
+	NODE: "NODE",
+};
 
 export const SELECT = "SELECT";
 
 export function select(type, value) {
 	return { 
-		type : SELECT,
-		selection : {
+		type: SELECT,
+		selection: {
 			type,
 			value,
-		}
+		},
 	}
 }
 
@@ -23,6 +23,6 @@ export const DESELECT = "DESELECT";
 
 export function deselect() {
 	return {
-		type : DESELECT
+		type: DESELECT,
 	}
 }

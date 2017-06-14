@@ -82,40 +82,12 @@ class FileEditor extends React.Component {
             value={file.data}
             mode='javascript'
             onChange={this.handleChange}
+            height="600"
             setOptions={{ enableBasicAutocompletion: true, enableLiveAutocompletion : true }}
           />}
         </div>
       </div>
     );
-
-    // if (savedFile && !file) {
-    //   return (
-    //     <div className="file editor col-md-12">
-    //       <File file={savedFile.meta} />
-    //       {sessionKeyId ? <button className="btn btn-primary" onClick={this.handleEdit}>Edit</button> : <p><Link to="/signup">Signup</Link> to edit file.</p>}
-    //     </div>
-    //   );
-    // } else if (!file) {
-    //   return (
-    //     <div className="file editor col-md-12">
-    //       {sessionKeyId ? <button className="btn btn-primary" onClick={this.handleNew}>Add File</button> : <p><Link to="/signup">Signup</Link> to add file.</p>}
-    //     </div>
-    //   );
-    // }
-
-    // return (
-    //   <div className="file editor col-md-12">
-    //     <a className="helpToggle right" onClick={this.handleToggleHelp}>{showHelp ? "hide help" : "show help" }</a>
-    //     <FileForm
-    //       data={file.meta}
-    //       onChange={this.handleChange}
-    //       onCancel={this.handleCancel}
-    //       onSubmit={this.handleSave}
-    //       showHelpText={showHelp}
-    //     />
-    //     <br />
-    //   </div>
-    // );
   }
 }
 

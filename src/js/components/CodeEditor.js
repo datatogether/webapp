@@ -6,7 +6,7 @@ import 'brace/ext/language_tools';
 import 'brace/mode/javascript';
 import 'brace/theme/ambiance';
 // import '../ace/theme/ambiance';
-require('../ace/theme/ambiance.css');
+// require('brace/theme/ambiance.css');
 
 const editorOptions = [
   'minLines',
