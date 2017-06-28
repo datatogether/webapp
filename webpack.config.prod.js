@@ -9,13 +9,14 @@ var ENV = {
     DEVELOP : JSON.stringify(false),
     STAGING : JSON.stringify(false),
 
-    BASE_URL : JSON.stringify("https://alpha.archivers.space"),
-    API_URL : JSON.stringify("https://alpha.archivers.space"),
+    BASE_URL : JSON.stringify("https://archivers.co"),
+    API_URL : JSON.stringify("https://archivers.co"),
     USERS_API_URL : JSON.stringify("https://ident.archivers.space"),
     COVERAGE_API_URL : JSON.stringify("https://coverage.archivers.space"),
-    WEBSOCKET_URL : JSON.stringify("wss://alpha.archivers.space/ws"),
-    STATIC_ASSETS_URL : JSON.stringify("http://alpha.archivers.space"),
-    SEGMENT_KEY : JSON.stringify("FwUGnmKzryJpDpApVzdQy9rmwwWSiK1M"),
+    WEBSOCKET_URL : JSON.stringify("wss://archivers.co/ws"),
+    STATIC_ASSETS_URL : JSON.stringify("http://archivers.co"),
+    // SEGMENT_KEY : JSON.stringify("FwUGnmKzryJpDpApVzdQy9rmwwWSiK1M"),
+    SEGMENT_KEY : JSON.stringify(""),
     SEGMENT_APP_PROPERTIES: JSON.stringify('{ "app_version": "2.0.0beta1" }'),
   }
 };
@@ -37,7 +38,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath : "https://s3.amazonaws.com/static.qri.io/js/archivers/",
+    publicPath : "https://s3.amazonaws.com/static.qri.io/js/archivers/co/",
     filename: '[name].min.js',
     chunkFilename: "[name].chunk.min.js"
   },

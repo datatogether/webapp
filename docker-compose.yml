@@ -12,7 +12,7 @@ services:
       - patchbay
 
   identity:
-    image: archivers/identity:latest
+    image: datatogether/identity:latest
     networks:
       - back-tier
     depends_on:
@@ -41,7 +41,7 @@ services:
         -----END RSA PRIVATE KEY-----
 
   patchbay:
-    image: archivers/patchbay:latest
+    image: datatogether/patchbay:latest
     ports:
      - 3000:3000
     networks:
@@ -67,6 +67,7 @@ services:
         0/eSfoWZ6N8tIQIhAI2y6gPN6SxRjqdr42EkTah3D93xBK5X4k9XtAninGrRAiB7
         k4uJgqHl8hgs3bndGibFuepdLWJed7YXa+eF57FdmA==
         -----END RSA PRIVATE KEY-----
+      - WEBAPP_SCRIPTS=http://localhost:4000/static/bundle.js
 
   postgres:
     image: postgres:9.6-alpine

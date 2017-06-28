@@ -2,7 +2,7 @@
 
 
 // mock analytics package when not in production
-if (!__BUILD__.PRODUCTION) {
+if (!__BUILD__.PRODUCTION || __BUILD__.SEGMENT_KEY == "") {
   const noop = () => {};
   window.analytics = {
     track: noop,

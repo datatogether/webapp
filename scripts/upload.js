@@ -18,7 +18,7 @@ fs.readdir(path.join(__dirname, '..', 'dist'), function (err, files){
 			s3.putObject({
 				Bucket: 'static.qri.io',
 				ContentType : 'application/json',
-				Key: 'js/archivers/' + fileName,
+				Key: 'js/archivers/co/' + fileName,
 				ACL: 'public-read',
 				Body: data
 			}, function(err, resp){
