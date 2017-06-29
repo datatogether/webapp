@@ -42,16 +42,13 @@ class Home extends React.Component {
     return (
       <div id="home" className="page">
         <div className="masthead">
-          <img src="https://s3.us-east-2.amazonaws.com/static.archivers.space/masthead.png" />
+          <img src="https://s3.amazonaws.com/datatogether/img/masthead.png" />
         </div>
         <div className="signup container">
           <div className="row">
             <div className="text col-md-6">
-              <h1 className="red">Let's backup .gov</h1>
-              <p>We&apos;re on a mission to discover, backup, and catalogue <i>lots &amp; lots of government data</i>, and we need your help!
-              A large amount the data we discover doesn&apos;t have proper metadata, and isn&apos;t very organized.
-              With your help we can build an archive that will last for years to come.
-              Join us & help rescue data!</p>
+              <h1 className="red">Imagine a world where we hold data together.</h1>
+              <p></p>
               <Link to={session ? "/primers" : "/signup"} className="btn btn-large bg-red white">Start Archiving Now</Link>
             </div>
             <div className="image col-md-4 offset-md-2">

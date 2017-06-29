@@ -26,8 +26,8 @@ export default class MainMenu extends React.Component {
     return (
       <div id="main_menu" onClick={this.onClick} className={show ? "show" : "hide"}>
         <Link className="blue" to="/primers">Home</Link>
-        <Link className="blue" to="/coverage">Coverage</Link>
-        <Link className="blue" to="/archives">Archives</Link>
+        {/*<Link className="blue" to="/coverage">Coverage</Link>*/}
+        <Link className="blue" to="/archives">Datasets</Link>
         {/*<Link className="blue" to="/collections">Collections</Link>*/}
         {/*<Link className="blue" to="/uncrawlables">Uncrawlables</Link>*/}
         {
@@ -38,8 +38,8 @@ export default class MainMenu extends React.Component {
             </div>)
         }
         {/*<a className="orange" href="https://docs.archivers.space/archivers">Docs</a>*/}
-        <a className="orange" href="https://github.com/edgi-govdata-archiving/proposed-services">Proposal</a>
-        <a className="orange" href="https://github.com/qri-io/context/issues">App Issues</a>
+        {/*<a className="orange" href="https://github.com/edgi-govdata-archiving/proposed-services">Proposal</a>*/}
+        {/*<a className="orange" href="https://github.com/qri-io/context/issues">App Issues</a>*/}
       </div>
     );
   }
