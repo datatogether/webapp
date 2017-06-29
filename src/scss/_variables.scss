@@ -39,7 +39,8 @@
 // Grayscale and brand colors for use across Bootstrap.
 
 // background colors
-$slate: #253238;
+// $slate: #253238;
+$slate: #1D3339;
 $cool-slate: #212e33;
 $dark-slate: #272727;
 // $warm-slate: #2A2E2E;
@@ -53,22 +54,25 @@ $text: $slate;
 $background-text: #657780;
 
 // brand colors
-// $green: #698736;
-// $blue: #78CCEE;
-// $purple: #B681D1;
-// $red: #EE4360;
-// $yellow: #E9B354;
-$orange: #cfc6b4;
-// $tope: #CED1BD;
+// $tope: #e6c339;
+// $yellow: #eba434;
+// $teal: #00a694;
+// $green: #88c21d;
+// $blue: #3578ff;
+// $orange: #cfc6b4;
+// $purple: #643dd9;
+// $magenta: #eb1594;
+// $red: #ef3a61;
 
 $tope: #e6c339;
-$yellow: #eba434;
+$yellow: #ccb00a;
 $teal: #00a694;
-$green: #88c21d;
+$green: #3bb563;
 $blue: #3578ff;
+$orange: #cfc6b4;
 $purple: #643dd9;
-$magenta: #eb1594;
-$red: #ef3a61;
+$magenta: #ce4087;
+$red: #cc1955;
 
 $gray-dark:                 #373a3c !default;
 $gray:                      #55595c !default;

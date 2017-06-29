@@ -8,7 +8,7 @@ const Footer = ({ style }) => {
       <div className="container">
         <div className="row">
           <div className="col-md-6 col-sm-6 col-xs-6">
-            <Link id="logotype" href={__BUILD__.BASE_URL}>ARCHIVERS 2.0 <span className="red hidden-sm-down">ALPHA</span></Link>
+            <a id="logotype" href="https://github.com/datatogether">Github</a>
           </div>
         </div>
       </div>

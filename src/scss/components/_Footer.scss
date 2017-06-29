@@ -3,5 +3,10 @@
   padding: 2em 0;
   background: $cool-slate;
   min-height: 200px;
-  box-shadow: inset 0 0 8px rgba(0,0,0,0.75);
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.35);
+  a {
+    color: #3BB563;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
 }
