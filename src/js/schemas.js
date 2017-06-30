@@ -22,6 +22,7 @@ const collectionSchema = new Schema('collections');
 const primerSchema = new Schema('primers');
 const sourceSchema = new Schema('sources');
 const uncrawlableSchema = new Schema('uncrawlable');
+const taskSchema = new Schema('tasks');
 
 primerSchema.define({
   subPrimers: arrayOf(primerSchema),
@@ -84,6 +85,9 @@ const Schemas = {
   // searchResult wraps those discrete types
   SEARCH_RESULT: searchResultSchema,
   SEARCH_RESULT_ARRAY: arrayOf(searchResultSchema),
+
+  TASK: taskSchema,
+  TASK_ARRAY: arrayOf(taskSchema),
 
   // TODO - finish comment
   UNCRAWLABLE: uncrawlableSchema,

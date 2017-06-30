@@ -7,6 +7,7 @@ const initialState = {
   metadata: {},
   collections: {},
   uncrawlables: {},
+  tasks: {},
 };
 
 // updates an entity cache in response to any actuion with response.local.

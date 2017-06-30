@@ -105,6 +105,12 @@ export default {
       },
     },
     {
+      path: '/tasks',
+      getComponent(location, cb) {
+        import('./containers/Tasks').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: '/uncrawlables',
       getComponent(location, cb) {
         import('./containers/Uncrawlables').then(loadRoute(cb)).catch(errorLoading);

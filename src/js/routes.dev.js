@@ -17,6 +17,7 @@ import Primer from './containers/Primer';
 import Source from './containers/Source';
 import Signup from './containers/Signup';
 import Stylesheet from './containers/Stylesheet';
+import Tasks from './containers/Tasks';
 import Keys from './containers/Keys';
 import Url from './containers/Url';
 import User from './containers/User';
@@ -88,6 +89,10 @@ export default {
     {
       path: '/sources/:id',
       component: Source,
+    },
+    {
+      path: '/tasks',
+      component: Tasks,
     },
     {
       path: '/uncrawlables',
