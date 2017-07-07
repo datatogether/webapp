@@ -76,41 +76,41 @@ export function loadTask(id = "") {
   };
 }
 
-export const TASK_SAVE_REQUEST = "TASK_SAVE_REQUEST";
-export const TASK_SAVE_SUCCESS = "TASK_SAVE_SUCCESS";
-export const TASK_SAVE_FAILURE = "TASK_SAVE_FAILURE";
+export const TASK_ENQUEUE_REQUEST = "TASK_ENQUEUE_REQUEST";
+export const TASK_ENQUEUE_SUCCESS = "TASK_ENQUEUE_SUCCESS";
+export const TASK_ENQUEUE_FAILURE = "TASK_ENQUEUE_FAILURE";
 
-export function saveTask(task = {}) {
+export function enqueueTask(task = {}) {
   return (dispatch) => {
-    analytics.track(task.id ? "Created Task" : "Saved Task", task);
+    analytics.track("Enqueued Task", task);
     return dispatch({
       [CALL_API]: {
-        types: [TASK_SAVE_REQUEST, TASK_SAVE_SUCCESS, TASK_SAVE_FAILURE],
+        types: [TASK_ENQUEUE_REQUEST, TASK_ENQUEUE_SUCCESS, TASK_ENQUEUE_FAILURE],
         schema: Schemas.TASK,
-        method: (task.id == "new") ? "POST" : "PUT",
+        method: "POST",
         endpoint: "/tasks",
         data: task,
       },
     }).then((action) => {
-      if (action.type == TASK_SAVE_SUCCESS) {
+      if (action.type == TASK_ENQUEUE_SUCCESS) {
         cancelTaskEdit(task.keyId, task.subject);
       }
     });
   };
 }
 
-export const TASK_DELETE_REQUEST = "TASK_DELETE_REQUEST";
-export const TASK_DELETE_SUCCESS = "TASK_DELETE_SUCCESS";
-export const TASK_DELETE_FAILURE = "TASK_DELETE_FAILURE";
+export const TASK_CANCEL_REQUEST = "TASK_CANCEL_REQUEST";
+export const TASK_CANCEL_SUCCESS = "TASK_CANCEL_SUCCESS";
+export const TASK_CANCEL_FAILURE = "TASK_CANCEL_FAILURE";
 
-export function deleteTask(task = {}) {
-  analytics.track("Deleted Task", task);
+export function cancelTask(task = {}) {
   return (dispatch) => {
+    analytics.track("Cancelled Task", task);
     return dispatch({
       [CALL_API]: {
-        types: [TASK_DELETE_REQUEST, TASK_DELETE_SUCCESS, TASK_DELETE_FAILURE],
+        types: [TASK_CANCEL_REQUEST, TASK_CANCEL_SUCCESS, TASK_CANCEL_FAILURE],
         schema: Schemas.TASK,
-        endpoint: "/tasks",
+        endpoint: `/tasks/${task.id}`,
         method: "DELETE",
         data: task,
       },
