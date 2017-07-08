@@ -10,17 +10,27 @@ export default class TaskForm extends React.Component {
     
     this.state = {
       task: {
+        title: "Add to IPFS",
         taskType: "ipfs.add",
         params: {
           url: "https://i.redd.it/59su4dfwq08z.jpg",
-          ipfsApiServerUrl: "http://ipfs:5001/api/v0",
         },
       },
+      validation : {},
+      showErrors : false,
     };
 
     [
+      "handleChange",
       "handleSubmit",
     ].forEach((m) => { this[m] = this[m].bind(this); });
+  }
+
+  handleChange(name, value) {
+    let params = Object.assign({}, this.state.task.params, { [name] : value });
+    let task = Object.assign({}, this.state.task, { params });
+    const change = Object.assign({}, this.state, { task });
+    this.setState(change);
   }
 
   handleSubmit() {
@@ -29,9 +39,12 @@ export default class TaskForm extends React.Component {
   }
 
   render() {
+    const { task, validation, showErrors } = this.state;
+
     return (
       <div className="task form col-md-3">
-        <h3>New Task Form</h3>
+        <h3>Archive Url</h3>
+        <ValidInput type="text" label="Url" name="url" value={task.params.url} error={validation.username} showError={showErrors} onChange={this.handleChange} />
         <button className="btn btn-primary" onClick={this.handleSubmit}>Submit Task</button>
       </div>
     );
