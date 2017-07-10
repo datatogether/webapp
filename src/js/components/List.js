@@ -14,7 +14,7 @@ const List = (props) => {
 
   return (
     <div className={className}>
-      {data.map((item, i) => <props.component data={item} key={i} index={i} onSelect={selectFunc(onSelectItem, item, i)} />)}
+      {data.map((item, i) => <props.component {...props} data={item} key={i} index={i} onSelect={selectFunc(onSelectItem, item, i)} />)}
     </div>
   );
 };

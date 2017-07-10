@@ -4,7 +4,15 @@ import { Link } from 'react-router';
 
 import analytics from '../analytics';
 import { selectCollection, selectLocalCollection } from '../selectors/collections';
-import { loadCollection, newCollection, editCollection } from '../actions/collections';
+import { 
+  loadCollection,
+  newCollection,
+  editCollection,
+  updateCollection,
+  saveCollection,
+  deleteCollection,
+  cancelCollectionEdit,
+} from '../actions/collections';
 import { selectDefaultKeyId } from '../selectors/keys';
 
 import Spinner from '../components/Spinner';
@@ -21,7 +29,11 @@ class Collection extends React.Component {
     };
 
     [
-
+      "handleChange",
+      "handleCancel",
+      "handleSave",
+      "handleEdit",
+      "handleDelete",
     ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
@@ -39,13 +51,22 @@ class Collection extends React.Component {
   }
 
   handleChange(name, value) {
-
+    console.log(value);
+    this.props.updateCollection(value);
   }
   handleCancel() {
-    
+    this.porps.cancelCollectionEdit(this.props.local);
+  }
+  handleEdit() {
+    this.props.editCollection(this.props.collection);
   }
   handleSave() {
-    
+    this.props.saveCollection(this.props.local);
+  }
+  handleDelete() {
+    if (confirm("are you sure you want to delete this collection?")) {
+      this.props.deleteCollection(this.props.collection);
+    }
   }
 
   render() {
@@ -68,7 +89,7 @@ class Collection extends React.Component {
     }
 
     return (
-      <CollectionView data={collection} />
+      <CollectionView data={collection} onEdit={this.handleEdit} onDelete={this.handleDelete} />
     );
   }
 }
@@ -99,4 +120,8 @@ export default connect(mapStateToProps, {
   loadCollection,
   newCollection,
   editCollection,
+  updateCollection,
+  saveCollection,
+  deleteCollection,
+  cancelCollectionEdit,
 })(Collection);

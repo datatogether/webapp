@@ -2,9 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import List from './List';
-import ContentItem from './item/ContentItem';
 
-const Collection = ({ data, sessionKeyId }) => {
+const Collection = ({ data, sessionKeyId, onEdit, onDelete }) => {
   const collection = data;
   return (
     <div id="collection" className="page">
@@ -12,6 +11,8 @@ const Collection = ({ data, sessionKeyId }) => {
         <header className="row">
           <div className="col-md-12">
             <hr className="green" />
+            <a className="right red" onClick={onDelete}>&nbsp; delete</a>
+            <a className="right" onClick={onEdit}>edit</a> 
             <label className="label">Collection</label>
             <h1 className="green">{collection.title}</h1>
           </div>
@@ -24,13 +25,31 @@ const Collection = ({ data, sessionKeyId }) => {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <hr className="green" />
-            <h3 className="green">Contents:</h3>
-            <br />
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>hash</th>
+                  <th>url</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {collection.contents.map((data, i) => {
+                  const hash = data[0];
+                  const url = data[1];
+                  const description = data[2];
+
+                  return (
+                    <tr key={i} className="">
+                      <td>{ hash && <Link to={`/content/${hash}`}><h5 className="title">{hash}</h5></Link>}</td>
+                      <td>{url}</td>
+                      <td>{description}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div className="row">
-          <List data={collection.contents} component={ContentItem} />
         </div>
       </div>
     </div>
