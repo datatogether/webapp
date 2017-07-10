@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 import analytics from '../analytics';
 import { selectCollection, selectLocalCollection } from '../selectors/collections';
@@ -51,21 +51,24 @@ class Collection extends React.Component {
   }
 
   handleChange(name, value) {
-    console.log(value);
     this.props.updateCollection(value);
   }
   handleCancel() {
-    this.porps.cancelCollectionEdit(this.props.local);
+    this.props.cancelCollectionEdit(this.props.local);
   }
   handleEdit() {
     this.props.editCollection(this.props.collection);
   }
   handleSave() {
-    this.props.saveCollection(this.props.local);
+    this.props.saveCollection(this.props.local, (collection) => {
+      browserHistory.push(`/collections/${collection.id}`);
+    });
   }
   handleDelete() {
     if (confirm("are you sure you want to delete this collection?")) {
-      this.props.deleteCollection(this.props.collection);
+      this.props.deleteCollection(this.props.collection, (collection) => {
+        browserHistory.push(`/collections`);
+      });
     }
   }
 

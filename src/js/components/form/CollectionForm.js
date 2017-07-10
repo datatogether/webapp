@@ -42,7 +42,7 @@ const CollectionForm = ({ name, data, onChange, onCancel, onSubmit }) => {
         </header>
         <div className="row">
           <div className="col-md-12">
-            <ValidInput name="title" value={collection.title} onChange={handleChange} />
+            <ValidInput name="title" label="title" value={collection.title} onChange={handleChange} />
             <br />
             <button className="btn" onClick={onCancel}>Cancel</button>
             <input className="btn btn-primary" type="submit" value="Save" onClick={handleSubmit} />
@@ -63,7 +63,7 @@ const CollectionForm = ({ name, data, onChange, onCancel, onSubmit }) => {
               </thead>
               <tbody>
                 {collection.contents.map((item, i) => {
-                  return <CollectionItem data={item} index={i} onChange={handleItemChange} onDelete={handleItemDelete}  />
+                  return <CollectionItem key={i} data={item} index={i} onChange={handleItemChange} onDelete={handleItemDelete}  />
                 })}
               </tbody>
             </table>
@@ -105,7 +105,7 @@ const CollectionItem = ({data, index, onChange, onDelete}) => {
   }
 
   return (
-    <tr key={index}>
+    <tr>
       <td>{data[0]}</td>
       <td><ValidInput name="url" value={data[1]} onChange={handleChange} /></td>
       <td><ValidInput name="note" value={data[2]} onChange={handleChange} /></td>
