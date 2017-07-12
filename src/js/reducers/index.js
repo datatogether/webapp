@@ -16,7 +16,9 @@ import selectionReducer from './selection';
 const initialEntitiesState = {
   session: {},
   keys: {},
-  users: {},
+  users: {
+    "edgi" : { username : "EDGI", id: "edgi", type: "community" },
+  },
 
   groups: {},
 

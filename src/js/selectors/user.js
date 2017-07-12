@@ -1,4 +1,9 @@
 
+export function selectCommunities(state) {
+  const { users } = state.entities;
+  return Object.keys(users).filter(id => users[id].type == "community").map(id => users[id]);
+}
+
 // search through the state tree for
 export function selectUserByUsername(state, username) {
   const { users } = state.entities;

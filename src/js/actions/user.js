@@ -66,3 +66,23 @@ export function usersSearch(query) {
   }
 }
 
+export const USERS_REQUEST = 'USERS_REQUEST';
+export const USERS_SUCCESS = 'USERS_SUCCESS';
+export const USERS_FAILURE = 'USERS_FAILURE';
+
+export function fetchUsers(userType, page = 1, pageSize = 50) {
+  return {
+    [USERS_API]: {
+      types: [USERS_SEARCH_REQUEST, USERS_SEARCH_SUCCESS, USERS_SEARCH_FAILURE],
+      endpoint: `/users?type=${userType}&page=${page}&page_size=${pageSize}`,
+      schema: Schemas.USER_ARRAY,
+    }
+  }
+}
+
+export function loadUsers(userType, page = 1, pageSize = 50) {
+  return (dispatch, getState) => {
+    // TODO - prevent overfetching
+    return dispatch(fetchUsers(userType, page, pageSize));
+  }
+}

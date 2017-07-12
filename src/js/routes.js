@@ -55,6 +55,12 @@ export default {
       },
     },
     {
+      path: '/communities',
+      getComponent(location, cb) {
+        import('./containers/Communities').then(loadRoute(cb)).catch(errorLoading);
+      },
+    }
+    {
       path: '/coverage',
       getComponent(location,cb) {
         import('./containers/Coverage').then(loadRoute(cb)).catch(errorLoading);
