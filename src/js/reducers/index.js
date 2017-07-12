@@ -15,11 +15,10 @@ import selectionReducer from './selection';
 
 const initialEntitiesState = {
   session: {
-    "edgi" : { username: "EDGI", id: "edgi", type: "community", homeUrl: "https://envirodatagov.com", description: "The Environmental Data & Governance Initiative (EDGI) is an international network of academics and non-profits addressing potential threats to federal environmental and energy policy, and to the scientific research infrastructure built to investigate, inform, and enforce. Dismantling this infrastructure -- which ranges from databases to satellites to models for climate, air, and water -- could imperil the public's right to know, the United States' standing as a scientific leader, corporate accountability, and environmental protection.", profilePhotoUrl: "https://avatars0.githubusercontent.com/u/24626991?v=3&s=200" },        
+    // "edgi" : { username: "EDGI", id: "edgi", type: "community", homeUrl: "https://envirodatagov.com", description: "The Environmental Data & Governance Initiative (EDGI) is an international network of academics and non-profits addressing potential threats to federal environmental and energy policy, and to the scientific research infrastructure built to investigate, inform, and enforce. Dismantling this infrastructure -- which ranges from databases to satellites to models for climate, air, and water -- could imperil the public's right to know, the United States' standing as a scientific leader, corporate accountability, and environmental protection.", profilePhotoUrl: "https://avatars0.githubusercontent.com/u/24626991?v=3&s=200" },        
   },
   keys: {},
   users: {
-    "edgi" : { username: "EDGI", id: "edgi", type: "community", homeUrl: "https://envirodatagov.com", description: "The Environmental Data & Governance Initiative (EDGI) is an international network of academics and non-profits addressing potential threats to federal environmental and energy policy, and to the scientific research infrastructure built to investigate, inform, and enforce. Dismantling this infrastructure -- which ranges from databases to satellites to models for climate, air, and water -- could imperil the public's right to know, the United States' standing as a scientific leader, corporate accountability, and environmental protection.", profilePhotoUrl: "https://avatars0.githubusercontent.com/u/24626991?v=3&s=200" },
   },
 
   groups: {},

@@ -13,7 +13,11 @@ services:
       - patchbay
 
   identity:
-    image: datatogether/identity:latest
+    # image: datatogether/identity:latest
+    build: $GOPATH/src/github.com/datatogether/identity/
+    volumes:
+      - $GOPATH/src/github.com/datatogether/identity:/go/src/github.com/datatogether/identity
+      - ./sql:/sql
     networks:
       - back-tier
     depends_on:

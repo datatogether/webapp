@@ -1,4 +1,4 @@
-import { CALL_API } from '../middleware/api';
+import { USERS_API } from '../middleware/users';
 import Schemas from '../schemas';
 
 import analytics from '../analytics';
@@ -8,23 +8,23 @@ export const COMMUNITY_USERS_REQUEST = "COMMUNITY_USERS_REQUEST";
 export const COMMUNITY_USERS_SUCCESS = "COMMUNITY_USERS_SUCCESS";
 export const COMMUNITY_USERS_FAILURE = "COMMUNITY_USERS_FAILURE";
 
-export function fetchCommunityUsers(key, page = 1, pageSize = 25) {
+export function fetchCommunityUsers(id, page = 1, pageSize = 25) {
   return ({
-    [CALL_API]: {
+    [USERS_API]: {
       types: [COMMUNITY_USERS_REQUEST, COMMUNITY_USERS_SUCCESS, COMMUNITY_USERS_FAILURE],
       schema: Schemas.USER_ARRAY,
-      endpoint: `/communities/${key}/users`,
-      data: { key, page, pageSize },
-      key,
+      endpoint: `/communities/users`,
+      data: { id, page, pageSize },
+      id,
       page,
       pageSize,
     },
   });
 }
 
-export function loadMetadataByKey(key, page = 1, pageSize = 25) {
+export function loadCommunityUsers(id, page = 1, pageSize = 25) {
   return (dispatch) => {
     // TODO - add pagination & pagination check
-    return dispatch(fetchCommunityUsers(key, page, pageSize));
+    return dispatch(fetchCommunityUsers(id, page, pageSize));
   };
 }

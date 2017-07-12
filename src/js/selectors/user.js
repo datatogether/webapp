@@ -14,3 +14,14 @@ export function selectUserByUsername(state, username) {
 export function selectUserById(state, id) {
   return state.entities.users[id];
 }
+
+export function selectCommunityUsers(state, id) {
+  const { users } = state.entities;
+  const { communityUsers } = state.pagination;
+
+  if (communityUsers[id]) {
+    return communityUsers[id].ids.map(id => users[id]);
+  }
+
+  return [];
+}

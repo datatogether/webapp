@@ -21,6 +21,12 @@ import {
   CONTENT_RECENT_URLS_FAILURE,
 } from '../actions/content';
 
+import {
+  COMMUNITY_USERS_REQUEST,
+  COMMUNITY_USERS_SUCCESS,
+  COMMUNITY_USERS_FAILURE,
+} from '../actions/communities';
+
 // Updates the pagination data for different actions.
 const pagination = combineReducers({
   sources: paginate({
@@ -56,6 +62,15 @@ const pagination = combineReducers({
       CONTENT_RECENT_URLS_REQUEST,
       CONTENT_RECENT_URLS_SUCCESS,
       CONTENT_RECENT_URLS_FAILURE,
+    ],
+  }),
+
+  communityUsers: paginate({
+    mapActionToKey: (a) => { console.log(a); return a.id; },
+    types: [
+      COMMUNITY_USERS_REQUEST,
+      COMMUNITY_USERS_SUCCESS,
+      COMMUNITY_USERS_FAILURE,
     ],
   }),
 });
