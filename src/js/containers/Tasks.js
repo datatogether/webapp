@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 import analytics from '../analytics';
 import { selectTasks } from '../selectors/tasks';
-import { loadTasks } from '../actions/tasks';
+import { loadTasks, enqueueTask } from '../actions/tasks';
 
 import List from '../components/List';
+import TaskForm from '../components/form/TaskForm';
 import TaskItem from '../components/item/TaskItem';
 import Spinner from '../components/Spinner';
 
@@ -60,6 +61,9 @@ class Tasks extends React.Component {
             <List data={tasks} component={TaskItem} />
           </div>
         </div>
+        <div className="container">
+          <TaskForm onSubmit={this.props.enqueueTask} />
+        </div>
       </div>
     );
   }
@@ -69,6 +73,7 @@ Tasks.propTypes = {
   // user: PropTypes.object,
   tasks: PropTypes.array,
   loadTasks: PropTypes.func.isRequired,
+  enqueueTask: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -79,4 +84,5 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   loadTasks,
+  enqueueTask,
 })(Tasks);

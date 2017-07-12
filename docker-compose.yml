@@ -1,5 +1,6 @@
 version: '2'
 services:
+
   context:
     build: .
     volumes:
@@ -41,7 +42,11 @@ services:
         -----END RSA PRIVATE KEY-----
 
   patchbay:
-    image: datatogether/patchbay:latest
+    # image: datatogether/patchbay:latest
+    build: $GOPATH/src/github.com/datatogether/patchbay/
+    volumes:
+      - $GOPATH/src/github.com/datatogether/patchbay:/go/src/github.com/datatogether/patchbay
+      - ./sql:/sql
     ports:
      - 3000:3000
     networks:
@@ -68,7 +73,48 @@ services:
         k4uJgqHl8hgs3bndGibFuepdLWJed7YXa+eF57FdmA==
         -----END RSA PRIVATE KEY-----
       - WEBAPP_SCRIPTS=http://localhost:4000/static/bundle.js
+      - TASKS_SERVICE_URL=task-mgmt:4400
 
+  task-mgmt:
+    build: $GOPATH/src/github.com/datatogether/task-mgmt/
+    volumes:
+      - $GOPATH/src/github.com/datatogether/task-mgmt:/go/src/github.com/datatogether/task-mgmt
+      - ./sql:/sql
+    ports:
+     - 3400:3400
+     - 4400:4400
+    networks:
+      - back-tier
+    depends_on:
+      - ipfs
+      - rabbitmq
+      - postgres
+    environment:
+      - PORT=3400
+      - TLS=false
+      - GOLANG_ENV=develop
+      - POSTGRES_DB_URL=postgres://postgres@postgres/postgres?sslmode=disable
+      - PUBLIC_KEY=nothing_yet
+      - POSTMARK_KEY=POSTMARK_API_TEST
+      - EMAIL_NOTIFICATION_RECIPIENTS=brendan@qri.io
+      - GITHUB_LOGIN_URL=http://localhost:3100/oauth/github
+      - AMQP_URL=amqp://guest:guest@rabbitmq:5672/
+      - IPFS_API_URL=http://ipfs:5001/api/v0
+      - RPC_PORT=4400
+
+  ipfs:
+    image: "ipfs/go-ipfs:latest"
+    networks:
+      - back-tier
+    ports:
+      - 5001:5001
+  rabbitmq:
+    image: "library/rabbitmq:latest"
+    networks:
+      - back-tier
+    ports:
+      - 5672:5672
+      - 15672:15672
   postgres:
     image: postgres:9.6-alpine
     networks:
