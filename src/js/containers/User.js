@@ -9,12 +9,12 @@ import { loadMetadataByKey } from '../actions/metadata';
 
 import { selectSessionUser } from '../selectors/session';
 import { selectUserByUsername } from '../selectors/user';
-import { selectMetadataByKey } from '../selectors/metadata';
+import { selectCollectionsByKey } from '../selectors/collections';
 // import { selectDefaultKeyId } from '../selectors/keys';
 
 import NotFound from '../components/NotFound';
 import List from '../components/List';
-import MetadataItem from '../components/item/MetadataItem';
+import CollectionItem from '../components/item/CollectionItem';
 
 class User extends React.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class User extends React.Component {
   }
 
   render() {
-    const { user, permissions, metadata } = this.props;
+    const { user, permissions, collections } = this.props;
     if (!user) {
       return <NotFound />;
     }
@@ -66,7 +66,7 @@ class User extends React.Component {
             <div className="row">
               <div className="col-md-12">
                 <hr className="" />
-                <label className="label">User</label>
+                <label className="label">{user.type || "User"}</label>
                 <Link className="" to={`/${user.username}`}>
                   <h1 className="title">{user.username}</h1>
                 </Link>
@@ -80,9 +80,9 @@ class User extends React.Component {
         <div className="container">
           <div className="metadata row">
             <div className="col-md-12">
-              <h4 className="title">Metadata:</h4>
+              <h4 className="title">Collections:</h4>
             </div>
-            <List data={metadata} component={MetadataItem} />
+            <List data={collections} component={CollectionItem} />
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@ function mapStateToProps(state, ownProps) {
     username,
     user,
     permissions,
-    metadata: user ? selectMetadataByKey(state, user.currentKey) : [],
+    collections: user ? selectCollectionsByKey(state, user.currentKey) : [],
   }, ownProps);
 }
 

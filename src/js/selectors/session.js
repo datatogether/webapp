@@ -14,3 +14,11 @@ export function selectLocalSessionUser(state) {
   const users = Object.keys(session).map(k => session[k]);
   return (users.length == 1) ? users[0] : undefined;
 }
+
+export function selectAvailableUsers(state) {
+  const { session } = state.entities;
+  if (!session) {
+    return [];
+  }
+  return Object.keys(session).map(k => session[k]);
+}

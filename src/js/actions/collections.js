@@ -126,3 +126,28 @@ export function deleteCollection(collection = {}, callback) {
     })
   };
 }
+
+export const COLLECTIONS_BY_KEY_REQUEST = "COLLECTIONS_BY_KEY_REQUEST";
+export const COLLECTIONS_BY_KEY_SUCCESS = "COLLECTIONS_BY_KEY_SUCCESS";
+export const COLLECTIONS_BY_KEY_FAILURE = "COLLECTIONS_BY_KEY_FAILURE";
+
+export function fetchCollectionsByKey(key, page = 1, pageSize = 25) {
+  return ({
+    [CALL_API]: {
+      types: [COLLECTIONS_BY_KEY_REQUEST, COLLECTIONS_BY_KEY_SUCCESS, COLLECTIONS_BY_KEY_FAILURE],
+      schema: Schemas.COLLECTION,
+      endpoint: `/collections?creator=${key}`,
+      data: { key, page, pageSize },
+      key,
+      page,
+      pageSize,
+    },
+  });
+}
+
+export function loadCollectionsByKey(key, page = 1, pageSize = 25) {
+  return (dispatch) => {
+    // TODO - add pagination & pagination check
+    return dispatch(fetchCollectionsByKey(key, page, pageSize));
+  };
+}

@@ -229,3 +229,37 @@ export function loadSessionUser() {
   };
 }
 
+export const SESSION_USER_COMMUNITIES_REQUEST = 'SESSION_USER_COMMUNITIES_REQUEST';
+export const SESSION_USER_COMMUNITIES_SUCCESS = 'SESSION_USER_COMMUNITIES_SUCCESS';
+export const SESSION_USER_COMMUNITIES_FAILURE = 'SESSION_USER_COMMUNITIES_FAILURE';
+
+// Fetch the session users's communities
+export function fetchSessionUserCommunities() {
+  return (dispatch) => {
+    return dispatch({
+      [USERS_API]: {
+        types: [SESSION_USER_COMMUNITIES_REQUEST, SESSION_USER_COMMUNITIES_SUCCESS, SESSION_USER_COMMUNITIES_FAILURE],
+        endpoint: `/session/communities`,
+        schema: Schemas.USER_ARRAY,
+        silentError: true,
+      },
+    }).then((action) => {
+      if (action.type == SESSION_USER_COMMUNITIES_SUCCESS) {
+        // dispatch(fetchKeys());
+      }
+    });
+  };
+}
+
+export function loadSessionUserCommunities() {
+  return (dispatch, getState) => {
+    // TODO - adapt for session user communities
+    // if (Object.keys(getState().entities.session).length) {
+    //   return new Promise((resolve) => {
+    //     resolve({});
+    //   });
+    // }
+
+    return dispatch(fetchSessionUserCommunities());
+  };
+}

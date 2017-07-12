@@ -2,9 +2,10 @@ import React, { PropTypes } from 'react';
 
 import List from '../List';
 import ValidInput from './ValidInput';
+import SelectUser from './SelectUser';
 // import ValidTextarea from './ValidTextarea';
 
-const CollectionForm = ({ name, data, onChange, onCancel, onSubmit }) => {
+const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => {
   const collection = data;
   const handleChange = (name, value) => {
     onChange(name, Object.assign({}, data, { [name] : value }));
@@ -42,6 +43,7 @@ const CollectionForm = ({ name, data, onChange, onCancel, onSubmit }) => {
         </header>
         <div className="row">
           <div className="col-md-12">
+            <SelectUser name="creator" users={users} value={collection.key} onChange={handleChange} />
             <ValidInput name="title" label="title" value={collection.title} onChange={handleChange} />
             <br />
             <button className="btn" onClick={onCancel}>Cancel</button>

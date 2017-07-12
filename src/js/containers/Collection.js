@@ -4,6 +4,8 @@ import { Link, browserHistory } from 'react-router';
 
 import analytics from '../analytics';
 import { selectCollection, selectLocalCollection } from '../selectors/collections';
+import { selectAvailableUsers } from '../selectors/session';
+
 import { 
   loadCollection,
   newCollection,
@@ -74,7 +76,7 @@ class Collection extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { collection, local, sessionKeyId } = this.props;
+    const { collection, local, users, sessionKeyId } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -84,6 +86,7 @@ class Collection extends React.Component {
       return (
         <CollectionForm
           data={local}
+          users={users}
           onChange={this.handleChange}
           onCancel={this.handleCancel}
           onSubmit={this.handleSave}
@@ -114,6 +117,7 @@ function mapStateToProps(state, ownProps) {
   return {
     id,
     sessionKeyId,
+    users : selectAvailableUsers(state),
     local: selectLocalCollection(state, id),
     collection: selectCollection(state, id),
   };
