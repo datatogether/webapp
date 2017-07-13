@@ -6,26 +6,26 @@ import List from './List';
 const Collection = ({ data, sessionKeyId, onEdit, onDelete, onArchive }) => {
   const collection = data;
   return (
-    <div id="collection" className="page">
-      <div className="container">
-        <header className="row">
-          <div className="col-md-12">
-            <hr className="green" />
-            <a className="right red" onClick={onDelete}>&nbsp; Delete</a>
-            <a className="right" onClick={onEdit}>&nbsp; Edit</a>
-            {sessionKeyId && <a className="right red" onClick={onArchive}>&nbsp; Archive</a>}
-            <label className="label">Collection</label>
-            <h1 className="green">{collection.title}</h1>
-          </div>
-        </header>
-        <div className="row">
-          <div className="col-md-12 col-lg-8">
-            <p>{collection.description}</p>
+    <div id="collection" className="collection page">
+      <header className="collection colorized">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <hr className="green" />
+              <a className="right" onClick={onDelete}>&nbsp; Delete</a>
+              <a className="right" onClick={onEdit}>&nbsp; Edit</a>
+              {sessionKeyId && <a className="right red" onClick={onArchive}>&nbsp; Archive</a>}
+              <label className="label">Collection</label>
+              <h1>{collection.title}</h1>
+              <p>{collection.description}</p>
+            </div>
           </div>
         </div>
+      </header>
+      <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <table className="table">
+            <table className="collection items table">
               <thead>
                 <tr>
                   <th>hash</th>

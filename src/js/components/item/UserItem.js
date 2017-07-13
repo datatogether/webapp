@@ -2,8 +2,15 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const UserItem = ({ data, onSelect }) => {
+  const imgUrl = data.thumbUrl || data.profileUrl;
+
   return (
-    <div className="user item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+    <div className="user item">
+      { imgUrl &&
+        <Link to={`/users/${data.username}`} className="profile-photo left">
+          <img src={imgUrl} />
+        </Link>
+      }
       <h4 onClick={onSelect}>
         <Link className="namespace" to={`/users/${data.username}`}>{data.username}</Link>
       </h4>

@@ -80,11 +80,15 @@ class User extends React.Component {
             <div className="row">
               <div className="col-md-12">
                 <hr className="" />
+              </div>
+              <div className="col-md-2">
                 {user.profileUrl &&
                   <div className="profile_photo">
                     <img src={user.profileUrl} />
                   </div>
                 }
+              </div>
+              <div className="col-md-10">
                 <label className="label">{user.type || "User"}</label>
                 <Link className="" to={`/${user.username}`}>
                   <h1 className="title">{user.username}</h1>
@@ -97,20 +101,18 @@ class User extends React.Component {
           </div>
         </header>
         <div className="container">
-          
-          {user.type == "community" && communityUsers &&
-          <div className="collections row">
-            <div className="col-md-12">
-              <h4 className="title">Community Members:</h4>
-            </div>
-            <List data={communityUsers} component={UserItem} />
-          </div>}
-
-          <div className="collections row">
-            <div className="col-md-12">
+          <div className="row">
+            <div className="col-md-9">
               <h4 className="title">Collections:</h4>
+              <hr />
+              <List data={collections} component={CollectionItem} />
             </div>
-            <List data={collections} component={CollectionItem} />
+            {user.type == "community" && communityUsers &&
+            <div className="col-md-3">
+              <h4 className="title">People:</h4>
+              <hr />
+              <List data={communityUsers} component={UserItem} />
+            </div>}
           </div>
         </div>
       </div>

@@ -93,7 +93,7 @@ export function saveCollection(collection = {}, callback) {
       },
     }).then((action) => {
       if (action.type == COLLECTION_SAVE_SUCCESS) {
-        cancelCollectionEdit(collection.keyId, collection.subject);
+        dispatch(cancelCollectionEdit(collection));
         if (typeof callback == "function") {
           callback(action.data);
         }

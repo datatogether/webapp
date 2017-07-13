@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import List from '../List';
 import ValidInput from './ValidInput';
 import SelectUser from './SelectUser';
-// import ValidTextarea from './ValidTextarea';
+import ValidTextarea from './ValidTextarea';
 
 const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => {
   const collection = data;
@@ -43,8 +43,9 @@ const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => 
         </header>
         <div className="row">
           <div className="col-md-12">
-            <SelectUser name="creator" users={users} value={collection.creator} onChange={handleChange} />
+            <SelectUser label="owner" name="creator" users={users} value={collection.creator} onChange={handleChange} />
             <ValidInput name="title" label="title" value={collection.title} onChange={handleChange} />
+            <ValidTextarea name="description" label="description" value={collection.description} onChange={handleChange} />
             <br />
             <button className="btn" onClick={onCancel}>Cancel</button>
             <input className="btn btn-primary" type="submit" value="Save" onClick={handleSubmit} />

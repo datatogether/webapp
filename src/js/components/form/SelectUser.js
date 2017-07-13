@@ -13,6 +13,7 @@ const SelectUser = ({ users, value, name, label, onChange }) => {
   return (
     <div className="validFormField form-group">
       {label && <label className="control-label">{label}</label>}
+      {label && <br />}
       <select value={value} onChange={handleChange}>
         {users.map((u, i) => {
           return <option key={i} value={u.currentKey}>{u.username}</option>

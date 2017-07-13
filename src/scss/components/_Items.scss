@@ -1,0 +1,17 @@
+.user.item {
+  .profile-photo {
+    max-width: 60px;
+    float: left;
+    border-radius: 3px;
+    margin-right: 8px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.collection.item {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
