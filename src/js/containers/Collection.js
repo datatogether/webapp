@@ -15,6 +15,7 @@ import {
   deleteCollection,
   cancelCollectionEdit,
 } from '../actions/collections';
+import { archiveCollection } from '../actions/tasks';
 import { selectDefaultKeyId } from '../selectors/keys';
 
 import Spinner from '../components/Spinner';
@@ -36,6 +37,7 @@ class Collection extends React.Component {
       "handleSave",
       "handleEdit",
       "handleDelete",
+      "handleArchiveCollection",
     ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
@@ -73,6 +75,9 @@ class Collection extends React.Component {
       });
     }
   }
+  handleArchiveCollection() {
+    this.props.archiveCollection(this.props.collection);
+  }
 
   render() {
     const { loading } = this.state;
@@ -95,7 +100,7 @@ class Collection extends React.Component {
     }
 
     return (
-      <CollectionView data={collection} onEdit={this.handleEdit} onDelete={this.handleDelete} />
+      <CollectionView sessionKeyId={sessionKeyId} data={collection} onEdit={this.handleEdit} onArchive={this.handleArchiveCollection} onDelete={this.handleDelete} />
     );
   }
 }
@@ -131,4 +136,5 @@ export default connect(mapStateToProps, {
   saveCollection,
   deleteCollection,
   cancelCollectionEdit,
+  archiveCollection,
 })(Collection);
