@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import analytics from '../analytics';
-import { loadUserByUsername } from '../actions/user';
+import { loadUserByUsername, loadUserCollections } from '../actions/user';
 import { logoutUser, loadKeys } from '../actions/session';
 import { loadMetadataByKey } from '../actions/metadata';
 import { loadCommunityUsers } from '../actions/communities';
@@ -36,9 +36,10 @@ class User extends React.Component {
       if (this.props.user.type == "community") {
         this.props.loadCommunityUsers(this.props.user.id, 1, 25);
       }
-      // if (this.props.user.currentKey) {
-      //   this.props.loadMetadataByKey(this.props.user.currentKey);
-      // }
+      if (this.props.user.currentKey) {
+        // this.props.loadMetadataByKey(this.props.user.currentKey);
+        this.props.loadUserCollections(this.props.user.currentKey, 1, 25);
+      }
     } else {
       this.props.loadUserByUsername(this.props.username);
     }
@@ -53,9 +54,10 @@ class User extends React.Component {
         if (nextProps.user.type == "community") {
           this.props.loadCommunityUsers(nextProps.user.id, 1, 25);
         }
-        // if (this.props.user.currentKey) {
-        //   this.props.loadMetadataByKey(nextProps.user.currentKey);
-        // }
+        if (nextProps.user.currentKey) {
+          // this.props.loadMetadataByKey(nextProps.user.currentKey);
+          this.props.loadUserCollections(nextProps.user.currentKey, 1, 25);
+        }
       }
       this.setState({ loading: false });
     }
@@ -157,4 +159,5 @@ export default connect(mapStateToProps, {
   logoutUser,
   loadKeys,
   loadMetadataByKey,
+  loadUserCollections,
 })(User);

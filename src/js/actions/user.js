@@ -1,4 +1,5 @@
 import { USERS_API } from '../middleware/users';
+import { CALL_API } from '../middleware/api';
 import Schemas from '../schemas';
 import { updateLocalModel, editModel } from './locals';
 import { selectUserByUsername, selectUserById } from '../selectors/user';
@@ -155,4 +156,27 @@ export function loadUserCommunities(id, page = 1, pageSize = 50) {
     // TODO - prevent overfetching
     return dispatch(fetchUserCommunities(id, page, pageSize));
   }
+}
+
+export const USER_COLLECTIONS_REQUEST = "USER_COLLECTIONS_REQUEST";
+export const USER_COLLECTIONS_SUCCESS = "USER_COLLECTIONS_SUCCESS";
+export const USER_COLLECTIONS_FAILURE = "USER_COLLECTIONS_FAILURE";
+
+export function fetchUserCollections(creator, page = 1, pageSize = 25) {
+  return ({
+    [CALL_API]: {
+      types: [USER_COLLECTIONS_REQUEST, USER_COLLECTIONS_SUCCESS, USER_COLLECTIONS_FAILURE],
+      schema: Schemas.COLLECTION,
+      endpoint: `/collections?creator=${creator}`,
+      data: { creator, page, pageSize },
+    },
+    creator, page, pageSize,
+  });
+}
+
+export function loadUserCollections(creator, page = 1, pageSize = 25) {
+  return (dispatch) => {
+    // TODO - add pagination & pagination check
+    return dispatch(fetchUserCollections(creator, page, pageSize));
+  };
 }

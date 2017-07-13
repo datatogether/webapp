@@ -15,7 +15,7 @@ const SelectUser = ({ users, value, name, label, onChange }) => {
       {label && <label className="control-label">{label}</label>}
       <select value={value} onChange={handleChange}>
         {users.map((u, i) => {
-          return <option key={i} value={u.key}>{u.username}</option>
+          return <option key={i} value={u.currentKey}>{u.username}</option>
         })}
       </select>
     </div>

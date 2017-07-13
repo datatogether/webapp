@@ -43,7 +43,7 @@ const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => 
         </header>
         <div className="row">
           <div className="col-md-12">
-            <SelectUser name="creator" users={users} value={collection.key} onChange={handleChange} />
+            <SelectUser name="creator" users={users} value={collection.creator} onChange={handleChange} />
             <ValidInput name="title" label="title" value={collection.title} onChange={handleChange} />
             <br />
             <button className="btn" onClick={onCancel}>Cancel</button>
