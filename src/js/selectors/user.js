@@ -25,3 +25,13 @@ export function selectCommunityUsers(state, id) {
 
   return [];
 }
+
+export function selectLocalUser(state, id) {
+  // const { users } = state.locals;
+  // if (!users) {
+  //   return undefined;
+  // }
+  // const u = Object.keys(users).map(k => users[k]).find(u)
+  // return (u.length == 1) ? u[0] : undefined;
+  return state.locals.users[id];
+}

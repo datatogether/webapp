@@ -95,7 +95,8 @@ export default store => next => (action) => {
   // fire an action indicating a request has been made
   // TODO - this passed in object should only have "type" prop. IT's currently
   // shimmed to support fetching community users w pagingation. Fix.
-  next(actionWith({ type: requestType, data, id: usersApi.id, page: usersApi.page, pageSize: usersApi.pageSize }));
+  // next(actionWith({ type: requestType, data, id: usersApi.id, page: usersApi.page, pageSize: usersApi.pageSize }));
+  next(actionWith({ type: requestType }));
 
   // make the request
   return callApi(method, endpoint, schema, data).then(
@@ -103,7 +104,7 @@ export default store => next => (action) => {
       type: successType,
       response,
       // TODO - remove this, see above
-      id: usersApi.id, page: usersApi.page, pageSize: usersApi.pageSize
+      // id: usersApi.id, page: usersApi.page, pageSize: usersApi.pageSize
     })),
     (error) => {
       let msg = 'Something Bad Happened';

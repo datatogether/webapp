@@ -1,6 +1,53 @@
 import { USERS_API } from '../middleware/users';
 import Schemas from '../schemas';
-import { selectUserByUsername } from '../selectors/user';
+import { updateLocalModel, editModel } from './locals';
+import { selectUserByUsername, selectUserById } from '../selectors/user';
+
+export const EDIT_USER = 'EDIT_USER';
+export function editUser(id) {
+  return (dispatch, getState) => {
+    const user = selectUserById(getState(), id);
+    if (!user) {
+      return null;
+    }
+
+    return dispatch(editModel(Schemas.USER, EDIT_USER, user));
+  };
+}
+
+const USER_UPDATE = 'USER_UPDATE';
+export function updateUser(user) {
+  return updateLocalModel(Schemas.USER, USER_UPDATE, user);
+}
+
+export const SAVE_USER_REQUEST = 'SAVE_USER_REQUEST';
+export const SAVE_USER_SUCCESS = 'SAVE_USER_SUCCESS';
+export const SAVE_USER_FAILURE = 'SAVE_USER_FAILURE';
+
+export function saveUser(user) {
+  return (dispatch) => {
+    analytics.track("User Updated", user);
+    return dispatch({
+      [USERS_API]: {
+        types: [SAVE_USER_REQUEST, SAVE_USER_SUCCESS, SAVE_USER_FAILURE],
+        endpoint: `/users/${user.id}`,
+        method: 'PUT',
+        schema: Schemas.USER,
+        data: user,
+      },
+    }).then((action) => {
+      if (action.type == SAVE_USER_SUCCESS) {
+        dispatch(setMessage("settings successfully saved"));
+        setTimeout(() => {
+          dispatch(resetMessage());
+        }, 3500);
+        return dispatch(push(`/users/${action.response.entities.users[user.id].username}`));
+      }
+
+      return null;
+    });
+  };
+}
 
 export const USER_REQUEST = 'USER_REQUEST';
 export const USER_SUCCESS = 'USER_SUCCESS';
@@ -84,5 +131,28 @@ export function loadUsers(userType, page = 1, pageSize = 50) {
   return (dispatch, getState) => {
     // TODO - prevent overfetching
     return dispatch(fetchUsers(userType, page, pageSize));
+  }
+}
+
+export const USER_COMMUNITIES_REQUEST = 'USER_COMMUNITIES_REQUEST';
+export const USER_COMMUNITIES_SUCCESS = 'USER_COMMUNITIES_SUCCESS';
+export const USER_COMMUNITIES_FAILURE = 'USER_COMMUNITIES_FAILURE';
+
+export function fetchUserCommunities(id, page = 1, pageSize = 50) {
+  return {
+    [USERS_API]: {
+      types: [USER_COMMUNITIES_REQUEST, USER_COMMUNITIES_SUCCESS, USER_COMMUNITIES_FAILURE],
+      endpoint: `/users/communities`,
+      data: { id, page, pageSize },
+      schema: Schemas.USER_ARRAY,
+    },
+    id, page, pageSize
+  }
+}
+
+export function loadUserCommunities(id, page = 1, pageSize = 50) {
+  return (dispatch, getState) => {
+    // TODO - prevent overfetching
+    return dispatch(fetchUserCommunities(id, page, pageSize));
   }
 }

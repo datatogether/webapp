@@ -76,6 +76,10 @@ export default {
       component: User,
     },
     {
+      path: '/users/:user/settings',
+      component: UserSettings,
+    },
+    {
       path: '/signup',
       component: Signup,
     },

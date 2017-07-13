@@ -87,6 +87,12 @@ export default {
       },
     },
     {
+      path: '/users/:user/settings',
+      getComponent(location, cb) {
+        import('./containers/UserSettings').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: '/signup',
       getComponent(location, cb) {
         import('./containers/Signup').then(loadRoute(cb)).catch(errorLoading);

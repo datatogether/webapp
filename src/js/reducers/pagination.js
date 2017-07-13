@@ -2,6 +2,12 @@ import { combineReducers } from 'redux';
 import paginate from './paginate';
 
 import {
+  SESSION_USER_COMMUNITIES_REQUEST,
+  SESSION_USER_COMMUNITIES_SUCCESS,
+  SESSION_USER_COMMUNITIES_FAILURE,
+} from '../actions/session';
+
+import {
   SOURCES_FETCH_REQUEST,
   SOURCES_FETCH_SUCCESS,
   SOURCES_FETCH_FAILURE,
@@ -66,11 +72,20 @@ const pagination = combineReducers({
   }),
 
   communityUsers: paginate({
-    mapActionToKey: (a) => { console.log(a); return a.id; },
+    mapActionToKey: (a) => a.id,
     types: [
       COMMUNITY_USERS_REQUEST,
       COMMUNITY_USERS_SUCCESS,
       COMMUNITY_USERS_FAILURE,
+    ],
+  }),
+
+  sessionUserCommunities: paginate({
+    mapActionToKey: () => "communities",
+    types: [
+      SESSION_USER_COMMUNITIES_REQUEST,
+      SESSION_USER_COMMUNITIES_SUCCESS,
+      SESSION_USER_COMMUNITIES_FAILURE,
     ],
   }),
 });

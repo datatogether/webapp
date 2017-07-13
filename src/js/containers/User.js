@@ -78,6 +78,11 @@ class User extends React.Component {
             <div className="row">
               <div className="col-md-12">
                 <hr className="" />
+                {user.profileUrl &&
+                  <div className="profile_photo">
+                    <img src={user.profileUrl} />
+                  </div>
+                }
                 <label className="label">{user.type || "User"}</label>
                 <Link className="" to={`/${user.username}`}>
                   <h1 className="title">{user.username}</h1>

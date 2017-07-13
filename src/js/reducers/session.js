@@ -1,4 +1,10 @@
-import { SESSION_USER_SUCCESS, SESSION_USER_FAILURE, SESSION_LOGIN_SUCCESS, SESSION_ADD_HISTORY_ENTRY } from '../actions/session';
+import { 
+  SESSION_USER_SUCCESS,
+  SESSION_USER_FAILURE,
+  SESSION_LOGIN_SUCCESS,
+  SESSION_ADD_HISTORY_ENTRY,
+  SESSION_USER_COMMUNITIES_SUCCESS,
+} from '../actions/session';
 
 const initialState = {
   requestedSession: false,

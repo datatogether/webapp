@@ -64,7 +64,7 @@ export function saveSessionUser(user) {
         setTimeout(() => {
           dispatch(resetMessage());
         }, 3500);
-        return dispatch(push(`/${user.username}`));
+        return dispatch(push(`/users/${user.username}`));
       }
 
       return null;
@@ -207,7 +207,11 @@ export function fetchSessionUser() {
       },
     }).then((action) => {
       if (action.type == SESSION_USER_SUCCESS) {
+        // TODO - this is a hack to get session user data into state.entities.users
+        // remove the badness.
+        dispatch(Object.assign({}, action, { type: "USER_SUCCESS" }));
         dispatch(fetchKeys());
+        dispatch(fetchSessionUserCommunities());
       }
     });
   };
@@ -243,6 +247,8 @@ export function fetchSessionUserCommunities() {
         schema: Schemas.USER_ARRAY,
         silentError: true,
       },
+      page : 1,
+      pageSize: 25,
     }).then((action) => {
       if (action.type == SESSION_USER_COMMUNITIES_SUCCESS) {
         // dispatch(fetchKeys());

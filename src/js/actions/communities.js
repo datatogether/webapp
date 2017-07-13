@@ -15,10 +15,8 @@ export function fetchCommunityUsers(id, page = 1, pageSize = 25) {
       schema: Schemas.USER_ARRAY,
       endpoint: `/communities/users`,
       data: { id, page, pageSize },
-      id,
-      page,
-      pageSize,
     },
+    id, page, pageSize,
   });
 }
 

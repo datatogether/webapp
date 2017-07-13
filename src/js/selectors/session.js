@@ -16,9 +16,14 @@ export function selectLocalSessionUser(state) {
 }
 
 export function selectAvailableUsers(state) {
-  const { session } = state.entities;
+  const session = selectSessionUser(state);
+  const { users } = state.entities;
+  const { communities={ids:[]} } = state.pagination.sessionUserCommunities;
+  
   if (!session) {
     return [];
   }
-  return Object.keys(session).map(k => session[k]);
+  
+  // TODO - ew code smell
+  return [session].concat(communities.ids.map(k => users[k]));
 }
