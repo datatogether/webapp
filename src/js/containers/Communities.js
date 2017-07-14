@@ -40,14 +40,16 @@ class Communities extends React.Component {
 
     return (
       <div id="communities" className="community page">
-         <header className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <hr />
-              <h1>Communities:</h1>
-            </div>
-            <div className="col-md-12">
-              <hr className="" />
+        <header className="colorized">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr />
+                <h1>Communities:</h1>
+              </div>
+              <div className="col-md-12">
+                <hr className="" />
+              </div>
             </div>
           </div>
         </header>

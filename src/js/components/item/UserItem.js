@@ -14,6 +14,7 @@ const UserItem = ({ data, onSelect }) => {
       <h4 onClick={onSelect}>
         <Link className="namespace" to={`/users/${data.username}`}>{data.username}</Link>
       </h4>
+      <div className="clear"></div>
     </div>
   );
 };

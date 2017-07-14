@@ -13,11 +13,10 @@ services:
       - patchbay
 
   identity:
-    # image: datatogether/identity:latest
-    build: $GOPATH/src/github.com/datatogether/identity/
-    volumes:
-      - $GOPATH/src/github.com/datatogether/identity:/go/src/github.com/datatogether/identity
-      - ./sql:/sql
+    image: datatogether/identity:latest
+    # build: $GOPATH/src/github.com/datatogether/identity/
+    # volumes:
+    #   - $GOPATH/src/github.com/datatogether/identity:/go/src/github.com/datatogether/identity
     networks:
       - back-tier
     depends_on:
@@ -46,11 +45,10 @@ services:
         -----END RSA PRIVATE KEY-----
 
   patchbay:
-    # image: datatogether/patchbay:latest
-    build: $GOPATH/src/github.com/datatogether/patchbay/
-    volumes:
-      - $GOPATH/src/github.com/datatogether/patchbay:/go/src/github.com/datatogether/patchbay
-      - ./sql:/sql
+    image: datatogether/patchbay:latest
+    # build: $GOPATH/src/github.com/datatogether/patchbay/
+    # volumes:
+    #   - $GOPATH/src/github.com/datatogether/patchbay:/go/src/github.com/datatogether/patchbay
     ports:
      - 3000:3000
     networks:
@@ -80,10 +78,10 @@ services:
       - TASKS_SERVICE_URL=task-mgmt:4400
 
   task-mgmt:
-    build: $GOPATH/src/github.com/datatogether/task-mgmt/
-    volumes:
-      - $GOPATH/src/github.com/datatogether/task-mgmt:/go/src/github.com/datatogether/task-mgmt
-      - ./sql:/sql
+    image: datatogether/task-mgmt:latest
+    # build: $GOPATH/src/github.com/datatogether/task-mgmt/
+    # volumes:
+    #   - $GOPATH/src/github.com/datatogether/task-mgmt:/go/src/github.com/datatogether/task-mgmt
     ports:
      - 3400:3400
      - 4400:4400
