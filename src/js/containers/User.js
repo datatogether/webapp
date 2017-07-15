@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import analytics from '../analytics';
-import { loadUserByUsername } from '../actions/user';
+import { loadUserByUsername, loadUserCollections } from '../actions/user';
 import { logoutUser, loadKeys } from '../actions/session';
 import { loadMetadataByKey } from '../actions/metadata';
+import { loadCommunityUsers } from '../actions/communities';
 
 import { selectSessionUser } from '../selectors/session';
-import { selectUserByUsername } from '../selectors/user';
-import { selectMetadataByKey } from '../selectors/metadata';
+import { selectUserByUsername, selectCommunityUsers } from '../selectors/user';
+import { selectCollectionsByKey } from '../selectors/collections';
 // import { selectDefaultKeyId } from '../selectors/keys';
 
 import NotFound from '../components/NotFound';
 import List from '../components/List';
-import MetadataItem from '../components/item/MetadataItem';
+import CollectionItem from '../components/item/CollectionItem';
+import UserItem from '../components/item/UserItem';
 
 class User extends React.Component {
   constructor(props) {
@@ -30,8 +32,14 @@ class User extends React.Component {
 
   componentWillMount() {
     analytics.page('user');
-    if (this.props.user && this.props.user.currentKey) {
-      this.props.loadMetadataByKey(this.props.user.currentKey);
+    if (this.props.user) {
+      if (this.props.user.type == "community") {
+        this.props.loadCommunityUsers(this.props.user.id, 1, 25);
+      }
+      if (this.props.user.currentKey) {
+        // this.props.loadMetadataByKey(this.props.user.currentKey);
+        this.props.loadUserCollections(this.props.user.currentKey, 1, 25);
+      }
     } else {
       this.props.loadUserByUsername(this.props.username);
     }
@@ -42,8 +50,14 @@ class User extends React.Component {
       nextProps.loadUserByUsername(nextProps.username);
       this.setState({ loading: true });
     } else if (nextProps.user && this.state.loading) {
-      if (nextProps.user && nextProps.user.currentKey) {
-        this.props.loadMetadataByKey(nextProps.user.currentKey);
+      if (nextProps.user) {
+        if (nextProps.user.type == "community") {
+          this.props.loadCommunityUsers(nextProps.user.id, 1, 25);
+        }
+        if (nextProps.user.currentKey) {
+          // this.props.loadMetadataByKey(nextProps.user.currentKey);
+          this.props.loadUserCollections(nextProps.user.currentKey, 1, 25);
+        }
       }
       this.setState({ loading: false });
     }
@@ -54,7 +68,7 @@ class User extends React.Component {
   }
 
   render() {
-    const { user, permissions, metadata } = this.props;
+    const { user, communityUsers, permissions, collections } = this.props;
     if (!user) {
       return <NotFound />;
     }
@@ -66,7 +80,16 @@ class User extends React.Component {
             <div className="row">
               <div className="col-md-12">
                 <hr className="" />
-                <label className="label">User</label>
+              </div>
+              <div className="col-md-2">
+                {user.profileUrl &&
+                  <div className="profile_photo">
+                    <img src={user.profileUrl} />
+                  </div>
+                }
+              </div>
+              <div className="col-md-10">
+                <label className="label">{user.type || "User"}</label>
                 <Link className="" to={`/${user.username}`}>
                   <h1 className="title">{user.username}</h1>
                 </Link>
@@ -78,11 +101,18 @@ class User extends React.Component {
           </div>
         </header>
         <div className="container">
-          <div className="metadata row">
-            <div className="col-md-12">
-              <h4 className="title">Metadata:</h4>
+          <div className="row">
+            <div className="col-md-9">
+              <h4 className="title">Collections:</h4>
+              <hr />
+              <List data={collections} component={CollectionItem} />
             </div>
-            <List data={metadata} component={MetadataItem} />
+            {user.type == "community" && communityUsers &&
+            <div className="col-md-3">
+              <h4 className="title">People:</h4>
+              <hr />
+              <List data={communityUsers} component={UserItem} />
+            </div>}
           </div>
         </div>
       </div>
@@ -119,14 +149,17 @@ function mapStateToProps(state, ownProps) {
   return Object.assign({
     username,
     user,
+    communityUsers: user && user.type == "community" ? selectCommunityUsers(state, user.id) : [],
     permissions,
-    metadata: user ? selectMetadataByKey(state, user.currentKey) : [],
+    collections: user ? selectCollectionsByKey(state, user.currentKey) : [],
   }, ownProps);
 }
 
 export default connect(mapStateToProps, {
   loadUserByUsername,
+  loadCommunityUsers,
   logoutUser,
   loadKeys,
   loadMetadataByKey,
+  loadUserCollections,
 })(User);

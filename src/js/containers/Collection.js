@@ -4,6 +4,8 @@ import { Link, browserHistory } from 'react-router';
 
 import analytics from '../analytics';
 import { selectCollection, selectLocalCollection } from '../selectors/collections';
+import { selectAvailableUsers } from '../selectors/session';
+
 import { 
   loadCollection,
   newCollection,
@@ -13,6 +15,7 @@ import {
   deleteCollection,
   cancelCollectionEdit,
 } from '../actions/collections';
+import { archiveCollection } from '../actions/tasks';
 import { selectDefaultKeyId } from '../selectors/keys';
 
 import Spinner from '../components/Spinner';
@@ -34,6 +37,7 @@ class Collection extends React.Component {
       "handleSave",
       "handleEdit",
       "handleDelete",
+      "handleArchiveCollection",
     ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
@@ -71,10 +75,13 @@ class Collection extends React.Component {
       });
     }
   }
+  handleArchiveCollection() {
+    this.props.archiveCollection(this.props.collection);
+  }
 
   render() {
     const { loading } = this.state;
-    const { collection, local, sessionKeyId } = this.props;
+    const { collection, local, users, sessionKeyId } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -84,6 +91,7 @@ class Collection extends React.Component {
       return (
         <CollectionForm
           data={local}
+          users={users}
           onChange={this.handleChange}
           onCancel={this.handleCancel}
           onSubmit={this.handleSave}
@@ -92,7 +100,7 @@ class Collection extends React.Component {
     }
 
     return (
-      <CollectionView data={collection} onEdit={this.handleEdit} onDelete={this.handleDelete} />
+      <CollectionView sessionKeyId={sessionKeyId} data={collection} onEdit={this.handleEdit} onArchive={this.handleArchiveCollection} onDelete={this.handleDelete} />
     );
   }
 }
@@ -114,6 +122,7 @@ function mapStateToProps(state, ownProps) {
   return {
     id,
     sessionKeyId,
+    users : selectAvailableUsers(state),
     local: selectLocalCollection(state, id),
     collection: selectCollection(state, id),
   };
@@ -127,4 +136,5 @@ export default connect(mapStateToProps, {
   saveCollection,
   deleteCollection,
   cancelCollectionEdit,
+  archiveCollection,
 })(Collection);

@@ -16,7 +16,8 @@ import selectionReducer from './selection';
 const initialEntitiesState = {
   session: {},
   keys: {},
-  users: {},
+  users: {
+  },
 
   groups: {},
 

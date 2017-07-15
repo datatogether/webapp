@@ -41,20 +41,25 @@ class Collections extends React.Component {
     }
 
     return (
-      <div id="collections" className="page">
-        <div className="container">
-          <header className="row">
-            <div className="col-md-12">
-              <hr className="green" />
-              { user && (<Link className="btn bg-green white right" to="/collections/new">New Collection</Link>)}
-              <h1 className="green">Collections:</h1>
-              <p>Collections are groupings of content</p>
-              <hr className="green" />
+      <div id="collections" className="collection page">
+        <header className="colorized">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr/>
+                { user && (<Link className="btn bg-green white right" to="/collections/new">New Collection</Link>)}
+                <h1>Collections</h1>
+                <p>Collections are groupings of content</p>
+              </div>
             </div>
-          </header>
+          </div>
+        </header>
+        <div className="container">
           <div className="row">
             <br />
-            <List data={collections} component={CollectionItem} />
+            <div className="col-md-12">
+              <List data={collections} component={CollectionItem} />
+            </div>
           </div>
         </div>
       </div>

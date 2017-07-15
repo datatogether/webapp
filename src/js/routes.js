@@ -55,6 +55,12 @@ export default {
       },
     },
     {
+      path: '/communities',
+      getComponent(location, cb) {
+        import('./containers/Communities').then(loadRoute(cb)).catch(errorLoading);
+      },
+    }
+    {
       path: '/coverage',
       getComponent(location,cb) {
         import('./containers/Coverage').then(loadRoute(cb)).catch(errorLoading);
@@ -78,6 +84,12 @@ export default {
       path: '/users/:user',
       getComponent(location, cb) {
         import('./containers/User').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
+      path: '/users/:user/settings',
+      getComponent(location, cb) {
+        import('./containers/UserSettings').then(loadRoute(cb)).catch(errorLoading);
       },
     },
     {

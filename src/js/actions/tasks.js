@@ -117,3 +117,13 @@ export function cancelTask(task = {}) {
     });
   };
 }
+
+export function archiveCollection(collection) {
+  return enqueueTask({
+    title: `Add to ${collection.title}`,
+    taskType: "ipfs.addcollection",
+    params: {
+      collectionId : collection.id,
+    },
+  });
+}

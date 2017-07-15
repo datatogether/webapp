@@ -4,8 +4,9 @@ import { Link } from 'react-router';
 const CollectionItem = ({ data }) => {
   const collection = data;
   return (
-    <div className="collection item col-md-12">
-      <Link className="yellow" to={`/collections/${collection.id}`}>{collection.title}</Link>
+    <div className="collection item">
+      <h4><Link className="green" to={`/collections/${collection.id}`}>{collection.title}</Link></h4>
+      {collection.contents && <p>{collection.contents.length} {(collection.contents.length == 1) ? "url" : "urls"}</p>}
     </div>
   );
 };

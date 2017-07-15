@@ -7,6 +7,7 @@ import Archives from './containers/Archives';
 import Coverage from './containers/Coverage';
 import Collection from './containers/Collection';
 import Collections from './containers/Collections';
+import Communities from './containers/Communities';
 import Content from './containers/Content';
 import FileEditor from './containers/FileEditor';
 import Home from './containers/Home';
@@ -39,6 +40,10 @@ export default {
       component: Coverage,
     },
     {
+      path: '/communities',
+      component: Communities,
+    },
+    {
       path: "/url",
       component: Url,
     },
@@ -69,6 +74,10 @@ export default {
     {
       path: '/users/:user',
       component: User,
+    },
+    {
+      path: '/users/:user/settings',
+      component: UserSettings,
     },
     {
       path: '/signup',

@@ -191,17 +191,19 @@ a.content { color: $magenta; }
 }
 
 .user,
-.user.item {
+.user.item,
+.community,
+.community.item {
   hr {
-   border-top: 2px solid $red; 
+   border-top: 1px solid $slate; 
   }
   .label,
   .title {
-    color: $red;
+    color: $slate;
   }
   .colorized,
   .progressbar .progress {
-    background: $red;
+    background: $slate;
   }
 }
 
