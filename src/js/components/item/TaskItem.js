@@ -9,11 +9,12 @@ const TaskItem = ({ data }) => {
   return (
     <div className="task item col-md-12">
       <Link to={`/tasks/${task.id}`}>
-        <h4 className="title">{task.title}</h4>
-        {/*<div className="info">
-          <ProgressBar size="micro" color="blue" total={task.stats.contentUrlCount} progress={task.stats.contentMetadataCount} />
-          <i>{task.stats.contentMetadataCount}/{task.stats.contentUrlCount}</i>
-        </div>*/}
+        <h6 className="title">{task.title}</h6>
+        {task.progress && !task.succeeded && <div className="info">
+          <ProgressBar size="micro" color="blue" progress={task.progress.percent} />
+          <i>{task.progress.status}</i>
+        </div>}
+        {task.progress && task.succeeded && <div>done!</div>}
       </Link>
     </div>
   );

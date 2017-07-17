@@ -54,10 +54,13 @@ services:
     networks:
       - back-tier
     depends_on:
+      - task-mgmt
       - postgres
+      - redis
     environment:
       - PORT=3000
       - GOLANG_ENV=develop
+      - REDIS_URL=redis:6379
       - POSTGRES_DB_URL=postgres://postgres@postgres/postgres?sslmode=disable
       - |
         PUBLIC_KEY=-----BEGIN PUBLIC KEY-----
@@ -91,11 +94,13 @@ services:
       - ipfs
       - rabbitmq
       - postgres
+      - redis
     environment:
       - PORT=3400
       - TLS=false
       - GOLANG_ENV=develop
       - POSTGRES_DB_URL=postgres://postgres@postgres/postgres?sslmode=disable
+      - REDIS_URL=redis:6379
       - PUBLIC_KEY=nothing_yet
       - POSTMARK_KEY=POSTMARK_API_TEST
       - EMAIL_NOTIFICATION_RECIPIENTS=brendan@qri.io
@@ -117,6 +122,12 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+  redis:
+    image: "library/redis:latest"
+    networks:
+      - back-tier
+    ports:
+      - 6379:6379
   postgres:
     image: postgres:9.6-alpine
     networks:
