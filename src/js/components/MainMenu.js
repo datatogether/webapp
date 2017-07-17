@@ -41,7 +41,7 @@ export default class MainMenu extends React.Component {
         }
         {/*<a className="orange" href="https://docs.archivers.space/archivers">Docs</a>*/}
         {/*<a className="orange" href="https://github.com/edgi-govdata-archiving/proposed-services">Proposal</a>*/}
-        {/*<a className="orange" href="https://github.com/qri-io/context/issues">App Issues</a>*/}
+        {/*<a className="orange" href="https://github.com/datatogether/context/issues">App Issues</a>*/}
       </div>
     );
   }
