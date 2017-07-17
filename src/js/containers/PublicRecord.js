@@ -18,7 +18,7 @@ import SearchResultItem from '../components/item/SearchResultItem';
 import ContentItem from '../components/item/ContentItem';
 import SourceItem from '../components/item/SourceItem';
 
-class Archives extends React.Component {
+class PublicRecord extends React.Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +30,7 @@ class Archives extends React.Component {
   }
 
   componentWillMount() {
-    analytics.page('archives');
+    analytics.page('public-record');
     this.props.loadRecentContentUrls(1, 25);
     this.props.loadSources(1, 3);
   }
@@ -100,14 +100,14 @@ class Archives extends React.Component {
     const { query, results } = this.props;
 
     return (
-      <div id="archives" className="archives page">
+      <div id="public-record" className="public-record page">
         <header>
           <div className="container">
             <div className="row">
               <div className="col-md-12">
                 <hr />
                 <div className="form-group">
-                  <label className="form-label label">search archives</label>
+                  <label className="form-label label">search public record</label>
                   <input className="form-control" value={query} onChange={this.handleSearchChange} />
                 </div>
               </div>
@@ -125,12 +125,12 @@ class Archives extends React.Component {
   }
 }
 
-Archives.propTypes = {
+PublicRecord.propTypes = {
   // pages: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
 };
 
-Archives.defaultProps = {
+PublicRecord.defaultProps = {
 };
 
 function mapStateToProps(state, ownProps) {
@@ -149,4 +149,4 @@ export default connect(mapStateToProps, {
   loadRecentContentUrls,
   archiveUrl,
   search,
-})(Archives);
+})(PublicRecord);

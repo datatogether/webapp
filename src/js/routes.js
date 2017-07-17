@@ -31,9 +31,9 @@ export default {
       },
     },
     {
-      path: "/archives",
+      path: "/public-record",
       getComponent(location, cb) {
-        import('./containers/Archives').then(loadRoute(cb)).catch(errorLoading);
+        import('./containers/PublicRecord').then(loadRoute(cb)).catch(errorLoading);
       },
     },
     {

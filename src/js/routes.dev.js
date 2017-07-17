@@ -3,7 +3,7 @@
  * Gooby pls. Don 4get to update the prod routes.js file
  */
 import App from './containers/App';
-import Archives from './containers/Archives';
+import PublicRecord from './containers/PublicRecord';
 import Coverage from './containers/Coverage';
 import Collection from './containers/Collection';
 import Collections from './containers/Collections';
@@ -48,8 +48,8 @@ export default {
       component: Url,
     },
     {
-      path: "/archives",
-      component: Archives,
+      path: "/public-record",
+      component: PublicRecord,
     },
     {
       path: "/collections",
