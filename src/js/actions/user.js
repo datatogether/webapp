@@ -121,10 +121,12 @@ export const USERS_FAILURE = 'USERS_FAILURE';
 export function fetchUsers(userType, page = 1, pageSize = 50) {
   return {
     [USERS_API]: {
-      types: [USERS_SEARCH_REQUEST, USERS_SEARCH_SUCCESS, USERS_SEARCH_FAILURE],
-      endpoint: `/users?type=${userType}&page=${page}&page_size=${pageSize}`,
+      types: [USERS_REQUEST, USERS_SUCCESS, USERS_FAILURE],
+      endpoint: `/users`,
       schema: Schemas.USER_ARRAY,
-    }
+      data : { type: userType, page, pageSize },
+    },
+    userType, page, pageSize,
   }
 }
 
