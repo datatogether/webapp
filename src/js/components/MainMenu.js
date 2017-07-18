@@ -28,8 +28,10 @@ export default class MainMenu extends React.Component {
         <Link className="blue" to="/primers">Home</Link>
         {/*<Link className="blue" to="/coverage">Coverage</Link>*/}
         <Link className="blue" to="/public-record">Public Record</Link>
-        <Link className="blue" to="/collections">Collections</Link>
         <Link className="blue" to="/communities">Communities</Link>
+        <Link className="blue" to="/collections">Collections</Link>
+        <Link className="blue" to="/activities">Activities</Link>
+        <Link className="red" to="/analyzing">Analyzing</Link>
         <Link className="red" to="/harvesting">Harvesting</Link>
         <Link className="red" to="/monitoring">Monitoring</Link>
         <Link className="red" to="/storing">Storing</Link>
