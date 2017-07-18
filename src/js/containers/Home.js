@@ -44,7 +44,7 @@ class Home extends React.Component {
       <div id="home" className="page">
         <div className="masthead">
           <img className="left-lines" src="https://s3.amazonaws.com/datatogether/svg/lines_left.svg" />
-          <h1 className="tagline">Communities <RotatingText color="#3bb563" text={["Storing","Replicating","Rescuing","Annotating","Analyzing","Monitoring"]} displayTime={2500} transitionTime={1000} /> Data <br/> Together</h1>
+          <h1 className="tagline">Communities <br /><RotatingText color="#3bb563" text={["Storing","Replicating","Rescuing","Annotating","Analyzing","Monitoring"]} displayTime={2500} transitionTime={1000} /><br />Data Together</h1>
           <img className="right-lines" src="https://s3.amazonaws.com/datatogether/svg/lines_right.svg" />
           <div className="clear"></div>
         </div>

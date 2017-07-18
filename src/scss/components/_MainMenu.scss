@@ -19,6 +19,18 @@
   a:hover {
     background-color: rgba(0,0,0,0.2);
   }
+
+  a.section-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 1em;
+    background: rgba(0,0,0,0.2);
+  }
+
+  a.sub {
+    padding: 0.75em 1em 0.75em 2em;
+  }
 }
 
 #main_menu.hide {
