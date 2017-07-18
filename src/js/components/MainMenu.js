@@ -31,11 +31,10 @@ export default class MainMenu extends React.Component {
         <Link className="blue" to="/communities">Communities</Link>
         <Link className="blue" to="/collections">Collections</Link>
         <Link className="red section-title" to="/activities">Activities</Link>
-        <Link className="red sub" to="/analyzing">Analyzing</Link>
-        <Link className="red sub" to="/harvesting">Harvesting</Link>
-        <Link className="red sub" to="/monitoring">Monitoring</Link>
-        <Link className="red sub" to="/storing">Storing</Link>
-        <Link className="red sub" to="/analyzing">Analyzing</Link>
+        <Link className="red sub" to="/activities/harvesting">Harvesting</Link>
+        <Link className="red sub" to="/activities/monitoring">Monitoring</Link>
+        <Link className="red sub" to="/activities/storing">Storing</Link>
+        <Link className="red sub" to="/activities/analyzing">Analyzing</Link>
         {/*<Link className="blue" to="/collections">Collections</Link>*/}
         {/*<Link className="blue" to="/uncrawlables">Uncrawlables</Link>*/}
         {
