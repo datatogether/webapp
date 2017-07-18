@@ -51,7 +51,7 @@ class Home extends React.Component {
         <div className="signup container">
           <div className="row">
             <div className="text col-md-6">
-              <p>Data Together is establishing new model for distributed, community-driven stewardship of data. This model shows how groups of people, companies, institutions, NGOs, and governments can use decentralized (peer-to-peer) infrastructure to Access, Discover, Verify, and Preserve the data they care about. We hope to build a future in which networks of collaborators make their data accessible to their peers, immediately discoverable, easily verifiable, and robustly preserved.
+              <p className="sub-emphasis">Data Together is establishing new model for distributed, community-driven stewardship of data. This model shows how groups of people, companies, institutions, NGOs, and governments can use decentralized (peer-to-peer) infrastructure to Access, Discover, Verify, and Preserve the data they care about. We hope to build a future in which networks of collaborators make their data accessible to their peers, immediately discoverable, easily verifiable, and robustly preserved.
               </p>
               <Link to={session ? "/primers" : "/signup"} className="btn btn-large bg-red white">Get Started</Link>
             </div>
@@ -60,21 +60,27 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+        <div className="left" style={{ height: 200, width: "20%", maxWidth: 200, marginRight: 25, marginTop: 100 }}>
+          <img className="left-lines" src="https://s3.amazonaws.com/datatogether/svg/lines_left.svg" />
+        </div>
         <div className="signup dweb-view container">
           <div className="row">
             <div className="image col-md-4">
-              <img src="https://s3.us-east-2.amazonaws.com/static.archivers.space/add-metadata.png" />
+              {/*<img src="https://s3.us-east-2.amazonaws.com/static.archivers.space/add-metadata.png" />*/}
             </div>
             <div className="text col-md-6">
-              <p>
+              <p className="emphasis">
                 This site is not a centralized data hosting service. It’s a view onto the decentralized network of individuals, organizations, projects and communities who are using the Data Together model.
               </p>
             </div>
           </div>
         </div>
+        <div className="right" style={{ height: 200, width: "20%", maxWidth: 300, marginLeft: 25, marginTop: 100 }}>
+          <img className="right-lines" src="https://s3.amazonaws.com/datatogether/svg/lines_right.svg" />
+        </div>
         <div className="signup community container">
           <div className="row">
-            <div className="text col-md-6">
+            <div className="text col-md-6 sub-emphasis">
               <p>
                 This is an open source community, a collaboration, a model, a collection of tools, and an ongoing conversation, all of which are evolving quickly. To achieve our aims, we are
                 <ul>
@@ -88,7 +94,7 @@ class Home extends React.Component {
               </p>
             </div>
             <div className="image col-md-4 offset-md-2">
-              <img src="https://s3.us-east-2.amazonaws.com/static.archivers.space/add-metadata.png" />
+              {/*<img src="https://s3.us-east-2.amazonaws.com/static.archivers.space/add-metadata.png" />*/}
             </div>
           </div>
         </div>
