@@ -5,6 +5,7 @@ import { Link, browserHistory } from 'react-router';
 import analytics from '../analytics';
 import { selectCollection, selectLocalCollection } from '../selectors/collections';
 import { selectAvailableUsers } from '../selectors/session';
+import { selectCollectionActiveTasks } from '../selectors/tasks';
 
 import { 
   loadCollection,
@@ -21,6 +22,7 @@ import { selectDefaultKeyId } from '../selectors/keys';
 import Spinner from '../components/Spinner';
 import List from '../components/List';
 import ContentItem from '../components/item/ContentItem';
+import TaskItem from '../components/item/TaskItem';
 import CollectionForm from '../components/form/CollectionForm';
 import CollectionView from '../components/Collection';
 
@@ -81,7 +83,7 @@ class Collection extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { collection, local, users, sessionKeyId } = this.props;
+    const { collection, local, users, sessionKeyId, activeTasks } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -100,7 +102,17 @@ class Collection extends React.Component {
     }
 
     return (
-      <CollectionView sessionKeyId={sessionKeyId} data={collection} onEdit={this.handleEdit} onArchive={this.handleArchiveCollection} onDelete={this.handleDelete} />
+      <div>
+        <CollectionView sessionKeyId={sessionKeyId} data={collection} onEdit={this.handleEdit} onArchive={this.handleArchiveCollection} onDelete={this.handleDelete} />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              {activeTasks.length > 0 && <label className="label">tasks</label>}
+            </div>
+            <List data={activeTasks} component={TaskItem} />
+          </div>
+        </div>
+      </div>
     );
   }
 }
@@ -123,6 +135,7 @@ function mapStateToProps(state, ownProps) {
     id,
     sessionKeyId,
     users : selectAvailableUsers(state),
+    activeTasks : selectCollectionActiveTasks(state, id),
     local: selectLocalCollection(state, id),
     collection: selectCollection(state, id),
   };
