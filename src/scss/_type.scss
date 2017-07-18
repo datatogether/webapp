@@ -23,6 +23,20 @@ h6, .h6 { font-size: $font-size-h6; }
   font-weight: $lead-font-weight;
 }
 
+.emphasis {
+  font-size: 1.5em;
+  line-height: 1.45em;
+}
+
+// TODO - cleanup
+.sub-emphasis {
+  font-size: 1.15em;
+  line-height: 1.5em; 
+  ul {
+    margin-top: 0.45em;
+  }
+}
+
 // Type display classes
 .display-1 {
   font-size: $display1-size;

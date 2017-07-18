@@ -17,7 +17,7 @@ It's main job is to get users to contribute metadata about content that has been
 To get started with dev, make sure you have [docker](https://store.docker.com/search?type=edition&offering=community) and [docker compose](https://docs.docker.com/compose/install/) And then run:
 
 ```shell
-$ git clone git@github.com:qri-io/context.git
+$ git clone git@github.com:datatogether/context.git
 $ cd context
 $ docker-compose up
 ```

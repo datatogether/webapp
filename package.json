@@ -2,7 +2,7 @@
   "name": "context_webapp",
   "private": true,
   "version": "0.0.1",
-  "description": "react & redux single page webapp for qri.io",
+  "description": "react & redux single page webapp for datatogether.org",
   "main": "server.js",
   "devDependencies": {
     "aws-sdk": "^2.4.0",
@@ -67,7 +67,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/qri-io/context"
+    "url": "github.com/datatogether/context"
   },
   "author": "Brendan O'Brien",
   "license": "AGPL 3.0",
