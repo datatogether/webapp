@@ -96,7 +96,12 @@ const pagination = combineReducers({
   }),
 
   collectionItems : paginate({
-    mapActionToKey: action => { console.log(action); return action.collectionId; },
+    // TODO - this comes back from the server as Id for now
+    // b/c patchbay currently only supports id, page, and pagesize
+    // params on action responses.
+    // create an issue on datatogether/patchbay to facilitate sending
+    // arbitrary params back to the client from an action.
+    mapActionToKey: action => action.id,
     types : [
       COLLECTION_ITEMS_REQUEST,
       COLLECTION_ITEMS_SUCCESS,

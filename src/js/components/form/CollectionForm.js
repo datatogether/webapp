@@ -29,7 +29,11 @@ const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => 
   const handleAddItem = (e) => {
     e.preventDefault();
     let contents = collection.contents || [];
-    onChange(name,Object.assign({}, collection, { contents: contents.concat([{ url : "", description: "", index: -1 }])}));
+    onChange(name,Object.assign({}, collection, { 
+      contents: contents.concat([
+        { url : "", description: "", index: -1 }
+      ]),
+    }));
   }
 
   return (
@@ -112,7 +116,7 @@ const EditCollectionItem = ({data, index, onChange, onDelete}) => {
     <tr>
       <td>{data[0]}</td>
       <td><ValidInput name="url" value={data.url} onChange={handleChange} /></td>
-      <td><ValidInput name="note" value={data.note} onChange={handleChange} /></td>
+      <td><ValidInput name="description" value={data.description} onChange={handleChange} /></td>
       <td><a onClick={handleDelete}>delete</a></td>
     </tr>
   );

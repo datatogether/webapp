@@ -16,8 +16,7 @@ export function selectCollectionItems(state, id) {
   const { collectionItems } = state.entities;
   const ci = state.pagination.collectionItems[id];
   if (ci) {
-    console.log(ci);
-    return [];
+    return ci.ids.map(id => collectionItems[id]);
   }
 
   return [];

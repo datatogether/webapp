@@ -34,17 +34,13 @@ const Collection = ({ collection, items, sessionKeyId, onEdit, onDelete, onArchi
                 </tr>
               </thead>
               <tbody>
-                {items.map((data, i) => {
-                  const hash = data[0];
-                  const url = data[1];
-                  const description = data[2];
-
+                {items.map((item, i) => {
                   return (
                     <tr key={i} className="">
                       {/*<td>{ hash && <Link to={`/content/${hash}`}><h5 className="title">{hash}</h5></Link>}</td>*/}
-                      <td>{ hash && <a href={`https://ipfs.io/ipfs/${hash}`} target="_blank"><p className="title">{hash}</p></a>}</td>
-                      <td>{url}</td>
-                      <td>{description}</td>
+                      <td>{ item.hash && <a href={`https://ipfs.io/ipfs/${item.hash}`} target="_blank"><p className="title">{item.hash}</p></a>}</td>
+                      <td><Link to={`/url?url=${item.url}`}>{item.url}</Link></td>
+                      <td>{item.description}</td>
                     </tr>
                   );
                 })}

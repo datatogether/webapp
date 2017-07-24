@@ -7,7 +7,6 @@ import { newLocalModel, updateLocalModel, editModel, removeLocalModel } from './
 const blankCollection = {
   title: "",
   description: "",
-  schema: ["hash","url","description"],
   contents: [],
 };
 
@@ -145,7 +144,7 @@ export function fetchCollectionItems(collectionId = "", page = 1, pageSize = 100
       schema: Schemas.COLLECTION_ITEM_ARRAY,
       endpoint: `/collections/${collectionId}/items`,
       data: { collectionId, page, pageSize },
-      collectionId, page, pageSize,
+      id: collectionId, page, pageSize,
     },
     collectionId, page, pageSize,
   };
@@ -171,7 +170,7 @@ export function saveCollectionItems(collectionId = "", items = []) {
         COLLECTION_SAVE_ITEMS_FAILURE
       ],
       schema: Schemas.COLLECTION_ITEM_ARRAY,
-      endpoint: `/collections/${id}/items`,
+      endpoint: `/collections/${collectionId}/items`,
       data: { collectionId, items },
     },
   };
@@ -190,7 +189,7 @@ export function deleteCollectionItems(collectionId = "", items = []) {
         COLLECTION_DELETE_ITEMS_FAILURE
       ],
       schema: Schemas.COLLECTION_ITEM_ARRAY,
-      endpoint: `/collections/${id}/items`,
+      endpoint: `/collections/${collecitonId}/items`,
       data: { collectionId, items },
     },
   };
