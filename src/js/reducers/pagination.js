@@ -28,6 +28,12 @@ import {
 } from '../actions/content';
 
 import {
+  COLLECTION_ITEMS_REQUEST,
+  COLLECTION_ITEMS_SUCCESS,
+  COLLECTION_ITEMS_FAILURE,
+} from '../actions/collections';
+
+import {
   COMMUNITY_USERS_REQUEST,
   COMMUNITY_USERS_SUCCESS,
   COMMUNITY_USERS_FAILURE,
@@ -88,6 +94,15 @@ const pagination = combineReducers({
       SESSION_USER_COMMUNITIES_FAILURE,
     ],
   }),
+
+  collectionItems : paginate({
+    mapActionToKey: action => { console.log(action); return action.collectionId; },
+    types : [
+      COLLECTION_ITEMS_REQUEST,
+      COLLECTION_ITEMS_SUCCESS,
+      COLLECTION_ITEMS_FAILURE,
+    ],
+  })
 });
 
 export default pagination;

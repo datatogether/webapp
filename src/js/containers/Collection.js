@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 
 import analytics from '../analytics';
-import { selectCollection, selectLocalCollection } from '../selectors/collections';
+import { selectCollection, selectLocalCollection, selectCollectionItems } from '../selectors/collections';
 import { selectAvailableUsers } from '../selectors/session';
 
 import { 
@@ -14,6 +14,9 @@ import {
   saveCollection,
   deleteCollection,
   cancelCollectionEdit,
+  loadCollectionItems,
+  saveCollectionItems,
+  deleteCollectionItems,
 } from '../actions/collections';
 import { archiveCollection } from '../actions/tasks';
 import { selectDefaultKeyId } from '../selectors/keys';
@@ -43,9 +46,12 @@ class Collection extends React.Component {
 
   componentWillMount() {
     analytics.page('collection');
-    (this.props.id == "new") ?
-      this.props.newCollection(this.props.sessionKeyId):
+    if (this.props.id == "new") {
+      this.props.newCollection(this.props.sessionKeyId);
+    } else {
       this.props.loadCollection(this.props.id);
+      this.props.loadCollectionItems(this.props.id, 1, 100);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -64,6 +70,10 @@ class Collection extends React.Component {
     this.props.editCollection(this.props.collection);
   }
   handleSave() {
+    console.log(this.props.local.id,this.props.local.contents);
+    if (this.props.local.id) {
+      this.props.saveCollectionItems(this.props.local.id,this.props.local.contents);
+    }
     this.props.saveCollection(this.props.local, (collection) => {
       browserHistory.push(`/collections/${collection.id}`);
     });
@@ -81,7 +91,7 @@ class Collection extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { collection, local, users, sessionKeyId } = this.props;
+    const { collection, items, local, users, sessionKeyId } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -100,7 +110,14 @@ class Collection extends React.Component {
     }
 
     return (
-      <CollectionView sessionKeyId={sessionKeyId} data={collection} onEdit={this.handleEdit} onArchive={this.handleArchiveCollection} onDelete={this.handleDelete} />
+      <CollectionView 
+        sessionKeyId={sessionKeyId}
+        collection={collection}
+        items={items}
+        onEdit={this.handleEdit}
+        onArchive={this.handleArchiveCollection}
+        onDelete={this.handleDelete}
+      />
     );
   }
 }
@@ -110,6 +127,7 @@ Collection.propTypes = {
   sessionKeyId: PropTypes.string,
 
   collection: PropTypes.object,
+  items : PropTypes.array,
   local: PropTypes.object,
   loadCollection: PropTypes.func.isRequired,
   // editCollection: PropTypes.func.isRequired,
@@ -125,6 +143,7 @@ function mapStateToProps(state, ownProps) {
     users : selectAvailableUsers(state),
     local: selectLocalCollection(state, id),
     collection: selectCollection(state, id),
+    items: selectCollectionItems(state, id),
   };
 }
 
@@ -137,4 +156,6 @@ export default connect(mapStateToProps, {
   deleteCollection,
   cancelCollectionEdit,
   archiveCollection,
+  loadCollectionItems,
+  saveCollectionItems,
 })(Collection);

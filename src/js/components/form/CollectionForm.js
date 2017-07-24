@@ -29,7 +29,7 @@ const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => 
   const handleAddItem = (e) => {
     e.preventDefault();
     let contents = collection.contents || [];
-    onChange(name,Object.assign({}, collection, { contents: contents.concat([["", "", ""]])}));
+    onChange(name,Object.assign({}, collection, { contents: contents.concat([{ url : "", description: "", index: -1 }])}));
   }
 
   return (
@@ -66,7 +66,7 @@ const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => 
               </thead>
               <tbody>
                 {collection.contents.map((item, i) => {
-                  return <CollectionItem key={i} data={item} index={i} onChange={handleItemChange} onDelete={handleItemDelete}  />
+                  return <EditCollectionItem key={i} data={item} index={i} onChange={handleItemChange} onDelete={handleItemDelete}  />
                 })}
               </tbody>
             </table>
@@ -90,17 +90,18 @@ CollectionForm.defaultProps = {
   name : "collection",
 }
 
-const CollectionItem = ({data, index, onChange, onDelete}) => {
+const EditCollectionItem = ({data, index, onChange, onDelete}) => {
   const handleChange = (name, value) => {
     // TODO - lol make this not bad
-    switch (name) {
-      case "url":
-        onChange(index, [data[0],value, data[2]])
-        break;
-      case "note":
-        onChange(index, [data[0], data[1], value])
-        break;
-    }
+    onChange(index, Object.assign({}, data, { [name] : value }));
+    // switch (name) {
+    //   case "url":
+    //     onChange(index, [data[0],value, data[2]])
+    //     break;
+    //   case "note":
+    //     onChange(index, [data[0], data[1], value])
+    //     break;
+    // }
   }
 
   const handleDelete = (e) => {
@@ -110,8 +111,8 @@ const CollectionItem = ({data, index, onChange, onDelete}) => {
   return (
     <tr>
       <td>{data[0]}</td>
-      <td><ValidInput name="url" value={data[1]} onChange={handleChange} /></td>
-      <td><ValidInput name="note" value={data[2]} onChange={handleChange} /></td>
+      <td><ValidInput name="url" value={data.url} onChange={handleChange} /></td>
+      <td><ValidInput name="note" value={data.note} onChange={handleChange} /></td>
       <td><a onClick={handleDelete}>delete</a></td>
     </tr>
   );

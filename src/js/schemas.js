@@ -23,6 +23,7 @@ const primerSchema = new Schema('primers');
 const sourceSchema = new Schema('sources');
 const uncrawlableSchema = new Schema('uncrawlable');
 const taskSchema = new Schema('tasks');
+const collectionItemSchema = new Schema('collectionItems');
 
 primerSchema.define({
   subPrimers: arrayOf(primerSchema),
@@ -80,6 +81,9 @@ const Schemas = {
   // collections are "special content" on this webapp b/c users can edit them
   COLLECTION: collectionSchema,
   COLLECTION_ARRAY: arrayOf(collectionSchema),
+
+  COLLECTION_ITEM: collectionItemSchema,
+  COLLECTION_ITEM_ARRAY: arrayOf(collectionItemSchema),
 
   // search results can be a number of different models
   // searchResult wraps those discrete types

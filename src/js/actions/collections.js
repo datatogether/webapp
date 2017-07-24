@@ -70,11 +70,18 @@ export function fetchCollection(id = "") {
 }
 
 export function loadCollection(id = "") {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     // TODO - check for local url copy via getState
     return dispatch(fetchCollection(id));
+
+    // return dispatch(fetchCollection(id)).then((action) => {
+    //   if (action.type == COLLECTION_FETCH_SUCCESS) {
+    //     return dispatch(loadCollectionItems(id, 1, 100));
+    //   }
+    // });
   };
 }
+
 
 export const COLLECTION_SAVE_REQUEST = "COLLECTION_SAVE_REQUEST";
 export const COLLECTION_SAVE_SUCCESS = "COLLECTION_SAVE_SUCCESS";
@@ -124,5 +131,67 @@ export function deleteCollection(collection = {}, callback) {
         }
       }
     })
+  };
+}
+
+export const COLLECTION_ITEMS_REQUEST = "COLLECTION_ITEMS_REQUEST";
+export const COLLECTION_ITEMS_SUCCESS = "COLLECTION_ITEMS_SUCCESS";
+export const COLLECTION_ITEMS_FAILURE = "COLLECTION_ITEMS_FAILURE";
+
+export function fetchCollectionItems(collectionId = "", page = 1, pageSize = 100) {
+  return {
+    [CALL_API]: {
+      types: [COLLECTION_ITEMS_REQUEST, COLLECTION_ITEMS_SUCCESS, COLLECTION_ITEMS_FAILURE],
+      schema: Schemas.COLLECTION_ITEM_ARRAY,
+      endpoint: `/collections/${collectionId}/items`,
+      data: { collectionId, page, pageSize },
+      collectionId, page, pageSize,
+    },
+    collectionId, page, pageSize,
+  };
+}
+
+export function loadCollectionItems(id = "", page = 1, pageSize = 100) {
+  return (dispatch) => {
+    // TODO - check for local url copy via getState
+    return dispatch(fetchCollectionItems(id, page, pageSize));
+  };
+}
+
+export const COLLECTION_SAVE_ITEMS_REQUEST = "COLLECTION_SAVE_ITEMS_REQUEST";
+export const COLLECTION_SAVE_ITEMS_SUCCESS = "COLLECTION_SAVE_ITEMS_SUCCESS";
+export const COLLECTION_SAVE_ITEMS_FAILURE = "COLLECTION_SAVE_ITEMS_FAILURE";
+
+export function saveCollectionItems(collectionId = "", items = []) {
+  return {
+    [CALL_API]: {
+      types: [
+        COLLECTION_SAVE_ITEMS_REQUEST,
+        COLLECTION_SAVE_ITEMS_SUCCESS,
+        COLLECTION_SAVE_ITEMS_FAILURE
+      ],
+      schema: Schemas.COLLECTION_ITEM_ARRAY,
+      endpoint: `/collections/${id}/items`,
+      data: { collectionId, items },
+    },
+  };
+}
+
+export const COLLECTION_DELETE_ITEMS_REQUEST = "COLLECTION_DELETE_ITEMS_REQUEST";
+export const COLLECTION_DELETE_ITEMS_SUCCESS = "COLLECTION_DELETE_ITEMS_SUCCESS";
+export const COLLECTION_DELETE_ITEMS_FAILURE = "COLLECTION_DELETE_ITEMS_FAILURE";
+
+export function deleteCollectionItems(collectionId = "", items = []) {
+  return {
+    [CALL_API]: {
+      types: [
+        COLLECTION_DELETE_ITEMS_REQUEST,
+        COLLECTION_DELETE_ITEMS_SUCCESS,
+        COLLECTION_DELETE_ITEMS_FAILURE
+      ],
+      schema: Schemas.COLLECTION_ITEM_ARRAY,
+      endpoint: `/collections/${id}/items`,
+      data: { collectionId, items },
+    },
   };
 }

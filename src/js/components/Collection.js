@@ -3,8 +3,8 @@ import { Link } from 'react-router';
 
 import List from './List';
 
-const Collection = ({ data, sessionKeyId, onEdit, onDelete, onArchive }) => {
-  const collection = data;
+const Collection = ({ collection, items, sessionKeyId, onEdit, onDelete, onArchive }) => {
+  // const collection = data;
   return (
     <div id="collection" className="collection page">
       <header className="collection colorized">
@@ -34,7 +34,7 @@ const Collection = ({ data, sessionKeyId, onEdit, onDelete, onArchive }) => {
                 </tr>
               </thead>
               <tbody>
-                {collection.contents.map((data, i) => {
+                {items.map((data, i) => {
                   const hash = data[0];
                   const url = data[1];
                   const description = data[2];
@@ -58,7 +58,9 @@ const Collection = ({ data, sessionKeyId, onEdit, onDelete, onArchive }) => {
 };
 
 Collection.propTypes = {
-  data: PropTypes.object.isRequired,
+  // data: PropTypes.object.isRequired,
+  collection: PropTypes.object.isRequired,
+  items: PropTypes.array.isRequired,
   sessionKeyId: PropTypes.string,
 };
 
