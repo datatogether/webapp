@@ -44,14 +44,15 @@ class Home extends React.Component {
       <div id="home" className="page">
         <div className="masthead">
           <img className="left-lines" src="https://s3.amazonaws.com/datatogether/svg/lines_left.svg" />
-          <h1 className="tagline">Communities <RotatingText color="#3bb563" text={["Storing","Replicating","Rescuing","Annotating","Analyzing","Monitoring"]} displayTime={2500} transitionTime={1000} /> Data <br/> Together</h1>
+          <h1 className="tagline"> <RotatingText color="#3bb563" text={["Storing","Replicating","Rescuing","Annotating","Analyzing","Monitoring"]} displayTime={2500} transitionTime={1000} /> Data <br/> Together</h1>
           <img className="right-lines" src="https://s3.amazonaws.com/datatogether/svg/lines_right.svg" />
           <div className="clear"></div>
         </div>
         <div className="signup container">
           <div className="row">
             <div className="text col-md-6">
-              <p className="sub-emphasis">Data Together is establishing new model for distributed, community-driven stewardship of data. This model shows how groups of people, companies, institutions, NGOs, and governments can use decentralized (peer-to-peer) infrastructure to Access, Discover, Verify, and Preserve the data they care about. We hope to build a future in which networks of collaborators make their data accessible to their peers, immediately discoverable, easily verifiable, and robustly preserved.
+              <p className="sub-emphasis">
+                Data Together is a new model for distributed, community-driven stewardship of data. This model shows how groups of people, companies, institutions, NGOs, and governments can use decentralized and peer-to-peer web infrastructure to access, discover, verify, and preserve data they care about. We hope to build a future in which networks of collaborators make their data accessible to their peers, immediately discoverable, easily verifiable, and robustly preserved.
               </p>
               <Link to={session ? "/primers" : "/signup"} className="btn btn-large bg-red white">Get Started</Link>
             </div>
@@ -82,15 +83,15 @@ class Home extends React.Component {
           <div className="row">
             <div className="text col-md-6 sub-emphasis">
               <p>
-                This is an open source community, a collaboration, a model, a collection of tools, and an ongoing conversation, all of which are evolving quickly. To achieve our aims, we are
+                Data Together is an ongoing, inclusive conversation, an open source community, a collaboration, a model, and a collection of tools, all of which are evolving quickly. To achieve our aims, we are
                 <ul>
-                  <li>Developing vocabulary, conceptual models and technical models for communities using decentralized infrastructure effectively</li>
+                  <li>Developing conceptual and technical models for communities, using decentralized and peer-to-peer infrastructure</li>
                   <li>Articulating the patterns of actors and technologies involved, and value propositions for those actors</li>
-                  <li>Creating proof-of-concept tools that communities can use to treat data as a collectively-managed asset</li>
+                  <li>Creating proof-of-concept tools that communities can use to collectively steward data</li>
                 </ul>
               </p>
               <p>
-                There are many ways to get involved or to contribute. The most important way to contribute is to test the Data Together model with your community and then show/tell where things work, where the approach opens new possibilities, and where there’s room for improvement.
+              There are many ways to get involved and to contribute, the most important of which  is to test the Data Together model with your community and then share back where things work, where the approach opens new possibilities, and where there’s room for improvement.
               </p>
             </div>
             <div className="image col-md-4 offset-md-2">
