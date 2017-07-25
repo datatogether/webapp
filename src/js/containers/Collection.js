@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 
 import analytics from '../analytics';
-import { selectCollection, selectLocalCollection, selectCollectionItems } from '../selectors/collections';
+import { selectCollection, selectLocalCollection } from '../selectors/collections';
 import { selectAvailableUsers } from '../selectors/session';
+import { selectCollectionActiveTasks } from '../selectors/tasks';
 
 import { 
   loadCollection,
@@ -24,8 +25,11 @@ import { selectDefaultKeyId } from '../selectors/keys';
 import Spinner from '../components/Spinner';
 import List from '../components/List';
 import ContentItem from '../components/item/ContentItem';
+import TaskItem from '../components/item/TaskItem';
 import CollectionForm from '../components/form/CollectionForm';
 import CollectionView from '../components/Collection';
+
+import CollectionItems from './CollectionItems';
 
 class Collection extends React.Component {
   constructor(props) {
@@ -91,7 +95,7 @@ class Collection extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const { collection, items, local, users, sessionKeyId } = this.props;
+    const { collection, items, local, users, sessionKeyId, id, activeTasks } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -109,15 +113,44 @@ class Collection extends React.Component {
       );
     }
 
+    // return (
+    //   <CollectionView 
+    //     sessionKeyId={sessionKeyId}
+    //     collection={collection}
+    //     items={items}
+    //     onEdit={this.handleEdit}
+    //     onArchive={this.handleArchiveCollection}
+    //     onDelete={this.handleDelete}
+    //   />
+    // );
+
     return (
-      <CollectionView 
-        sessionKeyId={sessionKeyId}
-        collection={collection}
-        items={items}
-        onEdit={this.handleEdit}
-        onArchive={this.handleArchiveCollection}
-        onDelete={this.handleDelete}
-      />
+      <div id="collection" className="collection page">
+        <header className="collection colorized">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <hr className="green" />
+                <a className="right" onClick={this.handleDelete}>&nbsp; Delete</a>
+                <a className="right" onClick={this.handleEdit}>&nbsp; Edit</a>
+                {sessionKeyId && <a className="right red" onClick={this.handleArchiveCollection}>&nbsp; Archive</a>}
+                <label className="label">Collection</label>
+                <h1>{collection.title}</h1>
+                <p>{collection.description}</p>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              {activeTasks.length > 0 && <label className="label">tasks</label>}
+            </div>
+            <List data={activeTasks} component={TaskItem} />
+          </div>
+        </div>
+        <CollectionItems id={id} />
+      </div>
     );
   }
 }
@@ -143,7 +176,7 @@ function mapStateToProps(state, ownProps) {
     users : selectAvailableUsers(state),
     local: selectLocalCollection(state, id),
     collection: selectCollection(state, id),
-    items: selectCollectionItems(state, id),
+    activeTasks : selectCollectionActiveTasks(state, id),
   };
 }
 
