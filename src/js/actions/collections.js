@@ -186,17 +186,23 @@ export const COLLECTION_DELETE_ITEMS_REQUEST = "COLLECTION_DELETE_ITEMS_REQUEST"
 export const COLLECTION_DELETE_ITEMS_SUCCESS = "COLLECTION_DELETE_ITEMS_SUCCESS";
 export const COLLECTION_DELETE_ITEMS_FAILURE = "COLLECTION_DELETE_ITEMS_FAILURE";
 
-export function deleteCollectionItems(collectionId = "", items = []) {
-  return {
-    [CALL_API]: {
-      types: [
-        COLLECTION_DELETE_ITEMS_REQUEST,
-        COLLECTION_DELETE_ITEMS_SUCCESS,
-        COLLECTION_DELETE_ITEMS_FAILURE
-      ],
-      schema: Schemas.COLLECTION_ITEM_ARRAY,
-      endpoint: `/collections/${collecitonId}/items`,
-      data: { collectionId, items },
-    },
-  };
+export function deleteCollectionItems(collectionId = "", items = [], callback) {
+  return (dispatch, getState) => {
+    dispatch({
+      [CALL_API]: {
+        types: [
+          COLLECTION_DELETE_ITEMS_REQUEST,
+          COLLECTION_DELETE_ITEMS_SUCCESS,
+          COLLECTION_DELETE_ITEMS_FAILURE
+        ],
+        schema: Schemas.COLLECTION_ITEM_ARRAY,
+        endpoint: `/collections/${collectionId}/items`,
+        data: { collectionId, items },
+      },
+    }).then((action) => {
+      if (action.type == COLLECTION_DELETE_ITEMS_SUCCESS) {
+        callback();
+      }
+    });
+  }
 }

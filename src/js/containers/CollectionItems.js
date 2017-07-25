@@ -7,15 +7,12 @@ import { selectSessionUser } from '../selectors/session';
 import { selectCollectionItems } from '../selectors/collections';
 
 import { 
-  fetchCollectionItems,
   loadCollectionItems,
   saveCollectionItems,
   deleteCollectionItems,
 } from '../actions/collections';
 
 import Spinner from '../components/Spinner';
-
-// import List from '../components/List';
 import CollectionItemItem from '../components/item/CollectionItemItem';
 
 class CollectionItems extends React.Component {
@@ -72,15 +69,16 @@ class CollectionItems extends React.Component {
   }
 
   handleDeleteSelectedItems() {
-    if (confirm(`Are you sure you want to remove ${this.state.selected.length} ${this.state.selected.length = 1 ? 'item' : 'items'} from this collection?`)) {
+    if (confirm(`Are you sure you want to remove ${this.state.selected.length} ${(this.state.selected.length == 1) ? 'item' : 'items'} from this collection?`)) {
       const items = this.state.selected.map((i) => this.props.items[i])
-      this.props.deleteCollectionItems(this.props.id, items);
+      this.props.deleteCollectionItems(this.props.id, items, () => {
+      });
     }
   }
 
   handleAddItem() {
     this.setState({
-      created: [{ url: "", description: "" }],
+      created: this.state.created.concat([{ url: "", description: "" }]),
     });
   }
 
@@ -100,11 +98,6 @@ class CollectionItems extends React.Component {
     this.props.saveCollectionItems(this.props.id, this.state.created, () => {
       // clear created stuff
       this.setState({ created: [] });
-      // TODO - currently just reloading items, should reduce overfetching
-      // by associating successfully returned save items with the collection id
-      // somehow.
-      // Also, we call fetch here to ensure cache busting/
-      this.props.fetchCollectionItems(this.props.id);
     });
   }
 
@@ -115,7 +108,6 @@ class CollectionItems extends React.Component {
     if (loading) {
       return <Spinner />;
     }
-
 
     return (
       <div className="container">
@@ -153,11 +145,18 @@ class CollectionItems extends React.Component {
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><button className="btn right btn-primary" onClick={this.handleSaveNewItems}>Add Url</button></td>
+                    <td><button className="btn right btn-primary" onClick={this.handleSaveNewItems}>{(created.length == 1) ? "Add Url" : "Add Urls" }</button></td>
                   </tr>
                 }
                 {items.map((item,i) => {
-                  return <CollectionItemItem key={item.id} editable={editable} data={item} index={i} onToggleSelect={this.handleToggleSelection} />
+                  return (<CollectionItemItem 
+                    key={item.id}
+                    editable={editable}
+                    data={item}
+                    index={i}
+                    onToggleSelect={this.handleToggleSelection}
+                    checked={selected.includes(i)}
+                  />);
                 })}
               </tbody>
             </table>
@@ -186,7 +185,6 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps, {
-  fetchCollectionItems,
   loadCollectionItems,
   deleteCollectionItems,
   saveCollectionItems,

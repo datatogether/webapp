@@ -31,6 +31,9 @@ import {
   COLLECTION_ITEMS_REQUEST,
   COLLECTION_ITEMS_SUCCESS,
   COLLECTION_ITEMS_FAILURE,
+
+  COLLECTION_SAVE_ITEMS_SUCCESS,
+  COLLECTION_DELETE_ITEMS_SUCCESS,
 } from '../actions/collections';
 
 import {
@@ -96,16 +99,22 @@ const pagination = combineReducers({
   }),
 
   collectionItems : paginate({
-    // TODO - this comes back from the server as Id for now
+    // TODO - this comes back from the server as id for now
     // b/c patchbay currently only supports id, page, and pagesize
     // params on action responses.
     // create an issue on datatogether/patchbay to facilitate sending
     // arbitrary params back to the client from an action.
     mapActionToKey: action => action.id,
-    types : [
+    types: [
       COLLECTION_ITEMS_REQUEST,
       COLLECTION_ITEMS_SUCCESS,
       COLLECTION_ITEMS_FAILURE,
+    ],
+    removeIdsTypes: [
+      COLLECTION_DELETE_ITEMS_SUCCESS,
+    ],
+    addIdsTypes: [
+      COLLECTION_SAVE_ITEMS_SUCCESS,
     ],
   })
 });
