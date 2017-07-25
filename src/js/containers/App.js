@@ -40,7 +40,14 @@ class App extends Component {
     // TODO - move this up the app boostrapping stack
     socket.connect(this.props.dispatch, 6500).then(() => {
       // socket connected.
+    }).catch((err) => {
+      console.log("conn error:", err)
     });
+
+    this._oldOnbeforeunload = window.onbeforeunload;
+    window.onbeforeunload = function() {
+      socket.disconnect();
+    };
 
     this._oldResize = window.onresize;
     // debounce device resizing to not be a jerk on resize
@@ -63,6 +70,7 @@ class App extends Component {
   componentWillUnmount() {
     // restore old onResize if one exists b/c we're good citizens like that
     window.onresize = this._oldResize;
+    window.onbeforeunload = this._oldOnbeforeunload;
 
     // teardown websocket connection
     socket.disconnect();

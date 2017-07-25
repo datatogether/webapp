@@ -27,7 +27,6 @@ import List from '../components/List';
 import ContentItem from '../components/item/ContentItem';
 import TaskItem from '../components/item/TaskItem';
 import CollectionForm from '../components/form/CollectionForm';
-import CollectionView from '../components/Collection';
 
 import CollectionItems from './CollectionItems';
 
@@ -74,7 +73,6 @@ class Collection extends React.Component {
     this.props.editCollection(this.props.collection);
   }
   handleSave() {
-    console.log(this.props.local.id,this.props.local.contents);
     if (this.props.local.id) {
       this.props.saveCollectionItems(this.props.local.id,this.props.local.contents);
     }
@@ -113,17 +111,6 @@ class Collection extends React.Component {
       );
     }
 
-    // return (
-    //   <CollectionView 
-    //     sessionKeyId={sessionKeyId}
-    //     collection={collection}
-    //     items={items}
-    //     onEdit={this.handleEdit}
-    //     onArchive={this.handleArchiveCollection}
-    //     onDelete={this.handleDelete}
-    //   />
-    // );
-
     return (
       <div id="collection" className="collection page">
         <header className="collection colorized">
@@ -149,7 +136,7 @@ class Collection extends React.Component {
             <List data={activeTasks} component={TaskItem} />
           </div>
         </div>
-        <CollectionItems id={id} />
+        <CollectionItems id={id} editable={true} />
       </div>
     );
   }

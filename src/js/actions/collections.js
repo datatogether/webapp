@@ -161,19 +161,25 @@ export const COLLECTION_SAVE_ITEMS_REQUEST = "COLLECTION_SAVE_ITEMS_REQUEST";
 export const COLLECTION_SAVE_ITEMS_SUCCESS = "COLLECTION_SAVE_ITEMS_SUCCESS";
 export const COLLECTION_SAVE_ITEMS_FAILURE = "COLLECTION_SAVE_ITEMS_FAILURE";
 
-export function saveCollectionItems(collectionId = "", items = []) {
-  return {
-    [CALL_API]: {
-      types: [
-        COLLECTION_SAVE_ITEMS_REQUEST,
-        COLLECTION_SAVE_ITEMS_SUCCESS,
-        COLLECTION_SAVE_ITEMS_FAILURE
-      ],
-      schema: Schemas.COLLECTION_ITEM_ARRAY,
-      endpoint: `/collections/${collectionId}/items`,
-      data: { collectionId, items },
-    },
-  };
+export function saveCollectionItems(collectionId = "", items = [], callback) {
+  return (dispatch, getState) => {
+    return dispatch({
+      [CALL_API]: {
+        types: [
+          COLLECTION_SAVE_ITEMS_REQUEST,
+          COLLECTION_SAVE_ITEMS_SUCCESS,
+          COLLECTION_SAVE_ITEMS_FAILURE
+        ],
+        schema: Schemas.COLLECTION_ITEM_ARRAY,
+        endpoint: `/collections/${collectionId}/items`,
+        data: { collectionId, items },
+      },
+    }).then((action) => {
+      if (action.type == COLLECTION_SAVE_ITEMS_SUCCESS) {
+        callback();
+      }
+    });
+}
 }
 
 export const COLLECTION_DELETE_ITEMS_REQUEST = "COLLECTION_DELETE_ITEMS_REQUEST";

@@ -7,24 +7,37 @@ import { selectSessionUser } from '../selectors/session';
 import { selectCollectionItems } from '../selectors/collections';
 
 import { 
+  fetchCollectionItems,
   loadCollectionItems,
   saveCollectionItems,
   deleteCollectionItems,
 } from '../actions/collections';
 
-// import List from '../components/List';
-// import CollectionItem from '../components/item/CollectionItem';
 import Spinner from '../components/Spinner';
+
+// import List from '../components/List';
+import CollectionItemItem from '../components/item/CollectionItemItem';
 
 class CollectionItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      selected : [],
+      allSelected: false,
+      selected: [],
+      editing: [],
+      created: [],
     };
 
-    [].forEach((m) => { this[m] = this[m].bind(this); });
+    [
+      "handleAddItem",
+      "handleDeleteSelectedItems",
+      "handleNewItemChange",
+      "handleRemoveNewItem",
+      "handleSaveNewItems",
+      "handleToggleAll",
+      "handleToggleSelection",
+    ].forEach((m) => { this[m] = this[m].bind(this); });
   }
 
   componentWillMount() {
@@ -38,36 +51,113 @@ class CollectionItems extends React.Component {
     }
   }
 
+  handleToggleAll() {
+    if (this.state.allSelected) {
+      this.setState({
+        allSelected: false,
+        selected: [],
+      });
+    } else {
+      this.setState({
+        allSelected: true,
+        selected: this.props.items.map((m, i) => i),
+      });
+    }
+  }
+
+  handleToggleSelection(index) {
+    this.setState({
+      selected: this.state.selected.concat([index]),
+    })
+  }
+
+  handleDeleteSelectedItems() {
+    if (confirm(`Are you sure you want to remove ${this.state.selected.length} ${this.state.selected.length = 1 ? 'item' : 'items'} from this collection?`)) {
+      const items = this.state.selected.map((i) => this.props.items[i])
+      this.props.deleteCollectionItems(this.props.id, items);
+    }
+  }
+
+  handleAddItem() {
+    this.setState({
+      created: [{ url: "", description: "" }],
+    });
+  }
+
+  handleRemoveNewItem(index, item) {
+    const created = this.state.created.slice();
+    created.splice(index, 1);
+    this.setState({ created: created });
+  }
+
+  handleNewItemChange(index, item) {
+    const created = this.state.created.slice();
+    created.splice(index, 1, item);
+    this.setState({ created });
+  }
+
+  handleSaveNewItems() {
+    this.props.saveCollectionItems(this.props.id, this.state.created, () => {
+      // clear created stuff
+      this.setState({ created: [] });
+      // TODO - currently just reloading items, should reduce overfetching
+      // by associating successfully returned save items with the collection id
+      // somehow.
+      // Also, we call fetch here to ensure cache busting/
+      this.props.fetchCollectionItems(this.props.id);
+    });
+  }
+
   render() {
-    const { loading } = this.state;
-    const { items } = this.props;
+    const { loading, allSelected, selected, editing, created } = this.state;
+    const { items, editable } = this.props;
 
     if (loading) {
       return <Spinner />;
     }
 
+
     return (
       <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <p>{ selected.length != 0 && <a onClick={this.handleDeleteSelectedItems}>Delete Items</a>} <a onClick={this.handleAddItem}>Add Item</a> &nbsp;</p>
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-12">
             <table className="collection items table">
               <thead>
                 <tr>
+                  {editable && <th><input type="checkbox" onChange={this.handleToggleAll} value={allSelected} /></th>}
                   <th>hash</th>
                   <th>url</th>
                   <th>description</th>
                 </tr>
               </thead>
               <tbody>
-                {items.map((item, i) => {
-                  return (
-                    <tr key={i} className="">
-                      {/*<td>{ hash && <Link to={`/content/${hash}`}><h5 className="title">{hash}</h5></Link>}</td>*/}
-                      <td>{ item.hash && <a href={`https://ipfs.io/ipfs/${item.hash}`} target="_blank"><p className="title">{item.hash}</p></a>}</td>
-                      <td><Link to={`/url?url=${item.url}`}>{item.url}</Link></td>
-                      <td>{item.description}</td>
-                    </tr>
-                  );
+                {(created.length > 0) &&
+                  created.map((item, i) => {
+                    return (<CollectionItemItem 
+                      key={`created-${i}`} 
+                      index={i} 
+                      editing={true} 
+                      editable={editable} 
+                      data={item} 
+                      onChange={this.handleNewItemChange}
+                      onDelete={this.handleRemoveNewItem} 
+                    />);
+                  })}
+                {(created.length > 0) &&
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button className="btn right btn-primary" onClick={this.handleSaveNewItems}>Add Url</button></td>
+                  </tr>
+                }
+                {items.map((item,i) => {
+                  return <CollectionItemItem key={item.id} editable={editable} data={item} index={i} onToggleSelect={this.handleToggleSelection} />
                 })}
               </tbody>
             </table>
@@ -80,19 +170,24 @@ class CollectionItems extends React.Component {
 
 CollectionItems.propTypes = {
   id : PropTypes.string.isRequired,
+  editable: PropTypes.bool,
   loadCollectionItems: PropTypes.func.isRequired,
   deleteCollectionItems: PropTypes.func.isRequired,
+  saveCollectionItems: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     id : ownProps.id,
+    editable: ownProps.editable,
     user: selectSessionUser(state),
     items: selectCollectionItems(state, ownProps.id),
   };
 }
 
 export default connect(mapStateToProps, {
+  fetchCollectionItems,
   loadCollectionItems,
   deleteCollectionItems,
+  saveCollectionItems,
 })(CollectionItems);
