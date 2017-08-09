@@ -64,7 +64,9 @@ function meetExpectation(action) {
 }
 
 // the URL to dial to
-const WEBSOCKET_URL = __BUILD__.WEBSOCKET_URL;
+const WEBSOCKET_URL = (__BUILD__.DEVELOP) ? 
+`ws://${window.location.hostname}:${__BUILD__.WEBSOCKET_PORT}/ws`:
+__BUILD__.WEBSOCKET_URL;
 
 // Variable to hold the connection
 let conn;

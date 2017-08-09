@@ -2,7 +2,9 @@
 /* globals __BUILD__, fetch */
 import 'isomorphic-fetch';
 
-export const API_ROOT = `${__BUILD__.COVERAGE_API_URL}`;
+export const API_ROOT = (__BUILD__.DEVELOP) ?
+`http://${window.location.hostname}:${__BUILD__.COVERAGE_API_PORT}`:
+`${__BUILD__.COVERAGE_API_URL}`;
 
 // Fetches an API response from the coverage api
 // This makes every API response have the same shape, regardless of how nested it was.
