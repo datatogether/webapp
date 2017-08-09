@@ -63,6 +63,8 @@ function meetExpectation(action) {
   }
 }
 
+console.log(__BUILD__);
+
 // the URL to dial to
 const WEBSOCKET_URL = (__BUILD__.DEVELOP) ? 
 `ws://${window.location.hostname}:${__BUILD__.WEBSOCKET_PORT}/ws`:

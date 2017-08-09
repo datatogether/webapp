@@ -7,7 +7,6 @@ var ENV = {
   __BUILD__ : {
     PRODUCTION : JSON.stringify(false),
     DEVELOP : JSON.stringify(true),
-    STAGING : JSON.stringify(false),
 
     BASE_URL : JSON.stringify("http://localhost:3000"),
     BASE_URL_PORT : JSON.stringify("3000"),

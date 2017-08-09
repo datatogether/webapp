@@ -59,7 +59,7 @@ export default {
       getComponent(location, cb) {
         import('./containers/Communities').then(loadRoute(cb)).catch(errorLoading);
       },
-    }
+    },
     {
       path: '/coverage',
       getComponent(location,cb) {
