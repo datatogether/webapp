@@ -15,7 +15,7 @@ const UrlItem = ({ data }) => {
   };
 
   return (
-    <div className="url item col-md-12">
+    <div className="url item">
       <Link className="title" to={`/url?url=${uri}`}>
         { url.title ? <h5>{url.title}</h5> : undefined }
         {concatUrlString(url.url)}

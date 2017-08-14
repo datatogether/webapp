@@ -24,3 +24,8 @@ export function selectCollectionActiveTasks(state, collectionId = "") {
   const { tasks } = state.entities;
   return Object.keys(tasks).filter(id => (tasks[id].params.collectionId == collectionId && tasks[id].progress)).map(id => tasks[id]);
 }
+
+export function selectUrlActiveTasks(state) {
+  const { tasks } = state.entities;
+  return Object.keys(tasks).filter(id => (tasks[id].progress)).map(id => tasks[id]);
+}
