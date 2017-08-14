@@ -207,6 +207,21 @@ a.content { color: $magenta; }
   }
 }
 
+.activity,
+.activity.item {
+  hr {
+   border-top: 1px solid $red; 
+  }
+  .label,
+  .title {
+    color: $red;
+  }
+  .colorized,
+  .progressbar .progress {
+    background: $red;
+  }
+}
+
 .colorized {
   color: white;
   .title,

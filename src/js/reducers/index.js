@@ -29,7 +29,9 @@ const initialEntitiesState = {
   content: {},
   metadata: {},
   consensus: {},
+  
   collections: {},
+  collectionItems : {},
   
   tasks: {},
 

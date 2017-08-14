@@ -118,6 +118,7 @@ export function connect(dispatch, reconnectTimeout = 6500) {
 
       conn.onerror = (evt) => {
         console.log("WebSocket conn error", evt);
+        conn.close();
         if (reject) {
           reject(evt);
         }
@@ -140,7 +141,9 @@ export function connected() {
 // @return {promise}
 export function disconnect() {
   return new Promise((resolve) => {
-    conn.close();
+    if (conn) {
+      conn.close();
+    }
     return resolve();
   });
 }

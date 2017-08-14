@@ -2,7 +2,7 @@ import union from 'lodash/union';
 
 // Creates a reducer managing pagination, given the action types to handle,
 // and a function telling how to extract the key from an action.
-const paginate = ({ types, mapActionToKey }) => {
+const paginate = ({ types, mapActionToKey, removeIdsTypes=[], addIdsTypes=[] }) => {
   if (!Array.isArray(types) || types.length !== 3) {
     throw new Error('Expected types to be an array of three elements.');
   }
@@ -22,6 +22,20 @@ const paginate = ({ types, mapActionToKey }) => {
     fetchedAll: false,
     ids: [],
   }, action) => {
+    if (removeIdsTypes.includes(action.type) && action.response.result) {
+      console.log(action.response.result);
+      return Object.assign({}, state, {
+        ids: state.ids.filter((id) => !action.response.result.includes(id)),
+      });
+    }
+
+    if (addIdsTypes.includes(action.type) && action.response.result) {
+      console.log(action.response.result);
+      return Object.assign({}, state, {
+        ids: union(state.ids, action.response.result),
+      });
+    }
+
     switch (action.type) {
       case requestType:
         return Object.assign({}, state, { isFetching: true });
@@ -56,6 +70,15 @@ const paginate = ({ types, mapActionToKey }) => {
   }
 
   return (state = {}, action) => {
+    if (removeIdsTypes.includes(action.type) && action.response && action.response.result) {
+      console.log(action.type);
+      return pageAction(state, action);
+    }
+    if (addIdsTypes.includes(action.type) && action.response && action.response.result) {
+      console.log(action.type);
+      return pageAction(state, action);
+    }
+
     // Update pagination by key
     switch (action.type) {
       case requestType:

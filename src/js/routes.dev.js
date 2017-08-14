@@ -27,6 +27,12 @@ import UserSettings from './containers/UserSettings';
 import Uncrawlables from './containers/Uncrawlables';
 import Uncrawlable from './containers/Uncrawlable';
 
+import Activities from './components/activities/Activities';
+import Harvesting from './components/activities/Harvesting';
+import Monitoring from './components/activities/Monitoring';
+import Storing from './components/activities/Storing';
+import Analyzing from './components/activities/Analyzing';
+
 export default {
   path: "/",
   component: App,
@@ -119,6 +125,26 @@ export default {
     {
       path: '/edit',
       component: FileEditor,
+    },
+    {
+      path: '/activities',
+      component: Activities,
+    },
+    {
+      path: '/activities/harvesting',
+      component: Harvesting
+    },
+    {
+      path: '/activities/monitoring',
+      component: Monitoring
+    },
+    {
+      path: '/activities/storing',
+      component: Storing
+    },
+    {
+      path: '/activities/analyzing',
+      component: Analyzing,
     },
     {
       path: "/*",
