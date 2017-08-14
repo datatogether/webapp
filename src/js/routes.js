@@ -31,6 +31,12 @@ export default {
       },
     },
     {
+      path: "/archive",
+      getComponent(location, cb) {
+        import('./containers/ArchiveUrl').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: "/public-record",
       getComponent(location, cb) {
         import('./containers/PublicRecord').then(loadRoute(cb)).catch(errorLoading);

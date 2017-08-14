@@ -100,7 +100,12 @@ class Collection extends React.Component {
     }
 
     return (
-      <CollectionView sessionKeyId={sessionKeyId} data={collection} onEdit={this.handleEdit} onArchive={this.handleArchiveCollection} onDelete={this.handleDelete} />
+      <CollectionView
+        sessionKeyId={sessionKeyId}
+        data={collection} onEdit={this.handleEdit}
+        onArchive={this.handleArchiveCollection}
+        onDelete={this.handleDelete}
+      />
     );
   }
 }

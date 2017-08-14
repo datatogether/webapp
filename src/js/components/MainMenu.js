@@ -27,6 +27,7 @@ export default class MainMenu extends React.Component {
       <div id="main_menu" onClick={this.onClick} className={show ? "show" : "hide"}>
         <Link className="blue" to="/primers">Home</Link>
         {/*<Link className="blue" to="/coverage">Coverage</Link>*/}
+        <Link className="blue" to="/archive">Add a Dataset</Link>
         <Link className="blue" to="/public-record">Public Record</Link>
         <Link className="blue" to="/collections">Collections</Link>
         <Link className="blue" to="/communities">Communities</Link>

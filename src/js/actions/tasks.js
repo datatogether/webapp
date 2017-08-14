@@ -127,3 +127,13 @@ export function archiveCollection(collection) {
     },
   });
 }
+
+export function archiveUrl(url) {
+  return enqueueTask({
+    title: `Archive url ${url}`,
+    taskType: "ipfs.addurl",
+    params: {
+      url,
+    },
+  });
+}
