@@ -45,10 +45,10 @@ services:
         -----END RSA PRIVATE KEY-----
 
   patchbay:
-    image: datatogether/patchbay:latest
-    # build: $GOPATH/src/github.com/datatogether/patchbay/
-    # volumes:
-    #   - $GOPATH/src/github.com/datatogether/patchbay:/go/src/github.com/datatogether/patchbay
+    # image: datatogether/patchbay:latest
+    build: $GOPATH/src/github.com/datatogether/patchbay/
+    volumes:
+      - $GOPATH/src/github.com/datatogether/patchbay:/go/src/github.com/datatogether/patchbay
     ports:
      - 3000:3000
     networks:

@@ -7,7 +7,15 @@ import { debounce } from 'lodash';
 import analytics from '../analytics';
 import * as socket from '../middleware/socket';
 
-import { toggleMenu, hideMenu, resetMessage, resetErrorMessage, showModal, hideModal } from '../actions/app';
+import {
+  toggleMenu,
+  hideMenu,
+  setErrorMessage,
+  resetMessage,
+  resetErrorMessage,
+  showModal,
+  hideModal,
+} from '../actions/app';
 import { layoutResize } from '../actions/layout';
 import { loadSessionUser } from '../actions/session';
 import { selectSessionUser } from '../selectors/session';
@@ -41,7 +49,8 @@ class App extends Component {
     socket.connect(this.props.dispatch, 6500).then(() => {
       // socket connected.
     }).catch((err) => {
-      console.log("conn error:", err)
+      console.log("conn error:", err);
+      this.props.dispatch(setErrorMessage("connection error"));
     });
 
     this._oldOnbeforeunload = window.onbeforeunload;

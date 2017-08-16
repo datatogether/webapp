@@ -20,6 +20,10 @@ export default class RotatingText extends React.Component {
     this.timer = setInterval(this.handleStartFade, this.props.displayTime + this.props.transitionTime);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.displayTime != this.props.displayTime) {
       this.timer = setInterval(this.handleStartFade, this.props.displayTime + this.props.transitionTime);

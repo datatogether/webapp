@@ -6,7 +6,7 @@ export const URL_ARCHIVE_REQUEST = "URL_ARCHIVE_REQUEST";
 export const URL_ARCHIVE_SUCCESS = "URL_ARCHIVE_SUCCESS";
 export const URL_ARCHIVE_FAILURE = "URL_ARCHIVE_FAILURE";
 
-export function archiveUrl(url = "") {
+export function archiveUrl(url = "", callback) {
   return (dispatch) => {
     return dispatch({
       [CALL_API]: {
@@ -17,6 +17,10 @@ export function archiveUrl(url = "") {
           url,
         },
       },
+    }).then((action) => {
+      if (typeof callback == "function") {
+        callback(action);
+      }
     });
   };
 }
