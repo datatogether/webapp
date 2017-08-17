@@ -17,6 +17,7 @@ import List from '../components/List';
 import TaskItem from '../components/item/TaskItem';
 import UrlItem from '../components/item/UrlItem';
 import ValidInput from '../components/form/ValidInput';
+import ValidTextarea from '../components/form/ValidTextarea';
 
 class ArchiveUrl extends React.Component {
   constructor(props) {
@@ -76,10 +77,17 @@ class ArchiveUrl extends React.Component {
               <h4>Archive a Url</h4>
               <ValidInput
                 name="query"
-                label="url to archive"
+                label="URL to archive"
                 value={query}
                 onChange={this.handleChange}
                 placeholder="http://dataseturl.gov"
+              />
+              <ValidTextarea
+                name="how"
+                label="How do you use this dataset?"
+                value=""
+                placeholder="I use this data for ..."
+                onChange={this.handleChange}
               />
               <button className="btn btn-primary" onClick={this.handleArchiveUrl}>Archive</button>
             </div>
