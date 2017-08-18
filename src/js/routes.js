@@ -31,7 +31,7 @@ export default {
       },
     },
     {
-      path: "/archive",
+      path: "/add-dataset",
       getComponent(location, cb) {
         import('./containers/ArchiveUrl').then(loadRoute(cb)).catch(errorLoading);
       },

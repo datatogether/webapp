@@ -55,7 +55,7 @@ export default {
       component: Url,
     },
     {
-      path: "/archive",
+      path: "/add-dataset",
       component: ArchiveUrl,
     },
     {
