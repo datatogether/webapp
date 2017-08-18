@@ -31,6 +31,12 @@ export default {
       },
     },
     {
+      path: "/add-dataset",
+      getComponent(location, cb) {
+        import('./containers/ArchiveUrl').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: "/public-record",
       getComponent(location, cb) {
         import('./containers/PublicRecord').then(loadRoute(cb)).catch(errorLoading);
@@ -59,7 +65,7 @@ export default {
       getComponent(location, cb) {
         import('./containers/Communities').then(loadRoute(cb)).catch(errorLoading);
       },
-    }
+    },
     {
       path: '/coverage',
       getComponent(location,cb) {

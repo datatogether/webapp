@@ -20,6 +20,10 @@ export default class RotatingText extends React.Component {
     this.timer = setInterval(this.handleStartFade, this.props.displayTime + this.props.transitionTime);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.displayTime != this.props.displayTime) {
       this.timer = setInterval(this.handleStartFade, this.props.displayTime + this.props.transitionTime);
@@ -29,10 +33,8 @@ export default class RotatingText extends React.Component {
   handleStartFade() {
     const { index } = this.state;
     this.setState({ fadeState: "fade-out" });
-    console.log("start fade");
 
     setTimeout(() => {
-      console.log("switch fade");
       this.setState({ 
         index: (index + 1 == this.props.text.length) ? 0 : index + 1,
         fadeState: "fade-in",
@@ -42,7 +44,6 @@ export default class RotatingText extends React.Component {
   }
 
   handleStopFade() {
-    console.log("switch fade");
     this.setState({ fadeState: "display" });
   }
 

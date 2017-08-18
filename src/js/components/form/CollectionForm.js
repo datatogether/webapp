@@ -29,7 +29,11 @@ const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => 
   const handleAddItem = (e) => {
     e.preventDefault();
     let contents = collection.contents || [];
-    onChange(name,Object.assign({}, collection, { contents: contents.concat([["", "", ""]])}));
+    onChange(name,Object.assign({}, collection, { 
+      contents: contents.concat([
+        { url : "", description: "", index: -1 }
+      ]),
+    }));
   }
 
   return (
@@ -51,28 +55,6 @@ const CollectionForm = ({ name, data, users, onChange, onCancel, onSubmit }) => 
             <input className="btn btn-primary" type="submit" value="Save" onClick={handleSubmit} />
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-12">
-            <hr className="green" />
-            <label className="label">collection items</label>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>hash</th>
-                  <th>url</th>
-                  <th>description</th>
-                  <th>delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {collection.contents.map((item, i) => {
-                  return <CollectionItem key={i} data={item} index={i} onChange={handleItemChange} onDelete={handleItemDelete}  />
-                })}
-              </tbody>
-            </table>
-            <a onClick={handleAddItem}>add item</a>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -88,33 +70,6 @@ CollectionForm.propTypes = {
 
 CollectionForm.defaultProps = {
   name : "collection",
-}
-
-const CollectionItem = ({data, index, onChange, onDelete}) => {
-  const handleChange = (name, value) => {
-    // TODO - lol make this not bad
-    switch (name) {
-      case "url":
-        onChange(index, [data[0],value, data[2]])
-        break;
-      case "note":
-        onChange(index, [data[0], data[1], value])
-        break;
-    }
-  }
-
-  const handleDelete = (e) => {
-    onDelete(index);
-  }
-
-  return (
-    <tr>
-      <td>{data[0]}</td>
-      <td><ValidInput name="url" value={data[1]} onChange={handleChange} /></td>
-      <td><ValidInput name="note" value={data[2]} onChange={handleChange} /></td>
-      <td><a onClick={handleDelete}>delete</a></td>
-    </tr>
-  );
 }
 
 export default CollectionForm;

@@ -1,10 +1,12 @@
 
-/* globals __BUILD__, fetch */
+/* globals __BUILD__, fetch, window */
 import 'isomorphic-fetch';
 import { normalize } from 'normalizr';
 import * as socket from './socket';
 
-export const API_ROOT = `${__BUILD__.API_URL}/api`;
+export const API_ROOT = (__BUILD__.DEVELOP) ? 
+  `http://${window.location.hostname}:${__BUILD__.API_PORT}/api`:
+  `${__BUILD__.API_URL}/api`;
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.

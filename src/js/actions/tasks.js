@@ -120,10 +120,20 @@ export function cancelTask(task = {}) {
 
 export function archiveCollection(collection) {
   return enqueueTask({
-    title: `Add to ${collection.title}`,
+    title: `Archive collection to IPFS: ${collection.title}`,
     taskType: "ipfs.addcollection",
     params: {
       collectionId : collection.id,
+    },
+  });
+}
+
+export function archiveUrl(url) {
+  return enqueueTask({
+    title: `Archive url ${url}`,
+    taskType: "ipfs.addurl",
+    params: {
+      url,
     },
   });
 }

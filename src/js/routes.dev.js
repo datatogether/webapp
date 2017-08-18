@@ -3,6 +3,7 @@
  * Gooby pls. Don 4get to update the prod routes.js file
  */
 import App from './containers/App';
+import ArchiveUrl from './containers/ArchiveUrl';
 import PublicRecord from './containers/PublicRecord';
 import Coverage from './containers/Coverage';
 import Collection from './containers/Collection';
@@ -26,6 +27,12 @@ import UserSettings from './containers/UserSettings';
 import Uncrawlables from './containers/Uncrawlables';
 import Uncrawlable from './containers/Uncrawlable';
 
+import Activities from './components/activities/Activities';
+import Harvesting from './components/activities/Harvesting';
+import Monitoring from './components/activities/Monitoring';
+import Storing from './components/activities/Storing';
+import Analyzing from './components/activities/Analyzing';
+
 export default {
   path: "/",
   component: App,
@@ -46,6 +53,10 @@ export default {
     {
       path: "/url",
       component: Url,
+    },
+    {
+      path: "/add-dataset",
+      component: ArchiveUrl,
     },
     {
       path: "/public-record",
@@ -114,6 +125,26 @@ export default {
     {
       path: '/edit',
       component: FileEditor,
+    },
+    {
+      path: '/activities',
+      component: Activities,
+    },
+    {
+      path: '/activities/harvesting',
+      component: Harvesting
+    },
+    {
+      path: '/activities/monitoring',
+      component: Monitoring
+    },
+    {
+      path: '/activities/storing',
+      component: Storing
+    },
+    {
+      path: '/activities/analyzing',
+      component: Analyzing,
     },
     {
       path: "/*",

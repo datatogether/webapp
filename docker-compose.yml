@@ -45,20 +45,22 @@ services:
         -----END RSA PRIVATE KEY-----
 
   patchbay:
-    image: datatogether/patchbay:latest
-    # build: $GOPATH/src/github.com/datatogether/patchbay/
-    # volumes:
-    #   - $GOPATH/src/github.com/datatogether/patchbay:/go/src/github.com/datatogether/patchbay
+    # image: datatogether/patchbay:latest
+    build: $GOPATH/src/github.com/datatogether/patchbay/
+    volumes:
+      - $GOPATH/src/github.com/datatogether/patchbay:/go/src/github.com/datatogether/patchbay
     ports:
      - 3000:3000
     networks:
       - back-tier
     depends_on:
       - postgres
+      - redis
     environment:
       - PORT=3000
       - GOLANG_ENV=develop
       - POSTGRES_DB_URL=postgres://postgres@postgres/postgres?sslmode=disable
+      - REDIS_URL=redis:6379
       - |
         PUBLIC_KEY=-----BEGIN PUBLIC KEY-----
         MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMOsqD9mC5mWC4Fa5rTU3Zaq+ZWIgEzw
@@ -76,12 +78,13 @@ services:
         -----END RSA PRIVATE KEY-----
       - WEBAPP_SCRIPTS=http://localhost:4000/static/bundle.js
       - TASKS_SERVICE_URL=task-mgmt:4400
+      - TITLE=Data Together
 
   task-mgmt:
-    image: datatogether/task-mgmt:latest
-    # build: $GOPATH/src/github.com/datatogether/task-mgmt/
-    # volumes:
-    #   - $GOPATH/src/github.com/datatogether/task-mgmt:/go/src/github.com/datatogether/task-mgmt
+    # image: datatogether/task-mgmt:latest
+    build: $GOPATH/src/github.com/datatogether/task-mgmt/
+    volumes:
+      - $GOPATH/src/github.com/datatogether/task-mgmt:/go/src/github.com/datatogether/task-mgmt
     ports:
      - 3400:3400
      - 4400:4400
@@ -91,11 +94,13 @@ services:
       - ipfs
       - rabbitmq
       - postgres
+      - redis
     environment:
       - PORT=3400
       - TLS=false
       - GOLANG_ENV=develop
       - POSTGRES_DB_URL=postgres://postgres@postgres/postgres?sslmode=disable
+      - REDIS_URL=redis:6379
       - PUBLIC_KEY=nothing_yet
       - POSTMARK_KEY=POSTMARK_API_TEST
       - EMAIL_NOTIFICATION_RECIPIENTS=brendan@qri.io
@@ -117,6 +122,12 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+  redis:
+    image: "library/redis:latest"
+    networks:
+      - back-tier
+    ports:
+      - 6379:6379
   postgres:
     image: postgres:9.6-alpine
     networks:

@@ -25,11 +25,17 @@ export default class MainMenu extends React.Component {
     const { user, show } = this.props;
     return (
       <div id="main_menu" onClick={this.onClick} className={show ? "show" : "hide"}>
-        <Link className="blue" to="/primers">Home</Link>
+        <Link className="blue" to="/">Home</Link>
         {/*<Link className="blue" to="/coverage">Coverage</Link>*/}
+        <Link className="blue" to="/add-dataset">Add a Dataset</Link>
         <Link className="blue" to="/public-record">Public Record</Link>
-        <Link className="blue" to="/collections">Collections</Link>
         <Link className="blue" to="/communities">Communities</Link>
+        <Link className="blue" to="/collections">Collections</Link>
+        <Link className="red section-title" to="/activities">Activities</Link>
+        <Link className="red sub" to="/activities/harvesting">Harvesting</Link>
+        <Link className="red sub" to="/activities/monitoring">Monitoring</Link>
+        <Link className="red sub" to="/activities/storing">Storing</Link>
+        <Link className="red sub" to="/activities/analyzing">Analyzing</Link>
         {/*<Link className="blue" to="/collections">Collections</Link>*/}
         {/*<Link className="blue" to="/uncrawlables">Uncrawlables</Link>*/}
         {

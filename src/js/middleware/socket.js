@@ -63,8 +63,12 @@ function meetExpectation(action) {
   }
 }
 
+console.log(__BUILD__);
+
 // the URL to dial to
-const WEBSOCKET_URL = __BUILD__.WEBSOCKET_URL;
+const WEBSOCKET_URL = (__BUILD__.DEVELOP) ? 
+`ws://${window.location.hostname}:${__BUILD__.WEBSOCKET_PORT}/ws`:
+__BUILD__.WEBSOCKET_URL;
 
 // Variable to hold the connection
 let conn;
@@ -93,6 +97,7 @@ export function connect(dispatch, reconnectTimeout = 6500) {
           console.log(e);
           return;
         }
+        console.log(res);
         if (res.schema) {
           try {
             res.response = normalize(res.data, Schemas[res.schema]);
@@ -114,6 +119,7 @@ export function connect(dispatch, reconnectTimeout = 6500) {
 
       conn.onerror = (evt) => {
         console.log("WebSocket conn error", evt);
+        conn.close();
         if (reject) {
           reject(evt);
         }
@@ -136,7 +142,9 @@ export function connected() {
 // @return {promise}
 export function disconnect() {
   return new Promise((resolve) => {
-    conn.close();
+    if (conn) {
+      conn.close();
+    }
     return resolve();
   });
 }
@@ -147,7 +155,7 @@ export function disconnect() {
 // object referenced in actions
 export function callApiAction(store, next, action) {
   let { endpoint } = action;
-  const { schema, types, data } = action;
+  const { schema, types, data, timeout = 15000, silentError } = action;
 
   // if we're in "connecting" state, defer until connection
   // occurs
@@ -186,13 +194,14 @@ export function callApiAction(store, next, action) {
     return finalAction;
   }
 
-  // fire an action indicating a request will be nade
+  // fire an action indicating a request will be made
   next(actionWith({ type: requestType }));
   
   // make the request
   conn.send(JSON.stringify({
     type: requestType,
     requestId,
+    silentError,
     data,
   }));
 
@@ -211,19 +220,21 @@ export function callApiAction(store, next, action) {
       },
     });
 
-    // If the server takes too long, meet our own expectation
-    // with a request timeout error
-    setTimeout(() => {
-      if (expectations[requestId]) {
-        if (typeof expectations[requestId][failureType] == "function") {
-          expectations[requestId][failureType]({
-            requestId,
-            type: failureType,
-            error: `request ${requestId} timed out`,
-          });
+    if (timeout) {
+      // If the server takes too long, meet our own expectation
+      // with a request timeout error
+      setTimeout(() => {
+        if (expectations[requestId]) {
+          if (typeof expectations[requestId][failureType] == "function") {
+            expectations[requestId][failureType]({
+              requestId,
+              type: failureType,
+              error: `request ${requestId} timed out`,
+            });
+          }
+          delete expectations[requestId];
         }
-        delete expectations[requestId];
-      }
-    }, 1000 * 15);
+      }, timeout);
+    }
   });
 }
