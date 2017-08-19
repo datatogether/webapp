@@ -11,11 +11,7 @@ const Navbar = ({ user, style, onToggleMenu }) => {
             <Link id="logotype" href={__BUILD__.BASE_URL}>[ data, together ]</Link>
           </div>
           <div className="menu col-md-4 offset-md-2 col-sm-6">
-            {
-              user ?
-                <Link to={`/users/${user.username}`}>{user.username}</Link> :
-                <Link to="/login">Login</Link>
-            }
+            {user && <Link to={`/users/${user.username}`}>{user.username}</Link>}
             <a className="green" onClick={onToggleMenu}>Menu</a>
           </div>
         </div>

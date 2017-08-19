@@ -24,6 +24,7 @@ class ArchiveUrl extends React.Component {
     super(props);
     this.state = {
       loading: false,
+      usage: "",
       query: "",
     };
 
@@ -65,7 +66,7 @@ class ArchiveUrl extends React.Component {
   }
 
   render() {
-    const { loading, query } = this.state;
+    const { loading, query, usage } = this.state;
     const { activeTasks, url } = this.props;
 
     return (
@@ -74,7 +75,7 @@ class ArchiveUrl extends React.Component {
           <div className="row">
             <div className="col-md-6 offset-md-3">
               <hr />
-              <h4>Archive a Url</h4>
+              <h4>Add a Dataset</h4>
               <ValidInput
                 name="query"
                 label="URL to archive"
@@ -83,13 +84,13 @@ class ArchiveUrl extends React.Component {
                 placeholder="http://dataseturl.gov"
               />
               <ValidTextarea
-                name="how"
+                name="usage"
                 label="How do you use this dataset?"
-                value=""
+                value={usage}
                 placeholder="I use this data for ..."
                 onChange={this.handleChange}
               />
-              <button className="btn btn-primary" onClick={this.handleArchiveUrl}>Archive</button>
+              <button className="btn btn-primary" onClick={this.handleArchiveUrl}>Add</button>
             </div>
           </div>
         </div>
