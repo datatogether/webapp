@@ -63,8 +63,6 @@ function meetExpectation(action) {
   }
 }
 
-console.log(__BUILD__);
-
 // the URL to dial to
 const WEBSOCKET_URL = (__BUILD__.DEVELOP) ? 
 `ws://${window.location.hostname}:${__BUILD__.WEBSOCKET_PORT}/ws`:
@@ -97,7 +95,7 @@ export function connect(dispatch, reconnectTimeout = 6500) {
           console.log(e);
           return;
         }
-        console.log(res);
+        // console.log(res);
         if (res.schema) {
           try {
             res.response = normalize(res.data, Schemas[res.schema]);

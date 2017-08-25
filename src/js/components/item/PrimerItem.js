@@ -11,7 +11,7 @@ const PrimerItem = ({ data }) => {
   return (
     <div className="primer item col-md-4">
       <div className="card">
-        <Link to={`/primers/${primer.id}`}>
+        <Link to={`/public-record/${primer.id}`}>
           <header className="colorized">
             <h3>{primer.shortTitle}</h3>
           </header>

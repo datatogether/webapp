@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import analytics from '../analytics';
-import { selectSource, selectSourceUndescribedUrls, selectSourceAttributedUrls } from '../selectors/sources';
+import { selectSource, selectSourceUrls, selectSourceUndescribedUrls, selectSourceAttributedUrls } from '../selectors/sources';
 import { loadSource, loadSourceUrls, loadSourceAttributedUrls } from '../actions/source';
 
 import List from '../components/List';
@@ -81,7 +81,7 @@ class Source extends React.Component {
 
   render() {
     const { loading, tab } = this.state;
-    const { source } = this.props;
+    const { source, urls } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -97,18 +97,19 @@ class Source extends React.Component {
                 <label className="label">Source</label>
                 <h1 className="title">{source.title}</h1>
                 <p>{source.url}</p>
-                <label className="label">Primer:</label>
-                <Link className="primer" to={`/primers/${source.primer.id}`}>
+                <label className="label">Record:</label>
+                <Link className="primer" to={`/public-record/${source.primer.id}`}>
                   <h5 className="title">{source.primer.title}</h5>
                 </Link>
               </div>
             </div>
             <div className="row">
               <div className="col-md-12">
-                <ProgressBar 
+                {/* <ProgressBar 
                   total={source.stats.contentUrlCount}
                   progress={source.stats.contentMetadataCount}
-                />
+                /> */}
+                <hr />
                 <StatsBar
                   stats={{
                     urls: source.stats.urlCount,
@@ -121,12 +122,18 @@ class Source extends React.Component {
           </div>
         </header>
         <div className="container">
-          <div className="row">
+          {/* <div className="row">
             <div className="col-md-12">
               <TabBar value={tab} tabs={["unattributed content", "attributed content"]} onChange={this.handleChangeTab} color="orange" />
             </div>
           </div>
-          {this.renderCurrentTab()}
+          {this.renderCurrentTab()} */}
+          <div className="row">
+            <div className="col-md-12">
+              <h4 className="title">Content:</h4>
+            </div>
+            <List data={urls} component={UrlItem} />
+          </div>
         </div>
       </div>
     );
@@ -149,7 +156,8 @@ function mapStateToProps(state, ownProps) {
     id: ownProps.params.id,
     source: selectSource(state, ownProps.params.id),
 
-    urls: selectSourceUndescribedUrls(state, ownProps.params.id),
+    urls: selectSourceUrls(state, ownProps.params.id),
+    // urls: selectSourceUndescribedUrls(state, ownProps.params.id),
     attributedUrls: selectSourceAttributedUrls(state, ownProps.params.id),
   };
 }

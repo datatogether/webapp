@@ -43,6 +43,12 @@ export default {
       },
     },
     {
+      path: '/public-record/:id',
+      getComponent(location, cb) {
+        import('./containers/Primer').then(loadRoute(cb)).catch(errorLoading);
+      },
+    },
+    {
       path: '/collections',
       getComponent(location, cb) {
         import('./containers/Collections').then(loadRoute(cb)).catch(errorLoading);

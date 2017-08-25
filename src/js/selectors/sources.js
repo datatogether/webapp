@@ -9,6 +9,15 @@ export function selectSource(state, id = "") {
   return state.entities.sources[id];
 }
 
+export function selectSourceUrls(state, id = "") {
+  const pages = state.pagination.sourceUndescribedUrls;
+  if (!pages[id]) {
+    return [];
+  }
+
+  return pages[id].ids.map(urlId => state.entities.urls[urlId]);
+}
+
 export function selectSourceUndescribedUrls(state, id = "") {
   const pages = state.pagination.sourceUndescribedUrls;
   if (!pages[id]) {

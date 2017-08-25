@@ -92,6 +92,7 @@ class Content extends React.Component {
                 <hr className="" />
                 <label className="label">Content</label>
                 <h3 className="title">{url && url.fileName ? url.fileName : "unnamed content"}</h3>
+                <p>{`/ipfs/${url.hash}`}</p>
                 {url && <a className="btn" href={url.contentUrl} download={url.fileName}>Download File</a> }
                 <hr />
               </div>
@@ -102,7 +103,9 @@ class Content extends React.Component {
         <div className="container">
           <TabBar value={tab} tabs={["metadata", "urls", "history", "consensus"]} onChange={this.handleSetTab} color="yellow" />
           <div className="row">
-            {this.renderCurrentTab()}
+            <div className="col-md-12">
+              {this.renderCurrentTab()}
+            </div>
           </div>
         </div>
       </div>

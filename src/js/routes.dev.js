@@ -63,6 +63,10 @@ export default {
       component: PublicRecord,
     },
     {
+      path: "/public-record/:id",
+      component: Primer,
+    },
+    {
       path: "/collections",
       component: Collections,
     },
