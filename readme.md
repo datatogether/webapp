@@ -1,14 +1,13 @@
 # webapp
-#### An Archivers 2.0 joint
 <!-- Repo Badges for: Github Project, Slack, License-->
 
 [![GitHub](https://img.shields.io/badge/project-Data_Together-487b57.svg?style=flat-square)](http://github.com/datatogether)
 [![Slack](https://img.shields.io/badge/slack-Archivers-b44e88.svg?style=flat-square)](https://archivers-slack.herokuapp.com/)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE)
 
-webapp is a volunteer-facing webapp from the archivers 2.0 [proposed services](https://github.com/edgi-govdata-archiving/proposed-services). See it in action [here](https://alpha.archivers.space).
+**Webapp** is the main public-facing web application from Data Together. Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org).
 
-It's main job is to get users to contribute metadata about content that has been crawled & archived.
+Its main job is to get users to contribute metadata about content that has been crawled & archived.
 
 ## License & Copyright
 
@@ -29,9 +28,8 @@ We would love involvement from more people! If you notice any errors or would li
 
 We use GitHub issues for [tracking bugs and feature requests](https://github.com/datatogether/webapp/issues) and Pull Requests (PRs) for [submitting changes](https://github.com/datatogether/webapp/pulls)
 
-####
 
-##Installation
+## Installation
 
 To get started with dev, make sure you have [docker](https://store.docker.com/search?type=edition&offering=community) and [docker compose](https://docs.docker.com/compose/install/) And then run:
 
@@ -43,7 +41,7 @@ $ docker-compose up
 
 This'll spin up a whole bunch of servers and make lots of noise. Once you see `webpack built` you can go to `http://localhost:3000` to see the app running locally.
 
-##Development
+## Development
 
 Developing is as simple as editing files in source, if webpack can it'll automatically recompile & update your browser window. Def have the browser's console open to make sure nothing's exploding.
 
