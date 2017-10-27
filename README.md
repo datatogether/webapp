@@ -5,7 +5,7 @@
 [![Slack](https://img.shields.io/badge/slack-Archivers-b44e88.svg?style=flat-square)](https://archivers-slack.herokuapp.com/)
 [![License](https://img.shields.io/github/license/datatogether/webapp.svg?style=flat-square)](./LICENSE)
 [![Codecov](https://img.shields.io/codecov/c/github/datatogether/webapp.svg?style=flat-square)](https://codecov.io/gh/datatogether/webapp)
-![CI](https://img.shields.io/circleci/project/github/datatogether/webapp.svg?style=flat-square]
+[![CI](https://img.shields.io/circleci/project/github/datatogether/webapp.svg?style=flat-square)](https://circleci.com/gh/datatogether/webapp)
 
 **Webapp** is the main public-facing web application to allow user to contribute metadata about content that has been crawled & archived from Data Together. Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org).
 
