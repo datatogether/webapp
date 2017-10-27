@@ -3,15 +3,15 @@
 
 [![GitHub](https://img.shields.io/badge/project-Data_Together-487b57.svg?style=flat-square)](http://github.com/datatogether)
 [![Slack](https://img.shields.io/badge/slack-Archivers-b44e88.svg?style=flat-square)](https://archivers-slack.herokuapp.com/)
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE)
+[![License](https://img.shields.io/github/license/datatogether/webapp.svg?style=flat-square)](./LICENSE)
+[![Codecov](https://img.shields.io/codecov/c/github/datatogether/webapp.svg?style=flat-square)](https://codecov.io/gh/datatogether/webapp)
+[![CI](https://img.shields.io/circleci/project/github/datatogether/webapp.svg?style=flat-square)](https://circleci.com/gh/datatogether/webapp)
 
-**Webapp** is the main public-facing web application from Data Together. Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org).
-
-Its main job is to get users to contribute metadata about content that has been crawled & archived.
+**Webapp** is the main public-facing web application to allow user to contribute metadata about content that has been crawled & archived from Data Together. Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org).
 
 ## License & Copyright
 
-Copyright (C) <year> Data Together
+Copyright (C) 2017 Data Together  
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the Free Software
 Foundation, version 3.0.
@@ -28,7 +28,6 @@ We would love involvement from more people! If you notice any errors or would li
 
 We use GitHub issues for [tracking bugs and feature requests](https://github.com/datatogether/webapp/issues) and Pull Requests (PRs) for [submitting changes](https://github.com/datatogether/webapp/pulls)
 
-
 ## Installation
 
 To get started with dev, make sure you have [docker](https://store.docker.com/search?type=edition&offering=community) and [docker compose](https://docs.docker.com/compose/install/) And then run:
@@ -43,7 +42,7 @@ This'll spin up a whole bunch of servers and make lots of noise. Once you see `w
 
 ## Development
 
-Developing is as simple as editing files in source, if webpack can it'll automatically recompile & update your browser window. Def have the browser's console open to make sure nothing's exploding.
+Developing is as simple as editing files in source. If webpack can, it'll automatically recompile & update your browser window. Have the browser's console open to make sure nothing's exploding.
 
 ### Technologies
 
