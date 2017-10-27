@@ -7,12 +7,12 @@
 [![Codecov](https://img.shields.io/codecov/c/github/datatogether/webapp.svg?style=flat-square)](https://codecov.io/gh/datatogether/webapp)
 [![CI](https://img.shields.io/circleci/project/github/datatogether/webapp.svg?style=flat-square)](https://circleci.com/gh/datatogether/webapp)
 
-**Webapp** is the main public-facing web application to allow user to contribute metadata about content that has been crawled & archived from Data Together. Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org).
+**Webapp** is the main public-facing web application to allow user to contribute metadata about content that has been crawled & archived from [Data Together](http://datatogether.org). Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org).
 
 ## License & Copyright
 
-Copyright (C) 2017 Data Together  
-This program is free software: you can redistribute it and/or modify it under
+Copyright (C) 2017 Data Together.  
+This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the Free Software
 Foundation, version 3.0.
 
@@ -26,7 +26,7 @@ See the [`LICENSE`](./LICENSE) file for details.
 
 We would love involvement from more people! If you notice any errors or would like to submit changes, please see our [Contributing Guidelines](./.github/CONTRIBUTING.md).
 
-We use GitHub issues for [tracking bugs and feature requests](https://github.com/datatogether/webapp/issues) and Pull Requests (PRs) for [submitting changes](https://github.com/datatogether/webapp/pulls)
+We use GitHub issues for [tracking bugs and feature requests](https://github.com/datatogether/webapp/issues) and Pull Requests (PRs) for [submitting changes](https://github.com/datatogether/webapp/pulls).
 
 ## Installation
 
