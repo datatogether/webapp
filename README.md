@@ -7,11 +7,12 @@
 [![Codecov](https://img.shields.io/codecov/c/github/datatogether/webapp.svg?style=flat-square)](https://codecov.io/gh/datatogether/webapp)
 [![CI](https://img.shields.io/circleci/project/github/datatogether/webapp.svg?style=flat-square)](https://circleci.com/gh/datatogether/webapp)
 
-**Webapp** is the main public-facing web application to allow user to contribute metadata about content that has been crawled & archived from Data Together. Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org). Use this repositories to improve the user interface presented in the web application. To add new features to the Data Together platform, you'll have to land those in one or more of the other repositories in the [Data Together Github organization](https://github.com/datatogether/). 
+**Webapp** is the main public-facing web application to allow user to contribute metadata about content that has been crawled & archived from Data Together. Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org). This repository has a React front end which includes the user interface of the web application. New features of the Data Together platform are coordinated and developed in one or more of the other repositories listed in our [Roadmap](https://github.com/datatogether/roadmap). 
 
 ## License & Copyright
 
-Copyright (C) 2017 Data Together  
+Copyright (C) 2017 Data Together
+
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the Free Software
 Foundation, version 3.0.
