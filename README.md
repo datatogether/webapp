@@ -7,7 +7,7 @@
 [![Codecov](https://img.shields.io/codecov/c/github/datatogether/webapp.svg?style=flat-square)](https://codecov.io/gh/datatogether/webapp)
 [![CI](https://img.shields.io/circleci/project/github/datatogether/webapp.svg?style=flat-square)](https://circleci.com/gh/datatogether/webapp)
 
-**Webapp** is the main public-facing web application to allow user to contribute metadata about content that has been crawled & archived from [Data Together](https://datatogether.org). Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org). This repository has a React front end which includes the user interface of the web application. New features of the Data Together platform are coordinated and developed in one or more of the other repositories listed in our [Roadmap](https://github.com/datatogether/roadmap). 
+**Webapp** is the main public-facing web application to allow users to contribute metadata about content that has been crawled & archived from [Data Together](https://datatogether.org). A beta version of the code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org). This repository has a React front end that includes the user interface of the web application. New features of the Data Together platform are coordinated and developed in one or more of the other repositories listed in our [Roadmap](https://github.com/datatogether/roadmap). 
 
 ## License & Copyright
 
@@ -31,7 +31,7 @@ We use GitHub issues for [tracking bugs and feature requests](https://github.com
 
 ## Installation
 
-To start developing, make sure you have [docker](https://store.docker.com/search?type=edition&offering=community) and [docker compose](https://docs.docker.com/compose/install/) And then run:
+To start developing, first make sure you have [Docker](https://store.docker.com/search?type=edition&offering=community) and [docker Compose](https://docs.docker.com/compose/install/). Then, run:
 
 ```shell
 $ git clone git@github.com:datatogether/webapp.git
@@ -43,7 +43,7 @@ This will spin up a whole bunch of servers (most of the repositories in this org
 
 ## Development
 
-Once docker has spun up, webpack will watch `.js`, `.scss`, amd `.css` files and attempt to automatically recompile & refresh your browser window on changes. It's a good idea to have the browser's console open to make sure nothing's exploding. 
+Once Docker has spun up, webpack will watch `.js`, `.scss`, amd `.css` files and attempt to automatically recompile & refresh your browser window on changes. It's a good idea to have the browser's console open to make sure nothing's exploding. 
 
 We use the following established toolkits for this project:
 
