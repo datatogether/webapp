@@ -7,11 +7,12 @@
 [![Codecov](https://img.shields.io/codecov/c/github/datatogether/webapp.svg?style=flat-square)](https://codecov.io/gh/datatogether/webapp)
 [![CI](https://img.shields.io/circleci/project/github/datatogether/webapp.svg?style=flat-square)](https://circleci.com/gh/datatogether/webapp)
 
-**Webapp** is the main public-facing web application to allow user to contribute metadata about content that has been crawled & archived from Data Together. Beta code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org).
+**Webapp** is the main public-facing web application to allow users to contribute metadata about content that has been crawled & archived from [Data Together](https://datatogether.org). A beta version of the code runs on [archivers.co](https://archivers.co) and production code on [datatogether.org](https://datatogether.org). This repository has a React front end that includes the user interface of the web application. New features of the Data Together platform are coordinated and developed in one or more of the other repositories listed in our [Roadmap](https://github.com/datatogether/roadmap). 
 
 ## License & Copyright
 
-Copyright (C) 2017 Data Together  
+Copyright (C) 2017 Data Together
+
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the Free Software
 Foundation, version 3.0.
@@ -26,11 +27,11 @@ See the [`LICENSE`](./LICENSE) file for details.
 
 We would love involvement from more people! If you notice any errors or would like to submit changes, please see our [Contributing Guidelines](./.github/CONTRIBUTING.md).
 
-We use GitHub issues for [tracking bugs and feature requests](https://github.com/datatogether/webapp/issues) and Pull Requests (PRs) for [submitting changes](https://github.com/datatogether/webapp/pulls)
+We use GitHub issues for [tracking bugs and feature requests](https://github.com/datatogether/webapp/issues) and Pull Requests (PRs) for [submitting changes](https://github.com/datatogether/webapp/pulls).
 
 ## Installation
 
-To get started with dev, make sure you have [docker](https://store.docker.com/search?type=edition&offering=community) and [docker compose](https://docs.docker.com/compose/install/) And then run:
+To start developing, first make sure you have [Docker](https://store.docker.com/search?type=edition&offering=community) and [docker Compose](https://docs.docker.com/compose/install/). Then, run:
 
 ```shell
 $ git clone git@github.com:datatogether/webapp.git
@@ -38,18 +39,18 @@ $ cd webapp
 $ docker-compose up
 ```
 
-This'll spin up a whole bunch of servers and make lots of noise. Once you see `webpack built` you can go to `http://localhost:3000` to see the app running locally.
+This will spin up a whole bunch of servers (most of the repositories in this organization are dependencies) and make lots of noise. Once you see `webpack built` you can go to `http://localhost:3000` to see the app running locally.
 
 ## Development
 
-Developing is as simple as editing files in source. If webpack can, it'll automatically recompile & update your browser window. Have the browser's console open to make sure nothing's exploding.
+Once Docker has spun up, webpack will watch `.js`, `.scss`, amd `.css` files and attempt to automatically recompile & refresh your browser window on changes. It's a good idea to have the browser's console open to make sure nothing's exploding. 
 
-### Technologies
+We use the following established toolkits for this project:
 
-* [React.js](https://facebook.github.io/react/)
-* [Redux Framework](https://redux.js.org/)
-* [React Router](https://reacttraining.com/react-router/)
-* [Webpack 2](https://webpack.js.org)
+* [React.js](https://facebook.github.io/react/) components for all UI. If you are familiar with React, then all of the `src/js/components` files should look familiar
+* [Redux Framework](https://redux.js.org/) for state control
+* [React Router](https://reacttraining.com/react-router/) for navigation
+* [Webpack 2](https://webpack.js.org) is our module bundler, and we also use [yarn](http://yarnpkg.com) for dependency management
 
 ### Project Organization
 
