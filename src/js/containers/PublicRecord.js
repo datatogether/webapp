@@ -114,7 +114,7 @@ class PublicRecord extends React.Component {
               <div className='col-md-10 offset-md-1'>
                 <hr />
                 <h3>Hi there!</h3>
-                <p>This is an early, experimental version of the data together platform. If you'd like more info, be sure to check out <a href='https://datatogether.org'>datatogether.org</a></p>
+                <p>This is an early reference implementation of principles being developed by Data Together. If you'd like more info, be sure to check out <a href='https://datatogether.org'>datatogether.org</a></p>
                 <hr />
                 <div className='form-group'>
                   <label className='form-label label'>search public record</label>

@@ -26,11 +26,9 @@ export default class MainMenu extends React.Component {
     return (
       <div id='main_menu' onClick={this.onClick} className={show ? 'show' : 'hide'}>
         <Link className='blue' to='/'>Home</Link>
-        {/* <Link className="blue" to="/coverage">Coverage</Link> */}
         <Link className='blue' to='/add-dataset'>Add a Dataset</Link>
         <Link className='blue' to='/communities'>Communities</Link>
         <Link className='blue' to='/collections'>Collections</Link>
-        {/* <Link className="blue" to="/uncrawlables">Uncrawlables</Link> */}
         {
           !user &&
             (<div>
@@ -38,9 +36,6 @@ export default class MainMenu extends React.Component {
               <Link className='yellow' to='/signup'>Signup</Link>
             </div>)
         }
-        {/* <a className="orange" href="https://docs.archivers.space/archivers">Docs</a> */}
-        {/* <a className="orange" href="https://github.com/edgi-govdata-archiving/proposed-services">Proposal</a> */}
-        {/* <a className="orange" href="https://github.com/datatogether/context/issues">App Issues</a> */}
       </div>
     )
   }
