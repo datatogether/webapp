@@ -10,10 +10,10 @@ const SourceItem = ({ data }) => {
     <div className="source item col-md-3">
       <Link to={`/sources/${source.id}`}>
         <h4 className="title">{source.title}</h4>
-        <div className="info">
+        {/* <div className="info">
           <ProgressBar size="micro" color="blue" total={source.stats.contentUrlCount} progress={source.stats.contentMetadataCount} />
           <i>{source.stats.contentMetadataCount}/{source.stats.contentUrlCount}</i>
-        </div>
+        </div> */}
       </Link>
     </div>
   );

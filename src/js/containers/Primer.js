@@ -43,7 +43,7 @@ class Primer extends React.Component {
       <div className="primer container">
         <div className="row">
           <div className="col-md-12">
-            <h3 className="title">Sub-Primers:</h3>
+            {/* <h3 className="title">Sub-Primers:</h3> */}
             <br />
           </div>
         </div>
@@ -65,7 +65,8 @@ class Primer extends React.Component {
       <div className="source container">
         <div className="row">
           <div className="col-md-12">
-            <h3>Sources:</h3>
+            <hr />
+            {/* <h3 className="title">Sources:</h3> */}
             <br />
           </div>
         </div>
@@ -91,7 +92,7 @@ class Primer extends React.Component {
             <div className="row">
               <div className="col-md-12">
                 <hr/>
-                <label className="label">Primer</label>
+                <label className="label">The Public Record</label>
                 <h1 className="title">{primer.title}</h1>
               </div>
             </div>
@@ -102,15 +103,16 @@ class Primer extends React.Component {
             </div>
             <div className="row">
               <div className="col-md-12">
-                <ProgressBar 
+                {/* <ProgressBar 
                   total={primer.stats.contentUrlCount}
                   progress={primer.stats.contentMetadataCount}
-                />
+                />*/}
+                <hr />
                 <StatsBar
                   stats={{
-                    urls: primer.stats.urlCount,
-                    content: primer.stats.contentUrlCount,
-                    documented: primer.stats.contentMetadataCount,
+                    urls: primer.stats.urlCount || 0,
+                    content: primer.stats.contentUrlCount || 0,
+                    documented: primer.stats.contentMetadataCount || 0,
                   }}
                 />
               </div>

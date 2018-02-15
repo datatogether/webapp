@@ -2,6 +2,12 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import analytics from '../analytics';
+import { loadConsensus } from '../actions/consensus';
+import { loadContentMetadata, loadContentUrls } from '../actions/content';
+import { selectConsensus } from '../selectors/consensus';
+import { selectContentUrls, selectContentMetadata } from '../selectors/content';
+import { selectUrlByHash } from '../selectors/url';
+import { contentStats } from '../selectors/content';
 
 import Consensus from '../components/Consensus';
 import HistoryItem from '../components/item/HistoryItem';
@@ -11,13 +17,8 @@ import StatsBar from '../components/StatsBar';
 import TabBar from '../components/TabBar';
 import UrlItem from '../components/item/UrlItem';
 import MetadataEditor from './MetadataEditor';
+import Spinner from '../components/Spinner';
 
-import { loadConsensus } from '../actions/consensus';
-import { loadContentMetadata, loadContentUrls } from '../actions/content';
-import { selectConsensus } from '../selectors/consensus';
-import { selectContentUrls, selectContentMetadata } from '../selectors/content';
-import { selectUrlByHash } from '../selectors/url';
-import { contentStats } from '../selectors/content';
 
 class Content extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Content extends React.Component {
 
     this.state = {
       tab: "metadata",
+      loading: !props.url,
     };
 
     [
@@ -38,6 +40,9 @@ class Content extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.url && !this.props.url && this.state.loading) {
+      this.setState({ loading: false });
+    }
     if (nextProps.hash != this.props.hash) {
       this.props.loadContentUrls(nextProps.hash);
     }
@@ -81,7 +86,17 @@ class Content extends React.Component {
 
   render() {
     const { hash, url } = this.props;
-    const { tab } = this.state;
+    const { tab, loading } = this.state;
+
+    if (loading) {
+      return (
+        <div className="content page">
+          <div className="container">
+            <Spinner />
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div id="content" className="content page">
@@ -92,6 +107,7 @@ class Content extends React.Component {
                 <hr className="" />
                 <label className="label">Content</label>
                 <h3 className="title">{url && url.fileName ? url.fileName : "unnamed content"}</h3>
+                <p>{`/ipfs/${url.hash}`}</p>
                 {url && <a className="btn" href={url.contentUrl} download={url.fileName}>Download File</a> }
                 <hr />
               </div>
@@ -102,7 +118,9 @@ class Content extends React.Component {
         <div className="container">
           <TabBar value={tab} tabs={["metadata", "urls", "history", "consensus"]} onChange={this.handleSetTab} color="yellow" />
           <div className="row">
-            {this.renderCurrentTab()}
+            <div className="col-md-12">
+              {this.renderCurrentTab()}
+            </div>
           </div>
         </div>
       </div>

@@ -72,21 +72,21 @@ class MetadataEditor extends React.Component {
 
     if (savedMetadata && !metadata) {
       return (
-        <div className="metadata editor col-md-12">
+        <div className="metadata editor">
           <Metadata metadata={savedMetadata.meta} />
           {sessionKeyId ? <button className="btn btn-primary" onClick={this.handleEdit}>Edit</button> : <p><Link to="/signup">Signup</Link> to edit metadata.</p>}
         </div>
       );
     } else if (!metadata) {
       return (
-        <div className="metadata editor col-md-12">
+        <div className="metadata editor">
           {sessionKeyId ? <button className="btn btn-primary" onClick={this.handleNew}>Add Metadata</button> : <p><Link to="/signup">Signup</Link> to add metadata.</p>}
         </div>
       );
     }
 
     return (
-      <div className="metadata editor col-md-12">
+      <div className="metadata editor">
         <a className="helpToggle right" onClick={this.handleToggleHelp}>{showHelp ? "hide help" : "show help" }</a>
         <MetadataForm
           data={metadata.meta}

@@ -13,10 +13,14 @@ import { selectSearchQuery, selectSearchResults } from '../selectors/search';
 import { selectRecentContentUrls } from '../selectors/content';
 import { selectRecentSources } from '../selectors/sources';
 
+import { selectPrimers } from '../selectors/primers';
+import { loadPrimers } from '../actions/primers';
+
 import List from '../components/List';
 import SearchResultItem from '../components/item/SearchResultItem';
 import ContentItem from '../components/item/ContentItem';
 import SourceItem from '../components/item/SourceItem';
+import PrimerItem from '../components/item/PrimerItem';
 
 class PublicRecord extends React.Component {
   constructor(props) {
@@ -32,7 +36,8 @@ class PublicRecord extends React.Component {
   componentWillMount() {
     analytics.page('public-record');
     this.props.loadRecentContentUrls(1, 25);
-    this.props.loadSources(1, 3);
+    this.props.loadPrimers(1, 3);
+    // this.props.loadSources(1, 3);
   }
 
   handleSearchChange(e) {
@@ -69,26 +74,36 @@ class PublicRecord extends React.Component {
         <div className="col-md-12">
           <label className="label">results</label>
         </div>
-        <List component={SearchResultItem} data={this.props.results} />
-        {this.renderArchiveUrl()}
+        <div className="col-md-12">
+          <List component={SearchResultItem} data={this.props.results} />
+          {this.renderArchiveUrl()}
+        </div>
       </div>
     );
   }
+
 
   renderRecentContent() {
     return (
       <div>
         <div className="row">
           <div className="col-md-12">
+            <br />
+            <label className="label">Collections:</label>
+          </div>
+          <List data={this.props.primers} component={PrimerItem} />
+        </div>
+        {/* <div className="row">
+          <div className="col-md-12">
             <hr />
             <label className="label">Sources</label>
           </div>
           <List data={this.props.sources} component={SourceItem}  />
-        </div>
+        </div> */}
         <div className="row">
           <div className="col-md-12">
             <hr />
-            <label className="label">New Content Needing Metadata:</label>
+            <label className="label">Content:</label>
           </div>
           <List component={ContentItem} data={this.props.recentContent} />
         </div>
@@ -101,7 +116,6 @@ class PublicRecord extends React.Component {
 
     return (
       <div id="public-record" className="public-record page">
-        <header>
           <div className="container">
             <div className="row">
               <div className="col-md-12">
@@ -113,7 +127,6 @@ class PublicRecord extends React.Component {
               </div>
             </div>
           </div>
-        </header>
         <div className="container">
           {results.length ?
             this.renderSearchResults() :
@@ -128,6 +141,7 @@ class PublicRecord extends React.Component {
 PublicRecord.propTypes = {
   // pages: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,
+  loadPrimers: PropTypes.func.isRequired,
 };
 
 PublicRecord.defaultProps = {
@@ -141,6 +155,7 @@ function mapStateToProps(state, ownProps) {
     results: selectSearchResults(state),
     recentContent: selectRecentContentUrls(state),
     sources: selectRecentSources(state),
+    primers: selectPrimers(state),
   }, ownProps);
 }
 
@@ -149,4 +164,5 @@ export default connect(mapStateToProps, {
   loadRecentContentUrls,
   archiveUrl,
   search,
+  loadPrimers,
 })(PublicRecord);
