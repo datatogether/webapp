@@ -1,5 +1,5 @@
 import App from './containers/App';
-import Home from './containers/Home';
+import PublicRecord from './containers/PublicRecord';
 import NotFound from './components/NotFound';
 
 function errorLoading(err) {
@@ -13,9 +13,9 @@ function loadRoute(cb) {
 export default {
   path: "/",
   component: App,
-  indexRoute: { component: Home },
+  indexRoute: { component: PublicRecord },
   // getIndexRoute(partialState, cb) {
-  //  import('./containers/Home').then(loadRoute(cb)).catch(errorLoading)
+  //  import('./containers/PublicRecord').then(loadRoute(cb)).catch(errorLoading)
   // },
   childRoutes: [
     {
@@ -34,12 +34,6 @@ export default {
       path: "/add-dataset",
       getComponent(location, cb) {
         import('./containers/ArchiveUrl').then(loadRoute(cb)).catch(errorLoading);
-      },
-    },
-    {
-      path: "/public-record",
-      getComponent(location, cb) {
-        import('./containers/PublicRecord').then(loadRoute(cb)).catch(errorLoading);
       },
     },
     {
